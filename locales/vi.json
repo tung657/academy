@@ -1,0 +1,19 @@
+{
+  "global": {
+    "title_error": "Có lỗi xảy ra",
+    "title_notfound": "Không tìm thấy trang" 
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "course": "Đào tạo",
+    "research": "Nghiên cứu",
+    "product": "Sản phẩm",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ",
+    "media": "Truyền thông"
+  },
+  "home": {
+    "title": "Viện trí tuệ nhân tạo Việt Nam",
+    "description": "Việt Nam"
+  }
+}

@@ -1,0 +1,21 @@
+$primary-color: #ff5d22;
+
+@mixin resp-height($init: auto, $xs: $init, $sm: $init, $md: $init, $lg: $init, $xl: $init) {
+  height: $init;
+
+  @media only screen and (max-width: var(--mantine-breakpoint-xl)) {
+    height: $xl;
+  }
+  @media only screen and (max-width: var(--mantine-breakpoint-lg)) {
+    height: $lg;
+  }
+  @media only screen and (max-width: var(--mantine-breakpoint-md)) {
+    height: $md;
+  }
+  @media only screen and (max-width: var(--mantine-breakpoint-sm)) {
+    height: $sm;
+  }
+  @media only screen and (max-width: var(--mantine-breakpoint-xs)) {
+    height: $xs;
+  }
+}
