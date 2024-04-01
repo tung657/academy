@@ -1,0 +1,20 @@
+{
+  "global": {
+    "title_error": "Something went wrong",
+    "title_notfound": "Not found" 
+  },
+  "nav": {
+    "home": "Home",
+    "course": "Training",
+    "research": "Research",
+    "product": "Product",
+    "about": "About Us",
+    "contact": "Contact",
+    "media": "Media"
+  },
+  "logo": "AIA",
+  "home": {
+    "title": "AI Academy",
+    "description": "Vietnamese"
+  }
+}
