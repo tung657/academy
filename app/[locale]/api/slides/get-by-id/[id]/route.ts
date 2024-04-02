@@ -1,6 +1,8 @@
 import { getSlideByIdRepo } from '@/helpers/repositories';
 import { NextRequest, NextResponse as res } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
 	_: NextRequest,
 	{ params }: { params: { id: string } },
