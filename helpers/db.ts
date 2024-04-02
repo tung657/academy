@@ -1,0 +1,59 @@
+import { Pool, PoolConnection, PoolOptions, createPool } from 'mysql2/promise';
+
+const connectionConfig: PoolOptions = {
+	host: process.env.MYSQL_HOST,
+	port: +(process.env.MYSQL_PORT || 3306),
+	database: process.env.MYSQL_DATABASE,
+	user: process.env.MYSQL_USER,
+	password: process.env.MYSQL_PASSWORD,
+	enableKeepAlive: true,
+};
+
+export class Database {
+	private pool: Pool;
+
+	constructor() {
+		this.pool = createPool(connectionConfig);
+	}
+
+	public async query(sql: string, values: any[]): Promise<any> {
+		let connection: PoolConnection | null = null;
+		try {
+			connection = await this.pool.getConnection();
+			const [results] = await connection.query(sql, values);
+			const [outParam] = await connection.query('SELECT @err_code, @err_msg');
+			let err: any = outParam;
+			if (err[0]['@err_code'] === 0) {
+				return results;
+			} else {
+				throw new Error(err?.[0]?.['@err_msg']);
+			}
+		} catch (error) {
+			throw error;
+		} finally {
+			if (connection) {
+				connection.release();
+			}
+		}
+	}
+	public async queryList(sql: string, values: any[]): Promise<any> {
+		let connection: PoolConnection | null = null;
+		try {
+			connection = await this.pool.getConnection();
+			const [results] = await connection.query(sql, values);
+			const [outParam] = await connection.query('SELECT @err_code, @err_msg');
+			let err: any = outParam;
+			if (err[0]['@err_code'] === 0) {
+				return results;
+			} else {
+				throw new Error(err[0]['@err_msg']);
+			}
+		} catch (error) {
+			throw error;
+		} finally {
+			if (connection) {
+				connection.release();
+			}
+		}
+	}
+}
