@@ -14,7 +14,7 @@
   },
   "logo": "AIA",
   "home": {
-    "title": "AI Academy",
-    "description": "Vietnamese"
+    "meta_title": "AI Academy",
+    "meta_description": "AI Academy"
   }
 }

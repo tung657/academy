@@ -1,5 +1,5 @@
 import { Title, Text, Button, Container, Group } from '@mantine/core';
-import classes from '../styles/error.module.css';
+import classes from './scss/error.module.css';
 import { HOME_URL } from '@/libs/urls';
 
 export function NotFoundTitle() {

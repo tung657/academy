@@ -6,7 +6,7 @@ import {
 	IconBrandGoogle,
 	IconBrandLinkedin,
 } from '@tabler/icons-react';
-import classes from '../styles/footer.module.css';
+import classes from './scss/footer.module.css';
 import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
 import Image from 'next/image';

@@ -1,6 +1,5 @@
 import { ClientLayout } from '@/components';
 import { AppConfig } from '@/utils';
-import { Container } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
 interface Props {
@@ -14,14 +13,11 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 	});
 
 	return {
-		title: `${t('title')} | ${AppConfig.name}`,
+		title: `${t('meta_title')} | ${AppConfig.name}`,
+		description: `${t('meta_description')}`,
 	};
 }
 
 export default function Layout({ children }: Props) {
-	return (
-		<ClientLayout>
-			<Container size="xl">{children}</Container>
-		</ClientLayout>
-	);
+	return <ClientLayout>{children}</ClientLayout>;
 }
