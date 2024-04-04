@@ -1,9 +1,16 @@
 .section {
+  background: bottom right no-repeat;
+
   .img-box {
-    transform: translate(-15px, 15px);
-    border-radius: 10px;
+    transform: translate(0, 0);
+    border-radius: 5px;
     position: relative;
-    z-index: 1;
+    overflow: visible;
+
+    img {
+      z-index: 2;
+      border-radius: 5px;
+    }
     
     &::before {
       content: "";
@@ -15,8 +22,8 @@
       height: 100%;
       transform: translate(15px, 15px);
       background-color: var(--mantine-color-primary-filled);
-      border-radius: 10px;
-      z-index: 0;
+      border-radius: 5px;
+      z-index: 1;
     }
   }
 }

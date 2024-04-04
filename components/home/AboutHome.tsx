@@ -6,14 +6,24 @@ import { TitleCombo } from '../typographies/TitleCombo';
 import { IconArrowRight, IconDatabase } from '@tabler/icons-react';
 import { TitleRender } from '../typographies/TitleRender';
 import { ButtonBubble } from '../buttons/ButtonBubble';
+import { imgOthers } from '@/assets/images/others';
 
 export const AboutHome = (): JSX.Element => {
 	return (
-		<section className={classes.section}>
+		<section
+			className={classes.section}
+			style={{ backgroundImage: `url(${imgOthers.circleShapeIcon})` }}
+		>
 			<Grid pb={{ base: 30, md: 40, lg: 60 }} gutter={'xl'}>
 				<Grid.Col span={{ base: 12, md: 6 }}>
 					<Card className={classes.imgBox} shadow="md" h={'100%'} mih={750}>
-						<Image loading="lazy" src={imgHome.about} alt="about us" fill />
+						<Image
+							objectFit="cover"
+							loading="lazy"
+							src={imgHome.about}
+							alt="about us"
+							fill
+						/>
 					</Card>
 				</Grid.Col>
 				<Grid.Col span={{ base: 12, md: 6 }}>

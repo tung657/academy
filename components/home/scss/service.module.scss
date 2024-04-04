@@ -1,4 +1,6 @@
 .section {
+  background-color: var(--background-secondary);
+
   .card {
     text-align: center;
     transition: .3s;
@@ -13,7 +15,10 @@
     }
 
     .btn-detail {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
       color: var(--mantine-color-primary-filled);
       padding: 4px 0;
       position: relative;
@@ -42,10 +47,6 @@
 
     a {
       text-decoration: none;
-    }
-
-    &:hover {
-      border-color: var(--mantine-color-primary-filled);
     }
   }
 }

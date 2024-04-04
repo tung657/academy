@@ -1,5 +1,3 @@
-$primary-color: #ff5d22;
-
 @mixin rotate-animate() {
   animation: rotate-animate;
   animation-duration: 40s;
@@ -12,6 +10,25 @@ $primary-color: #ff5d22;
     }
     100% {
       transform: rotate(1turn);
+    }
+  }
+}
+
+@mixin left-bounce($duration: 5s) {
+  animation: left-bounce;
+  animation-duration: $duration;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  
+  @keyframes left-bounce {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(-20px);
+    }
+    100% {
+      transform: translateX(0);
     }
   }
 }
