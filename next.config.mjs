@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin('./libs/i18n.ts');
 
 const nextConfig = {
 	output: 'standalone',
+	env: {
+		BASE_URL: process.env.BASE_URL,
+	},
 	experimental: {
 		optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
 	},

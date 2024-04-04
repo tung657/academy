@@ -1,17 +1,25 @@
 'use client';
-import { Text, Container, ActionIcon, Group, rem } from '@mantine/core';
+import {
+	Text,
+	Container,
+	ActionIcon,
+	Group,
+	rem,
+	Box,
+	Image,
+} from '@mantine/core';
 import {
 	IconBrandTwitter,
 	IconBrandFacebook,
 	IconBrandGoogle,
 	IconBrandLinkedin,
 } from '@tabler/icons-react';
-import classes from '../styles/footer.module.css';
+import classes from './scss/footer.module.scss';
 import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
-import Image from 'next/image';
 import logo from '@/assets/images/logos/logo.jpg';
 import React from 'react';
+import { imgOthers } from '@/assets/images/others';
 
 const data = [
 	{
@@ -98,12 +106,11 @@ export default function FooterLinks() {
 				<div className={classes.logo}>
 					<Link href={HOME_URL} style={{ textDecoration: 'none' }}>
 						<Image
-							src={logo}
-							width={130}
-							height={54}
-							priority
+							src={logo.src}
+							maw={300}
 							alt="logo"
-							placeholder="blur"
+							fit="cover"
+							loading="lazy"
 						/>
 					</Link>
 					<Text size="sm" c="dimmed" className={classes.description}>
@@ -133,6 +140,16 @@ export default function FooterLinks() {
 					© 2024 AI Academy Viet Nam.
 				</Text>
 			</Container>
+			<Box className={classes.footerMap}>
+				<Image
+					src={imgOthers.footerMapIcon}
+					w={'100%'}
+					h={'auto'}
+					alt="footer map"
+					width={693}
+					height={362}
+				/>
+			</Box>
 		</footer>
 	);
 }

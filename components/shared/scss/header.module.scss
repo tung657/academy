@@ -2,11 +2,12 @@
 
 .header {
   @include resp-height(85.5px, 75px, 75px);
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   background-color: var(--mantine-color-body);
   border-bottom: 1px solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-4));
   position: sticky;
   top: 0;
+  z-index: 100;
   
   & .inner {
     @include resp-height(85.5px, 75px, 75px);

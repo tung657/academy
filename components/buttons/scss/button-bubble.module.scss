@@ -1,0 +1,28 @@
+.button {
+  border: none;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  transition: .5s;
+}
+
+.button div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background-color: #221638;
+  transition: width .5s ease-in-out, height .5s ease-in-out;
+  transform: translate(-50%,-30%);
+  z-index: -1;
+  border-radius: 5px;
+}
+
+.button:hover div {
+  width: 225%;
+  height: 1562.5px;
+}
+
+
+

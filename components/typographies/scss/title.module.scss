@@ -1,0 +1,17 @@
+@import "@/styles/variables";
+
+h1.title {
+  @include resp-fz(65px, 31px, 31px, 45px, 45px, 60px);
+  
+}
+
+h2.title {
+  @include resp-fz(44px, 27px, 27px, 27px, 35px, 44px);
+}
+
+.section-title {
+  margin: auto;
+  text-align: center;
+  justify-content: center;
+  @include resp-mw(695px, 100%, 100%, 100%, 600px, 700px);
+}

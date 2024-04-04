@@ -15,7 +15,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
-import classes from '../styles/header.module.scss';
+import classes from './scss/header.module.scss';
 import Link from 'next/link';
 import { useTranslations } from 'use-intl';
 import { LanguagePicker } from '../langs/LanguagePicker';

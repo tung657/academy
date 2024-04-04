@@ -1,0 +1,40 @@
+.section {
+  .img-box {
+    position: relative;
+
+    .socials {
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+      width: 100%;
+      transform: translateY(50%);
+      z-index: -1;
+      transition:  .5s;
+      padding: 20px;
+      opacity: 0;
+      gap: 12px;
+
+      .social-item {
+        cursor: pointer;
+        transition: .3s;
+        &:hover {
+          background-color: var(--mantine-color-primary-filled);
+
+          svg {
+            transition: .3s;
+            fill: var(--mantine-color-white);
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .socials {
+        transform: translateY(0);
+        z-index: 0;
+        opacity: 1;
+      }
+    }
+  }
+}
