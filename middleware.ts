@@ -5,7 +5,11 @@ import { verifyJwtToken } from './helpers/auth';
 import { removePrefix } from './utils';
 
 // Add whatever paths you want to PROTECT here
-const authRoutes = ['/admin/*', '/api/slides/get-by-id/*'];
+const authRoutes = [
+	'/admin/*',
+
+	// '/api/slides/get-by-id/*'
+];
 
 // Function to match the * wildcard character
 function matchesWildcard(path: string, pattern: string): boolean {
@@ -36,7 +40,7 @@ export default async function middleware(req: NextRequest) {
 		authRoutes.some((pattern) => matchesWildcard(req.nextUrl.pathname, pattern))
 	) {
 		const token = req.cookies.get(LOCAL_TOKEN);
-		console.log(token);
+		// console.log(token);
 
 		// For API routes, we want to return unauthorized instead of
 		// redirecting to login

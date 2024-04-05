@@ -7,7 +7,7 @@ import { OurSolution } from '@/components/home/OurSolution';
 import { ServiceHome } from '@/components/home/ServiceHome';
 import { Container } from '@mantine/core';
 
-export default function Home() {
+export default function HomePage() {
 	return (
 		<>
 			<CarouselHome />
