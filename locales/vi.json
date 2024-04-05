@@ -13,7 +13,11 @@
     "media": "Truyền thông"
   },
   "home": {
-    "title": "Viện trí tuệ nhân tạo Việt Nam",
-    "description": "Việt Nam"
+    "meta_title": "Viện trí tuệ nhân tạo Việt Nam",
+    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+  },
+  "product": {
+    "meta_title": "Sản phẩm",
+    "meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
   }
 }

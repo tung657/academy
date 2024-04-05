@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
+import '@mantine/carousel/styles.css';
 import '@/styles/index.scss';
+
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { theme } from '@/theme/theme';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
