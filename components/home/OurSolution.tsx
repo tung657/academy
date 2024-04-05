@@ -15,10 +15,16 @@ export const OurSolution = (): JSX.Element => {
 					description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 				/>
 
-				<Grid mt={24}>
+				<Grid mt={24} gutter={24}>
 					{[...Array(3)].map((_, index) => (
 						<Grid.Col key={index} span={{ base: 12, sm: 4 }}>
-							<Card shadow="sm" p={24} withBorder className={classes.card}>
+							<Card
+								shadow="xs"
+								py={24}
+								px={32}
+								withBorder
+								className={classes.card}
+							>
 								<Card.Section py={16}>
 									<IconRocket size={80} stroke={0.7} />
 								</Card.Section>

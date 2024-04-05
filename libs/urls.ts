@@ -7,6 +7,7 @@ const COURSE_URL = '/course';
 const RESEARCH_URL = '/research';
 
 const PRODUCT_URL = '/product';
+const PRODUCT_DETAIL_URL = `${PRODUCT_URL}/:id`;
 
 const CONTACT_URL = '/contact';
 
@@ -17,6 +18,7 @@ export {
 	COURSE_URL,
 	RESEARCH_URL,
 	PRODUCT_URL,
+	PRODUCT_DETAIL_URL,
 	CONTACT_URL,
 	MEDIA_URL,
 };
