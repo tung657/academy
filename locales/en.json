@@ -8,7 +8,7 @@
     "course": "Training",
     "research": "Research",
     "product": "Product",
-    "about": "About Us",
+    "about-us": "About Us",
     "contact": "Contact",
     "media": "Media"
   },
@@ -20,5 +20,13 @@
   "product": {
     "meta_title": "Products",
     "meta_description": "Products of AI Academy Viet Nam"
+  },
+  "about": {
+    "meta_title": "About Us",
+    "meta_description": "AI Academy"
+  },
+  "research": {
+    "meta_title": "Research",
+    "meta_description": "AI Academy"
   }
 }

@@ -1,17 +1,12 @@
-import Loading from '@/app/loading';
-import { ClientLayout } from '@/components';
+import { Research } from '@/components/research/Research';
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
-
-interface Props {
-	children: React.ReactNode;
-}
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
 		locale: props.params.locale,
-		namespace: 'home',
+		namespace: 'research',
 	});
 
 	return {
@@ -20,10 +15,11 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 	};
 }
 
-export default function Layout({ children }: Props) {
+export default function ResearchPage() {
 	return (
-		<ClientLayout>
-			<Suspense fallback={<Loading />}>{children}</Suspense>
-		</ClientLayout>
+		<>
+			<Breadcrumb />
+			<Research />
+		</>
 	);
 }

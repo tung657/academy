@@ -1,6 +1,5 @@
-import { Card, Flex, Grid, Text } from '@mantine/core';
+import { Card, Flex, Grid, Image, Text } from '@mantine/core';
 import classes from './scss/about.module.scss';
-import Image from 'next/image';
 import { imgHome } from '@/assets/images/home';
 import { TitleCombo } from '../typographies/TitleCombo';
 import { IconArrowRight, IconDatabase } from '@tabler/icons-react';
@@ -16,15 +15,19 @@ export const AboutHome = (): JSX.Element => {
 		>
 			<Grid pb={{ base: 30, md: 40, lg: 60 }} gutter={'xl'}>
 				<Grid.Col span={{ base: 12, md: 6 }}>
-					<Card className={classes.imgBox} shadow="md" h={'100%'} mih={750}>
+					<div className={classes.imgBox}>
 						<Image
-							objectFit="cover"
+							fit="cover"
 							loading="lazy"
+							p={0}
 							src={imgHome.about}
 							alt="about us"
-							fill
+							w={'100%'}
+							h={'auto'}
+							width={650}
+							height={750}
 						/>
-					</Card>
+					</div>
 				</Grid.Col>
 				<Grid.Col span={{ base: 12, md: 6 }}>
 					<TitleCombo

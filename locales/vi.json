@@ -5,10 +5,10 @@
   },
   "nav": {
     "home": "Trang chủ",
+    "about-us": "Về chúng tôi",
     "course": "Đào tạo",
     "research": "Nghiên cứu",
     "product": "Sản phẩm",
-    "about": "Giới thiệu",
     "contact": "Liên hệ",
     "media": "Truyền thông"
   },
@@ -19,5 +19,13 @@
   "product": {
     "meta_title": "Sản phẩm",
     "meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
+  },
+  "about": {
+    "meta_title": "Về chúng tôi",
+    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+  },
+  "research": {
+    "meta_title": "Nghiên cứu",
+    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
   }
 }
