@@ -8,3 +8,7 @@ export const getUrlDetail = (url?: string, id?: string | number) => {
 
 	return `${url.replace(':id', '')}${id}`;
 };
+
+export const patterns = {
+	phone: /(84|0[3|5|7|8|9])+([0-9]{8,12})\b/,
+};

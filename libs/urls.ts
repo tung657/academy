@@ -2,6 +2,8 @@ import { NavTree } from '@/types/global';
 
 const HOME_URL = '/';
 
+const ABOUT_URL = '/about-us';
+
 const COURSE_URL = '/course';
 
 const RESEARCH_URL = '/research';
@@ -15,6 +17,7 @@ const MEDIA_URL = '/media';
 
 export {
 	HOME_URL,
+	ABOUT_URL,
 	COURSE_URL,
 	RESEARCH_URL,
 	PRODUCT_URL,
@@ -29,6 +32,10 @@ export const generateTreeUrls = (t: any): NavTree[] => {
 		return arr[arr.length - 1];
 	};
 	return [
+		{
+			title: t('nav.' + getPathKey(ABOUT_URL)),
+			path: ABOUT_URL,
+		},
 		{
 			title: t('nav.' + getPathKey(COURSE_URL)),
 			path: COURSE_URL,

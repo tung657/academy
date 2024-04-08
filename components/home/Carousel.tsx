@@ -14,11 +14,11 @@ import Autoplay from 'embla-carousel-autoplay';
 import classes from './scss/carousel.module.scss';
 import { Carousel } from '@mantine/carousel';
 import { IconArrowRight, IconPlayerPlayFilled } from '@tabler/icons-react';
-import { ButtonBubble } from '../buttons/ButtonBubble';
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 
 const data = [
 	{

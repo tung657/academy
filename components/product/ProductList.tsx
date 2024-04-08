@@ -4,7 +4,7 @@ import { Box, Card, Container, Grid, Text } from '@mantine/core';
 import classes from './scss/product.module.scss';
 import { IconRocket } from '@tabler/icons-react';
 import Link from 'next/link';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { getUrlDetail } from '@/utils';
 import { PRODUCT_DETAIL_URL } from '@/libs/urls';
 

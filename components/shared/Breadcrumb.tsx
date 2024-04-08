@@ -2,17 +2,16 @@
 
 import { usePathname } from '@/libs/i18n-navigation';
 import { Breadcrumbs, Container, Flex, Text, rem } from '@mantine/core';
-import { values } from 'lodash';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import classes from './scss/breadcrumb.module.scss';
-import { imgOthers } from '@/assets/images/others';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
 import { IconChevronRight, IconHome } from '@tabler/icons-react';
+import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
 
 interface Props {
 	lastLabel?: string;
@@ -30,7 +29,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 	useEffect(() => {
 		const segments = path
 			.split('/')
-			.filter((i) => i !== '' && !values(params).includes(i));
+			.filter((i) => i !== '' && !Object.values(params).includes(i));
 
 		const items: breadcrumbType[] = segments.map((i, index) => ({
 			title: t(i),
@@ -47,7 +46,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 	return (
 		<section
 			className={classes.section}
-			style={{ backgroundImage: `url(${imgOthers.breadcrumbBackground})` }}
+			style={{ backgroundImage: `url(${backgroundImg.src})` }}
 		>
 			<Container size="xl">
 				<Flex

@@ -1,0 +1,11 @@
+.tab {
+  font-weight: 500;
+  padding: 16px 5px;
+  transition: .3s;
+
+  &[data-active] {
+    font-weight: 700;
+    background-color: var(--mantine-color-primary-filled);
+    color: var(--mantine-color-white);
+  }
+}

@@ -1,17 +1,13 @@
-import Loading from '@/app/loading';
-import { ClientLayout } from '@/components';
+import { ContactForm } from '@/components/contact/ContacForm';
+import { Contact } from '@/components/contact/Contact';
+import { Map } from '@/components/contact/Map';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
-
-interface Props {
-	children: React.ReactNode;
-}
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
 		locale: props.params.locale,
-		namespace: 'home',
+		namespace: 'contact',
 	});
 
 	return {
@@ -20,10 +16,12 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 	};
 }
 
-export default function Layout({ children }: Props) {
+export default function ContactPage() {
 	return (
-		<ClientLayout>
-			<Suspense fallback={<Loading />}>{children}</Suspense>
-		</ClientLayout>
+		<>
+			<Map />
+			<Contact />
+			<ContactForm />
+		</>
 	);
 }

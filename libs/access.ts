@@ -1,5 +1,4 @@
 import CryptoJS from 'crypto-js';
-import _ from 'lodash';
 
 import { storageService } from '@/utils/storage';
 import { LOCAL_USER } from '@/utils';
@@ -13,7 +12,7 @@ export const ACCESSES = {
 
 export const checkAccess = (role: string) => {
 	const roles = storageService.getStorage(LOCAL_USER)?.actions || [];
-	return !!_.find(roles, { action_code: role });
+	return !!roles.find((i: any) => i.action_code === role);
 };
 
 const SECRET_PASSWORD = 'left to right! ha!';
