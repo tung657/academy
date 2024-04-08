@@ -6,9 +6,16 @@ const withNextIntl = createNextIntlPlugin('./libs/i18n.ts');
 
 const nextConfig = {
 	output: 'standalone',
-	env: {
-		BASE_URL: process.env.BASE_URL,
-	},
+	// env: {
+	// 	BASE_URL: process.env.BASE_URL,
+	// 	TURNSTILE_SECRET_KEY: process.env.TURNSTILE_SECRET_KEY,
+	// 	JWT_SECRET: process.env.JWT_SECRET,
+	// 	MYSQL_HOST: process.env.MYSQL_HOST,
+	// 	MYSQL_PORT: process.env.MYSQL_PORT,
+	// 	MYSQL_USER: process.env.MYSQL_USER,
+	// 	MYSQL_PASSWORD: process.env.MYSQL_PASSWORD,
+	// 	MYSQL_DATABASE: process.env.MYSQL_DATABASE,
+	// },
 	experimental: {
 		optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
 	},

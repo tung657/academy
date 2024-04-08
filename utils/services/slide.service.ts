@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios';
 import { apiClient } from '@/helpers';
 import { ISlide } from '@/types/slide';
 
-const prefix = 'slides';
+const prefix = '/slides';
 
 export const getSlideById = async (id: string | number): Promise<ISlide> => {
 	const res = await apiClient?.get(`${prefix}/get-by-id/${id}`);

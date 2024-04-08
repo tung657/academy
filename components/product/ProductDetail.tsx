@@ -21,8 +21,15 @@ import {
 	IconPhoneFilled,
 	IconPointFilled,
 } from '@tabler/icons-react';
+import { useGetSlideById } from '@/utils';
 
 export const ProductDetail = (): JSX.Element => {
+	useGetSlideById({
+		id: 1,
+	});
+
+	console.log(process.env.NEXT_PUBLIC_MYSQL_HOST);
+
 	return (
 		<section>
 			<Container size="xl">
@@ -33,7 +40,7 @@ export const ProductDetail = (): JSX.Element => {
 					<Grid gutter={32}>
 						<Grid.Col span={{ base: 12, lg: 8 }}>
 							<Image
-								src={prodDetailImgs.banner1}
+								src={prodDetailImgs.project2}
 								loading="lazy"
 								w={'100%'}
 								h={'auto'}

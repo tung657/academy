@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Build docker
-docker rm next-pattern -f
-docker build . --no-cache -t next-pattern
-docker run -d -p 3011:80 --name next-pattern
+docker system prune -a
+docker rm aia -f
+docker rmi aia -f
+docker build . --no-cache -t aia
+docker run -d -p 8090:80 --name aia aia

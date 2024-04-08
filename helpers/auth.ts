@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 // import { I_UserPublic } from '@/models/User.types';
 
 export function getJwtSecretKey() {
-	const secret = process.env.JWT_SECRET;
+	const secret = process.env.NEXT_PUBLIC_JWT_SECRET;
 
 	if (!secret) {
 		throw new Error('JWT Secret key is not set');
@@ -97,7 +97,7 @@ export default async function checkTurnstileToken(token: string) {
 	const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
 	const formData = new FormData();
-	formData.append('secret', process.env.TURNSTILE_SECRET_KEY || '');
+	formData.append('secret', process.env.NEXT_PUBLIC_TURNSTILE_SECRET_KEY || '');
 	formData.append('response', token);
 
 	try {

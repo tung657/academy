@@ -1,11 +1,11 @@
 import { Pool, PoolConnection, PoolOptions, createPool } from 'mysql2/promise';
 
 const connectionConfig: PoolOptions = {
-	host: process.env.MYSQL_HOST,
-	port: +(process.env.MYSQL_PORT || 3306),
-	database: process.env.MYSQL_DATABASE,
-	user: process.env.MYSQL_USER,
-	password: process.env.MYSQL_PASSWORD,
+	host: process.env.NEXT_PUBLIC_MYSQL_HOST,
+	port: +(process.env.NEXT_PUBLIC_MYSQL_PORT || 14306),
+	database: process.env.NEXT_PUBLIC_MYSQL_DATABASE,
+	user: process.env.NEXT_PUBLIC_MYSQL_USER,
+	password: process.env.NEXT_PUBLIC_MYSQL_PASSWORD,
 	enableKeepAlive: true,
 };
 

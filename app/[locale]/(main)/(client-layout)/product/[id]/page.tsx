@@ -1,12 +1,15 @@
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { AppConfig, getSlideById } from '@/utils';
+import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
 export async function generateMetadata() {
 	const t = await getTranslations('product');
-	await getSlideById(1);
 
+	// Cannot fetch api from localhost with production
+	// Cannot resolve
+	await fetch('https://jsonplaceholder.typicode.com/todos');
 	const title = 'Product Details';
 
 	return {
@@ -15,19 +18,15 @@ export async function generateMetadata() {
 	};
 }
 
-export default async function ProductDetailPage({
-	params,
-}: {
-	params: { id: string };
-}) {
-	await getSlideById(params.id);
-
+export default async function ProductDetailPage() {
 	const title = 'Product Details';
 
 	return (
 		<>
 			<Breadcrumb lastLabel={title} />
-			<ProductDetail />
+			<Suspense>
+				<ProductDetail />
+			</Suspense>
 		</>
 	);
 }

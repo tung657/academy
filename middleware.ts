@@ -31,7 +31,7 @@ const nextIntlMiddleware = createMiddleware({
 });
 
 export default async function middleware(req: NextRequest) {
-	const BASE_URL = removePrefix(process.env.BASE_URL, '/api');
+	const BASE_URL = removePrefix(process.env.NEXT_PUBLIC_BASE_URL, '/api');
 	const LOGIN = `${BASE_URL}/login?redirect=${
 		req.nextUrl.pathname + req.nextUrl.search
 	}`;
@@ -121,8 +121,5 @@ export const config = {
 		// Enable redirects that add missing locales
 		// (e.g. `/pathnames` -> `/en/pathnames`)
 		'/((?!_next|_vercel|.*\\..*).*)',
-	],
-	unstable_allowDynamic: [
-		'**/node_modules/lodash/lodash.js', // use a glob to allow anything in the function-bind 3rd party module
 	],
 };

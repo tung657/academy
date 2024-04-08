@@ -12,7 +12,7 @@ export const AppConfig = {
 	localePrefix,
 };
 
-export const BASE_URL = process.env.BASE_URL;
+export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const ERROR_TIMEOUT = 'read ECONNRESET';
 
 export const LOCAL_TOKEN = storagePrefix + 'TOKEN';
