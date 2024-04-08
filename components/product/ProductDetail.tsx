@@ -14,7 +14,7 @@ import {
 	rem,
 } from '@mantine/core';
 import { prodDetailImgs } from './images';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import {
 	IconLocationFilled,
 	IconMailFilled,

@@ -1,8 +1,8 @@
 import { Box, Card, Container, Grid, Text } from '@mantine/core';
 import classes from './scss/service.module.scss';
-import { TitleCombo } from '../typographies/TitleCombo';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import Link from 'next/link';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import Image from 'next/image';
 import { imgHome } from '@/assets/images/home';
 import { IconArrowRight } from '@tabler/icons-react';

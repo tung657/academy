@@ -9,7 +9,7 @@ import {
 	ThemeIcon,
 	rem,
 } from '@mantine/core';
-import { TitleCombo } from '../typographies/TitleCombo';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import { imgHome } from '@/assets/images/home';
 import {
 	IconBrandFacebookFilled,

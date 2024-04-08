@@ -1,7 +1,22 @@
 {
   "global": {
     "title_error": "Something went wrong",
-    "title_notfound": "Not found" 
+    "title_notfound": "Not found",
+    "btn_send_message": "Send message",
+    "address": {
+      "title": "Address",
+      "content": "Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa Đô, quận Cầu Giấy, TP Hà Nội"
+    },
+    "contact": {
+      "title": "Contact",
+      "phone": {
+        "title": "SĐT",
+        "value": "44457895789",
+        "label": "(+44) - 45789 - 5789"
+      },
+      "email": {"title": "Email", "value": "nxhoai@aiacademy.edu.vn"}
+    },
+    "open_time": {"title": "Hours of Operation", "content": "T2 - T6: 09:00 - 20:00"}
   },
   "nav": {
     "home": "Home",
@@ -11,6 +26,17 @@
     "about-us": "About Us",
     "contact": "Contact",
     "media": "Media"
+  },
+  "validation": {
+    "fields": {
+      "name": "Họ và tên",
+      "email": "Email",
+      "phone": "Số điện thoại",
+      "message": "Lời nhắn"
+    },
+    "required": "Trường này là bắt buộc",
+    "phone": "Số điện thoại không đúng định dạng",
+    "email": "Email không đúng định dạng"
   },
   "logo": "AIA",
   "home": {
@@ -27,6 +53,10 @@
   },
   "research": {
     "meta_title": "Research",
+    "meta_description": "AI Academy"
+  },
+  "contact": {
+    "meta_title": "Contact",
     "meta_description": "AI Academy"
   }
 }

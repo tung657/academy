@@ -17,4 +17,7 @@ export const theme = createTheme({
 	colors: {
 		primary: myColor,
 	},
+	headings: {
+		fontFamily: 'inherit',
+	},
 });

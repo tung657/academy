@@ -1,10 +1,10 @@
 import { Card, Flex, Grid, Image, Text } from '@mantine/core';
 import classes from './scss/about.module.scss';
 import { imgHome } from '@/assets/images/home';
-import { TitleCombo } from '../typographies/TitleCombo';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import { IconArrowRight, IconDatabase } from '@tabler/icons-react';
-import { TitleRender } from '../typographies/TitleRender';
-import { ButtonBubble } from '../buttons/ButtonBubble';
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { imgOthers } from '@/assets/images/others';
 
 export const AboutHome = (): JSX.Element => {

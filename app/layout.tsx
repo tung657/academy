@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
@@ -12,7 +12,7 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 import GlobalError from './global-error';
 import { AppConfig } from '@/utils';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: AppConfig.name,
@@ -44,6 +44,7 @@ export default function RootLayout({
 						primaryColor: 'primary',
 						primaryShade: { light: 6, dark: 7 },
 					}}
+					withGlobalClasses
 				>
 					<NextIntlClientProvider locale={locale} messages={messages}>
 						<ErrorBoundary errorComponent={GlobalError}>

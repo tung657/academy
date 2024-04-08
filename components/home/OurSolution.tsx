@@ -1,8 +1,8 @@
 import { Box, Card, Grid, Text } from '@mantine/core';
-import { TitleCombo } from '../typographies/TitleCombo';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import classes from './scss/solution.module.scss';
 import { IconRocket } from '@tabler/icons-react';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import Link from 'next/link';
 
 export const OurSolution = (): JSX.Element => {

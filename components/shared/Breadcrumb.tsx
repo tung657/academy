@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import classes from './scss/breadcrumb.module.scss';
-import { TitleRender } from '../typographies/TitleRender';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
 import { IconChevronRight, IconHome } from '@tabler/icons-react';
