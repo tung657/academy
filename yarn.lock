@@ -181,10 +181,10 @@
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
-"@mantine/carousel@^7.7.1":
-  version "7.7.1"
-  resolved "https://registry.yarnpkg.com/@mantine/carousel/-/carousel-7.7.1.tgz#dbbd03c59a2ff41612abb6454481219111c2da31"
-  integrity sha512-q26molnpYv4dQcQhxOqCZFPBERacWd2IUcWzl5WLdAb5XbfFJuHK8ivELrdYxPVsYKYBt734o+v7VGJZzh09gg==
+"@mantine/carousel@7.7.0":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@mantine/carousel/-/carousel-7.7.0.tgz#da589abe265c3345792801640923f7c58c5536fd"
+  integrity sha512-fYUHcGGMS/T4+IIkMKbDPw/ZmgVzAmuE1CrpwdCmJCmdkvsV9zbWm0cEsS/zKB8sqH9Lj7tgeKUnBWbEyIO8ZA==
 
 "@mantine/core@^7.7.0":
   version "7.7.0"
