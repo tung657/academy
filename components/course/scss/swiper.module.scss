@@ -1,26 +1,17 @@
 .section {
-    .timeline{
-    padding:  50px auto;
-    margin: 30px auto;
-    display: flex;
-    flex-wrap: wrap;
-    
-    
-    }
     .img-box {
         
         transform: translate(0, 0);
+        
         position: relative;
         overflow: visible;
+        justify-content: center;
         align-items: center;
-        
-       
        
     
         .img {
           z-index: 2;
-          border-radius: 2%;
-          margin-left: 50px;
+          border-radius: 50%;
           
         }
     }

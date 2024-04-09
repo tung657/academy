@@ -1,197 +1,200 @@
+'use client';
+import {
+	Box,
+	Container,
+	Flex,
+	Grid,
+	Image,
+	Text,
+	Timeline,
+} from '@mantine/core';
 import classes from './scss/course.module.scss';
-import Image from 'next/image';
+import { imgHome } from '@/assets/images/home';
+
+import { TitleCombo } from '../typographies/TitleCombo';
+import {
+	IconGitBranch,
+	IconGitCommit,
+	IconGitPullRequest,
+	IconMessageDots,
+} from '@tabler/icons-react';
 
 export function CourseBanner() {
 	return (
-		<>
-			<div
-				className={`${classes.historyArea}  ${classes.ptb100} ${classes.bgFafafb}`}
-			></div>
-			<div className={classes.container}>
-				<div className={classes.sectionTitle}>
-					<span className={classes.subTitle}>
-						<Image
-							className={classes.img}
-							alt="image"
-							loading="lazy"
-							width="32"
-							height="34"
-							decoding="async"
-							data-nimg="1"
-							src="/star-icon.png"
-							style={{ color: 'transparent' }}
-						/>
-						Our History
-					</span>
-					<h2>History Begins in 2010</h2>
-				</div>
-				<ol className={`${classes.timeline} ${classes.historyTimeline}`}>
-					<li className={classes.timelineBlock}>
-						<div className={classes.timelineDate}>
-							<span>2010</span>
-							<br></br>
-							February 20
-							<sup>th</sup>
-						</div>
-						<div className={classes.timelineIcon}>
-							<span className={classes.dotBadge}></span>
-						</div>
-						<div className={classes.timelineContent}>
-							<div className={`${classes.row} ${classes.alignItemsCenter}`}>
-								<div className={`${classes.colLg7} ${classes.colMd12}`}>
-									<div className={classes.content}>
-										<h3>Founded</h3>
-										<p>
+		<section className={classes.section}>
+			<Container size="md">
+				<Box
+					pt={{ base: 60, md: 80, lg: 100 }}
+					pb={{ base: 30, md: 40, lg: 60 }}
+				>
+					<TitleCombo
+						titleSub="OUR HISTORY"
+						titleChildren={'History Begins in 2010'}
+					/>
+					<Grid mt={24} gutter={24}>
+						<Grid.Col span={{ base: 12, sm: 4 }}>
+							<Timeline active={1} bulletSize={24} lineWidth={2}>
+								<Timeline.Item
+									className={classes.timeline}
+									bullet={<IconGitBranch size={12} />}
+									title="New branch"
+								>
+									<Text size="xs" mt={4} td="underline">
+										2010
+									</Text>
+									<Text size="xs" mt={4} td="underline">
+										February 20th
+									</Text>
+									<Flex
+										className={classes.imgBox}
+										align={'center'}
+										justify={'center'}
+										gap={'sm'}
+									>
+										<Text c="dimmed" size="lg" w={'500'}>
 											Real innovations and a positive customer experience are
 											the heart of successful communication. Lorem ipsum dolor
 											sit amet, sectetur adipiscing elit, tempor incididunt ut
 											labore et dolore magna.
-										</p>
-									</div>
-								</div>
-								<div className={`${classes.colLg5} ${classes.colMd12}`}>
-									<div className={classes.image}>
+										</Text>
 										<Image
 											className={classes.img}
+											src={imgHome.history}
 											alt="image"
+											width={500}
+											height={500}
+											w="280px"
+											h="240px"
+											radius={'xl'}
 											loading="lazy"
-											width="282"
-											height="244"
 											decoding="async"
-											data-nimg="1"
-											src="/history1.jpg"
 											style={{ color: 'transparent' }}
 										/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li className={classes.timelineBlock}>
-						<div className={classes.timelineDate}>
-							<span>2023</span>
-							<br></br>
-							January 14
-							<sup>th</sup>
-						</div>
-						<div className={classes.timelineIcon}>
-							<span className={classes.dotBadge}></span>
-						</div>
-						<div className={classes.timelineContent}>
-							<div className={`${classes.row} ${classes.alignItemsCenter}`}>
-								<div className={`${classes.colLg7} ${classes.colMd12}`}>
-									<div className={classes.content}>
-										<h3>Global Success</h3>
-										<p>
+									</Flex>
+								</Timeline.Item>
+
+								<Timeline.Item
+									className={classes.timeline}
+									bullet={<IconGitCommit size={12} />}
+									title="Global Success"
+								>
+									<Text size="xs" mt={4} td="underline">
+										2023
+									</Text>
+									<Text size="xs" mt={4} td="underline">
+										January 14th
+									</Text>
+									<Flex
+										className={classes.imgBox}
+										align={'center'}
+										justify={'center'}
+										gap={'sm'}
+									>
+										<Text c="dimmed" size="lg" w={'500'}>
 											Real innovations and a positive customer experience are
 											the heart of successful communication. Lorem ipsum dolor
 											sit amet, sectetur adipiscing elit, tempor incididunt ut
 											labore et dolore magna.
-										</p>
-									</div>
-								</div>
-								<div className={`${classes.colLg5} ${classes.colMd12}`}>
-									<div className={classes.image}>
+										</Text>
 										<Image
 											className={classes.img}
+											src={imgHome.howitswork}
 											alt="image"
+											width={500}
+											height={500}
+											w="280px"
+											h="240px"
+											radius={'xl'}
 											loading="lazy"
-											width="282"
-											height="244"
 											decoding="async"
-											data-nimg="1"
-											src="/history2.jpg"
 											style={{ color: 'transparent' }}
 										/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li className={classes.timelineBlock}>
-						<div className={classes.timelineDate}>
-							<span>2016</span>
-							<br></br>
-							March 25
-							<sup>th</sup>
-						</div>
-						<div className={classes.timelineIcon}>
-							<span className={classes.dotBadge}></span>
-						</div>
-						<div className={classes.timelineContent}>
-							<div className={`${classes.row} ${classes.alignItemsCenter}`}>
-								<div className={`${classes.colLg7} ${classes.colMd12}`}>
-									<div className={classes.content}>
-										<h3>Founded Data Center</h3>
-										<p>
+									</Flex>
+								</Timeline.Item>
+
+								<Timeline.Item
+									className={classes.timeline}
+									title="Pull request"
+									bullet={<IconGitPullRequest size={12} />}
+									lineVariant="dashed"
+								>
+									<Text size="xs" mt={4} td="underline">
+										2010
+									</Text>
+									<Text size="xs" mt={4} td="underline">
+										February 20th
+									</Text>
+									<Flex
+										className={classes.imgBox}
+										align={'center'}
+										justify={'center'}
+										gap={'sm'}
+									>
+										<Text c="dimmed" size="lg" w={'500'}>
 											Real innovations and a positive customer experience are
 											the heart of successful communication. Lorem ipsum dolor
 											sit amet, sectetur adipiscing elit, tempor incididunt ut
 											labore et dolore magna.
-										</p>
-									</div>
-								</div>
-								<div className={`${classes.colLg5} ${classes.colMd12}`}>
-									<div className={classes.image}>
+										</Text>
 										<Image
 											className={classes.img}
+											src={imgHome.howitswork}
 											alt="image"
+											width={500}
+											height={500}
+											w="280px"
+											h="240px"
+											radius={'xl'}
 											loading="lazy"
-											width="282"
-											height="244"
 											decoding="async"
-											data-nimg="1"
-											src="/history3.jpg"
 											style={{ color: 'transparent' }}
 										/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li className={classes.timelineBlock}>
-						<div className={classes.timelineDate}>
-							<span>2023</span>
-							<br></br>
-							December 10
-							<sup>th</sup>
-						</div>
-						<div className={classes.timelineIcon}>
-							<span className={classes.dotBadge}></span>
-						</div>
-						<div className={classes.timelineContent}>
-							<div className={`${classes.row} ${classes.alignItemsCenter}`}>
-								<div className={`${classes.colLg7} ${classes.colMd12}`}>
-									<div className={classes.content}>
-										<h3 className={classes.h3}>International Award</h3>
-										<p>
+									</Flex>
+								</Timeline.Item>
+
+								<Timeline.Item
+									className={classes.timeline}
+									title="Code review"
+									bullet={<IconMessageDots size={12} />}
+								>
+									<Text size="xs" mt={4} td="underline">
+										2010
+									</Text>
+									<Text size="xs" mt={4} td="underline">
+										February 20th
+									</Text>
+									<Flex
+										className={classes.imgBox}
+										align={'center'}
+										justify={'center'}
+										gap={'sm'}
+									>
+										<Text c="dimmed" size="lg" w={'500'}>
 											Real innovations and a positive customer experience are
 											the heart of successful communication. Lorem ipsum dolor
 											sit amet, sectetur adipiscing elit, tempor incididunt ut
 											labore et dolore magna.
-										</p>
-									</div>
-								</div>
-								<div className={`${classes.colLg5} ${classes.colMd12}`}>
-									<div className={classes.image}>
+										</Text>
 										<Image
 											className={classes.img}
+											src={imgHome.howitswork}
 											alt="image"
+											width={500}
+											height={500}
+											w="280px"
+											h="240px"
+											radius={'xl'}
 											loading="lazy"
-											width="282"
-											height="244"
 											decoding="async"
-											data-nimg="1"
-											src="/history4.jpg"
 											style={{ color: 'transparent' }}
 										/>
-									</div>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ol>
-			</div>
-		</>
+									</Flex>
+								</Timeline.Item>
+							</Timeline>
+						</Grid.Col>
+					</Grid>
+				</Box>
+			</Container>
+		</section>
 	);
 }

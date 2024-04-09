@@ -1,29 +1,6 @@
 .section {
-    .timeline{
-    padding:  50px auto;
-    margin: 30px auto;
-    display: flex;
-    flex-wrap: wrap;
-    
-    
-    }
-    .img-box {
-        
-        transform: translate(0, 0);
-        position: relative;
-        overflow: visible;
-        align-items: center;
-        
-       
-       
-    
-        .img {
-          z-index: 2;
-          border-radius: 2%;
-          margin-left: 50px;
-          
-        }
-    }
+    background-color: var(--background-secondary);
+  
     .card {
       text-align: center;
       transition: .3s;
@@ -38,7 +15,10 @@
       }
   
       .btn-detail {
-        display: inline-block;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
         color: var(--mantine-color-primary-filled);
         padding: 4px 0;
         position: relative;
@@ -58,7 +38,7 @@
         }
   
         &:hover {
-          color: var(--mantine-color-text) !important;
+          color: var(--mantine-color-text);
           &::before {
             transform: translateX(0);
           }
@@ -68,9 +48,5 @@
       a {
         text-decoration: none;
       }
-  
-      &:hover {
-        border-color: var(--mantine-color-primary-filled);
-      }
     }
-}
+  }
