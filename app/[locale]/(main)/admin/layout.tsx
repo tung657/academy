@@ -1,9 +1,7 @@
 import Loading from '@/app/loading';
-import { ClientLayout } from '@/components';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
-import { Notifications } from '@mantine/notifications';
 
 interface Props {
 	children: React.ReactNode;
@@ -22,10 +20,5 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 export default function Layout({ children }: Props) {
-	return (
-		<ClientLayout>
-			<Suspense fallback={<Loading />}>{children}</Suspense>
-			<Notifications />
-		</ClientLayout>
-	);
+	return <Suspense fallback={<Loading />}>{children}</Suspense>;
 }

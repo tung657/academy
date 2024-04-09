@@ -38,6 +38,34 @@
     "phone": "Số điện thoại không đúng định dạng",
     "email": "Email không đúng định dạng"
   },
+  "messages": {
+    "success": {
+      "title": "Thành công",
+      "message": "Thao tác thành công"
+    },
+    "error": {
+      "title": "Thất bại",
+      "message": "Thao tác thất bại"
+    },
+    "warning": {
+      "title": "Cảnh báo",
+      "message": "Thao tác thất bại"
+    },
+    "info": {
+      "title": "Thông báo",
+      "message": "Thao tác thành công"
+    }
+  },
+  "login": {
+    "meta_title": "Hệ thống quản trị",
+    "meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+    "heading_login": "Đăng nhập",
+    "heading_forget": "Quên mật khẩu",
+    "username": "Đăng nhập",
+    "password": "Mật khẩu",
+    "email": "Email",
+    "forget_password": "Quên mật khẩu"
+  },
   "home": {
     "meta_title": "Viện trí tuệ nhân tạo Việt Nam",
     "meta_description": "Viện trí tuệ nhân tạo Việt Nam"

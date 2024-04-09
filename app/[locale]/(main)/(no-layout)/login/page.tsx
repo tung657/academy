@@ -1,6 +1,5 @@
+import { LoginForm } from '@/components/login/LoginForm';
 import { getTranslations } from 'next-intl/server';
-import { LoginForm } from './Login';
-
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
 		locale: props.params.locale,

@@ -1,5 +1,6 @@
 import { NavTree } from '@/types/global';
 
+// -------------------------- START CLIENT --------------------------------------
 const HOME_URL = '/';
 
 const ABOUT_URL = '/about-us';
@@ -14,8 +15,18 @@ const PRODUCT_DETAIL_URL = `${PRODUCT_URL}/:id`;
 const CONTACT_URL = '/contact';
 
 const MEDIA_URL = '/media';
+// -------------------------- END CLIENT --------------------------------------
+
+// -------------------------- START ADMIN --------------------------------------
+const ADMIN_URL = '/admin';
+
+const LOGIN_URL = '/login';
+
+const DASHBOARD_URL = `${ADMIN_URL}/dashboard`;
+// -------------------------- END ADMIN --------------------------------------
 
 export {
+	// Client
 	HOME_URL,
 	ABOUT_URL,
 	COURSE_URL,
@@ -24,6 +35,11 @@ export {
 	PRODUCT_DETAIL_URL,
 	CONTACT_URL,
 	MEDIA_URL,
+
+	// Admin
+	ADMIN_URL,
+	LOGIN_URL,
+	DASHBOARD_URL,
 };
 
 export const generateTreeUrls = (t: any): NavTree[] => {

@@ -10,11 +10,10 @@ interface Props extends ButtonProps {
 export const ButtonBubble = ({
 	colorHover = '#221638',
 	size = 'md',
-	type,
 	...props
 }: Props): JSX.Element => {
 	return (
-		<Button size={size} className={classes.button} {...props} type={type}>
+		<Button size={size} className={classes.button} {...props}>
 			{props.children}
 			<div style={{ background: colorHover }} />
 		</Button>

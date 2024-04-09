@@ -7,7 +7,7 @@ import { MD5 } from 'crypto-js';
 import { LOCAL_TOKEN } from '@/utils';
 
 export interface I_ApiUserLoginRequest {
-	username: string;
+	user_name: string;
 	password: string;
 	tsToken: string;
 	code?: string;
@@ -20,14 +20,14 @@ export async function POST(request: NextRequest) {
 	const body = (await request.json()) as I_ApiUserLoginRequest;
 
 	// trim all input values
-	const { username, password } = Object.fromEntries(
+	const { user_name, password } = Object.fromEntries(
 		Object.entries(body).map(([key, value]) => [key, value?.trim()]),
 	) as I_ApiUserLoginRequest;
 
-	if (!username || !password) {
+	if (!user_name || !password) {
 		const res = {
 			success: false,
-			message: 'Either login or password is missing',
+			message: 'Vui lòng điền tài khoản hoặc mật khẩu',
 		};
 
 		return NextResponse.json(res, { status: 400 });
@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 
 	try {
 		// Fetch our user from the database
-		const user = await authenticateRepo(username, MD5(password).toString());
+		const user = await authenticateRepo(user_name, MD5(password).toString());
 		if (!user) {
 			return NextResponse.json({
 				success: false,
@@ -65,6 +65,7 @@ export async function POST(request: NextRequest) {
 		// create our response object
 		const res = {
 			success: true,
+			message: 'Đăng nhập thành công',
 		};
 
 		const response = NextResponse.json(res);
