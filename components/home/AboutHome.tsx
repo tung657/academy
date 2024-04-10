@@ -1,3 +1,4 @@
+'use client';
 import { Card, Flex, Grid, Image, Text } from '@mantine/core';
 import classes from './scss/about.module.scss';
 import { imgHome } from '@/assets/images/home';

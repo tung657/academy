@@ -1,10 +1,7 @@
-import { HowItsWork } from '@/components/course/HowItsWork';
-import { CourseBanner } from '@/components/course/CourseBanner';
-import { MemberHome } from '@/components/home/MemberHome';
-import { Process } from '@/components/course/Process';
-import { Swiper } from '@/components/course/Swiper';
+import { CourseGrid } from '@/components/course/CourseGird';
 import { getTranslations } from 'next-intl/server';
 import { AppConfig } from '@/utils';
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
@@ -18,14 +15,11 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 	};
 }
 
-export default async function Course() {
+export default function Course() {
 	return (
 		<>
-			<CourseBanner />
-			<MemberHome />
-			<HowItsWork />
-			<Process />
-			<Swiper />
+			<Breadcrumb />
+			<CourseGrid></CourseGrid>
 		</>
 	);
 }

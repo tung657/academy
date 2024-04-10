@@ -1,11 +1,13 @@
 'use client';
 import { Box, Card, Container, Grid, Text } from '@mantine/core';
 import classes from './scss/process.module.scss';
-import { TitleCombo } from '../typographies/TitleCombo';
+
 import Link from 'next/link';
-import { TitleRender } from '../typographies/TitleRender';
+
 import Image from 'next/image';
 import { imgHome } from '@/assets/images/home';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 
 const dataServices = [...Array(6)].map((_, index) => ({
 	id: index,

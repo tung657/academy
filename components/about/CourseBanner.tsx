@@ -11,13 +11,13 @@ import {
 import classes from './scss/course.module.scss';
 import { imgHome } from '@/assets/images/home';
 
-import { TitleCombo } from '../typographies/TitleCombo';
 import {
 	IconGitBranch,
 	IconGitCommit,
 	IconGitPullRequest,
 	IconMessageDots,
 } from '@tabler/icons-react';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 
 export function CourseBanner() {
 	return (

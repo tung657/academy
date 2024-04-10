@@ -10,13 +10,14 @@ import {
 } from '@mantine/core';
 import classes from './scss/howitswork.module.scss';
 import { imgHome } from '@/assets/images/home';
-import { TitleCombo } from '../typographies/TitleCombo';
+
 import {
 	IconGitBranch,
 	IconGitCommit,
 	IconGitPullRequest,
 	IconMessageDots,
 } from '@tabler/icons-react';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 
 export function HowItsWork() {
 	return (

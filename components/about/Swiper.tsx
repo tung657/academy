@@ -4,9 +4,10 @@ import { useRef } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
 import { Box, Card, Text, Image, Flex, Container } from '@mantine/core';
-import { TitleCombo } from '../typographies/TitleCombo';
+
 import classes from './scss/swiper.module.scss';
 import { imgHome } from '@/assets/images/home';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 
 export const Swiper = (): JSX.Element => {
 	const autoplay = useRef(Autoplay({ delay: 5000 }));
