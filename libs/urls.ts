@@ -5,6 +5,7 @@ const HOME_URL = '/';
 const ABOUT_URL = '/about-us';
 
 const COURSE_URL = '/course';
+const COURSE_DETAIL_URL = `${COURSE_URL}/:id`;
 
 const RESEARCH_URL = '/research';
 
@@ -24,6 +25,7 @@ export {
 	PRODUCT_DETAIL_URL,
 	CONTACT_URL,
 	MEDIA_URL,
+	COURSE_DETAIL_URL,
 };
 
 export const generateTreeUrls = (t: any): NavTree[] => {
