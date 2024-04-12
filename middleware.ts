@@ -122,9 +122,4 @@ export const config = {
 		// (e.g. `/pathnames` -> `/en/pathnames`)
 		'/((?!_next|_vercel|.*\\..*).*)',
 	],
-	unstable_allowDynamic: [
-		// use a glob to allow anything in the function-bind 3rd party module
-		'/node_modules/mysql2/**',
-		'/node_modules/safer-buffer/**',
-	],
 };
