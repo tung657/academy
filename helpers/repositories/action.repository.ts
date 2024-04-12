@@ -1,11 +1,10 @@
 import { IAction, ISearchAction } from '@/types';
-import { Database } from '../db';
+import { query } from '../db';
 
 export async function createActionRepository(action: IAction): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL InsertAction(?, ?, ?, ?, ?, @err_code, @err_msg)';
-		await db.query(sql, [
+		await query(sql, [
 			action.action_code,
 			action.function_id,
 			action.action_name,
@@ -20,9 +19,8 @@ export async function createActionRepository(action: IAction): Promise<any> {
 
 export async function updateActionRepository(action: IAction): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL UpdateAction(?, ?, ?, ?, ?, @err_code, @err_msg)';
-		await db.query(sql, [
+		await query(sql, [
 			action.action_code,
 			action.function_id,
 			action.action_name,
@@ -40,9 +38,8 @@ export async function deleteActionRepository(
 	updated_by_id: string,
 ): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL DeleteAction(?, ?, @err_code, @err_msg)';
-		await db.query(sql, [JSON.stringify(list_json), updated_by_id]);
+		await query(sql, [JSON.stringify(list_json), updated_by_id]);
 		return true;
 	} catch (error: any) {
 		throw new Error(error.message);
@@ -51,9 +48,8 @@ export async function deleteActionRepository(
 
 export async function getActionByIdRepository(id: string): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL GetActionById(?, @err_code, @err_msg)';
-		const [results] = await db.query(sql, [id]);
+		const [results] = await query(sql, [id]);
 		if (Array.isArray(results) && results.length > 0) {
 			return results[0];
 		}
@@ -67,9 +63,8 @@ export async function searchActionRepository(
 	model: ISearchAction,
 ): Promise<any[]> {
 	try {
-		const db = new Database();
 		const sql = 'CALL SearchAction(?, ?, ?, ?, ?, ?, ?,@err_code, @err_msg)';
-		const [results] = await db.query(sql, [
+		const [results] = await query(sql, [
 			model.page_index,
 			model.page_size,
 			model.search_content,

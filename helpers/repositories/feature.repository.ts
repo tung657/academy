@@ -1,13 +1,12 @@
 import { IFeature, ISearchFeatures } from '@/types/feature';
-import { Database } from '../db';
+import { query } from '../db';
 
 export async function createFeatureRepository(
 	functionModel: IFeature,
 ): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL InsertFunction(?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
-		await db.query(sql, [
+		await query(sql, [
 			functionModel.parent_id,
 			functionModel.function_name,
 			functionModel.url,
@@ -24,10 +23,9 @@ export async function createFeatureRepository(
 
 export async function updateFeatureRepository(func: IFeature): Promise<any> {
 	try {
-		const db = new Database();
 		const sql =
 			'CALL UpdateFunction(?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
-		await db.query(sql, [
+		await query(sql, [
 			func.function_id,
 			func.parent_id,
 			func.function_name,
@@ -48,9 +46,8 @@ export async function deleteFeatureRepository(
 	lu_user_id: string,
 ): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL DeleteFunctionMulti(?, ?, @err_code, @err_msg)';
-		await db.query(sql, [JSON.stringify(list_json), lu_user_id]);
+		await query(sql, [JSON.stringify(list_json), lu_user_id]);
 		return true;
 	} catch (error: any) {
 		throw new Error(error.message);
@@ -59,9 +56,8 @@ export async function deleteFeatureRepository(
 
 export async function getFeatureByIdRepository(id: number): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL GetFunctionById(?, @err_code, @err_msg)';
-		const [results] = await db.query(sql, [id]);
+		const [results] = await query(sql, [id]);
 		if (Array.isArray(results) && results.length > 0) {
 			return results[0];
 		}
@@ -75,10 +71,9 @@ export async function searchFeatureRepository(
 	search: ISearchFeatures,
 ): Promise<any[]> {
 	try {
-		const db = new Database();
 		const sql = 'CALL SearchFunctions(?, ?, ?, ?, ?, @err_code, @err_msg)';
 
-		const [results] = await db.query(sql, [
+		const [results] = await query(sql, [
 			search.page_index || 0,
 			search.page_size || 0,
 			search.search_content,
@@ -93,9 +88,8 @@ export async function searchFeatureRepository(
 
 export async function getFeaturesByRolesIdRepository(role_id: string) {
 	try {
-		const db = new Database();
 		const sql = 'CALL GetActiveFunctionByRoleId(?, @err_code, @err_msg)';
-		const [results] = await db.query(sql, [role_id]);
+		const [results] = await query(sql, [role_id]);
 		return results;
 	} catch (error: any) {
 		throw new Error(error.message);
@@ -106,9 +100,8 @@ export async function getFunctionByUserIdRepository(
 	id: string,
 ): Promise<any[]> {
 	try {
-		const db = new Database();
 		const sql = 'CALL GetFunctionByUserId(?, @err_code, @err_msg)';
-		const [results] = await db.query(sql, [id]);
+		const [results] = await query(sql, [id]);
 		return results;
 	} catch (error: any) {
 		throw new Error(error.message);
