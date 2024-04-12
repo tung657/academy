@@ -13,7 +13,7 @@ import {
 	ExtractFnReturnType,
 	MutationConfig,
 	QueryConfig,
-} from './react-query';
+} from './@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
 
 const CACHE_EMPLOYEES = {

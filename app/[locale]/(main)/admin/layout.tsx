@@ -1,7 +1,9 @@
 import Loading from '@/app/loading';
+import AdminLayout from '@/components/layouts/AdminLayout';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
+import 'rc-tree/assets/index.css';
 
 interface Props {
 	children: React.ReactNode;
@@ -20,5 +22,9 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 export default function Layout({ children }: Props) {
-	return <Suspense fallback={<Loading />}>{children}</Suspense>;
+	return (
+		<AdminLayout>
+			<Suspense fallback={<Loading />}>{children}</Suspense>
+		</AdminLayout>
+	);
 }

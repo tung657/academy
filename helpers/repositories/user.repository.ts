@@ -1,6 +1,6 @@
 import { Database } from '../db';
 
-export async function authenticateRepo(
+export async function authenticateRepository(
 	username: string,
 	password: string,
 ): Promise<any> {

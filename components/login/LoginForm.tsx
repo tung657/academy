@@ -64,7 +64,6 @@ export const LoginForm = (): JSX.Element => {
 				const redirectParam = searchParams.get('redirect');
 				await getNotifications('success', t, data.message);
 
-				console.log(redirectParam);
 				router.push(redirectParam || DASHBOARD_URL);
 				router.refresh();
 			},

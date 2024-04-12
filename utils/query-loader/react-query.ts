@@ -5,8 +5,6 @@ import {
 	UseQueryOptions,
 } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
-// import { QueryClient, UseMutationOptions, UseQueryOptions } from 'react-query';
-// import type { DefaultOptions } from 'react-query';
 
 const queryConfig: DefaultOptions = {
 	queries: {

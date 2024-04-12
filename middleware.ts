@@ -83,7 +83,7 @@ export default async function middleware(req: NextRequest) {
 		}
 	}
 
-	// let redirectToApp = false;
+	let redirectToApp = false;
 	// // Redirect login to app if already logged in
 	if (req.nextUrl.pathname === LOGIN_URL) {
 		const token = req.cookies.get(LOCAL_TOKEN);
@@ -92,6 +92,7 @@ export default async function middleware(req: NextRequest) {
 			try {
 				const payload = await verifyJwtToken(token.value);
 
+				if (payload) redirectToApp = true;
 				if (!payload) {
 					// Delete token
 					req.cookies.delete(LOCAL_TOKEN);
@@ -103,13 +104,13 @@ export default async function middleware(req: NextRequest) {
 		}
 	}
 
-	// if (redirectToApp) {
-	// 	// Redirect to app dashboard
-	// 	return NextResponse.redirect(`${BASE_URL}`);
-	// } else {
-	// 	// Return the original response unaltered
-	// }
-	return nextIntlMiddleware(req);
+	if (redirectToApp) {
+		// Redirect to app dashboard
+		return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
+	} else {
+		// Return the original response unaltered
+		return nextIntlMiddleware(req);
+	}
 }
 
 // only applies this middleware to files in the app directory

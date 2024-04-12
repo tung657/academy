@@ -1,10 +1,10 @@
-import { Button, ButtonProps } from '@mantine/core';
+import { Button } from '@mantine/core';
 import classes from './scss/button-bubble.module.scss';
 import React from 'react';
+import { ButtonCustomProps } from '@/types';
 
-interface Props extends ButtonProps {
+interface Props extends ButtonCustomProps {
 	colorHover?: string;
-	type?: 'button' | 'submit' | 'reset' | undefined;
 }
 
 export const ButtonBubble = ({

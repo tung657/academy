@@ -1,4 +1,5 @@
 import { IBaseData } from './base';
+import { IFeatureDataNode } from './feature';
 
 export interface IUser extends IBaseData {
 	email: string;
@@ -28,10 +29,16 @@ export interface IUserSearch {
 	customer_id?: string | null;
 }
 
-interface ICustomerList {
-	customer_id: string;
-	customer_name: string;
-	tax_code: string;
+export interface IUserStorage {
+	user_id: string;
+	first_name: string;
+	last_name: string;
+	full_name: string;
+	avatar: string;
+	email: string;
+	phone_number: string;
+	position_id: number;
+	features?: IFeatureDataNode[];
 }
 
 export interface IAdminResetPassword {

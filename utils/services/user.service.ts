@@ -1,5 +1,4 @@
 import { apiClient } from '@/helpers';
-import { IBaseDelete } from '@/types/global';
 import { IUser } from '@/types/user';
 import { AxiosRequestConfig } from 'axios';
 
@@ -35,7 +34,7 @@ export const createEmployee = async (data: IUser): Promise<any> => {
 };
 
 export const updateEmployee = async (data: IUser): Promise<any> => {
-	const res = await apiClient?.post(`${prefix}/update`, data);
+	const res = await apiClient?.put(`${prefix}/update`, data);
 
 	return res.data;
 };
@@ -46,8 +45,8 @@ export const changePasswordEmployee = async (data: any): Promise<any> => {
 	return res.data;
 };
 
-export const deleteEmployee = async (data: IBaseDelete): Promise<any> => {
-	const res = await apiClient?.post(`${prefix}/delete`, data);
+export const deleteEmployee = async (id: string | number): Promise<any> => {
+	const res = await apiClient?.delete(`${prefix}/delete/${id}`);
 
 	return res.data;
 };
