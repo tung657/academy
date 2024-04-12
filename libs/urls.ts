@@ -6,6 +6,7 @@ const HOME_URL = '/';
 const ABOUT_URL = '/about-us';
 
 const COURSE_URL = '/course';
+const COURSE_DETAIL_URL = `${COURSE_URL}/:id`;
 
 const RESEARCH_URL = '/research';
 
@@ -30,6 +31,7 @@ export {
 	HOME_URL,
 	ABOUT_URL,
 	COURSE_URL,
+	COURSE_DETAIL_URL,
 	RESEARCH_URL,
 	PRODUCT_URL,
 	PRODUCT_DETAIL_URL,

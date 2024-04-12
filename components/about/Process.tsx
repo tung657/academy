@@ -1,23 +1,24 @@
 'use client';
 import { Box, Card, Container, Grid, Text } from '@mantine/core';
-import classes from './scss/service.module.scss';
-import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import classes from './scss/process.module.scss';
+
 import Link from 'next/link';
-import { TitleRender } from '../mantines/typographies/TitleRender';
+
 import Image from 'next/image';
 import { imgHome } from '@/assets/images/home';
-import { IconArrowRight } from '@tabler/icons-react';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 
 const dataServices = [...Array(6)].map((_, index) => ({
 	id: index,
-	image: imgHome.service,
+	image: imgHome.process,
 	title: 'Data Analytics',
 	description:
 		'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 	link: '/',
 }));
 
-export const ServiceHome = (): JSX.Element => {
+export const Process = (): JSX.Element => {
 	return (
 		<section className={classes.section}>
 			<Container size="xl">
@@ -26,8 +27,8 @@ export const ServiceHome = (): JSX.Element => {
 					pb={{ base: 30, md: 40, lg: 60 }}
 				>
 					<TitleCombo
-						titleSub="Our Solution"
-						titleChildren={'We Different From Others Should Choose Us'}
+						titleSub="HOW IT'S WORK"
+						titleChildren={'The Data Science Process'}
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 					/>
 
@@ -38,8 +39,8 @@ export const ServiceHome = (): JSX.Element => {
 									<Card.Section py={16}>
 										<Image
 											src={item.image}
-											width={78}
-											height={70}
+											width={200}
+											height={200}
 											alt={item.link}
 										/>
 									</Card.Section>
@@ -51,12 +52,6 @@ export const ServiceHome = (): JSX.Element => {
 									<Text c="dimmed" fw={400} my={16}>
 										{item.description}
 									</Text>
-
-									<Link href={item.link}>
-										<Text c="primary" fw={600} className={classes.btnDetail}>
-											Read More <IconArrowRight />
-										</Text>
-									</Link>
 								</Card>
 							</Grid.Col>
 						))}

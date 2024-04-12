@@ -1,3 +1,4 @@
+'use client';
 import { Box, Card, Grid, Text } from '@mantine/core';
 import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import classes from './scss/solution.module.scss';
