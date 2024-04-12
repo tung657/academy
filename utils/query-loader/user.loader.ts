@@ -9,12 +9,12 @@ import {
 	searchEmployees,
 	updateEmployee,
 } from '../services';
+import { AxiosRequestConfig } from 'axios';
 import {
 	ExtractFnReturnType,
 	MutationConfig,
 	QueryConfig,
-} from './@tanstack/react-query';
-import { AxiosRequestConfig } from 'axios';
+} from './react-query';
 
 const CACHE_EMPLOYEES = {
 	SEARCH: 'EMPLOYEES',

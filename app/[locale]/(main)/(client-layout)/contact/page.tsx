@@ -1,4 +1,4 @@
-import { ContactForm } from '@/components/contact/ContacForm';
+import { ContactForm } from '@/components/contact/ContactForm';
 import { Contact } from '@/components/contact/Contact';
 import { Map } from '@/components/contact/Map';
 import { AppConfig } from '@/utils';

@@ -7,7 +7,6 @@ import {
 	Box,
 	Card,
 	Text,
-	Image,
 	Flex,
 	Container,
 	Title,

@@ -5,9 +5,11 @@ export type LocalePrefix = 'as-needed' | 'always' | 'never';
 export interface ButtonCustomProps
 	extends Omit<
 			React.HTMLProps<HTMLButtonElement>,
-			'color' | 'style' | 'size' | 'type' | 'ref'
+			'color' | 'style' | 'size' | 'ref'
 		>,
-		ButtonProps {}
+		ButtonProps {
+	type?: 'button' | 'submit' | 'reset' | undefined;
+}
 
 export type NavTree = {
 	title: string;
