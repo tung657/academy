@@ -5,7 +5,7 @@ const connectionConfig: PoolOptions = {
 	port: +(process.env.NEXT_PUBLIC_MYSQL_PORT || 14306),
 	database: process.env.NEXT_PUBLIC_MYSQL_DATABASE,
 	user: process.env.NEXT_PUBLIC_MYSQL_USER,
-	password: process.env.NEXT_PUBLIC_MYSQL_PASSWORD,
+	password: process.env.MYSQL_PASSWORD,
 	enableKeepAlive: true,
 };
 
