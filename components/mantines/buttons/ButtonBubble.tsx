@@ -13,7 +13,7 @@ export const ButtonBubble = ({
 	...props
 }: Props): JSX.Element => {
 	return (
-		<Button size={size} className={classes.button} {...props}>
+		<Button size={size} radius={'xl'} className={classes.button} {...props}>
 			{props.children}
 			<div style={{ background: colorHover }} />
 		</Button>

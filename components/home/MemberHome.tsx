@@ -34,7 +34,7 @@ const dataMembers = [...Array(8)].map((_, index) => ({
 
 export const MemberHome = (): JSX.Element => {
 	return (
-		<section className={classes.section}>
+		<section className={`${classes.section} background-secondary`}>
 			<Container size="xl">
 				<Box
 					pt={{ base: 60, md: 80, lg: 100 }}

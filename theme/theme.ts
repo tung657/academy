@@ -14,10 +14,19 @@ const myColor: MantineColorsTuple = [
 ];
 
 export const theme = createTheme({
+	defaultRadius: 'md',
 	colors: {
 		primary: myColor,
 	},
 	headings: {
 		fontFamily: 'inherit',
+	},
+	components: {
+		Text: {
+			defaultProps: {
+				fz: 18,
+				lh: 1.7,
+			},
+		},
 	},
 });

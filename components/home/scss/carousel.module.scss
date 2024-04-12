@@ -65,6 +65,30 @@
     align-items: flex-start;
     background-size: cover;
     background-position: center;
+
+    .video {
+      position: relative;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        content: "";
+        width: 80px;
+        z-index: 222;
+        height: 80px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: url('/assets/images/others/play.svg') no-repeat center / 64px;
+        transition: .3s;
+      }
+
+      &:hover {
+        &::before {
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+      }
+    }
   }
   
   .title {

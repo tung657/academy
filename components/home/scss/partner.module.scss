@@ -18,6 +18,16 @@
     .card {
       text-align: center;
       transition: .3s;
+      position: relative;
+
+      .icon {
+        position: absolute;
+        content: "";
+
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
   
       h4 {
         color: var(--mantine-color-text);

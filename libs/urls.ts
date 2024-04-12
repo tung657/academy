@@ -15,6 +15,8 @@ const PRODUCT_DETAIL_URL = `${PRODUCT_URL}/:id`;
 
 const CONTACT_URL = '/contact';
 
+const JOB_URL = '/jobs';
+
 const MEDIA_URL = '/media';
 // -------------------------- END CLIENT --------------------------------------
 
@@ -50,10 +52,10 @@ export const generateTreeUrls = (t: any): NavTree[] => {
 		return arr[arr.length - 1];
 	};
 	return [
-		{
-			title: t('nav.' + getPathKey(ABOUT_URL)),
-			path: ABOUT_URL,
-		},
+		// {
+		// 	title: t('nav.' + getPathKey(ABOUT_URL)),
+		// 	path: ABOUT_URL,
+		// },
 		{
 			title: t('nav.' + getPathKey(COURSE_URL)),
 			path: COURSE_URL,
@@ -69,6 +71,10 @@ export const generateTreeUrls = (t: any): NavTree[] => {
 		{
 			title: t('nav.' + getPathKey(CONTACT_URL)),
 			path: CONTACT_URL,
+		},
+		{
+			title: t('nav.' + getPathKey(JOB_URL)),
+			path: JOB_URL,
 		},
 		{
 			title: t('nav.' + getPathKey(MEDIA_URL)),

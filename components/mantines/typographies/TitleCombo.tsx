@@ -6,7 +6,7 @@ import classes from './scss/title.module.scss';
 
 interface Props extends TitleProps {
 	needWrapper?: boolean;
-	titleSub: string;
+	titleSub?: string;
 	titleChildren: React.ReactNode;
 	description?: string;
 }
@@ -20,21 +20,21 @@ export const TitleCombo = ({
 }: Props): JSX.Element => {
 	return needWrapper ? (
 		<Box className={classes.sectionTitle}>
-			<TitleSub label={titleSub} />
-			<TitleRender order={2} {...props}>
+			{titleSub && <TitleSub label={titleSub} />}
+			<TitleRender order={2} tt={'capitalize'} {...props}>
 				{titleChildren}
 			</TitleRender>
-			<Text fw={500} c="dimmed" mt={16}>
+			<Text fw={500} mt={16}>
 				{description}
 			</Text>
 		</Box>
 	) : (
 		<>
-			<TitleSub label={titleSub} />
-			<TitleRender order={2} {...props}>
+			{titleSub && <TitleSub label={titleSub} />}
+			<TitleRender order={2} tt={'capitalize'} {...props}>
 				{titleChildren}
 			</TitleRender>
-			<Text fw={500} c="dimmed" mt={16}>
+			<Text fw={500} mt={16}>
 				{description}
 			</Text>
 		</>
