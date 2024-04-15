@@ -1,5 +1,3 @@
-'use server';
-
 import { PoolConnection, PoolOptions, createPool } from 'mysql2/promise';
 
 const connectionConfig: PoolOptions = {

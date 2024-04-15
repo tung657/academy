@@ -12,13 +12,13 @@ import {
 	useMantineTheme,
 	Collapse,
 	Flex,
+	Box,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './scss/header.module.scss';
 import Link from 'next/link';
 import { useTranslations } from 'use-intl';
-import { LanguagePicker } from '../langs/LanguagePicker';
 import Image from 'next/image';
 import logo from '@/assets/images/logos/logo.jpg';
 import { HOME_URL, generateTreeUrls } from '@/libs/urls';
@@ -141,7 +141,7 @@ export default function Header(): JSX.Element {
 	return (
 		<header className={classes.header}>
 			<Container size="xl">
-				<div className={classes.inner}>
+				<Box className={classes.inner} mr={-12}>
 					<Link href={HOME_URL} style={{ textDecoration: 'none' }}>
 						<Image
 							src={logo}
@@ -154,7 +154,6 @@ export default function Header(): JSX.Element {
 					</Link>
 					<Group gap={5} visibleFrom="sm">
 						{items}
-						<LanguagePicker />
 					</Group>
 					<Burger
 						opened={drawerOpened}
@@ -162,7 +161,7 @@ export default function Header(): JSX.Element {
 						size="sm"
 						hiddenFrom="sm"
 					/>
-				</div>
+				</Box>
 			</Container>
 
 			<Drawer
@@ -215,10 +214,6 @@ export default function Header(): JSX.Element {
 					<Collapse in={opened}>Open 🎭</Collapse> */}
 
 					<Divider my="sm" />
-
-					<Group justify="center" grow pb="xl" px="md">
-						<LanguagePicker />
-					</Group>
 				</ScrollArea>
 			</Drawer>
 		</header>

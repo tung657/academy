@@ -1,5 +1,8 @@
+@import "@/assets/scss/variables";
+
 .section {
   background: transparent no-repeat 100% 0;
+  position: relative;
 
   @media only screen and (max-width: 768px) {
     background-position: 50%;
@@ -14,6 +17,29 @@
       &:hover {
         color: var(--mantine-color-primary-filled);
       }
+    }
+  }
+
+  .shape-1 {
+    position: absolute;
+    top: 25%;
+    left: 15%;
+
+    img {
+      @include rotate-animate(10s);
+
+    }
+  }
+  
+  .shape-2 {
+    position: absolute;
+    top: 25%;
+    right: 5%;
+    opacity: .25;
+
+    img {
+      @include rotate3d();
+
     }
   }
 }

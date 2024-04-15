@@ -25,7 +25,7 @@
   "nav": {
     "home": "Trang chủ",
     "about-us": "Về chúng tôi",
-    "course": "Đào tạo",
+    "course": "Khoá học",
     "research": "Nghiên cứu",
     "product": "Sản phẩm",
     "contact": "Liên hệ",
@@ -80,8 +80,8 @@
     "meta_title": "Sản phẩm",
     "meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
   },
-  "about": {
-    "meta_title": "Về chúng tôi",
+  "course": {
+    "meta_title": "Khoá học",
     "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
   },
   "research": {

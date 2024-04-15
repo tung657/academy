@@ -1,6 +1,6 @@
-@mixin rotate-animate() {
+@mixin rotate-animate($duration: 40s) {
   animation: rotate-animate;
-  animation-duration: 40s;
+  animation-duration: $duration;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   
@@ -29,6 +29,22 @@
     }
     100% {
       transform: translateX(0);
+    }
+  }
+}
+
+@mixin rotate3d($duration: 4s) {
+  animation: rotate3d;
+  animation-duration: $duration;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  
+  @keyframes rotate3d {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(1turn);
     }
   }
 }

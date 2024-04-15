@@ -6,7 +6,7 @@ import '@mantine/carousel/styles.css';
 import '@mantine/notifications/styles.css';
 import '@mantine/dates/styles.css';
 import 'mantine-react-table/styles.css';
-import '@/styles/index.scss';
+import '@/assets/scss/index.scss';
 
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { theme } from '@/theme/theme';
