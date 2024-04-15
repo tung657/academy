@@ -24,7 +24,7 @@ export const theme = createTheme({
 	components: {
 		Text: {
 			defaultProps: {
-				fz: 18,
+				fz: 16,
 				lh: 1.5,
 			},
 		},
