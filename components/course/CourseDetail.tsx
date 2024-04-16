@@ -310,7 +310,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 								</Accordion>
 							</Box>
 
-							<Box pt={24} ref={instructorRef}>
+							<Box pt={24} ref={instructorRef} pb={32}>
 								<TitleRender order={3} mb={16}>
 									{'Giảng viên'}
 								</TitleRender>
