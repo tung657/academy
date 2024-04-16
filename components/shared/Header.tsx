@@ -12,13 +12,13 @@ import {
 	useMantineTheme,
 	Collapse,
 	Flex,
+	Box,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './scss/header.module.scss';
 import Link from 'next/link';
 import { useTranslations } from 'use-intl';
-import { LanguagePicker } from '../langs/LanguagePicker';
 import Image from 'next/image';
 import logo from '@/assets/images/logos/logo.jpg';
 import { HOME_URL, generateTreeUrls } from '@/libs/urls';
@@ -35,6 +35,16 @@ export default function Header(): JSX.Element {
 		useDisclosure(false);
 	const [openCollapse, setOpenCollapse] = useState<any>({});
 	const theme = useMantineTheme();
+
+	const handleActiveClass = (path: string) => {
+		if (path === HOME_URL && pathname === path) {
+			return classes.active;
+		} else if (path !== HOME_URL && pathname.includes(path)) {
+			return classes.active;
+		}
+
+		return '';
+	};
 
 	const items = treeUrls.map((link) => {
 		const menuItems = link?.children?.map(
@@ -53,7 +63,7 @@ export default function Header(): JSX.Element {
 					<Menu.Target>
 						<Link
 							href={link.path}
-							className={`${classes.link} ${pathname.includes(link.path) ? classes.active : ''}`}
+							className={`${classes.link} ${handleActiveClass(link.path)}`}
 						>
 							<Center>
 								<span className={classes.linkLabel}>{link.title}</span>
@@ -70,7 +80,7 @@ export default function Header(): JSX.Element {
 			<Link
 				key={link.path}
 				href={link.path}
-				className={`${classes.link} ${pathname.includes(link.path) ? classes.active : ''}`}
+				className={`${classes.link} ${handleActiveClass(link.path)}`}
 			>
 				{link.title}
 			</Link>
@@ -89,7 +99,8 @@ export default function Header(): JSX.Element {
 								</Box> */}
 							<Link
 								href={item.path}
-								className={`${classes.link} ${pathname.includes(item.path) ? classes.active : ''}`}
+								className={`${classes.link} ${handleActiveClass(item.path)}`}
+								onClick={toggleDrawer}
 							>
 								{item.title}
 							</Link>
@@ -115,7 +126,8 @@ export default function Header(): JSX.Element {
 								<Link
 									style={{ marginLeft: 10, fontWeight: 400 }}
 									href={i.path}
-									className={`${classes.link} ${pathname.includes(item.path) ? classes.active : ''}`}
+									className={`${classes.link} ${handleActiveClass(i.path)}`}
+									onClick={toggleDrawer}
 								>
 									{i.title}
 								</Link>
@@ -128,7 +140,8 @@ export default function Header(): JSX.Element {
 				<Link
 					key={item.path}
 					href={item.path}
-					className={`${classes.link} ${pathname.includes(item.path) ? classes.active : ''}`}
+					className={`${classes.link} ${handleActiveClass(item.path)}`}
+					onClick={toggleDrawer}
 				>
 					{item.title}
 				</Link>
@@ -141,7 +154,7 @@ export default function Header(): JSX.Element {
 	return (
 		<header className={classes.header}>
 			<Container size="xl">
-				<div className={classes.inner}>
+				<Box className={classes.inner} mr={-12}>
 					<Link href={HOME_URL} style={{ textDecoration: 'none' }}>
 						<Image
 							src={logo}
@@ -154,7 +167,6 @@ export default function Header(): JSX.Element {
 					</Link>
 					<Group gap={5} visibleFrom="sm">
 						{items}
-						<LanguagePicker />
 					</Group>
 					<Burger
 						opened={drawerOpened}
@@ -162,7 +174,7 @@ export default function Header(): JSX.Element {
 						size="sm"
 						hiddenFrom="sm"
 					/>
-				</div>
+				</Box>
 			</Container>
 
 			<Drawer
@@ -188,9 +200,9 @@ export default function Header(): JSX.Element {
 				<ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
 					<Divider my="sm" />
 
-					<Link href={HOME_URL} className={classes.link}>
+					{/* <Link href={HOME_URL} className={classes.link}>
 						{t('nav.home')}
-					</Link>
+					</Link> */}
 					{/* {treeUrls?.map((link) =>
 						link.children ? (
 							<></>
@@ -215,10 +227,6 @@ export default function Header(): JSX.Element {
 					<Collapse in={opened}>Open 🎭</Collapse> */}
 
 					<Divider my="sm" />
-
-					<Group justify="center" grow pb="xl" px="md">
-						<LanguagePicker />
-					</Group>
 				</ScrollArea>
 			</Drawer>
 		</header>

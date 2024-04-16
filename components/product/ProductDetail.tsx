@@ -28,8 +28,6 @@ export const ProductDetail = (): JSX.Element => {
 		id: 1,
 	});
 
-	console.log(process.env.NEXT_PUBLIC_MYSQL_HOST);
-
 	return (
 		<section>
 			<Container size="xl">

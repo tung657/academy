@@ -1,11 +1,14 @@
 'use client';
 
 import {
-	Box,
-	Button,
+	AspectRatio,
 	Container,
 	Flex,
+	Grid,
 	Group,
+	Image,
+	Modal,
+	Overlay,
 	Paper,
 	Text,
 	useMantineTheme,
@@ -13,29 +16,28 @@ import {
 import Autoplay from 'embla-carousel-autoplay';
 import classes from './scss/carousel.module.scss';
 import { Carousel } from '@mantine/carousel';
-import { IconArrowRight, IconPlayerPlayFilled } from '@tabler/icons-react';
+import { IconArrowRight } from '@tabler/icons-react';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import Link from 'next/link';
 import { useRef } from 'react';
-import { useMediaQuery } from '@mantine/hooks';
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { TitleRender } from '../mantines/typographies/TitleRender';
+import { imgHome } from '@/assets/images/home';
 
 const data = [
 	{
-		image:
-			'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-		title: 'Modern Machine Learning Solutions!',
+		image: imgHome.banner1,
+		title: 'Tạo dựng giá trị, sánh tầm quốc tế.',
 		description:
-			'We think AI can bring the best results for clients business needs. Our SMART decesion making AI algorithm can identify the business needs and offers solutions.',
-		category: 'Welcome',
+			'Phấn đấu hết mình, phá vỡ giới hạn bản thân, vươn tới những ước mơ vĩ đại.',
+		category: 'Chào mừng',
 	},
 	{
-		image:
-			'https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-		title: 'AI Based Modern Business Solutions',
+		image: imgHome.banner2,
+		title: 'Tạo dựng giá trị, sánh tầm quốc tế.',
 		description:
-			'We think AI can bring the best results for clients business needs. Our SMART decesion making AI algorithm can identify the business needs and offers solutions.',
-		category: 'Welcome',
+			'Phấn đấu hết mình, phá vỡ giới hạn bản thân, vươn tới những ước mơ vĩ đại.',
+		category: 'Chào mừng',
 	},
 ];
 
@@ -51,8 +53,8 @@ export const CarouselHome = (): JSX.Element => {
 	const theme = useMantineTheme();
 	const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 	const autoplay = useRef(Autoplay({ delay: 5000 }));
-	const slides = data.map((item) => (
-		<Carousel.Slide key={item.title}>
+	const slides = data.map((item, index) => (
+		<Carousel.Slide key={index}>
 			<Card {...item} mobile={mobile} />
 		</Carousel.Slide>
 	));
@@ -74,7 +76,9 @@ export const CarouselHome = (): JSX.Element => {
 	);
 };
 
-function Card({ image, title, category, description, mobile }: Props) {
+function Card({ image, title, category, description }: Props) {
+	const [opened, { open, close }] = useDisclosure();
+
 	return (
 		<Paper
 			shadow="md"
@@ -83,52 +87,75 @@ function Card({ image, title, category, description, mobile }: Props) {
 			style={{ backgroundImage: `url(${image})` }}
 			className={classes.card}
 		>
+			<Overlay zIndex={1} opacity={0.35} />
 			<Flex
 				align={'center'}
 				justify={'flex-start'}
-				style={{ height: '100%', width: '100%' }}
+				style={{ height: '100%', width: '100%', zIndex: 2 }}
 			>
 				<Container size="xl" flex={1}>
-					<Box w={mobile === false ? '50%' : '100%'}>
-						<Text className={classes.category} size="xs">
-							{category}
-						</Text>
-						<TitleRender my="md" c="white" order={1}>
-							{title}
-						</TitleRender>
-						<Text c="white">{description}</Text>
+					<Grid align="center">
+						<Grid.Col span={{ base: 12, md: 8 }}>
+							<Text className={classes.category} size="xs">
+								{category}
+							</Text>
+							<TitleRender my="sm" c="white" order={1}>
+								{title}
+							</TitleRender>
+							<Text c="white">{description}</Text>
 
-						<Group mt="md" gap={16}>
-							<Link href={'/'}>
-								<ButtonBubble
-									variant="filled"
-									size="md"
-									leftSection={<IconArrowRight />}
-								>
-									About Us
-								</ButtonBubble>
-							</Link>
-							<Link href={'/'} style={{ textDecoration: 'none' }}>
-								<Group gap={8}>
-									<Button
-										className={classes.btnIcon}
+							<Group mt="sm" gap={16}>
+								<Link href={'#about-us'}>
+									<ButtonBubble
+										variant="filled"
 										size="md"
-										radius={'100%'}
-										p={0}
-										w={60}
-										h={60}
+										leftSection={<IconArrowRight />}
 									>
-										<IconPlayerPlayFilled size={32} />
-									</Button>
-									<Text fw={600} c="primary">
-										WATCH VIDEO
-									</Text>
-								</Group>
-							</Link>
-						</Group>
-					</Box>
+										Về chúng tôi
+									</ButtonBubble>
+								</Link>
+							</Group>
+						</Grid.Col>
+						<Grid.Col span={{ base: 12, md: 4 }}>
+							<div className={classes.video} onClick={open}>
+								<AspectRatio ratio={16 / 9} mx="auto">
+									<Image
+										width={319}
+										height={184}
+										radius={'md'}
+										w={'100%'}
+										h={'100%'}
+										src={
+											'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
+										}
+										alt="about"
+									/>
+									<Overlay radius={'md'} opacity={0.35} />
+								</AspectRatio>
+							</div>
+						</Grid.Col>
+					</Grid>
 				</Container>
 			</Flex>
+			<Modal
+				opened={opened}
+				onClose={close}
+				size={'xl'}
+				fullScreen
+				zIndex={250}
+			>
+				<div>
+					<AspectRatio ratio={16 / 9} mah={'calc(100vh - 100px)'}>
+						<iframe
+							width="100%"
+							height="100%"
+							data-pagefly-popup="true"
+							allowFullScreen
+							src="https://www.youtube.com/embed/-6PFfp_Lerw?&amp;autoplay=1&amp;loop=0&amp;mute=0&amp;controls=1&amp;enablejsapi=1"
+						></iframe>
+					</AspectRatio>
+				</div>
+			</Modal>
 		</Paper>
 	);
 }

@@ -7,3 +7,5 @@ export * from './format-string';
 export * from './services';
 
 export * from './query-loader';
+
+export * from './array';

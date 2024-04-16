@@ -20,6 +20,7 @@ import { HOME_URL } from '@/libs/urls';
 import logo from '@/assets/images/logos/logo.jpg';
 import React from 'react';
 import { imgOthers } from '@/assets/images/others';
+import { LanguagePicker } from '../langs/LanguagePicker';
 
 const data = [
 	{
@@ -113,7 +114,7 @@ export default function FooterLinks() {
 							loading="lazy"
 						/>
 					</Link>
-					<Text size="sm" c="dimmed" className={classes.description}>
+					<Text size="sm" className={classes.description}>
 						Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa
 						Đô, quận Cầu Giấy, TP Hà Nội
 					</Text>
@@ -122,6 +123,7 @@ export default function FooterLinks() {
 						gap={0}
 						className={classes.social}
 						justify="flex-start"
+						align="center"
 						wrap="nowrap"
 					>
 						{socials?.map((social) => (
@@ -131,6 +133,8 @@ export default function FooterLinks() {
 								</ActionIcon>
 							</Link>
 						))}
+
+						<LanguagePicker pl={6} />
 					</Group>
 				</div>
 				<div className={classes.groups}>{groups}</div>

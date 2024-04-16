@@ -1,4 +1,4 @@
-@import "@/styles/variables";
+@import "@/assets/scss/variables";
 
 h1.title {
   @include resp-fz(65px, 31px, 31px, 45px, 45px, 60px);

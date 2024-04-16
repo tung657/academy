@@ -1,16 +1,17 @@
-import { GridDetail } from '@/components/course/GridDetail';
+import { CourseDetail } from '@/components/course/CourseDetail';
+import { dataCourses } from '@/components/course/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { IBasePage } from '@/types';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: IBasePage) {
 	const t = await getTranslations('product');
 
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
 	await fetch('https://jsonplaceholder.typicode.com/todos');
-	const title = 'Grid Details';
+	const title = dataCourses?.find((c) => c.id === +params.id)?.title;
 
 	return {
 		title: `${title} | ${AppConfig.name}`,
@@ -18,15 +19,13 @@ export async function generateMetadata() {
 	};
 }
 
-export default async function GridDetailPage() {
-	const title = 'Grid Details';
+export default async function CourseDetailPage({ params }: IBasePage) {
+	const course = dataCourses?.find((c) => c.id === +params.id);
 
 	return (
 		<>
-			<Breadcrumb lastLabel={title} />
-			<Suspense>
-				<GridDetail />
-			</Suspense>
+			<Breadcrumb lastLabel={course?.title} />
+			<CourseDetail props={course} />
 		</>
 	);
 }

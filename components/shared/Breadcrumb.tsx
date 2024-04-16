@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from '@/libs/i18n-navigation';
-import { Breadcrumbs, Container, Flex, Text, rem } from '@mantine/core';
+import { Breadcrumbs, Container, Flex, Image, Text, rem } from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
 import { IconChevronRight, IconHome } from '@tabler/icons-react';
 import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
+import { imgOthers } from '@/assets/images/others';
 
 interface Props {
 	lastLabel?: string;
@@ -80,7 +81,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 						}
 					>
 						<Link href={HOME_URL} className={classes.link}>
-							<IconHome stroke={1.6} size={24} />
+							<IconHome stroke={1.6} size={20} />
 						</Link>
 						{breadcrumbs?.map((item, index) =>
 							item.href ? (
@@ -89,12 +90,12 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 									key={index}
 									href={item?.href || ''}
 								>
-									<Text fz={rem(18)} fw={500}>
+									<Text fz={rem(16)} fw={600}>
 										{item.title}
 									</Text>
 								</Link>
 							) : (
-								<Text fz={rem(18)} key={index} fw={400}>
+								<Text fz={rem(16)} key={index} fw={400} c={'dimmed'}>
 									{item.title}
 								</Text>
 							),
@@ -102,6 +103,25 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 					</Breadcrumbs>
 				</Flex>
 			</Container>
+
+			<div className={classes.shape1}>
+				<Image
+					src={imgOthers.shape1}
+					alt="shape 1"
+					width={22}
+					height={22}
+					loading="lazy"
+				/>
+			</div>
+			<div className={classes.shape2}>
+				<Image
+					src={imgOthers.shape2}
+					alt="shape 2"
+					width={202}
+					height={202}
+					loading="lazy"
+				/>
+			</div>
 		</section>
 	);
 };

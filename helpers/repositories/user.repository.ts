@@ -1,13 +1,12 @@
-import { Database } from '../db';
+import { query } from '../db';
 
-export async function authenticateRepo(
+export async function authenticateRepository(
 	username: string,
 	password: string,
 ): Promise<any> {
 	try {
-		const db = new Database();
 		const sql = 'CALL GetUserByAccount(?, @err_code, @err_msg)';
-		const [results] = await db.query(sql, [username]);
+		const [results] = await query(sql, [username]);
 		if (Array.isArray(results) && results.length > 0) {
 			let user = results[0];
 			if (user.password == password) {

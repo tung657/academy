@@ -1,17 +1,13 @@
-import about from './about.jpg';
-import service from './service-icon.png';
 import scientist from './scientist.jpg';
 import howitswork from './howitswork.png';
-import process from './process1.png';
-import history from './history1.jpg';
-import detail from './courses-details.jpg';
+import banner1 from './main-banner1.jpg';
+import banner2 from './main-banner2.jpg';
+import aboutMember from './about-member.webp';
 
 export const imgHome = {
-	about: about.src,
-	service: service.src,
+	aboutMember: aboutMember.src,
 	scientist: scientist.src,
 	howitswork: howitswork.src,
-	process: process.src,
-	history: history.src,
-	detail: detail.src,
+	banner1: banner1.src,
+	banner2: banner2.src,
 };

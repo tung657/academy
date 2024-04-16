@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AppConfig, LOCAL_TOKEN } from './utils';
 import { verifyJwtToken } from './helpers/auth';
 import { removePrefix } from './utils';
+import { ADMIN_URL, DASHBOARD_URL, LOGIN_URL } from './libs/urls';
 
 // Add whatever paths you want to PROTECT here
 const authRoutes = [
@@ -32,7 +33,7 @@ const nextIntlMiddleware = createMiddleware({
 
 export default async function middleware(req: NextRequest) {
 	const BASE_URL = removePrefix(process.env.NEXT_PUBLIC_BASE_URL, '/api');
-	const LOGIN = `${BASE_URL}/login?redirect=${
+	const LOGIN = `${BASE_URL}${LOGIN_URL}?redirect=${
 		req.nextUrl.pathname + req.nextUrl.search
 	}`;
 
@@ -40,8 +41,6 @@ export default async function middleware(req: NextRequest) {
 		authRoutes.some((pattern) => matchesWildcard(req.nextUrl.pathname, pattern))
 	) {
 		const token = req.cookies.get(LOCAL_TOKEN);
-		// console.log(token);
-
 		// For API routes, we want to return unauthorized instead of
 		// redirecting to login
 		if (req.nextUrl.pathname.startsWith('/api')) {
@@ -71,8 +70,8 @@ export default async function middleware(req: NextRequest) {
 
 			// If you have an admin role and path, secure it here
 			if (req.nextUrl.pathname.startsWith('/admin')) {
-				if (payload.role !== 'admin') {
-					return NextResponse.redirect(`${BASE_URL}/access-denied`);
+				if (req.nextUrl.pathname === ADMIN_URL) {
+					return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
 				}
 			}
 		} catch (error) {
@@ -83,17 +82,16 @@ export default async function middleware(req: NextRequest) {
 	}
 
 	let redirectToApp = false;
-	// Redirect login to app if already logged in
-	if (req.nextUrl.pathname === '/login') {
+	// // Redirect login to app if already logged in
+	if (req.nextUrl.pathname === LOGIN_URL) {
 		const token = req.cookies.get(LOCAL_TOKEN);
 
 		if (token) {
 			try {
 				const payload = await verifyJwtToken(token.value);
 
-				if (payload) {
-					redirectToApp = true;
-				} else {
+				if (payload) redirectToApp = true;
+				if (!payload) {
 					// Delete token
 					req.cookies.delete(LOCAL_TOKEN);
 				}
@@ -106,10 +104,10 @@ export default async function middleware(req: NextRequest) {
 
 	if (redirectToApp) {
 		// Redirect to app dashboard
-		return NextResponse.redirect(`${BASE_URL}`);
+		return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
 	} else {
-		return nextIntlMiddleware(req);
 		// Return the original response unaltered
+		return nextIntlMiddleware(req);
 	}
 }
 

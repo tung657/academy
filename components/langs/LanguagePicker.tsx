@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex } from '@mantine/core';
+import { Flex, FlexProps } from '@mantine/core';
 import { useTransition } from 'react';
 import { useLocale } from 'use-intl';
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
@@ -20,7 +20,7 @@ const localeOptions = [
 	},
 ];
 
-export function LanguagePicker() {
+export function LanguagePicker({ ...props }: FlexProps) {
 	const router = useRouter();
 	const pathname = usePathname();
 	const locale = useLocale();
@@ -50,7 +50,7 @@ export function LanguagePicker() {
 		// 	defaultValue={locale}
 		// 	data={localeOptions}
 		// />
-		<Flex gap={4}>
+		<Flex gap={4} {...props}>
 			{localeOptions.map((opt) => (
 				<Image
 					onClick={() => !isPending && handleChangeLocale(opt.value)}

@@ -3,6 +3,10 @@
     "title_error": "Có lỗi xảy ra",
     "title_notfound": "Không tìm thấy trang",
     "btn_send_message": "Gửi tin nhắn",
+    "btn_cancel": "Trở lại",
+    "btn_save": "Lưu",
+    "btn_confirm": "Xác nhận",
+    "no_data": "Không có dữ liệu",
     "address": {
       "title": "Địa chỉ",
       "content": "Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa Đô, quận Cầu Giấy, TP Hà Nội"
@@ -21,10 +25,11 @@
   "nav": {
     "home": "Trang chủ",
     "about-us": "Về chúng tôi",
-    "course": "Đào tạo",
+    "course": "Khoá học",
     "research": "Nghiên cứu",
     "product": "Sản phẩm",
     "contact": "Liên hệ",
+    "jobs": "Tuyển dụng",
     "media": "Truyền thông"
   },
   "validation": {
@@ -38,6 +43,35 @@
     "phone": "Số điện thoại không đúng định dạng",
     "email": "Email không đúng định dạng"
   },
+  "messages": {
+    "warning_delete": "Bạn có chắc chắn muốn xoá",
+    "success": {
+      "title": "Thành công",
+      "message": "Thao tác thành công"
+    },
+    "error": {
+      "title": "Thất bại",
+      "message": "Thao tác thất bại"
+    },
+    "warning": {
+      "title": "Cảnh báo",
+      "message": "Thao tác thất bại"
+    },
+    "info": {
+      "title": "Thông báo",
+      "message": "Thao tác thành công"
+    }
+  },
+  "login": {
+    "meta_title": "Hệ thống quản trị",
+    "meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+    "heading_login": "Đăng nhập",
+    "heading_forget": "Quên mật khẩu",
+    "username": "Đăng nhập",
+    "password": "Mật khẩu",
+    "email": "Email",
+    "forget_password": "Quên mật khẩu"
+  },
   "home": {
     "meta_title": "Viện trí tuệ nhân tạo Việt Nam",
     "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
@@ -46,8 +80,8 @@
     "meta_title": "Sản phẩm",
     "meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
   },
-  "about": {
-    "meta_title": "Về chúng tôi",
+  "course": {
+    "meta_title": "Khoá học",
     "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
   },
   "research": {
@@ -57,5 +91,31 @@
   "contact": {
     "meta_title": "Liên hệ",
     "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+  },
+
+  "features": {
+    "heading": "Quản lý tính năng",
+    "title_create": "Thêm mới tính năng",
+    "title_update": "Chi tiết tính năng",
+    "title_delete": "Xoá tính năng",
+    "fields": {
+      "parent": "Nhóm tính năng",
+      "function_name": "Tên tính năng",
+      "sort_order": "Sắp xếp (ASC)",
+      "url": "Đường dẫn",
+      "description": "Mô tả"
+    }
+  },
+  "actions": {
+    "heading": "Quản lý thao tác",
+    "title_create": "Thêm mới thao tác",
+    "title_update": "Chi tiết thao tác",
+    "title_delete": "Xoá thao tác",
+    "fields": {
+      "action_code": "Nhóm thao tác",
+      "action_name": "Tên thao tác",
+      "description": "Mô tả",
+      "action": "Thao tác"
+    }
   }
 }

@@ -2,12 +2,13 @@ import { NextResponse, NextRequest } from 'next/server';
 import { SignJWT } from 'jose';
 
 import { getJwtSecretKey, setUserDataCookie } from '@/helpers/auth';
-import { authenticateRepo } from '@/helpers/repositories';
 import { MD5 } from 'crypto-js';
-import { LOCAL_TOKEN } from '@/utils';
+import { LOCAL_TOKEN, getFeatureTree } from '@/utils';
+import { authenticateRepository } from '@/helpers/repositories/user.repository';
+import { getFunctionByUserIdRepository } from '@/helpers/repositories/feature.repository';
 
-export interface I_ApiUserLoginRequest {
-	username: string;
+export interface IApiUserLoginRequest {
+	user_name: string;
 	password: string;
 	tsToken: string;
 	code?: string;
@@ -17,17 +18,17 @@ export const dynamic = 'force-dynamic';
 
 // Create a POST endpoint
 export async function POST(request: NextRequest) {
-	const body = (await request.json()) as I_ApiUserLoginRequest;
+	const body = (await request.json()) as IApiUserLoginRequest;
 
 	// trim all input values
-	const { username, password } = Object.fromEntries(
+	const { user_name, password } = Object.fromEntries(
 		Object.entries(body).map(([key, value]) => [key, value?.trim()]),
-	) as I_ApiUserLoginRequest;
+	) as IApiUserLoginRequest;
 
-	if (!username || !password) {
+	if (!user_name || !password) {
 		const res = {
 			success: false,
-			message: 'Either login or password is missing',
+			message: 'Vui lòng điền tài khoản hoặc mật khẩu',
 		};
 
 		return NextResponse.json(res, { status: 400 });
@@ -35,7 +36,10 @@ export async function POST(request: NextRequest) {
 
 	try {
 		// Fetch our user from the database
-		const user = await authenticateRepo(username, MD5(password).toString());
+		const user = await authenticateRepository(
+			user_name,
+			MD5(password).toString(),
+		);
 		if (!user) {
 			return NextResponse.json({
 				success: false,
@@ -43,20 +47,22 @@ export async function POST(request: NextRequest) {
 			});
 		}
 
-		// Check if user is active
-		// if (user.status !== 'active') throw new Error('User account is not active');
+		let features = await getFunctionByUserIdRepository(user.user_id);
+		let featureTree = getFeatureTree(features, 1, 0);
+		user.features = featureTree;
 
-		/** Check TFA status, reject login and send code */
-
-		// Create and sign our JWT
-		const token = await new SignJWT({
-			id: user.id,
-			firstName: user.firstName,
-			lastName: user.lastName,
+		const userModal = {
+			user_id: user.user_id,
+			first_name: user.first_name,
+			last_name: user.last_name,
+			full_name: user.full_name,
+			avatar: user.avatar,
 			email: user.email,
-			phone: user.phone,
-			role: user.role,
-		})
+			phone_number: user.phone_number,
+			position_id: user.position_id,
+		};
+		// Create and sign our JWT
+		const token = await new SignJWT(userModal)
 			.setProtectedHeader({ alg: 'HS256' })
 			.setIssuedAt()
 			.setExpirationTime(`1d`)
@@ -65,6 +71,7 @@ export async function POST(request: NextRequest) {
 		// create our response object
 		const res = {
 			success: true,
+			message: 'Đăng nhập thành công',
 		};
 
 		const response = NextResponse.json(res);
@@ -82,7 +89,7 @@ export async function POST(request: NextRequest) {
 
 		// Store public user data as a cookie
 		// const userData = user.exportPublic();
-		setUserDataCookie(user);
+		setUserDataCookie({ ...user, features: featureTree });
 
 		return response;
 	} catch (error: any) {
