@@ -58,10 +58,7 @@ export const CourseList = (): JSX.Element => {
 	return (
 		<section className={classes.section}>
 			<Container size="xl">
-				<Box
-					pt={{ base: 60, md: 80, lg: 100 }}
-					pb={{ base: 30, md: 40, lg: 60 }}
-				>
+				<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 					<Grid gutter={24}>
 						{dataPagination.map((item) => (
 							<Grid.Col key={item.id} span={{ base: 12, sm: 6, md: 4 }}>

@@ -1,12 +1,11 @@
-import Loading from '@/app/loading';
 import { CourseDetail } from '@/components/course/CourseDetail';
 import { dataCourses } from '@/components/course/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { IBasePage } from '@/types';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({ params }: IBasePage) {
 	const t = await getTranslations('product');
 
 	// Cannot fetch api from localhost with production
@@ -20,15 +19,13 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 	};
 }
 
-export default async function CourseDetailPage() {
-	const title = 'Grid Details';
+export default async function CourseDetailPage({ params }: IBasePage) {
+	const course = dataCourses?.find((c) => c.id === +params.id);
 
 	return (
 		<>
-			<Breadcrumb lastLabel={title} />
-			<Suspense fallback={<Loading />}>
-				<CourseDetail />
-			</Suspense>
+			<Breadcrumb lastLabel={course?.title} />
+			<CourseDetail props={course} />
 		</>
 	);
 }

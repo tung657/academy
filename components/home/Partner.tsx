@@ -26,11 +26,11 @@ export const Partner = (): JSX.Element => {
 
 	return (
 		<section className={classes.section}>
-			<Box pt={{ base: 60, md: 80, lg: 100 }} pb={{ base: 30, md: 40, lg: 60 }}>
+			<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 				<Container size="xl">
 					<TitleCombo
 						titleSub="TESTIMONIALS"
-						titleChildren="What Our Clients are Saying?"
+						titleChildren="Chia sẻ của khách hàng về AIA"
 						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 					/>
 					<Carousel

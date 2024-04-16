@@ -21,7 +21,7 @@ export const TitleCombo = ({
 	return needWrapper ? (
 		<Box className={classes.sectionTitle}>
 			{titleSub && <TitleSub label={titleSub} />}
-			<TitleRender order={2} tt={'capitalize'} {...props}>
+			<TitleRender order={2} {...props}>
 				{titleChildren}
 			</TitleRender>
 			<Text fw={500} mt={16}>
@@ -31,7 +31,7 @@ export const TitleCombo = ({
 	) : (
 		<>
 			{titleSub && <TitleSub label={titleSub} />}
-			<TitleRender order={2} tt={'capitalize'} {...props}>
+			<TitleRender order={2} {...props}>
 				{titleChildren}
 			</TitleRender>
 			<Text fw={500} mt={16}>

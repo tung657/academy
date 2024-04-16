@@ -37,3 +37,7 @@ export interface IBaseResponse {
 	success: boolean;
 	message?: string;
 }
+
+export interface IBasePage {
+	params: { id: string };
+}

@@ -99,12 +99,12 @@ function Card({ image, title, category, description }: Props) {
 							<Text className={classes.category} size="xs">
 								{category}
 							</Text>
-							<TitleRender my="md" c="white" order={1}>
+							<TitleRender my="sm" c="white" order={1}>
 								{title}
 							</TitleRender>
 							<Text c="white">{description}</Text>
 
-							<Group mt="md" gap={16}>
+							<Group mt="sm" gap={16}>
 								<Link href={'#about-us'}>
 									<ButtonBubble
 										variant="filled"

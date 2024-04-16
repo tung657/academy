@@ -36,6 +36,16 @@ export default function Header(): JSX.Element {
 	const [openCollapse, setOpenCollapse] = useState<any>({});
 	const theme = useMantineTheme();
 
+	const handleActiveClass = (path: string) => {
+		if (path === HOME_URL && pathname === path) {
+			return classes.active;
+		} else if (path !== HOME_URL && pathname.includes(path)) {
+			return classes.active;
+		}
+
+		return '';
+	};
+
 	const items = treeUrls.map((link) => {
 		const menuItems = link?.children?.map(
 			(item: { path: string; title: string }) => (
@@ -53,7 +63,7 @@ export default function Header(): JSX.Element {
 					<Menu.Target>
 						<Link
 							href={link.path}
-							className={`${classes.link} ${pathname.includes(link.path) ? classes.active : ''}`}
+							className={`${classes.link} ${handleActiveClass(link.path)}`}
 						>
 							<Center>
 								<span className={classes.linkLabel}>{link.title}</span>
@@ -70,7 +80,7 @@ export default function Header(): JSX.Element {
 			<Link
 				key={link.path}
 				href={link.path}
-				className={`${classes.link} ${pathname.includes(link.path) ? classes.active : ''}`}
+				className={`${classes.link} ${handleActiveClass(link.path)}`}
 			>
 				{link.title}
 			</Link>
@@ -89,7 +99,8 @@ export default function Header(): JSX.Element {
 								</Box> */}
 							<Link
 								href={item.path}
-								className={`${classes.link} ${pathname.includes(item.path) ? classes.active : ''}`}
+								className={`${classes.link} ${handleActiveClass(item.path)}`}
+								onClick={toggleDrawer}
 							>
 								{item.title}
 							</Link>
@@ -115,7 +126,8 @@ export default function Header(): JSX.Element {
 								<Link
 									style={{ marginLeft: 10, fontWeight: 400 }}
 									href={i.path}
-									className={`${classes.link} ${pathname.includes(item.path) ? classes.active : ''}`}
+									className={`${classes.link} ${handleActiveClass(i.path)}`}
+									onClick={toggleDrawer}
 								>
 									{i.title}
 								</Link>
@@ -128,7 +140,8 @@ export default function Header(): JSX.Element {
 				<Link
 					key={item.path}
 					href={item.path}
-					className={`${classes.link} ${pathname.includes(item.path) ? classes.active : ''}`}
+					className={`${classes.link} ${handleActiveClass(item.path)}`}
+					onClick={toggleDrawer}
 				>
 					{item.title}
 				</Link>
@@ -187,9 +200,9 @@ export default function Header(): JSX.Element {
 				<ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
 					<Divider my="sm" />
 
-					<Link href={HOME_URL} className={classes.link}>
+					{/* <Link href={HOME_URL} className={classes.link}>
 						{t('nav.home')}
-					</Link>
+					</Link> */}
 					{/* {treeUrls?.map((link) =>
 						link.children ? (
 							<></>

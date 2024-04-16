@@ -52,10 +52,14 @@ export const generateTreeUrls = (t: any): NavTree[] => {
 		return arr[arr.length - 1];
 	};
 	return [
-		// {
-		// 	title: t('nav.' + getPathKey(ABOUT_URL)),
-		// 	path: ABOUT_URL,
-		// },
+		{
+			title: t('nav.' + getPathKey(HOME_URL) + 'home'),
+			path: HOME_URL,
+		},
+		{
+			title: t('nav.' + getPathKey(PRODUCT_URL)),
+			path: PRODUCT_URL,
+		},
 		{
 			title: t('nav.' + getPathKey(COURSE_URL)),
 			path: COURSE_URL,
@@ -65,20 +69,16 @@ export const generateTreeUrls = (t: any): NavTree[] => {
 			path: RESEARCH_URL,
 		},
 		{
-			title: t('nav.' + getPathKey(PRODUCT_URL)),
-			path: PRODUCT_URL,
-		},
-		{
-			title: t('nav.' + getPathKey(CONTACT_URL)),
-			path: CONTACT_URL,
-		},
-		{
 			title: t('nav.' + getPathKey(JOB_URL)),
 			path: JOB_URL,
 		},
 		{
 			title: t('nav.' + getPathKey(MEDIA_URL)),
 			path: MEDIA_URL,
+		},
+		{
+			title: t('nav.' + getPathKey(CONTACT_URL)),
+			path: CONTACT_URL,
 		},
 	];
 };

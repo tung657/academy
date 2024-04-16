@@ -81,7 +81,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 						}
 					>
 						<Link href={HOME_URL} className={classes.link}>
-							<IconHome stroke={1.6} size={24} />
+							<IconHome stroke={1.6} size={20} />
 						</Link>
 						{breadcrumbs?.map((item, index) =>
 							item.href ? (
@@ -90,12 +90,12 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 									key={index}
 									href={item?.href || ''}
 								>
-									<Text fz={rem(18)} fw={500}>
+									<Text fz={rem(16)} fw={600}>
 										{item.title}
 									</Text>
 								</Link>
 							) : (
-								<Text fz={rem(18)} key={index} fw={400}>
+								<Text fz={rem(16)} key={index} fw={400} c={'dimmed'}>
 									{item.title}
 								</Text>
 							),
