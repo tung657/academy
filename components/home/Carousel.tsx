@@ -87,7 +87,7 @@ function Card({ image, title, category, description }: Props) {
 			style={{ backgroundImage: `url(${image})` }}
 			className={classes.card}
 		>
-			<Overlay zIndex={1} />
+			<Overlay zIndex={1} opacity={0.35} />
 			<Flex
 				align={'center'}
 				justify={'flex-start'}
@@ -105,7 +105,7 @@ function Card({ image, title, category, description }: Props) {
 							<Text c="white">{description}</Text>
 
 							<Group mt="md" gap={16}>
-								<Link href={'/'}>
+								<Link href={'#about-us'}>
 									<ButtonBubble
 										variant="filled"
 										size="md"
@@ -137,7 +137,13 @@ function Card({ image, title, category, description }: Props) {
 					</Grid>
 				</Container>
 			</Flex>
-			<Modal opened={opened} onClose={close} size={'xl'} fullScreen>
+			<Modal
+				opened={opened}
+				onClose={close}
+				size={'xl'}
+				fullScreen
+				zIndex={250}
+			>
 				<div>
 					<AspectRatio ratio={16 / 9} mah={'calc(100vh - 100px)'}>
 						<iframe

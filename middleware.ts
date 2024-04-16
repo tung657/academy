@@ -41,8 +41,6 @@ export default async function middleware(req: NextRequest) {
 		authRoutes.some((pattern) => matchesWildcard(req.nextUrl.pathname, pattern))
 	) {
 		const token = req.cookies.get(LOCAL_TOKEN);
-		// console.log(token);
-
 		// For API routes, we want to return unauthorized instead of
 		// redirecting to login
 		if (req.nextUrl.pathname.startsWith('/api')) {

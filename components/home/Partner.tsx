@@ -78,7 +78,7 @@ export const Partner = (): JSX.Element => {
 												style={{ color: 'transparent' }}
 											/>
 											<Stack gap={4} align="flex-start">
-												<Title order={4}>Thanh Tung</Title>
+												<Title order={4}>John Wick</Title>
 												<Text fz={16} fw={700} c={'gray.6'}>
 													CEO{' '}
 												</Text>

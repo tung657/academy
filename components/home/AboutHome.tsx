@@ -7,7 +7,7 @@ import { imgHome } from '@/assets/images/home';
 
 export const AboutHome = (): JSX.Element => {
 	return (
-		<section className={classes.section}>
+		<section className={classes.section} id="about-us">
 			<Box pt={{ base: 60, md: 80, lg: 100 }} pb={{ base: 30, md: 40, lg: 60 }}>
 				<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 					<Grid.Col span={{ base: 12, md: 6 }}>
