@@ -1,7 +1,7 @@
 'use client';
 
 import classes from './scss/media.module.scss';
-import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import {
 	AspectRatio,
 	Box,
