@@ -1,7 +1,6 @@
 'use client';
 
 import { Box, Container } from '@mantine/core';
-import { dataResearches, researchTypeOptions } from './data/data-fake';
 import React from 'react';
 import classes from './scss/research.module.scss';
 
