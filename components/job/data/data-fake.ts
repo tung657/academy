@@ -88,8 +88,8 @@ export const dataJobs = [
 		duration: 'Full time',
 		location: 'Hà Nội',
 		salary: 12000000,
-    isNegotiable: true,
-    detail: `<div class="page-content rte">
+		isNegotiable: true,
+		detail: `<div class="page-content rte">
     <h2><strong>Làm việc tại AIA</strong></h2>
 <p>Được thành lập vào năm 2008, AIA là một trong những công ty công nghệ tiên phong trong lĩnh vực làm sản phẩm cho thị trường quốc tế, AIA là nơi tập hợp của những con người trẻ, tài năng và nhiệt huyết. Tại đây, chúng tôi luôn có những đầu bài về công việc để đánh thức tiềm năng trong con người và phát triển bản thân một cách tốt nhất.</p>
 <p>AIA khao khát mang đến những giải pháp sáng tạo cho người dùng toàn cầu. Chúng tôi xây dựng sản phẩm bằng cái đầu lạnh và hỗ trợ khách hàng bằng trái tim ấm áp. Quy trình làm việc tại AIA rất chuyên nghiệp, nỗ lực mỗi ngày để mang trí tuệ Việt Nam sánh vai cùng các cường quốc trên trường quốc tế là điều mà chúng tôi luôn hướng tới.</p>

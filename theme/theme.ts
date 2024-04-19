@@ -40,8 +40,9 @@ export const theme = createTheme({
 		},
 		Button: {
 			defaultProps: {
-        size:'md',
-      },
-		}
+				size: 'md',
+				loaderProps: { type: 'dots' },
+			},
+		},
 	},
 });

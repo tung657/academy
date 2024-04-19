@@ -135,5 +135,23 @@
 			"description": "Mô tả",
 			"action": "Thao tác"
 		}
+	},
+
+	"employees": {
+		"heading": "Quản lý nhân viên",
+		"title_create": "Thêm mới nhân viên",
+		"title_update": "Chi tiết nhân viên",
+		"title_delete": "Xoá nhân viên",
+		"fields": {
+			"serial": "STT",
+			"username": "Tài khoản",
+			"position": "Vị trí",
+			"full_name": "Họ và tên",
+			"phone_number": "Số điện thoại",
+			"gender": "Gender",
+			"birth": "Ngày sinh",
+			"email": "Email",
+			"action": "Thao tác"
+		}
 	}
 }

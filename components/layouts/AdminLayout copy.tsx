@@ -1,8 +1,8 @@
 'use client';
 
-import { AppShell, Box, Container, rem, useMantineTheme } from '@mantine/core';
+import { AppShell, Box, Burger, Group, ScrollArea } from '@mantine/core';
 import { getCookie } from 'cookies-next';
-import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { Sidebar } from '../shared/Sidebar';
 import { useTranslations } from 'next-intl';
@@ -11,21 +11,18 @@ import { LOCAL_USER } from '@/utils';
 import { useEffect } from 'react';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';
-import HeaderNav from '../header-nav/HeaderNav';
+import { IconLayoutSidebarLeftCollapse } from '@tabler/icons-react';
 
 interface Props {
 	children: React.ReactNode;
 }
 
 export default function AdminLayout({ children }: Props): JSX.Element {
+	const [opened, { toggle }] = useDisclosure();
 	const t = useTranslations();
 	const pathname = usePathname();
 	const setUserProfile = useSetRecoilState(userState);
 	const resetUserProfile = useResetRecoilState(userState);
-	const theme = useMantineTheme();
-	const tablet_match = useMediaQuery('(max-width: 768px)');
-	const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
-	const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
@@ -44,31 +41,35 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 		<AppShell
 			layout="alt"
 			header={{ height: 60 }}
-			navbar={{
-				width: 300,
-				breakpoint: 'md',
-				collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
-			}}
-			padding={'md'}
+			navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+			padding="md"
 		>
-			<AppShell.Header
-				style={{
-					height: rem(60),
-					border: 'none',
-					boxShadow: tablet_match ? theme.shadows.md : theme.shadows.sm,
-				}}
-			>
-				<Container fluid py="sm" px="lg">
-					<HeaderNav
-						desktopOpened={desktopOpened}
-						mobileOpened={mobileOpened}
-						toggleDesktop={toggleDesktop}
-						toggleMobile={toggleMobile}
+			<AppShell.Header withBorder>
+				<Group h="100%" px="md" justify="space-between">
+					<IconLayoutSidebarLeftCollapse
+						onClick={toggle}
+						stroke={1.2}
+						size={32}
 					/>
-				</Container>
+					<Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+				</Group>
 			</AppShell.Header>
-			<AppShell.Navbar bg={'teal.7'} p={'md'} c={'white'}>
-				<Sidebar onClose={toggleMobile} />
+			<AppShell.Navbar
+				p="md"
+				variant="filled"
+				bg={'primary'}
+				c={'white'}
+				w={opened ? '70%' : 'inherit'}
+			>
+				<AppShell.Section ta={'center'}>
+					<TitleRender order={3}>LOGO</TitleRender>
+				</AppShell.Section>
+				<AppShell.Section grow my="md" component={ScrollArea}>
+					<Sidebar />
+				</AppShell.Section>
+				<AppShell.Section>
+					Navbar footer – always at the bottom
+				</AppShell.Section>
 			</AppShell.Navbar>
 			<AppShell.Main>
 				<TitleRender order={2} pb={16}>

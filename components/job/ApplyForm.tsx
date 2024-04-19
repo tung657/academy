@@ -1,15 +1,7 @@
 'use client';
 
 import { ButtonCustomProps } from '@/types';
-import {
-	Box,
-	Button,
-	FileInput,
-	Grid,
-	Select,
-	Text,
-	TextInput,
-} from '@mantine/core';
+import { Box, Button, FileInput, Grid, Text, TextInput } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
 import { ModalRender } from '../mantines/modal/ModalRender';

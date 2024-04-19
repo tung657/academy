@@ -113,7 +113,9 @@ export const LoginForm = (): JSX.Element => {
 							</Anchor>
 						</Flex>
 
-						<ButtonBubble type="submit">{t('login.username')}</ButtonBubble>
+						<ButtonBubble type="submit" loading={loginMutate.isLoading}>
+							{t('login.username')}
+						</ButtonBubble>
 					</Stack>
 				</Box>
 			) : (
