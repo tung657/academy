@@ -1,107 +1,112 @@
-@import "@/assets/scss/variables";
+@import '@/assets/scss/variables';
 
 .footer {
-  background-color: var(--mantine-color-gray-6);
-  padding-top: calc(var(--mantine-spacing-xl) * 2);
-  padding-bottom: calc(var(--mantine-spacing-sm) * 2);
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
-  position: relative;
+	background-color: var(--mantine-color-gray-6);
+	padding-top: calc(var(--mantine-spacing-xl) * 2);
+	padding-bottom: calc(var(--mantine-spacing-sm) * 2);
+	background-color: light-dark(
+		var(--mantine-color-gray-0),
+		var(--mantine-color-dark-6)
+	);
+	border-top: 1px solid
+		light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+	position: relative;
 
-  .footer-map {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
+	.footer-map {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 0;
 
-    img {
-      @include left-bounce();
-    }
-  }
+		img {
+			@include left-bounce();
+		}
+	}
 }
 
 .logo {
-  max-width: 300px;
+	max-width: 300px;
 
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+	@media (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 .description {
-  margin-top: 5px;
+	margin-top: 5px;
 
-  @media (max-width: 768px) {
-    margin-top: var(--mantine-spacing-xs);
-    text-align: center;
-  }
+	@media (max-width: 768px) {
+		margin-top: var(--mantine-spacing-xs);
+		text-align: center;
+	}
 }
 
 .inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  z-index: 1;
-  position: relative;
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	z-index: 1;
+	position: relative;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-  }
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: center;
+	}
 }
 
 .groups {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 
-  @media (max-width: 768px) {
-    // display: none;
-  }
+	@media (max-width: 768px) {
+		// display: none;
+	}
 }
 
 .wrapper {
-  width: 160px;
+	width: 160px;
 }
 
 .link {
-  display: block;
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
-  font-size: var(--mantine-font-size-sm);
-  padding-top: 3px;
-  padding-bottom: 3px;
+	display: block;
+	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
+	font-size: var(--mantine-font-size-sm);
+	padding-top: 3px;
+	padding-bottom: 3px;
 
-  &:hover {
-    text-decoration: underline;
-  }
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 .title {
-  font-size: var(--mantine-font-size-lg);
-  font-weight: 700;
-  font-family:
-    Greycliff CF,
-    var(--mantine-font-family);
-  margin-bottom: calc(var(--mantine-spacing-xs) / 2);
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+	font-size: var(--mantine-font-size-lg);
+	font-weight: 700;
+	font-family:
+		Greycliff CF,
+		var(--mantine-font-family);
+	margin-bottom: calc(var(--mantine-spacing-xs) / 2);
+	color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 }
 
 .afterFooter {
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: var(--mantine-spacing-xl);
-  padding-top: var(--mantine-spacing-xl);
-  border-top: 1px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
+	z-index: 1;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: var(--mantine-spacing-xl);
+	padding-top: var(--mantine-spacing-xl);
+	border-top: 1px solid
+		light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-4));
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
 }
 
 .social {
-  margin-top: var(--mantine-spacing-xs);
+	margin-top: var(--mantine-spacing-xs);
 }

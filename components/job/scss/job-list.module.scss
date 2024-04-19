@@ -8,19 +8,6 @@
 		background-position: 50%;
 	}
 
-	.breadcrumb {
-		.link {
-			color: var(--mantine-color-text);
-			transition: 0.3s;
-			text-decoration: none;
-			padding: 4px;
-
-			&:hover {
-				color: var(--mantine-color-primary-filled);
-			}
-		}
-	}
-
 	.shape-1 {
 		position: absolute;
 		top: 25%;

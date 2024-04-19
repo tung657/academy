@@ -1,17 +1,17 @@
-@import "@/assets/scss/variables";
+@import '@/assets/scss/variables';
 
 .title {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  color: var(--mantine-color-primary-filled);
-  font-weight: 700;
-  font-size: 15px;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+	color: var(--mantine-color-primary-filled);
+	font-weight: 700;
+	font-size: 15px;
 
-  img {
-    margin-right: 5px;
-    @include rotate-animate();
-  }
+	img {
+		margin-right: 5px;
+		@include rotate-animate();
+	}
 }

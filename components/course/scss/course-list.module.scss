@@ -1,11 +1,11 @@
 .section {
-   .title {
-    text-decoration: none;
-    color: inherit;
-    transition: .3s;
-    
-    &:hover {
-      color: var(--mantine-color-primary-filled);
-    }
-   }
-  }
+	.title {
+		text-decoration: none;
+		color: inherit;
+		transition: 0.3s;
+
+		&:hover {
+			color: var(--mantine-color-primary-filled);
+		}
+	}
+}
