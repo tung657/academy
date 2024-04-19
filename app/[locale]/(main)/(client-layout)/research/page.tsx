@@ -1,4 +1,4 @@
-import { Research } from '@/components/research/Research';
+import { ResearchList } from '@/components/research/ResearchList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { AppConfig } from '@/utils';
 import { getTranslations } from 'next-intl/server';
@@ -19,7 +19,7 @@ export default function ResearchPage() {
 	return (
 		<>
 			<Breadcrumb />
-			<Research />
+			<ResearchList />
 		</>
 	);
 }

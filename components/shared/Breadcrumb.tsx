@@ -54,7 +54,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 					direction="column"
 					justify={{ base: 'center', lg: 'flex-start' }}
 					align={{ base: 'center', lg: 'flex-start' }}
-					pt={{ base: rem(120), md: rem(130), lg: rem(170) }}
+					pt={{ base: rem(60), md: rem(70), lg: rem(100) }}
 					pb={{ base: rem(60), md: rem(70), lg: rem(100) }}
 				>
 					<TitleRender
@@ -72,7 +72,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 					<Breadcrumbs
 						className={classes.breadcrumb}
 						style={{ flexWrap: 'wrap' }}
-						separatorMargin={2}
+						separatorMargin={0}
 						separator={
 							<IconChevronRight
 								color="var(--mantine-color-primary-filled)"
@@ -90,12 +90,12 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 									key={index}
 									href={item?.href || ''}
 								>
-									<Text fz={rem(16)} fw={600}>
+									<Text fz={rem(16)} fw={600} p={4}>
 										{item.title}
 									</Text>
 								</Link>
 							) : (
-								<Text fz={rem(16)} key={index} fw={400} c={'dimmed'}>
+								<Text fz={rem(16)} key={index} fw={400} c={'dimmed'} p={4}>
 									{item.title}
 								</Text>
 							),

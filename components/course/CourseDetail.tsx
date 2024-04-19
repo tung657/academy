@@ -67,13 +67,14 @@ const segmentData: SegmentedControlItem[] = [
 ];
 interface Props {
 	props?: typeof dataInterface;
+	isMobile?: boolean;
 }
 
 export const CourseDetail = ({ props }: Props): JSX.Element => {
 	const isMobile = useMediaQuery('(max-width: 62em)');
 	const [showInfo, setShowInfo] = useState<string[]>([]);
 	const [valueSegment, setValueSegment] = useState(segmentData[0].value);
-	const [opened, { open, close }] = useDisclosure();
+
 	const [scroll] = useWindowScroll();
 	const { scrollIntoView: scrollOverview, targetRef: overviewRef } =
 		useScrollIntoView<HTMLDivElement>({
@@ -412,52 +413,62 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 							</Box>
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 4 }}>
-							<Card shadow="xs" radius={'sm'} mt={isMobile ? 0 : -170}>
-								<div className={classes.video} onClick={open}>
-									<AspectRatio ratio={16 / 9} mx="auto">
-										<Image
-											width={319}
-											height={184}
-											radius={'md'}
-											w={'100%'}
-											h={'100%'}
-											src={
-												'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
-											}
-											alt="about"
-										/>
-										<Overlay radius={'md'} opacity={0.35} />
-									</AspectRatio>
-								</div>
-
-								<Flex gap={16} my={16}>
-									<Text c="primary">
-										<IconClock stroke={1.2} />
-									</Text>
-
-									<Text>{props?.time}</Text>
-								</Flex>
-
-								<Divider />
-
-								<Flex gap={16} my={16}>
-									<Text c="primary">
-										<IconBook stroke={1.2} />
-									</Text>
-
-									<Text>
-										{props?.courses.reduce(
-											(prev, curr) => prev + curr.videos.length,
-											0,
-										)}{' '}
-										bài
-									</Text>
-								</Flex>
-							</Card>
+							<CoursePreview props={props} isMobile={isMobile} />
 						</Grid.Col>
 					</Grid>
 				</Box>
 			</Container>
+		</section>
+	);
+};
+
+function CoursePreview({ props, isMobile }: Props) {
+	const [opened, { open, close }] = useDisclosure();
+
+	return (
+		<>
+			<Card shadow="xs" radius={'sm'} mt={isMobile ? 0 : -170}>
+				<div className={classes.video} onClick={open}>
+					<AspectRatio ratio={16 / 9} mx="auto">
+						<Image
+							width={319}
+							height={184}
+							radius={'md'}
+							w={'100%'}
+							h={'100%'}
+							src={
+								'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
+							}
+							alt="about"
+						/>
+						<Overlay radius={'md'} opacity={0.35} />
+					</AspectRatio>
+				</div>
+
+				<Flex gap={16} my={16}>
+					<Text c="primary">
+						<IconClock stroke={1.2} />
+					</Text>
+
+					<Text>{props?.time}</Text>
+				</Flex>
+
+				<Divider />
+
+				<Flex gap={16} my={16}>
+					<Text c="primary">
+						<IconBook stroke={1.2} />
+					</Text>
+
+					<Text>
+						{props?.courses.reduce(
+							(prev, curr) => prev + curr.videos.length,
+							0,
+						)}{' '}
+						bài
+					</Text>
+				</Flex>
+			</Card>
 
 			<Modal
 				opened={opened}
@@ -478,6 +489,6 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 					</AspectRatio>
 				</div>
 			</Modal>
-		</section>
+		</>
 	);
-};
+}
