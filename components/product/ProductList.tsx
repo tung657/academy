@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Grid, Text, Image, ColorPicker, Card, Flex } from '@mantine/core';
+import { Box, Grid, Text, Image, Card, Flex } from '@mantine/core';
 import classes from './scss/product.module.scss';
 import { IconArrowRight } from '@tabler/icons-react';
 import Link from 'next/link';

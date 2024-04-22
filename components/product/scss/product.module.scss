@@ -49,3 +49,19 @@
     }
   }
 }
+.img-box {
+        
+  transform: translate(0, 0);
+  
+  position: relative;
+  overflow: visible;
+  justify-content: center;
+  align-items: center;
+ 
+
+  .img {
+    z-index: 2;
+    border-radius: 50%;
+    
+  }
+}
