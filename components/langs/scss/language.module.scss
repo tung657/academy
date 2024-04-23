@@ -1,8 +1,8 @@
 .combobox {
-  :global {
-    .mantine-Select-option[data-checked="true"] {
-      background-color: var(--mantine-primary-color-filled);
-      color: var(--mantine-color-white);
-    }
-  }
+	:global {
+		.mantine-Select-option[data-checked='true'] {
+			background-color: var(--mantine-primary-color-filled);
+			color: var(--mantine-color-white);
+		}
+	}
 }

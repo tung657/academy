@@ -16,7 +16,7 @@ import { Key, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { featureSelectedState } from '@/store/feature/atom';
 import { FeatureDelete } from './components/FeatureDelete';
-import { InputSearch } from '../mantines/inputs/InputSearch';
+import { InputSearch } from '../../mantines/inputs/InputSearch';
 import { useSearchParams } from 'next/navigation';
 import { ActionTable } from './components/action/ActionTable';
 
@@ -44,7 +44,7 @@ export const FeatureTree = (): JSX.Element => {
 	return (
 		<Grid>
 			<Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
-				<Flex justify={'space-between'}>
+				<Flex justify={'space-between'} gap={16}>
 					<InputSearch />
 					<Button.Group>
 						<FeatureModal isCreate treeData={featuresTree} />

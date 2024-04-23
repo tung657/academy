@@ -1,45 +1,44 @@
-@import "@/assets/scss/variables";
+@import '@/assets/scss/variables';
 
 .section {
-  background: transparent no-repeat 100% 0;
-  position: relative;
+	background: transparent no-repeat 100% 0;
+	position: relative;
 
-  @media only screen and (max-width: 768px) {
-    background-position: 50%;
-  }
+	@media only screen and (max-width: 768px) {
+		background-position: 50%;
+	}
 
-  .breadcrumb {
-    .link {
-      color: var(--mantine-color-text);
-      transition: .3s;
-      text-decoration: none;
+	.breadcrumb {
+		.link {
+			color: var(--mantine-color-text);
+			transition: 0.3s;
+			text-decoration: none;
+			padding: 4px;
 
-      &:hover {
-        color: var(--mantine-color-primary-filled);
-      }
-    }
-  }
+			&:hover {
+				color: var(--mantine-color-primary-filled);
+			}
+		}
+	}
 
-  .shape-1 {
-    position: absolute;
-    top: 25%;
-    left: 15%;
+	.shape-1 {
+		position: absolute;
+		top: 25%;
+		left: 15%;
 
-    img {
-      @include rotate-animate(10s);
+		img {
+			@include rotate-animate(10s);
+		}
+	}
 
-    }
-  }
-  
-  .shape-2 {
-    position: absolute;
-    top: 25%;
-    right: 5%;
-    opacity: .25;
+	.shape-2 {
+		position: absolute;
+		top: 25%;
+		right: 5%;
+		opacity: 0.25;
 
-    img {
-      @include rotate3d();
-
-    }
-  }
+		img {
+			@include rotate3d();
+		}
+	}
 }

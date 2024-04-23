@@ -1,17 +1,17 @@
 .section {
-  .icon-wrap {
-    height: 100%;
+	.icon-wrap {
+		height: 100%;
 
-    .icon {
-      color: var(--mantine-color-primary-filled);
-      transition: .5s;
-    }
+		.icon {
+			color: var(--mantine-color-primary-filled);
+			transition: 0.5s;
+		}
 
-    &:hover {
-      & .icon {
-        background-color: var(--mantine-color-primary-filled);
-        color: var(--mantine-color-white);
-      }
-    }
-  }
+		&:hover {
+			& .icon {
+				background-color: var(--mantine-color-primary-filled);
+				color: var(--mantine-color-white);
+			}
+		}
+	}
 }

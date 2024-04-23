@@ -1,121 +1,157 @@
 {
-  "global": {
-    "title_error": "Có lỗi xảy ra",
-    "title_notfound": "Không tìm thấy trang",
-    "btn_send_message": "Gửi tin nhắn",
-    "btn_cancel": "Trở lại",
-    "btn_save": "Lưu",
-    "btn_confirm": "Xác nhận",
-    "no_data": "Không có dữ liệu",
-    "address": {
-      "title": "Địa chỉ",
-      "content": "Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa Đô, quận Cầu Giấy, TP Hà Nội"
-    },
-    "contact": {
-      "title": "Liên hệ",
-      "phone": {
-        "title": "SĐT",
-        "value": "44457895789",
-        "label": "(+44) - 45789 - 5789"
-      },
-      "email": {"title": "Email", "value": "nxhoai@aiacademy.edu.vn"}
-    },
-    "open_time": {"title": "Giờ mở cửa", "content": "T2 - T6: 09:00 - 20:00"}
-  },
-  "nav": {
-    "home": "Trang chủ",
-    "about-us": "Về chúng tôi",
-    "course": "Khoá học",
-    "research": "Nghiên cứu",
-    "product": "Sản phẩm",
-    "contact": "Liên hệ",
-    "jobs": "Tuyển dụng",
-    "media": "Truyền thông"
-  },
-  "validation": {
-    "fields": {
-      "name": "Họ và tên",
-      "email": "Email",
-      "phone": "Số điện thoại",
-      "message": "Lời nhắn"
-    },
-    "required": "Trường này là bắt buộc",
-    "phone": "Số điện thoại không đúng định dạng",
-    "email": "Email không đúng định dạng"
-  },
-  "messages": {
-    "warning_delete": "Bạn có chắc chắn muốn xoá",
-    "success": {
-      "title": "Thành công",
-      "message": "Thao tác thành công"
-    },
-    "error": {
-      "title": "Thất bại",
-      "message": "Thao tác thất bại"
-    },
-    "warning": {
-      "title": "Cảnh báo",
-      "message": "Thao tác thất bại"
-    },
-    "info": {
-      "title": "Thông báo",
-      "message": "Thao tác thành công"
-    }
-  },
-  "login": {
-    "meta_title": "Hệ thống quản trị",
-    "meta_description": "Viện trí tuệ nhân tạo Việt Nam",
-    "heading_login": "Đăng nhập",
-    "heading_forget": "Quên mật khẩu",
-    "username": "Đăng nhập",
-    "password": "Mật khẩu",
-    "email": "Email",
-    "forget_password": "Quên mật khẩu"
-  },
-  "home": {
-    "meta_title": "Viện trí tuệ nhân tạo Việt Nam",
-    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
-  },
-  "product": {
-    "meta_title": "Sản phẩm",
-    "meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
-  },
-  "course": {
-    "meta_title": "Khoá học",
-    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
-  },
-  "research": {
-    "meta_title": "Nghiên cứu",
-    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
-  },
-  "contact": {
-    "meta_title": "Liên hệ",
-    "meta_description": "Viện trí tuệ nhân tạo Việt Nam"
-  },
+	"global": {
+		"title_error": "Có lỗi xảy ra",
+		"title_notfound": "Không tìm thấy trang",
+		"btn_send_message": "Gửi tin nhắn",
+		"btn_cancel": "Trở lại",
+		"btn_save": "Lưu",
+		"btn_confirm": "Xác nhận",
+		"no_data": "Không có dữ liệu",
+		"see_details": "Xem chi tiết",
+		"apply": "Ứng tuyển",
+		"address": {
+			"title": "Địa chỉ",
+			"content": "Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa Đô, quận Cầu Giấy, TP Hà Nội"
+		},
+		"contact": {
+			"title": "Liên hệ",
+			"phone": {
+				"title": "SĐT",
+				"value": "44457895789",
+				"label": "(+44) - 45789 - 5789"
+			},
+			"email": { "title": "Email", "value": "nxhoai@aiacademy.edu.vn" }
+		},
+		"open_time": { "title": "Giờ mở cửa", "content": "T2 - T6: 09:00 - 20:00" }
+	},
+	"nav": {
+		"home": "Trang chủ",
+		"about-us": "Về chúng tôi",
+		"course": "Khoá học",
+		"research": "Nghiên cứu",
+		"product": "Sản phẩm",
+		"contact": "Liên hệ",
+		"jobs": "Tuyển dụng",
+		"media": "Truyền thông"
+	},
+	"validation": {
+		"fields": {
+			"name": "Họ và tên",
+			"email": "Email",
+			"phone": "Số điện thoại",
+			"message": "Lời nhắn"
+		},
+		"required": "Trường này là bắt buộc",
+		"phone": "Số điện thoại không đúng định dạng",
+		"email": "Email không đúng định dạng"
+	},
+	"messages": {
+		"warning_delete": "Bạn có chắc chắn muốn xoá",
+		"success": {
+			"title": "Thành công",
+			"message": "Thao tác thành công"
+		},
+		"error": {
+			"title": "Thất bại",
+			"message": "Thao tác thất bại"
+		},
+		"warning": {
+			"title": "Cảnh báo",
+			"message": "Thao tác thất bại"
+		},
+		"info": {
+			"title": "Thông báo",
+			"message": "Thao tác thành công"
+		}
+	},
+	"login": {
+		"meta_title": "Hệ thống quản trị",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"heading_login": "Đăng nhập",
+		"heading_forget": "Quên mật khẩu",
+		"username": "Đăng nhập",
+		"password": "Mật khẩu",
+		"email": "Email",
+		"forget_password": "Quên mật khẩu"
+	},
+	"home": {
+		"meta_title": "Viện trí tuệ nhân tạo Việt Nam",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+	},
+	"product": {
+		"meta_title": "Sản phẩm",
+		"meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
+	},
+	"course": {
+		"meta_title": "Khoá học",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+	},
+	"research": {
+		"meta_title": "Nghiên cứu",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+	},
+	"job": {
+		"meta_title": "Tuyển dụng",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"title": "Tham gia cùng chúng tôi",
+		"description": "Chúng tôi không quan tâm lắm đến kinh nghiệm vốn có của bạn. Điều quan trọng là bạn có phải là người ham học hỏi, biết đứng dậy sau mỗi lần thất bại hay không. Làm việc tại AIA sẽ vất vả, nhưng những gì bạn nhận lại thì hoàn toàn xứng đáng.",
+		"title_modal": "Gửi CV",
+		"note_form": "Lưu ý: Nén nhiều file thành một file zip trước khi upload.",
+		"fields": {
+			"full_name": "Tên của bạn",
+			"email": "Email",
+			"phone": "Số điện thoại",
+			"facebook": "Địa chỉ Facebook",
+			"position": "Vị trí ứng tuyển",
+			"file": "CV đính kèm"
+		}
+	},
+	"contact": {
+		"meta_title": "Liên hệ",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+	},
 
-  "features": {
-    "heading": "Quản lý tính năng",
-    "title_create": "Thêm mới tính năng",
-    "title_update": "Chi tiết tính năng",
-    "title_delete": "Xoá tính năng",
-    "fields": {
-      "parent": "Nhóm tính năng",
-      "function_name": "Tên tính năng",
-      "sort_order": "Sắp xếp (ASC)",
-      "url": "Đường dẫn",
-      "description": "Mô tả"
-    }
-  },
-  "actions": {
-    "heading": "Quản lý thao tác",
-    "title_create": "Thêm mới thao tác",
-    "title_update": "Chi tiết thao tác",
-    "title_delete": "Xoá thao tác",
-    "fields": {
-      "action_code": "Nhóm thao tác",
-      "action_name": "Tên thao tác",
-      "description": "Mô tả",
-      "action": "Thao tác"
-    }
-  }
+	"features": {
+		"heading": "Quản lý tính năng",
+		"title_create": "Thêm mới tính năng",
+		"title_update": "Chi tiết tính năng",
+		"title_delete": "Xoá tính năng",
+		"fields": {
+			"parent": "Nhóm tính năng",
+			"function_name": "Tên tính năng",
+			"sort_order": "Sắp xếp (ASC)",
+			"url": "Đường dẫn",
+			"description": "Mô tả"
+		}
+	},
+	"actions": {
+		"heading": "Quản lý thao tác",
+		"title_create": "Thêm mới thao tác",
+		"title_update": "Chi tiết thao tác",
+		"title_delete": "Xoá thao tác",
+		"fields": {
+			"action_code": "Nhóm thao tác",
+			"action_name": "Tên thao tác",
+			"description": "Mô tả",
+			"action": "Thao tác"
+		}
+	},
+
+	"employees": {
+		"heading": "Quản lý nhân viên",
+		"title_create": "Thêm mới nhân viên",
+		"title_update": "Chi tiết nhân viên",
+		"title_delete": "Xoá nhân viên",
+		"fields": {
+			"serial": "STT",
+			"username": "Tài khoản",
+			"position": "Vị trí",
+			"full_name": "Họ và tên",
+			"phone_number": "Số điện thoại",
+			"gender": "Gender",
+			"birth": "Ngày sinh",
+			"email": "Email",
+			"action": "Thao tác"
+		}
+	}
 }

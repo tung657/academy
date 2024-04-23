@@ -57,7 +57,11 @@ export const FeatureDelete = (): JSX.Element => {
 
 	return (
 		<>
-			<ButtonTrash onClick={handleOpenModal} disabled={!featureSelected} />
+			<ButtonTrash
+				size="sm"
+				onClick={handleOpenModal}
+				disabled={!featureSelected}
+			/>
 			<ModalRender
 				opened={opened}
 				onClose={handleCloseModal}

@@ -16,6 +16,7 @@ const PRODUCT_DETAIL_URL = `${PRODUCT_URL}/:id`;
 const CONTACT_URL = '/contact';
 
 const JOB_URL = '/jobs';
+const JOB_DETAIL_URL = `${JOB_URL}/:id`;
 
 const MEDIA_URL = '/media';
 // -------------------------- END CLIENT --------------------------------------
@@ -38,6 +39,8 @@ export {
 	PRODUCT_URL,
 	PRODUCT_DETAIL_URL,
 	CONTACT_URL,
+	JOB_URL,
+	JOB_DETAIL_URL,
 	MEDIA_URL,
 
 	// Admin

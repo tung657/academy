@@ -1,19 +1,29 @@
+import { imgResearches } from '../images';
+
 export const researchTypeOptions = [
 	{
-		label: 'NGÔN NGỮ TỰ NHIÊN (NLP)',
-		value: 1,
+		thumbnail: imgResearches.img1,
+		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
+		id: 1,
+		title: 'Ngôn ngữ tự nhiên (NLP)',
 	},
 	{
-		label: 'THỊ GIÁC MÁY TÍNH (CV)',
-		value: 2,
+		label: 'Thị giác máy tính (CV)',
+		thumbnail: imgResearches.img2,
+		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
+		id: 2,
 	},
 	{
-		label: 'KHOA HỌC DỮ LIỆU (DS)',
-		value: 3,
+		label: 'Khoa học dữ liệu (DS)',
+		thumbnail: imgResearches.img3,
+		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
+		id: 3,
 	},
 	{
-		label: 'HỌC MÁY SÂU (DML)',
-		value: 4,
+		label: 'Học máy sâu (DML)',
+		thumbnail: imgResearches.img4,
+		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
+		id: 4,
 	},
 ];
 

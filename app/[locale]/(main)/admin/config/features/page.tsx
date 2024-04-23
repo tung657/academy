@@ -1,4 +1,4 @@
-import { FeatureTree } from '@/components/feature/FeatureTree';
+import { FeatureTree } from '@/components/admin/feature/FeatureTree';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

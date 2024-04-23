@@ -128,7 +128,7 @@ export const FeatureModal = ({
 	const handleSubmit = (values: any) => {
 		const dataPost: IFeature = {
 			...values,
-			url: (parentFeature?.url || '') + '/' + values.url,
+			url: (parentFeature?.url || '/admin') + '/' + values.url,
 			parent_id: parentFeature?.key || 0,
 			level: parentFeature?.level ? parentFeature.level + 1 : 1,
 		};
@@ -157,9 +157,13 @@ export const FeatureModal = ({
 	return (
 		<>
 			{isCreate ? (
-				<ButtonPlus onClick={handleOpenModal} />
+				<ButtonPlus size="sm" onClick={handleOpenModal} />
 			) : (
-				<ButtonEdit onClick={handleOpenModal} disabled={!featureSelected} />
+				<ButtonEdit
+					size="sm"
+					onClick={handleOpenModal}
+					disabled={!featureSelected}
+				/>
 			)}
 			<ModalRender
 				opened={opened}
@@ -227,7 +231,9 @@ export const FeatureModal = ({
 								required
 								label={
 									t('features.fields.url') +
-									` (${parentFeature?.url || ''}/${form.values?.url || ''})`
+									` (${parentFeature?.url || '/admin'}/${
+										form.values?.url || ''
+									})`
 								}
 								{...form.getInputProps('url')}
 							/>

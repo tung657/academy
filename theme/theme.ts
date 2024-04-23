@@ -14,7 +14,7 @@ const myColor: MantineColorsTuple = [
 ];
 
 export const theme = createTheme({
-	defaultRadius: 'md',
+	defaultRadius: 'lg',
 	colors: {
 		primary: myColor,
 	},
@@ -26,6 +26,22 @@ export const theme = createTheme({
 			defaultProps: {
 				fz: 16,
 				lh: 1.5,
+			},
+		},
+		TextInput: {
+			defaultProps: {
+				size: 'md',
+			},
+		},
+		Select: {
+			defaultProps: {
+				size: 'md',
+			},
+		},
+		Button: {
+			defaultProps: {
+				size: 'md',
+				loaderProps: { type: 'dots' },
 			},
 		},
 	},

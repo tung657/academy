@@ -1,110 +1,131 @@
 @mixin rotate-animate($duration: 40s) {
-  animation: rotate-animate;
-  animation-duration: $duration;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  
-  @keyframes rotate-animate {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(1turn);
-    }
-  }
+	animation: rotate-animate;
+	animation-duration: $duration;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	@keyframes rotate-animate {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(1turn);
+		}
+	}
 }
 
 @mixin left-bounce($duration: 5s) {
-  animation: left-bounce;
-  animation-duration: $duration;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  
-  @keyframes left-bounce {
-    0% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-20px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
+	animation: left-bounce;
+	animation-duration: $duration;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	@keyframes left-bounce {
+		0% {
+			transform: translateX(0);
+		}
+		50% {
+			transform: translateX(-20px);
+		}
+		100% {
+			transform: translateX(0);
+		}
+	}
 }
 
 @mixin rotate3d($duration: 4s) {
-  animation: rotate3d;
-  animation-duration: $duration;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  
-  @keyframes rotate3d {
-    0% {
-      transform: rotateY(0deg);
-    }
-    100% {
-      transform: rotateY(1turn);
-    }
-  }
+	animation: rotate3d;
+	animation-duration: $duration;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	@keyframes rotate3d {
+		0% {
+			transform: rotateY(0deg);
+		}
+		100% {
+			transform: rotateY(1turn);
+		}
+	}
 }
 
-@mixin resp-height($init: auto, $xs: $init, $sm: $init, $md: $init, $lg: $init, $xl: $init) {
-  height: $init;
+@mixin resp-height(
+	$init: auto,
+	$xs: $init,
+	$sm: $init,
+	$md: $init,
+	$lg: $init,
+	$xl: $init
+) {
+	height: $init;
 
-  @media only screen and (max-width: 1408px) {
-    height: $xl;
-  }
-  @media only screen and (max-width: 1200px) {
-    height: $lg;
-  }
-  @media only screen and (max-width: 992px) {
-    height: $md;
-  }
-  @media only screen and (max-width: 768px) {
-    height: $sm;
-  }
-  @media only screen and (max-width: 576px) {
-    height: $xs;
-  }
+	@media only screen and (max-width: 1408px) {
+		height: $xl;
+	}
+	@media only screen and (max-width: 1200px) {
+		height: $lg;
+	}
+	@media only screen and (max-width: 992px) {
+		height: $md;
+	}
+	@media only screen and (max-width: 768px) {
+		height: $sm;
+	}
+	@media only screen and (max-width: 576px) {
+		height: $xs;
+	}
 }
 
-@mixin resp-fz($init: initial, $xs: $init, $sm: $init, $md: $init, $lg: $init, $xl: $init) {
-  font-size: $init;
+@mixin resp-fz(
+	$init: initial,
+	$xs: $init,
+	$sm: $init,
+	$md: $init,
+	$lg: $init,
+	$xl: $init
+) {
+	font-size: $init;
 
-  @media only screen and (max-width: 1408px) {
-    font-size: $xl;
-  }
-  @media only screen and (max-width: 1200px) {
-    font-size: $lg;
-  }
-  @media only screen and (max-width: 992px) {
-    font-size: $md;
-  }
-  @media only screen and (max-width: 768px) {
-    font-size: $sm;
-  }
-  @media only screen and (max-width: 576px) {
-    font-size: $xs;
-  }
+	@media only screen and (max-width: 1408px) {
+		font-size: $xl;
+	}
+	@media only screen and (max-width: 1200px) {
+		font-size: $lg;
+	}
+	@media only screen and (max-width: 992px) {
+		font-size: $md;
+	}
+	@media only screen and (max-width: 768px) {
+		font-size: $sm;
+	}
+	@media only screen and (max-width: 576px) {
+		font-size: $xs;
+	}
 }
 
-@mixin resp-mw($init: initial, $xs: $init, $sm: $init, $md: $init, $lg: $init, $xl: $init) {
-  max-width: $init;
+@mixin resp-mw(
+	$init: initial,
+	$xs: $init,
+	$sm: $init,
+	$md: $init,
+	$lg: $init,
+	$xl: $init
+) {
+	max-width: $init;
 
-  @media only screen and (max-width: 1408px) {
-    max-width: $xl;
-  }
-  @media only screen and (max-width: 1200px) {
-    max-width: $lg;
-  }
-  @media only screen and (max-width: 992px) {
-    max-width: $md;
-  }
-  @media only screen and (max-width: 768px) {
-    max-width: $sm;
-  }
-  @media only screen and (max-width: 576px) {
-    max-width: $xs;
-  }
+	@media only screen and (max-width: 1408px) {
+		max-width: $xl;
+	}
+	@media only screen and (max-width: 1200px) {
+		max-width: $lg;
+	}
+	@media only screen and (max-width: 992px) {
+		max-width: $md;
+	}
+	@media only screen and (max-width: 768px) {
+		max-width: $sm;
+	}
+	@media only screen and (max-width: 576px) {
+		max-width: $xs;
+	}
 }

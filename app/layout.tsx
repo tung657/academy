@@ -39,7 +39,7 @@ export default function RootLayout({
 			<head>
 				<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-				<ColorSchemeScript />
+				<ColorSchemeScript defaultColorScheme="light" />
 			</head>
 			<body className={inter.className}>
 				<MantineProvider

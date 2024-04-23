@@ -1,111 +1,111 @@
 .carousel-wrap {
-  :global {
-    .mantine-Carousel-controls {
-      // bottom: 0;
-      top: 0;
-      justify-content: flex-end;
-      align-items: flex-end;
-      gap: 8px;
-      height: 100%;
+	:global {
+		.mantine-Carousel-controls {
+			// bottom: 0;
+			top: 0;
+			justify-content: flex-end;
+			align-items: flex-end;
+			gap: 8px;
+			height: 100%;
 
-      
-      button {
-        &[data-inactive] {
-          opacity: .35;
-          user-select: none;
-          cursor: not-allowed;
-        }
-        margin-bottom: 20px;
-        width: 50px;
-        height: 50px;
-        color: var(--mantine-color-primary-filled);
-        background-color: var(--mantine-color-white);
-        transition: .5s;
-        border-radius: 4px;
-        top: auto;
-        bottom: 10px;
+			button {
+				&[data-inactive] {
+					opacity: 0.35;
+					user-select: none;
+					cursor: not-allowed;
+				}
+				margin-bottom: 20px;
+				width: 50px;
+				height: 50px;
+				color: var(--mantine-color-primary-filled);
+				background-color: var(--mantine-color-white);
+				transition: 0.5s;
+				border-radius: 4px;
+				top: auto;
+				bottom: 10px;
 
-        &:hover {
-          color: var(--mantine-color-white);
-          background-color: var(--mantine-color-primary-filled);
-          border-color: var(--mantine-color-primary-filled);
-        }
+				&:hover {
+					color: var(--mantine-color-white);
+					background-color: var(--mantine-color-primary-filled);
+					border-color: var(--mantine-color-primary-filled);
+				}
 
-        svg {
-          width: 32px !important;
-          height: 32px !important;
-        }
-      }
-    }
-  }
+				svg {
+					width: 32px !important;
+					height: 32px !important;
+				}
+			}
+		}
+	}
 
-  .btn-icon {
-    background-color: var(--mantine-color-white);
-    transition: .3s;
-    
-    svg {
-      fill: var(--mantine-color-primary-filled);
-      transition: .3s;
-    }
+	.btn-icon {
+		background-color: var(--mantine-color-white);
+		transition: 0.3s;
 
-    &:hover {
-      background-color: var(--mantine-color-primary-filled);
+		svg {
+			fill: var(--mantine-color-primary-filled);
+			transition: 0.3s;
+		}
 
-      svg {
-        fill: var(--mantine-color-white);
-      }
-    }
-  }
+		&:hover {
+			background-color: var(--mantine-color-primary-filled);
 
-  .card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-size: cover;
-    background-position: center;
+			svg {
+				fill: var(--mantine-color-white);
+			}
+		}
+	}
 
-    .video {
-      position: relative;
-      cursor: pointer;
+	.card {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		background-size: cover;
+		background-position: center;
 
-      &::before {
-        position: absolute;
-        content: "";
-        width: 80px;
-        z-index: 222;
-        height: 80px;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        background: url('/assets/images/others/play.svg') no-repeat center / 64px;
-        transition: .3s;
-      }
+		.video {
+			position: relative;
+			cursor: pointer;
 
-      &:hover {
-        &::before {
-          transform: translate(-50%, -50%) scale(1.2);
-        }
-      }
-    }
-  }
-  
-  .title {
-    font-weight: 900;
-    color: var(--mantine-color-white);
-    line-height: 1.2;
-    // font-size: 32px;
-    margin-top: var(--mantine-spacing-xs);
-    cursor: default;
-  }
-  
-  .category {
-    color: var(--mantine-color-primary-filled);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: default;
-  }
+			&::before {
+				position: absolute;
+				content: '';
+				width: 80px;
+				z-index: 222;
+				height: 80px;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				background: url('/assets/images/others/play.svg') no-repeat center /
+					64px;
+				transition: 0.3s;
+			}
+
+			&:hover {
+				&::before {
+					transform: translate(-50%, -50%) scale(1.2);
+				}
+			}
+		}
+	}
+
+	.title {
+		font-weight: 900;
+		color: var(--mantine-color-white);
+		line-height: 1.2;
+		// font-size: 32px;
+		margin-top: var(--mantine-spacing-xs);
+		cursor: default;
+	}
+
+	.category {
+		color: var(--mantine-color-primary-filled);
+		font-weight: 700;
+		font-size: 14px;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		cursor: default;
+	}
 }

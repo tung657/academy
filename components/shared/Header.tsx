@@ -115,7 +115,9 @@ export default function Header(): JSX.Element {
 								style={{
 									width: rem(20),
 									height: rem(20),
-									transform: `rotate(${openCollapse[item.path] ? '-180deg' : '0deg'})`,
+									transform: `rotate(${
+										openCollapse[item.path] ? '-180deg' : '0deg'
+									})`,
 									transition: '0.3s',
 								}}
 								color={theme.colors.primary[6]}

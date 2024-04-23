@@ -34,6 +34,7 @@ export const ModalRender = ({ footer, ...props }: Props): JSX.Element => {
 				transition: 'fade-down',
 			}}
 			closeOnClickOutside={false}
+			zIndex={1000}
 			{...props}
 		>
 			<Modal.Overlay />

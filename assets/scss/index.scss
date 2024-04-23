@@ -1,16 +1,16 @@
-@import "./customize.scss";
-@import "./variables.scss";
+@import './customize.scss';
+@import './variables.scss';
 
 :root {
-  --primary-color: #ff5d22;
-  --background-primary: #fff;
-  --background-secondary: #f1f8fb;
+	--primary-color: #ff5d22;
+	--background-primary: #fff;
+	--background-secondary: #f1f8fb;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 // html {
@@ -18,6 +18,6 @@
 // }
 
 body {
-  font-size: 16px;
-  line-height: 1.5;
+	font-size: 16px;
+	line-height: 1.5;
 }
