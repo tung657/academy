@@ -6,7 +6,7 @@
 	z-index: 1010 !important;
 	margin-top: -8px;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	animation: fadeDown 0.3s ease-in-out;
+	animation: fadeDown 0.2s ease-in-out;
 
 	.option[data-checked='true'] {
 		background-color: var(--mantine-color-primary-light);

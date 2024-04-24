@@ -23,21 +23,30 @@ export interface IBaseDelete {
 }
 
 export interface IBaseData {
-	active_flag: number;
-	created_by_user_id: string;
-	created_user: string;
-	created_date_time: Date;
-	lu_updated: Date;
-	lu_user_id: string;
+	active_flag?: number;
+	created_by_user_id?: string;
+	created_user?: string;
+	created_date_time?: Date;
+	lu_updated?: Date;
+	lu_user_id?: string;
 	message?: string;
 	success?: boolean;
 }
 
-export interface IBaseResponse {
-	success: boolean;
+export interface IBaseResponse<T = any> {
 	message?: string;
+	data?: T;
+	pageCount?: number;
+	totalItems?: number;
+	success?: boolean;
 }
 
 export interface IBasePage {
 	params: { id: string };
+}
+
+export interface IBaseSearch {
+	page_size?: number;
+	page_index?: number;
+	search_content?: string;
 }

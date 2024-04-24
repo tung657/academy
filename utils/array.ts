@@ -79,3 +79,15 @@ export const compareDates = (a: any, b: any, key: string) => {
 
 	return 0;
 };
+
+export function convertToString(o: any) {
+	Object.keys(o).forEach((k) => {
+		if (o[k] && typeof o[k] === 'object') {
+			return convertToString(o[k]);
+		}
+
+		if (typeof o[k] === 'number') o[k] = '' + o[k];
+	});
+
+	return o;
+}

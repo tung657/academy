@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { JobList } from '@/components/job/JobList';
 
 export async function generateMetadata(props: { params: { locale: string } }) {

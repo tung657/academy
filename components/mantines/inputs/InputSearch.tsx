@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
-import { SEARCH_CONTENT, SEARCH_PAGE } from '@/utils';
+import { SEARCH_CONTENT, SEARCH_PAGE } from '@/utils/config';
 import { TextInput, TextInputProps, ActionIcon, rem } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';

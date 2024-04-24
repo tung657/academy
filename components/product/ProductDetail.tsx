@@ -21,7 +21,7 @@ import {
 	IconPhoneFilled,
 	IconPointFilled,
 } from '@tabler/icons-react';
-import { useGetSlideById } from '@/utils';
+import { useGetSlideById } from '@/utils/query-loader/slide.loader';
 
 export const ProductDetail = (): JSX.Element => {
 	useGetSlideById({

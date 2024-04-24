@@ -1,5 +1,6 @@
 import { NotificationData, notifications } from '@mantine/notifications';
 import { TitleRender } from '../typographies/TitleRender';
+import { Text } from '@mantine/core';
 
 type notificationType = 'success' | 'warning' | 'info' | 'error' | 'default';
 
@@ -15,7 +16,9 @@ export const getNotifications = (
 				{title || t(`messages.${type}.title`)}
 			</TitleRender>
 		),
-		message: message || t(`messages.${type}.message`),
+		message: (
+			<Text c={'gray.7'}>{message || t(`messages.${type}.message`)}</Text>
+		),
 		autoClose: 3000,
 	};
 

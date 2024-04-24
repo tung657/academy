@@ -13,7 +13,7 @@ import { theme } from '@/theme/theme';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 import GlobalError from './global-error';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { Notifications } from '@mantine/notifications';
 
 const inter = Nunito({ subsets: ['latin'] });

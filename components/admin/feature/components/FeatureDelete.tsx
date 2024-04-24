@@ -6,7 +6,11 @@ import { getNotifications } from '@/components/mantines/notification/getNotifica
 import { featureSelectedState } from '@/store/feature/atom';
 import { userState } from '@/store/user/atom';
 import { IBaseDelete } from '@/types';
-import { CACHE_FEATURE, queryClient, useDeleteFeature } from '@/utils';
+import {
+	CACHE_FEATURE,
+	useDeleteFeature,
+} from '@/utils/query-loader/feature.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
 import { Box, Center, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';

@@ -1,6 +1,6 @@
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 

@@ -22,8 +22,8 @@ import { dataJobs } from './data/data-fake';
 import { intlUSD } from '@/utils/format-number';
 import { Link } from '@/libs/i18n-navigation';
 import { useTranslations } from 'next-intl';
-import { getUrlDetail } from '@/utils';
 import { JOB_DETAIL_URL } from '@/libs/urls';
+import { getUrlDetail } from '@/utils/format-string';
 
 export const JobList = (): JSX.Element => {
 	const t = useTranslations();

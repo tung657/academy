@@ -1,8 +1,13 @@
 import { apiClient } from '@/helpers';
+import {
+	IBaseDelete,
+	IBaseResponse,
+	IEmployee,
+	ISearchEmployees,
+} from '@/types';
 import { IUser } from '@/types/user';
-import { AxiosRequestConfig } from 'axios';
 
-const prefix = '/users';
+const prefix = '/employees';
 
 interface Props {
 	user_name: string;
@@ -15,51 +20,57 @@ export const loginService = async (data: Props): Promise<any> => {
 	return res.data;
 };
 
-export const authorization = async (): Promise<any> => {
+export const authorization = async (): Promise<IBaseResponse> => {
 	const res = await apiClient?.get(`${prefix}/me`);
 
 	return res.data;
 };
 
-export const getEmployeeById = async (id: string | number): Promise<any> => {
+export const getEmployeeById = async (
+	id: string | number,
+): Promise<IEmployee> => {
 	const res = await apiClient?.get(`${prefix}/get-by-id/${id}`);
 
 	return res.data;
 };
 
-export const createEmployee = async (data: IUser): Promise<any> => {
+export const createEmployee = async (data: IUser): Promise<IBaseResponse> => {
 	const res = await apiClient?.post(`${prefix}/create`, data);
 
 	return res.data;
 };
 
-export const updateEmployee = async (data: IUser): Promise<any> => {
+export const updateEmployee = async (data: IUser): Promise<IBaseResponse> => {
 	const res = await apiClient?.put(`${prefix}/update`, data);
 
 	return res.data;
 };
 
-export const changePasswordEmployee = async (data: any): Promise<any> => {
+export const changePasswordEmployee = async (
+	data: any,
+): Promise<IBaseResponse> => {
 	const res = await apiClient?.post(`${prefix}/change-password`, data);
 
 	return res.data;
 };
 
-export const deleteEmployee = async (id: string | number): Promise<any> => {
-	const res = await apiClient?.delete(`${prefix}/delete/${id}`);
+export const deleteEmployee = async (
+	data: IBaseDelete,
+): Promise<IBaseResponse> => {
+	const res = await apiClient?.post(`${prefix}/delete`, data);
 
 	return res.data;
 };
 
-export const getNewPw = async (token: string) => {
-	const res = await apiClient?.get(`${prefix}/new-pw/` + token);
+export const getNewPw = async (id: string | number): Promise<IBaseResponse> => {
+	const res = await apiClient?.post(`${prefix}/new-pw/`, { employee_id: id });
 
 	return res.data;
 };
 
 export const searchEmployees = async (
-	params: AxiosRequestConfig['params'],
-): Promise<any> => {
+	params: ISearchEmployees,
+): Promise<IBaseResponse<IEmployee[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);
 
 	return res.data;

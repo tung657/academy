@@ -1,7 +1,7 @@
 import CryptoJS from 'crypto-js';
 
 import { storageService } from '@/utils/storage';
-import { LOCAL_USER } from '@/utils';
+import { LOCAL_USER } from '@/utils/config';
 
 export const ACCESSES = {
 	ADD_CUSTOMER: 'customer_add',

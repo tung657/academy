@@ -1,4 +1,4 @@
-import { IBaseData } from './global';
+import { IBaseData, IBaseSearch } from './global';
 
 export interface IRole extends IBaseData {
 	role_id: number;
@@ -7,10 +7,7 @@ export interface IRole extends IBaseData {
 	description: string;
 }
 
-export interface ISearchRole {
-	page_index: number;
-	page_size: number;
-	search_content: string;
+export interface ISearchRoles extends IBaseSearch {
 	role_name: string;
 	role_code: string;
 	description: string;

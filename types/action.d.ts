@@ -1,4 +1,4 @@
-import { IBaseData } from './global';
+import { IBaseData, IBaseSearch } from './global';
 
 export interface IAction extends IBaseData {
 	action_code: string;
@@ -7,10 +7,7 @@ export interface IAction extends IBaseData {
 	description: string;
 }
 
-export interface ISearchAction {
-	page_index?: number;
-	page_size?: number;
-	search_content?: string;
+export interface ISearchAction extends IBaseSearch {
 	function_id?: number;
 	action_code?: string;
 	action_name?: string;

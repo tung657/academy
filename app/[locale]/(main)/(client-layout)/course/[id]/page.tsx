@@ -2,7 +2,7 @@ import { CourseDetail } from '@/components/course/CourseDetail';
 import { dataCourses } from '@/components/course/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IBasePage } from '@/types';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: IBasePage) {

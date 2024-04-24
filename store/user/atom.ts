@@ -5,6 +5,7 @@ export const userState = atom<IUserStorage>({
 	key: 'userState',
 	default: {
 		user_id: '',
+		user_name: '',
 		first_name: '',
 		last_name: '',
 		full_name: '',

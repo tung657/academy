@@ -5,6 +5,7 @@ export const getRuleForms = (): UseFormInput<
 	(values: Record<string, unknown>) => Record<string, unknown>
 > => {
 	return {
-		validateInputOnChange: true,
+		validateInputOnChange: false,
+		validateInputOnBlur: true,
 	};
 };

@@ -1,16 +1,18 @@
 import { AxiosRequestConfig } from 'axios';
 
 import {
-	ExtractFnReturnType,
-	MutationConfig,
-	QueryConfig,
 	createSlide,
 	deleteSlide,
 	getSlideById,
 	searchSlides,
 	updateSlide,
-} from '..';
+} from '../services/slide.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import {
+	ExtractFnReturnType,
+	MutationConfig,
+	QueryConfig,
+} from './react-query';
 
 const CACHE_SLIDES = {
 	SEARCH: 'SLIDES',

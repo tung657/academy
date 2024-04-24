@@ -1,8 +1,8 @@
-import { IBaseData } from './global';
+import { IBaseData, IBaseSearch } from './global';
 
 export interface IEmployee extends IBaseData {
 	employee_id: string;
-	fullname: string;
+	full_name: string;
 	phone_number: string;
 	email: string;
 	position_id: number;
@@ -34,3 +34,5 @@ export interface IEmployee extends IBaseData {
 	user_role_id: string;
 	role_id: string;
 }
+
+export interface ISearchEmployees extends IBaseSearch {}

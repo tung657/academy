@@ -1,6 +1,6 @@
 import { Media } from '@/components/media/Media';
 import { getTranslations } from 'next-intl/server';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 
 export async function generateMetadata(props: { params: { locale: string } }) {

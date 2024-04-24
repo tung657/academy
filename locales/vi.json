@@ -9,6 +9,10 @@
 		"no_data": "Không có dữ liệu",
 		"see_details": "Xem chi tiết",
 		"apply": "Ứng tuyển",
+		"create": "Thêm mới",
+		"edit": "Chỉnh sửa",
+		"restore_pw": "Khôi phục mật khẩu",
+		"delete": "Xoá",
 		"address": {
 			"title": "Địa chỉ",
 			"content": "Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa Đô, quận Cầu Giấy, TP Hà Nội"
@@ -43,7 +47,8 @@
 		},
 		"required": "Trường này là bắt buộc",
 		"phone": "Số điện thoại không đúng định dạng",
-		"email": "Email không đúng định dạng"
+		"email": "Email không đúng định dạng",
+		"username": "Tài khoản từ 8 - 20 ký tự, không được chứa ký tự đặc biệt"
 	},
 	"messages": {
 		"warning_delete": "Bạn có chắc chắn muốn xoá",
@@ -142,15 +147,20 @@
 		"title_create": "Thêm mới nhân viên",
 		"title_update": "Chi tiết nhân viên",
 		"title_delete": "Xoá nhân viên",
+		"title_restore": "Reset mật khẩu",
+		"warning_reset": "Bạn có chắc muốn reset mật khẩu của",
 		"fields": {
 			"serial": "STT",
-			"username": "Tài khoản",
-			"position": "Vị trí",
+			"employee_id": "Tài khoản",
+			"branch": "Chi nhánh",
+			"position": "Chức vụ",
+			"role": "Quyền",
 			"full_name": "Họ và tên",
 			"phone_number": "Số điện thoại",
 			"gender": "Gender",
 			"birth": "Ngày sinh",
 			"email": "Email",
+			"address": "Địa chỉ",
 			"action": "Thao tác"
 		}
 	}

@@ -1,4 +1,4 @@
-import { PoolConnection, PoolOptions, createPool } from 'mysql2/promise';
+import { Pool, PoolConnection, PoolOptions, createPool } from 'mysql2/promise';
 
 const connectionConfig: PoolOptions = {
 	host: process.env.NEXT_PUBLIC_MYSQL_HOST,
@@ -6,7 +6,8 @@ const connectionConfig: PoolOptions = {
 	database: process.env.NEXT_PUBLIC_MYSQL_DATABASE,
 	user: process.env.NEXT_PUBLIC_MYSQL_USER,
 	password: process.env.MYSQL_PASSWORD,
-	enableKeepAlive: true,
+	// enableKeepAlive: true,
+	// connectionLimit: 10,
 };
 
 // export class Database {
@@ -16,13 +17,25 @@ const connectionConfig: PoolOptions = {
 // 		this.pool = createPool(connectionConfig);
 // 	}
 // }
+let globalPool: Pool | undefined = undefined;
+
+export async function connect(): Promise<PoolConnection> {
+	// If the pool was already created, return it instead of creating a new one.
+	if (typeof globalPool !== 'undefined') {
+		return globalPool.getConnection();
+	}
+
+	// If we have gotten this far, the pool doesn't exist, so lets create one.
+	globalPool = createPool(connectionConfig);
+	return globalPool.getConnection();
+}
+
 export async function query(sql: string, values: any[]): Promise<any> {
-	let connection: PoolConnection | null = null;
-	const pool = createPool(connectionConfig);
+	let connection = await connect();
 	try {
-		connection = await pool.getConnection();
 		const [results] = await connection.query(sql, values);
 		const [outParam] = await connection.query('SELECT @err_code, @err_msg');
+
 		let err: any = outParam;
 		if (err[0]['@err_code'] === 0) {
 			return results;
@@ -32,17 +45,13 @@ export async function query(sql: string, values: any[]): Promise<any> {
 	} catch (error) {
 		throw error;
 	} finally {
-		if (connection) {
-			connection.release();
-		}
+		connection?.release();
 	}
 }
 
 export async function queryList(sql: string, values: any[]): Promise<any> {
-	let connection: PoolConnection | null = null;
-	const pool = createPool(connectionConfig);
+	let connection = await connect();
 	try {
-		connection = await pool.getConnection();
 		const [results] = await connection.query(sql, values);
 		const [outParam] = await connection.query('SELECT @err_code, @err_msg');
 		let err: any = outParam;
@@ -54,8 +63,6 @@ export async function queryList(sql: string, values: any[]): Promise<any> {
 	} catch (error) {
 		throw error;
 	} finally {
-		if (connection) {
-			connection.release();
-		}
+		connection?.release();
 	}
 }

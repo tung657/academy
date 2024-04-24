@@ -1,6 +1,6 @@
 'use client';
 
-import { useSearchFeatures } from '@/utils';
+import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import {
 	ActionIcon,
 	AppShell,

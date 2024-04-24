@@ -1,4 +1,4 @@
-import { IBaseData } from './global';
+import { IBaseData, IBaseSearch } from './global';
 
 export interface IFeature extends IBaseData {
 	function_id?: number;
@@ -11,10 +11,7 @@ export interface IFeature extends IBaseData {
 	css_class?: string;
 }
 
-export interface ISearchFeatures {
-	page_index: number;
-	page_size: number;
-	search_content: string;
+export interface ISearchFeatures extends IBaseSearch {
 	function_id: number;
 	parent_id: number;
 }

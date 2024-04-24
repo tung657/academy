@@ -61,6 +61,10 @@
 	margin-top: 48px;
 }
 
+.mantine-Popover-dropdown {
+	z-index: 1010 !important;
+}
+
 // Scrollbar
 ::-webkit-scrollbar-thumb {
 	border-radius: 10px;

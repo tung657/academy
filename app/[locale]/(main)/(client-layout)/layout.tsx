@@ -1,5 +1,5 @@
 import { ClientLayout } from '@/components';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 import { Notifications } from '@mantine/notifications';
 

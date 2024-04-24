@@ -3,9 +3,10 @@ import { SignJWT } from 'jose';
 
 import { getJwtSecretKey, setUserDataCookie } from '@/helpers/auth';
 import { MD5 } from 'crypto-js';
-import { LOCAL_TOKEN, getFeatureTree } from '@/utils';
 import { authenticateRepository } from '@/helpers/repositories/user.repository';
 import { getFunctionByUserIdRepository } from '@/helpers/repositories/feature.repository';
+import { getFeatureTree } from '@/utils/array';
+import { LOCAL_TOKEN } from '@/utils/config';
 
 export interface IApiUserLoginRequest {
 	user_name: string;
@@ -83,7 +84,7 @@ export async function POST(request: NextRequest) {
 			value: token,
 			path: '/', // Accessible site-wide
 			maxAge: 86400, // 24-hours or whatever you like
-			httpOnly: true, // This prevents scripts from accessing
+			// httpOnly: true, // This prevents scripts from accessing
 			sameSite: 'strict', // This does not allow other sites to access
 		});
 

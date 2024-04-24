@@ -8,17 +8,17 @@ import {
 	loginService,
 	searchEmployees,
 	updateEmployee,
-} from '../services';
-import { AxiosRequestConfig } from 'axios';
+} from '../services/user.service';
 import {
 	ExtractFnReturnType,
 	MutationConfig,
 	QueryConfig,
 } from './react-query';
+import { ISearchEmployees } from '@/types';
 
 const CACHE_EMPLOYEES = {
 	SEARCH: 'EMPLOYEES',
-	DETAIL: 'EMPLOYEE',
+	DETAIL: 'EMPLOYEE_DETAIL',
 };
 
 const useLogin = ({
@@ -46,6 +46,20 @@ const useGetEmployeeById = ({
 		...config,
 		queryKey: [CACHE_EMPLOYEES.DETAIL, id],
 		queryFn: () => getEmployeeById(id),
+	});
+};
+
+const useRestorePw = ({
+	config,
+}: {
+	config?: MutationConfig<typeof getNewPw>;
+}) => {
+	return useMutation({
+		onMutate: () => {},
+		onError: () => {},
+		onSuccess: () => {},
+		...config,
+		mutationFn: getNewPw,
 	});
 };
 
@@ -109,27 +123,13 @@ const useSearchEmployees = ({
 	params,
 	config,
 }: {
-	params: AxiosRequestConfig['params'];
+	params: ISearchEmployees;
 	config?: QueryConfig<typeof searchEmployees>;
 }) => {
 	return useQuery<ExtractFnReturnType<typeof searchEmployees>>({
 		...config,
 		queryKey: [CACHE_EMPLOYEES.SEARCH, params],
 		queryFn: () => searchEmployees(params),
-	});
-};
-
-const useGetNewPw = ({
-	token,
-	config,
-}: {
-	token: string;
-	config?: QueryConfig<typeof getNewPw>;
-}) => {
-	return useQuery<ExtractFnReturnType<typeof getNewPw>>({
-		...config,
-		queryKey: [CACHE_EMPLOYEES.DETAIL, token],
-		queryFn: () => getNewPw(token),
 	});
 };
 
@@ -140,7 +140,7 @@ export {
 	useCreateEmployee,
 	useDeleteEmployee,
 	useGetEmployeeById,
-	useGetNewPw,
+	useRestorePw,
 	useSearchEmployees,
 	useUpdateEmployee,
 };

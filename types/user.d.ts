@@ -1,36 +1,49 @@
-import { IBaseData } from './base';
 import { IFeatureDataNode } from './feature';
+import { IBaseData, IBaseSearch } from './global';
 
 export interface IUser extends IBaseData {
 	email: string;
 	user_name: string;
 	user_id: string;
+	employee_id: string;
 	date_of_birth: string;
 	full_name: string;
 	description: string;
-	gender: number;
+	gender: number | string;
 	online_flag: number;
 	phone_number: string;
 	password: string;
-	position_id: number;
-	department_id: number;
+	position_id: number | string;
 	branch_id: number;
-	employee_customer_for_detail: ICustomerList[];
-	list_json_employee_customer: ICustomerList[];
+	user_role_id: string;
+	role_id: string;
+
+	profile_id: string;
+	type: string;
+	first_name: string;
+	middle_name: string;
+	last_name: string;
+	avatar: string;
+	is_guest: number;
 }
 
-export interface IUserSearch {
-	pageIndex?: number;
-	pageSize?: number;
-	search_content?: string | null;
+export interface ISearchUser extends IBaseSearch {
 	user_id?: string;
-	branch_id?: string | null;
-	department_id?: string | null;
-	customer_id?: string | null;
+	employee_id?: string;
+	position_id?: string;
+
+	user_name: string;
+	full_name: string;
+	gender: number;
+	date_of_birth: Date;
+	email: string;
+	phone_number: string;
+	description: string;
 }
 
 export interface IUserStorage {
 	user_id: string;
+	user_name: string;
 	first_name: string;
 	last_name: string;
 	full_name: string;

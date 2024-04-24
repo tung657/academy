@@ -7,7 +7,7 @@ import { TitleRender } from '../mantines/typographies/TitleRender';
 import { Sidebar } from '../shared/Sidebar';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/libs/i18n-navigation';
-import { LOCAL_USER } from '@/utils';
+import { LOCAL_USER } from '@/utils/config';
 import { useEffect } from 'react';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';

@@ -1,7 +1,7 @@
 import { ContactForm } from '@/components/contact/ContactForm';
 import { Contact } from '@/components/contact/Contact';
 import { Map } from '@/components/contact/Map';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(props: { params: { locale: string } }) {

@@ -9,15 +9,14 @@ import { getNotifications } from '@/components/mantines/notification/getNotifica
 import { featureSelectedState } from '@/store/feature/atom';
 import { userState } from '@/store/user/atom';
 import { IFeature, IFeatureDataNode } from '@/types';
+import { getNodeTree, removeEmptyObject } from '@/utils/array';
 import {
 	CACHE_FEATURE,
-	getNodeTree,
-	queryClient,
-	removeEmptyObject,
 	useCreateFeature,
 	useGetFeatureById,
 	useUpdateFeature,
-} from '@/utils';
+} from '@/utils/query-loader/feature.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
 import { getRuleForms } from '@/utils/validation';
 import {
 	Box,

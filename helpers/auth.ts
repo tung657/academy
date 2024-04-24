@@ -1,4 +1,4 @@
-import { LOCAL_USER } from '@/utils';
+import { LOCAL_USER } from '@/utils/config';
 import { JWTPayload, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 // import authConfig from '@/config/authConfig';

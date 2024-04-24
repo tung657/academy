@@ -1,6 +1,6 @@
 'use client';
 
-import { SEARCH_CONTENT, useSearchFeatures } from '@/utils';
+import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import {
 	Button,
 	Card,
@@ -19,6 +19,7 @@ import { FeatureDelete } from './components/FeatureDelete';
 import { InputSearch } from '../../mantines/inputs/InputSearch';
 import { useSearchParams } from 'next/navigation';
 import { ActionTable } from './components/action/ActionTable';
+import { SEARCH_CONTENT } from '@/utils/config';
 
 export const FeatureTree = (): JSX.Element => {
 	const searchParams = useSearchParams();

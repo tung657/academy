@@ -1,6 +1,6 @@
 import Loading from '@/app/loading';
 import AdminLayout from '@/components/layouts/AdminLayout';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import 'rc-tree/assets/index.css';

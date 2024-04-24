@@ -6,9 +6,13 @@ import {
 	getFeatureByRole,
 	searchFeatures,
 	updateFeature,
-} from '../services';
+} from '../services/feature.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { ExtractFnReturnType, MutationConfig, QueryConfig } from '..';
+import {
+	ExtractFnReturnType,
+	MutationConfig,
+	QueryConfig,
+} from './react-query';
 
 export const CACHE_FEATURE = {
 	SEARCH: 'FEATURES',

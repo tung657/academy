@@ -2,7 +2,7 @@ import { JobDetail } from '@/components/job/JobDetail';
 import { dataJobs } from '@/components/job/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IBasePage } from '@/types';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: IBasePage) {

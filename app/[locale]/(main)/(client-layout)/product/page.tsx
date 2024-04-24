@@ -1,6 +1,6 @@
 import { ProductList } from '@/components/product/ProductList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { AppConfig } from '@/utils';
+import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(props: { params: { locale: string } }) {

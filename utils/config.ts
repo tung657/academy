@@ -1,5 +1,5 @@
 import { LocalePrefix } from '@/types/global';
-import { storagePrefix } from '.';
+import { storagePrefix } from './storage';
 
 // as-needed help hide locale default
 const localePrefix: LocalePrefix = 'as-needed';
@@ -14,6 +14,7 @@ export const AppConfig = {
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const ERROR_TIMEOUT = 'read ECONNRESET';
+export const ERROR_MANY = 'Too many connections';
 
 export const LOCAL_TOKEN = storagePrefix + 'TOKEN';
 export const LOCAL_USER = storagePrefix + 'USER';

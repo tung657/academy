@@ -7,10 +7,10 @@ import { useTranslations } from 'next-intl';
 import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import { InputFloat } from '../mantines/inputs/InputFloat';
 import { TextAreaFloat } from '../mantines/inputs/TextAreaFloat';
-import { patterns } from '@/utils';
 import { imgContacts } from '@/assets/images/contact';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { IconCheck } from '@tabler/icons-react';
+import { patterns } from '@/utils/format-string';
 
 export const ContactForm = (): JSX.Element => {
 	const t = useTranslations();
