@@ -4,25 +4,27 @@ import { featureSelectedState } from '@/store/feature/atom';
 import { useSearchActions } from '@/utils/query-loader/action.loader';
 import { useMemo, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import {
-	MantineReactTable,
-	useMantineReactTable,
-	type MRT_ColumnDef,
-} from 'mantine-react-table';
+import { MRT_PaginationState, type MRT_ColumnDef } from 'mantine-react-table';
 import { IAction } from '@/types';
 import { useTranslations } from 'next-intl';
+import { RenderTableBasic } from '@/libs/table';
+import { ActionModal } from './ActionModal';
+import { Flex } from '@mantine/core';
+import { ActionDelete } from './ActionDelete';
 
 export const ActionTable = (): JSX.Element => {
 	const featureSelected = useRecoilValue(featureSelectedState);
 	const t = useTranslations();
-	const [page] = useState(1);
-	const [pageSize] = useState(10);
 	const [searchContent, setSearchContent] = useState('');
+	const [pagination, setPagination] = useState<MRT_PaginationState>({
+		pageIndex: 0,
+		pageSize: 10,
+	});
 
-	const { data: dataActions, isInitialLoading: isLoading } = useSearchActions({
+	const { data: dataActions, isFetching } = useSearchActions({
 		params: {
-			page_size: pageSize,
-			page_index: page,
+			page_index: pagination.pageIndex + 1,
+			page_size: pagination.pageSize,
 			function_id: Number(featureSelected?.key),
 			search_content: searchContent,
 		},
@@ -48,26 +50,31 @@ export const ActionTable = (): JSX.Element => {
 			{
 				header: t('actions.fields.action'),
 				size: 70,
+				Cell: ({ row: { original } }) => (
+					<Flex justify={'center'} gap={8}>
+						<ActionModal id={original.action_code} />
+						<ActionDelete
+							label={original.action_name}
+							id={original.action_code}
+						/>
+					</Flex>
+				),
 			},
 		],
 		[t],
 	);
 
-	const table = useMantineReactTable({
-		columns,
-		data: dataActions || [], //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
-		paginationDisplayMode: 'pages',
-		initialState: {
-			showGlobalFilter: true,
-		},
-		manualFiltering: true,
-		onGlobalFilterChange: setSearchContent,
-		state: {
-			isLoading,
-			showProgressBars: isLoading,
-			globalFilter: searchContent,
-		},
-	});
-
-	return <MantineReactTable table={table} />;
+	return (
+		<RenderTableBasic
+			columns={columns}
+			data={dataActions?.data}
+			pagination={pagination}
+			setPagination={setPagination}
+			searchContent={searchContent}
+			setSearchContent={setSearchContent}
+			isLoading={isFetching}
+			totalItems={dataActions?.totalItems}
+			TopAction={<ActionModal />}
+		/>
+	);
 };

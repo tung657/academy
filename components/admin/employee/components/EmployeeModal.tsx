@@ -198,6 +198,7 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 						<Grid.Col span={4}>
 							<TextInput
 								size="sm"
+								disabled={!!id}
 								label={t('employees.fields.employee_id')}
 								placeholder={t('employees.fields.employee_id')}
 								withAsterisk

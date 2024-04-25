@@ -1,6 +1,5 @@
 import { LocalePrefix } from '@/types/global';
 import { storagePrefix } from './storage';
-
 // as-needed help hide locale default
 const localePrefix: LocalePrefix = 'as-needed';
 
@@ -11,6 +10,8 @@ export const AppConfig = {
 	defaultLocale: 'vi',
 	localePrefix,
 };
+
+// For mantine notification
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 export const ERROR_TIMEOUT = 'read ECONNRESET';

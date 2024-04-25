@@ -30,7 +30,7 @@ export function InputSearch(props: TextInputProps) {
 			ref={inputRef}
 			radius="xl"
 			size="sm"
-			placeholder="Search questions"
+			placeholder="Tìm kiếm"
 			rightSectionWidth={34}
 			defaultValue={searchContent}
 			spellCheck={false}

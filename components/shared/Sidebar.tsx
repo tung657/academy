@@ -8,11 +8,20 @@ import {
 	Group,
 	NavLink,
 	ScrollArea,
+	Skeleton,
+	Stack,
 } from '@mantine/core';
 import classes from './scss/sidebar.module.scss';
-import { IconX } from '@tabler/icons-react';
+import {
+	IconCircleKey,
+	IconDashboard,
+	IconNotebook,
+	IconUsersGroup,
+	IconX,
+} from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
 import { usePathname } from '@/libs/i18n-navigation';
+import Link from 'next/link';
 
 export const Sidebar = ({ onClose }: any): JSX.Element => {
 	const tablet_match = useMediaQuery('(max-width: 768px)');
@@ -21,11 +30,19 @@ export const Sidebar = ({ onClose }: any): JSX.Element => {
 		params: {},
 	});
 
+	const icons = [
+		<IconDashboard key={'1'} stroke={1.3} />,
+		<IconUsersGroup key={'2'} stroke={1.3} />,
+		<IconNotebook key={'3'} stroke={1.3} />,
+		<IconCircleKey key={'4'} stroke={1.3} />,
+	];
+
 	const renderNav = (children: any[]) => {
 		if (children?.length === 0) return false;
-		return children?.map((item) => (
+		return children?.map((item, index) => (
 			<NavLink
-				defaultOpened
+				component={Link}
+				defaultOpened={pathname.includes(item.url)}
 				className={
 					pathname.includes(item.url)
 						? item.children.length > 0
@@ -33,6 +50,7 @@ export const Sidebar = ({ onClose }: any): JSX.Element => {
 							: classes.active
 						: ''
 				}
+				leftSection={item.level === 1 ? icons[index] : null}
 				classNames={classes}
 				key={item.key}
 				label={item.title}
@@ -69,7 +87,18 @@ export const Sidebar = ({ onClose }: any): JSX.Element => {
 			</nav>
 			<AppShell.Section>
 				<ScrollArea my="md" h={'calc(100vh - 100px)'}>
-					{isLoading ? 'Loading...' : renderNav(features || [])}
+					{isLoading ? (
+						<Stack gap={4}>
+							<Skeleton height={32} mt={6} radius="sm" />
+							<Skeleton height={32} mt={6} radius="sm" />
+							<Skeleton height={32} mt={6} radius="sm" />
+							<Skeleton height={32} mt={6} radius="sm" />
+							<Skeleton height={32} mt={6} radius="sm" />
+							<Skeleton height={32} mt={6} radius="sm" />
+						</Stack>
+					) : (
+						renderNav(features || [])
+					)}
 				</ScrollArea>
 			</AppShell.Section>
 		</>

@@ -22,11 +22,11 @@ export async function POST(request: NextRequest) {
 	const body = (await request.json()) as IApiUserLoginRequest;
 
 	// trim all input values
-	const { user_name, password } = Object.fromEntries(
+	const { user_name, password: pwd } = Object.fromEntries(
 		Object.entries(body).map(([key, value]) => [key, value?.trim()]),
 	) as IApiUserLoginRequest;
 
-	if (!user_name || !password) {
+	if (!user_name || !pwd) {
 		const res = {
 			success: false,
 			message: 'Vui lòng điền tài khoản hoặc mật khẩu',
@@ -37,10 +37,7 @@ export async function POST(request: NextRequest) {
 
 	try {
 		// Fetch our user from the database
-		const user = await authenticateRepository(
-			user_name,
-			MD5(password).toString(),
-		);
+		const user = await authenticateRepository(user_name, MD5(pwd).toString());
 		if (!user) {
 			return NextResponse.json({
 				success: false,
@@ -82,7 +79,7 @@ export async function POST(request: NextRequest) {
 		response.cookies.set({
 			name: LOCAL_TOKEN,
 			value: token,
-			path: '/', // Accessible site-wide
+			path: '/admin/', // Accessible site-wide
 			maxAge: 86400, // 24-hours or whatever you like
 			// httpOnly: true, // This prevents scripts from accessing
 			sameSite: 'strict', // This does not allow other sites to access
@@ -90,7 +87,8 @@ export async function POST(request: NextRequest) {
 
 		// Store public user data as a cookie
 		// const userData = user.exportPublic();
-		setUserDataCookie({ ...user, features: featureTree });
+		const { password, ...dataUser } = user;
+		setUserDataCookie({ ...dataUser, features: featureTree });
 
 		return response;
 	} catch (error: any) {

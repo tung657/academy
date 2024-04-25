@@ -83,7 +83,7 @@ export function setUserDataCookie(userData: any) {
 	cookieStore.set({
 		name: LOCAL_USER,
 		value: JSON.stringify(userData),
-		path: '/',
+		path: '/admin/',
 		maxAge: 86400, // 24 hours
 		sameSite: 'strict',
 	});

@@ -1,5 +1,8 @@
 'use client';
 
+import { useRouter } from '@/libs/i18n-navigation';
+import { LOGIN_URL } from '@/libs/urls';
+import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
 import {
 	ActionIcon,
 	Burger,
@@ -16,6 +19,7 @@ import {
 	IconPower,
 	IconSunHigh,
 } from '@tabler/icons-react';
+import { deleteCookie } from 'cookies-next';
 
 const ICON_SIZE = 20;
 
@@ -29,6 +33,15 @@ type HeaderNavProps = {
 const HeaderNav = (props: HeaderNavProps) => {
 	const { desktopOpened, toggleDesktop, toggleMobile, mobileOpened } = props;
 	const { setColorScheme, colorScheme } = useMantineColorScheme();
+	const navigation = useRouter();
+
+	const handleLogout = () => {
+		deleteCookie(LOCAL_TOKEN);
+		deleteCookie(LOCAL_USER);
+
+		navigation.push(LOGIN_URL);
+		navigation.refresh();
+	};
 
 	return (
 		<Group justify="space-between">
@@ -65,7 +78,7 @@ const HeaderNav = (props: HeaderNavProps) => {
 					</ActionIcon>
 				)} */}
 				<Tooltip label="Logout">
-					<ActionIcon>
+					<ActionIcon onClick={handleLogout}>
 						<IconPower size={ICON_SIZE} />
 					</ActionIcon>
 				</Tooltip>

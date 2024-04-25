@@ -12,7 +12,7 @@ export const getActionsDropdown = async (): Promise<any[]> => {
 
 export const searchActions = async (
 	params: AxiosRequestConfig['params'],
-): Promise<IAction[]> => {
+): Promise<IBaseResponse<IAction[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);
 
 	return res.data;

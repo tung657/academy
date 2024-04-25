@@ -26,3 +26,12 @@ export const decimalUSD2Number = new Intl.NumberFormat('en-US', {
 
 export const formatNumber = (value: any) =>
 	`${value}`.replace(/\B(?<!\.\d)(?=(\d{3})+(?!\d))/g, ',');
+
+export const calcTotalPages = (
+	pageSize: number | string,
+	totalItems?: number,
+): number => {
+	return (
+		(totalItems || 0) / +pageSize + ((totalItems || 0) % +pageSize ? 1 : 0)
+	);
+};
