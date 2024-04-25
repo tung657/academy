@@ -7,10 +7,10 @@ import { useTranslations } from 'next-intl';
 import { ModalRender } from '../mantines/modal/ModalRender';
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import { getRuleForms } from '@/utils/validation';
-import { patterns } from '@/utils';
 import { dataJobs } from '../job/data/data-fake';
 import { SelectRender } from '../mantines/inputs/SelectRender';
 import { IconFileCv } from '@tabler/icons-react';
+import { patterns } from '@/utils/format-string';
 
 interface Props extends ButtonCustomProps {
 	positionId?: number;
