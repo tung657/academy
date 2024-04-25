@@ -1,4 +1,4 @@
-import { IBranch, ISearchBranches } from '@/types';
+import { IBranch, ISearchBranches } from '@/types/branch';
 import { query } from '../db';
 
 export async function createBranch(branchModel: IBranch): Promise<any> {
