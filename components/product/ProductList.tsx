@@ -2,19 +2,7 @@
 
 import { useState } from 'react';
 
-import {
-	Box,
-	Card,
-	Container,
-	Divider,
-	Flex,
-	Grid,
-	Group,
-	Image,
-	Pagination,
-	Text,
-	useMantineTheme,
-} from '@mantine/core';
+import { Box, Divider, Grid, Image, Text } from '@mantine/core';
 
 import classes from './scss/product.module.scss';
 
@@ -22,24 +10,23 @@ import { SEARCH_PAGE, SEARCH_SIZE, getUrlDetail } from '@/utils';
 import Link from 'next/link';
 import { PRODUCT_DETAIL_URL } from '@/libs/urls';
 import { TitleRender } from '../mantines/typographies/TitleRender';
-import { IconArrowRight, IconCalendar } from '@tabler/icons-react';
+import { IconArrowRight } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
-import { usePathname, useRouter } from '@/libs/i18n-navigation';
+
 import { dataCourses } from '../course/data/data-fake';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { imgHome } from '@/assets/images/home';
-import { ProductDetail } from './ProductDetail';
+
 export const ProductList = (): JSX.Element => {
 	const searchParams = useSearchParams();
-	const router = useRouter();
-	const pathname = usePathname();
+
 	const page = searchParams.get(SEARCH_PAGE) || 1;
 	const pageSize = searchParams.get(SEARCH_SIZE) || 1;
 
-	const [dataPagination, setDataPagination] = useState(
+	const [dataPagination] = useState(
 		dataCourses.slice((+page - 1) * +pageSize, +pageSize * +page),
 	);
-	const theme = useMantineTheme();
+	// const theme = useMantineTheme();
 
 	// const handleChangePagination = (page: number, pageSizeNew?: number) => {
 	// 	const current = new URLSearchParams(searchParams.toString());
@@ -62,6 +49,7 @@ export const ProductList = (): JSX.Element => {
 			{dataPagination.map((item) => (
 				<Box
 					key={item.id}
+					pl={24}
 					pt={{ base: 20, md: 30, lg: 30 }}
 					pb={{ base: 30, md: 40, lg: 60 }}
 				>
