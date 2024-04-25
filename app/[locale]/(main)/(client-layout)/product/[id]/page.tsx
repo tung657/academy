@@ -1,3 +1,4 @@
+import { dataJobs } from '@/components/job/data/data-fake';
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { AppConfig } from '@/utils';
@@ -25,7 +26,7 @@ export default async function ProductDetailPage() {
 		<>
 			<Breadcrumb lastLabel={title} />
 			<Suspense>
-				<ProductDetail />
+				<ProductDetail dataDetail={dataJobs[0]}/>
 			</Suspense>
 		</>
 	);
