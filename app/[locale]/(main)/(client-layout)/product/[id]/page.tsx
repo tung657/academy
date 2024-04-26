@@ -26,7 +26,7 @@ export default async function ProductDetailPage() {
 		<>
 			<Breadcrumb lastLabel={title} />
 			<Suspense>
-				<ProductDetail dataDetail={dataJobs[0]}/>
+				<ProductDetail dataDetail={dataJobs[0]} />
 			</Suspense>
 		</>
 	);

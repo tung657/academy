@@ -71,7 +71,7 @@ export const Partner = (): JSX.Element => {
 										>
 											<Avatar
 												className={classes.img}
-												src={imgHome.howitswork}
+												src={imgHome.howItsWork}
 												alt="image"
 												w="50px"
 												h="50px"
