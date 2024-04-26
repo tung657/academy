@@ -5,7 +5,7 @@ export const researchTypeOptions = [
 		thumbnail: imgResearches.img1,
 		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
 		id: 1,
-		title: 'Ngôn ngữ tự nhiên (NLP)',
+		label: 'Ngôn ngữ tự nhiên (NLP)',
 	},
 	{
 		label: 'Thị giác máy tính (CV)',
@@ -31,6 +31,7 @@ export const dataResearches = [
 	{
 		type: 1,
 		label: `Phân loại tin tức tổ chức theo dạng cây`,
+		thumbnail: imgResearches.img1,
 		value: 1,
 		contents: [
 			`Nghiên cứu phát triển công cụ tự động phân loại tin tức dạng văn bản với chủ đề được tổ chức theo dạng cây (tiếng Việt và tiếng Anh).`,
@@ -42,6 +43,7 @@ export const dataResearches = [
 	{
 		type: 1,
 		label: `Tóm tắt văn bản`,
+		thumbnail: imgResearches.img1,
 		value: 2,
 		contents: [
 			`Các tin tức được xử lý, phân tích, phân cụm và phân loại đưa vào mục mà nội dung tin chứa đựng.`,
@@ -51,6 +53,7 @@ export const dataResearches = [
 	{
 		type: 1,
 		label: `Phân tích sắc thái của văn bản`,
+		thumbnail: imgResearches.img1,
 		value: 3,
 		contents: [
 			`Các tin tức được đánh giá định lượng theo mức độ ảnh hưởng để chủ đề, đặt tính nội dung hàm chứa trong tin`,
@@ -61,6 +64,7 @@ export const dataResearches = [
 	{
 		type: 1,
 		label: `Sản phẩm ứng dụng NLP`,
+		thumbnail: imgResearches.img1,
 		value: 4,
 		contents: [
 			`Các công nghệ lõi của AI Academy VietNam đã được đưa vào để xây dựng các ứng dụng thu thập, phân tích, đánh giá tin tức kết hợp với phân tích số liệu cho các thị trường thương mại quốc tế như thị trường thủy sản.`,
@@ -70,6 +74,7 @@ export const dataResearches = [
 	{
 		type: 2,
 		label: `Công nghệ giải pháp`,
+		thumbnail: imgResearches.img2,
 		value: 1,
 		contents: [
 			`Các công nghệ nhận dạng ảnh.`,
@@ -85,6 +90,7 @@ export const dataResearches = [
 	{
 		type: 3,
 		label: `Xử lý dữ liệu lớn`,
+		thumbnail: imgResearches.img3,
 		value: 1,
 		contents: [
 			`Triển khai xây dựng giải pháp phân tích dữ liệu lớn. Tối ưu hóa tài nguyên tính toán trên dữ liệu quy mô lớn và phát triển các ứng dụng phân tích dự đoán trên nền tảng BigData.`,
@@ -93,6 +99,7 @@ export const dataResearches = [
 	{
 		type: 3,
 		label: `Dữ liệu phi cấu trúc`,
+		thumbnail: imgResearches.img3,
 		value: 2,
 		contents: [
 			`Nghiên cứu các giải pháp biểu diễn cho dữ liệu phi cấu trúc như mạng xã hội, mạng giao thông, IoT… Tích hợp các giải pháp trích xuất đặc trưng từ dữ liệu phi cấu trúc làm dữ liệu đầu vào cho các bài toán phân tích, dự báo tổng thể.`,
@@ -101,6 +108,7 @@ export const dataResearches = [
 	{
 		type: 3,
 		label: `Dự báo dự đoán`,
+		thumbnail: imgResearches.img3,
 		value: 3,
 		contents: [
 			` Xây dựng, nghiên cứu phát triển các bài toán dự báo dự đoán như các bài toán về khai thác dầu khí, khí tượng thuỷ văn, phân tích mạng xã hội, chấm điểm tín dụng…`,
@@ -110,6 +118,7 @@ export const dataResearches = [
 	{
 		type: 4,
 		label: `Active learning và optimal learning`,
+		thumbnail: imgResearches.img4,
 		value: 1,
 		contents: [
 			`Nghiên cứu chuyên sâu về Active Learning dự báo dự đoán như các bài toán về khai thác dầu khí, khí tượng thuỷ văn,…, trợ giúp đưa kiến thức chuyên gia vào hệ thống và tăng cường độ chính xác mô hình.`,
@@ -121,12 +130,14 @@ export const dataResearches = [
 	{
 		type: 4,
 		label: `Hệ thống học củng cố`,
+		thumbnail: imgResearches.img4,
 		value: 2,
 		contents: [],
 	},
 	{
 		type: 4,
 		label: `Học máy tự động`,
+		thumbnail: imgResearches.img4,
 		value: 3,
 		contents: [],
 	},

@@ -123,6 +123,7 @@ function Card({ image, title, category, description }: Props) {
 										width={319}
 										height={184}
 										radius={'md'}
+										loading="lazy"
 										w={'100%'}
 										h={'100%'}
 										src={

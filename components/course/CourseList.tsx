@@ -70,6 +70,7 @@ export const CourseList = (): JSX.Element => {
 											height={250}
 											alt="Norway"
 											width={140}
+											loading="lazy"
 										/>
 									</Card.Section>
 

@@ -2,19 +2,19 @@
 
 import { Box, Container, Grid, Image, Text } from '@mantine/core';
 
-import Link from 'next/link';
-import { RESEARCH_DETAIL_URL } from '@/libs/urls';
 import { TitleRender } from '../mantines/typographies/TitleRender';
-import { IconArrowRight } from '@tabler/icons-react';
+import { dataResearches } from './data/data-fake';
 
-import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { getUrlDetail } from '@/utils/format-string';
-import { researchTypeOptions } from './data/data-fake';
+const dataInterface = dataResearches[0];
 
-export const ResearchList = (): JSX.Element => {
+interface Props {
+	dataDetail?: (typeof dataInterface)[];
+}
+
+export const ResearchDetail = ({ dataDetail }: Props): JSX.Element => {
 	return (
 		<>
-			{researchTypeOptions.map((research, index) => (
+			{dataDetail?.map((research, index) => (
 				<section
 					key={index}
 					className={index % 2 ? '' : 'background-secondary'}
@@ -30,18 +30,8 @@ export const ResearchList = (): JSX.Element => {
 										{research.label}
 									</TitleRender>
 									<Text pb={16} pl={16}>
-										{research.description}
+										{research.contents.join(' ')}
 									</Text>
-									<Link href={getUrlDetail(RESEARCH_DETAIL_URL, research.id)}>
-										<ButtonBubble
-											ml={16}
-											variant="filled"
-											size="md"
-											leftSection={<IconArrowRight />}
-										>
-											Xem chi tiết
-										</ButtonBubble>
-									</Link>
 								</Grid.Col>
 
 								<Grid.Col span={{ base: 12, md: 6 }} order={index % 2 ? 1 : 2}>

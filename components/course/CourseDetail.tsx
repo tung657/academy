@@ -119,6 +119,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 					height={650}
 					w={'100%'}
 					h={'auto'}
+					loading="lazy"
 					alt="banner course"
 				/>
 			</Box>
@@ -436,6 +437,7 @@ function CoursePreview({ props, isMobile }: Props) {
 							radius={'md'}
 							w={'100%'}
 							h={'100%'}
+							loading="lazy"
 							src={
 								'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
 							}

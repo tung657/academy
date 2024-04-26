@@ -150,6 +150,7 @@ export default function FooterLinks() {
 					w={'100%'}
 					h={'auto'}
 					alt="footer map"
+					loading="lazy"
 					width={693}
 					height={362}
 				/>

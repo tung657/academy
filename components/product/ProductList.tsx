@@ -1,54 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { Box, Container, Grid, Image, Text } from '@mantine/core';
 
-import { Box, Container, Divider, Grid, Image, Text } from '@mantine/core';
-
-import classes from './scss/product.module.scss';
-
-import { SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import Link from 'next/link';
 import { PRODUCT_DETAIL_URL } from '@/libs/urls';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconArrowRight } from '@tabler/icons-react';
-import { useSearchParams } from 'next/navigation';
 
-import { dataCourses } from '../course/data/data-fake';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { imgHome } from '@/assets/images/home';
+import { imgProduct } from '@/assets/images/product';
 import { getUrlDetail } from '@/utils/format-string';
 
 export const ProductList = (): JSX.Element => {
-	const searchParams = useSearchParams();
-
-	const page = searchParams.get(SEARCH_PAGE) || 1;
-	const pageSize = searchParams.get(SEARCH_SIZE) || 1;
-
-	const [dataPagination] = useState(
-		dataCourses.slice((+page - 1) * +pageSize, +pageSize * +page),
-	);
-	// const theme = useMantineTheme();
-
-	// const handleChangePagination = (page: number, pageSizeNew?: number) => {
-	// 	const current = new URLSearchParams(searchParams.toString());
-
-	// 	const data = dataCourses.slice(
-	// 		(page - 1) * (pageSizeNew || +pageSize),
-	// 		(pageSizeNew || +pageSize) * page,
-	// 	);
-
-	// 	current.set(SEARCH_PAGE, page.toString());
-	// 	pageSizeNew && current.set(SEARCH_SIZE, pageSizeNew.toString());
-
-	// 	setDataPagination(data);
-
-	// 	router.push(`${pathname}?${current}`);
-	// 	router.refresh();
-	// };
 	return (
-		<section className={classes.section}>
-			{dataPagination.map((item) => (
-				<Box key={item.id} pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
+		<>
+			<section className="background-secondary">
+				<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 					<Container size="xl">
 						<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 							<Grid.Col span={{ base: 12, md: 6 }}>
@@ -61,10 +28,7 @@ export const ProductList = (): JSX.Element => {
 									của BraveBits với định hướng phát triển cho mọi nền tảng
 									thương mại điện tử.
 								</Text>
-								<Link
-									className={classes.title}
-									href={getUrlDetail(PRODUCT_DETAIL_URL, item.id)}
-								>
+								<Link href={getUrlDetail(PRODUCT_DETAIL_URL, 1)}>
 									<ButtonBubble
 										ml={16}
 										variant="filled"
@@ -77,24 +41,31 @@ export const ProductList = (): JSX.Element => {
 							</Grid.Col>
 							<Grid.Col span={{ base: 12, md: 6 }}>
 								<Image
-									src={imgHome.product1}
+									src={imgProduct.prod1}
 									width={617}
 									height={389}
 									w={'100%'}
 									h={'auto'}
+									loading="lazy"
 									alt="about us"
 								/>
 							</Grid.Col>
 						</Grid>
-						<Divider />
+					</Container>
+				</Box>
+			</section>
+			<section>
+				<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
+					<Container size="xl">
 						<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 							<Grid.Col pt={100} pb={100} span={{ base: 12, md: 6 }}>
 								<Image
-									src={imgHome.product2}
+									src={imgProduct.prod2}
 									width={508}
 									height={358}
 									w={'100%'}
 									h={'auto'}
+									loading="lazy"
 									alt="about us"
 								/>
 							</Grid.Col>
@@ -114,10 +85,7 @@ export const ProductList = (): JSX.Element => {
 									sản phẩm và dịch vụ của chúng tôi. Sự thành công của khách
 									hàng chính là sự thành công của chúng tôi.
 								</Text>
-								<Link
-									className={classes.title}
-									href={getUrlDetail(PRODUCT_DETAIL_URL, item.id)}
-								>
+								<Link href={getUrlDetail(PRODUCT_DETAIL_URL, 1)}>
 									<ButtonBubble
 										ml={16}
 										variant="filled"
@@ -129,6 +97,12 @@ export const ProductList = (): JSX.Element => {
 								</Link>
 							</Grid.Col>
 						</Grid>
+					</Container>
+				</Box>
+			</section>
+			<section className="background-secondary">
+				<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
+					<Container size="xl">
 						<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 							<Grid.Col span={{ base: 12, md: 6 }}>
 								<Text fz={22} fw={700} c={'primary'} pb={16} pl={16}>
@@ -148,10 +122,7 @@ export const ProductList = (): JSX.Element => {
 									vào những yếu tố quan trọng, tối ưu chi phí phát triển 1 cách
 									tổng thể.
 								</Text>
-								<Link
-									className={classes.title}
-									href={getUrlDetail(PRODUCT_DETAIL_URL, item.id)}
-								>
+								<Link href={getUrlDetail(PRODUCT_DETAIL_URL, 1)}>
 									<ButtonBubble
 										ml={16}
 										variant="filled"
@@ -165,23 +136,31 @@ export const ProductList = (): JSX.Element => {
 
 							<Grid.Col span={{ base: 12, md: 6 }}>
 								<Image
-									src={imgHome.product3}
+									src={imgProduct.prod3}
 									width={470}
 									height={314}
 									w={'100%'}
 									h={'auto'}
+									loading="lazy"
 									alt="about us"
 								/>
 							</Grid.Col>
 						</Grid>
+					</Container>
+				</Box>
+			</section>
+			<section>
+				<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
+					<Container size="xl">
 						<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 							<Grid.Col pt={100} span={{ base: 12, md: 6 }}>
 								<Image
-									src={imgHome.product4}
+									src={imgProduct.prod4}
 									width={392}
 									height={292}
 									w={'100%'}
 									h={'auto'}
+									loading="lazy"
 									alt="about us"
 								/>
 							</Grid.Col>
@@ -200,10 +179,7 @@ export const ProductList = (): JSX.Element => {
 									khách hàng 24/7, hỗ trợ trực tiếp trong ứng dụng và hướng dẫn
 									sử dụng chi tiết cho khách hàng mới.
 								</Text>
-								<Link
-									className={classes.title}
-									href={getUrlDetail(PRODUCT_DETAIL_URL, item.id)}
-								>
+								<Link href={getUrlDetail(PRODUCT_DETAIL_URL, 1)}>
 									<ButtonBubble
 										ml={16}
 										variant="filled"
@@ -217,7 +193,7 @@ export const ProductList = (): JSX.Element => {
 						</Grid>
 					</Container>
 				</Box>
-			))}
-		</section>
+			</section>
+		</>
 	);
 };

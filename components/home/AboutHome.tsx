@@ -35,6 +35,7 @@ export const AboutHome = (): JSX.Element => {
 							src={imgHome.aboutMember}
 							width={2000}
 							height={1600}
+							loading="lazy"
 							w={'100%'}
 							h={'auto'}
 							alt="about us"

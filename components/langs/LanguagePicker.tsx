@@ -63,6 +63,7 @@ export function LanguagePicker({ ...props }: FlexProps) {
 					src={opt.image}
 					width={30}
 					height={20}
+					loading="lazy"
 					alt={opt.label}
 				/>
 			))}

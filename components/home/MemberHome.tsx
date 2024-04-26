@@ -68,6 +68,7 @@ export const MemberHome = (): JSX.Element => {
 											width={550}
 											height={550}
 											radius={'sm'}
+											loading="lazy"
 											alt={item.title}
 										/>
 										<Flex className={classes.socials}>

@@ -28,6 +28,7 @@ export const Media = (): JSX.Element => {
 											width={319}
 											height={184}
 											radius={'md'}
+											loading="lazy"
 											w={'100%'}
 											h={'100%'}
 											src={
