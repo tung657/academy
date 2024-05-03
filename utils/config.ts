@@ -19,7 +19,6 @@ export const ERROR_MANY = 'Too many connections';
 
 export const LOCAL_TOKEN = storagePrefix + 'TOKEN';
 export const LOCAL_USER = storagePrefix + 'USER';
-export const LOCAL_FEATURE = storagePrefix + 'FEATURE';
 export const LOCAL_COLOR = storagePrefix + 'COLOR';
 export const LOCAL_CUSTOMER = storagePrefix + 'CUSTOMER';
 export const LOCAL_EMPLOYEE = storagePrefix + 'EMPLOYEE';

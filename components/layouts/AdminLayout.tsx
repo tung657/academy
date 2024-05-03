@@ -11,13 +11,13 @@ import {
 	rem,
 	useMantineTheme,
 } from '@mantine/core';
-import { getCookie } from 'cookies-next';
+import { getCookie, setCookie } from 'cookies-next';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { Sidebar } from '../shared/Sidebar';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/libs/i18n-navigation';
-import { LOCAL_USER } from '@/utils/config';
+import { LOCAL_COLOR, LOCAL_USER } from '@/utils/config';
 import { useEffect, useState } from 'react';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';
@@ -40,7 +40,9 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 	const tablet_match = useMediaQuery('(max-width: 768px)');
 	const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
 	const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
-	const [primaryColor, setPrimaryColor] = useState(dataColors[0]);
+	const [primaryColor, setPrimaryColor] = useState(
+		getCookie(LOCAL_COLOR) || dataColors[0],
+	);
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
@@ -158,7 +160,10 @@ function ColorRender({
 							h={30}
 							bg={color}
 							style={{ border: '1px solid #fff' }}
-							onClick={() => setPrimaryColor(color)}
+							onClick={() => {
+								setPrimaryColor(color);
+								setCookie(LOCAL_COLOR, color);
+							}}
 						>
 							{primaryColor === color && <IconCheck />}
 						</ActionIcon>
