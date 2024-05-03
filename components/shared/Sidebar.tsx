@@ -3,6 +3,7 @@
 import {
 	ActionIcon,
 	AppShell,
+	Box,
 	Flex,
 	Group,
 	NavLink,
@@ -66,7 +67,7 @@ export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 
 	return (
 		<>
-			<nav className={classes.navbar}>
+			<Box component="nav" p={'md'} pb={0} className={classes.navbar}>
 				<div className={classes.header}>
 					<Flex justify="space-between" align="center" gap="sm">
 						<Group
@@ -83,8 +84,8 @@ export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 						)}
 					</Flex>
 				</div>
-			</nav>
-			<AppShell.Section>
+			</Box>
+			<AppShell.Section px={'md'}>
 				<ScrollArea my="md" h={'calc(100vh - 100px)'}>
 					{isLoading ? (
 						<Stack gap={4}>

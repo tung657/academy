@@ -1,10 +1,13 @@
 'use client';
 
 import {
+	ActionIcon,
 	AppShell,
 	Box,
 	Container,
+	Flex,
 	MantineProvider,
+	colorsTuple,
 	rem,
 	useMantineTheme,
 } from '@mantine/core';
@@ -15,15 +18,18 @@ import { Sidebar } from '../shared/Sidebar';
 import { useTranslations } from 'next-intl';
 import { usePathname } from '@/libs/i18n-navigation';
 import { LOCAL_USER } from '@/utils/config';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';
 import HeaderNav from '../header-nav/HeaderNav';
 import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
+import { IconCheck } from '@tabler/icons-react';
 
 interface Props {
 	children: React.ReactNode;
 }
+
+const dataColors = ['#0CA678', '#1098AD', '#C92A2A'];
 
 export default function AdminLayout({ children }: Props): JSX.Element {
 	const t = useTranslations();
@@ -34,6 +40,7 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 	const tablet_match = useMediaQuery('(max-width: 768px)');
 	const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
 	const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
+	const [primaryColor, setPrimaryColor] = useState(dataColors[0]);
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
@@ -64,6 +71,9 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 	return (
 		<MantineProvider
 			theme={{
+				colors: {
+					primary: colorsTuple(primaryColor),
+				},
 				defaultRadius: 'md',
 				components: {
 					TextInput: {
@@ -111,8 +121,12 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 						/>
 					</Container>
 				</AppShell.Header>
-				<AppShell.Navbar bg={'teal.7'} p={'md'} c={'white'}>
+				<AppShell.Navbar bg={'primary'} c={'white'}>
 					<Sidebar loading={isLoading} onClose={toggleMobile} />
+					<ColorRender
+						primaryColor={primaryColor}
+						setPrimaryColor={setPrimaryColor}
+					/>
 				</AppShell.Navbar>
 				<AppShell.Main>
 					<TitleRender order={2} pb={16}>
@@ -122,5 +136,35 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 				</AppShell.Main>
 			</AppShell>
 		</MantineProvider>
+	);
+}
+
+function ColorRender({
+	primaryColor,
+	setPrimaryColor,
+}: {
+	primaryColor: string;
+	setPrimaryColor: React.Dispatch<React.SetStateAction<string>>;
+}): JSX.Element {
+	return (
+		<>
+			<AppShell.Section mt={-16} p={8} bg={'rgba(0, 0, 0, .2)'}>
+				<Flex justify={'center'} gap={8}>
+					{dataColors.map((color) => (
+						<ActionIcon
+							radius={'xl'}
+							key={color}
+							w={30}
+							h={30}
+							bg={color}
+							style={{ border: '1px solid #fff' }}
+							onClick={() => setPrimaryColor(color)}
+						>
+							{primaryColor === color && <IconCheck />}
+						</ActionIcon>
+					))}
+				</Flex>
+			</AppShell.Section>
+		</>
 	);
 }
