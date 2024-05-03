@@ -1,4 +1,4 @@
-import { Button, Flex, Modal, ModalProps } from '@mantine/core';
+import { Button, Flex, FocusTrap, Modal, ModalProps } from '@mantine/core';
 import { TitleRender } from '../typographies/TitleRender';
 import { useTranslations } from 'next-intl';
 
@@ -49,32 +49,35 @@ export const ModalRender = ({ footer, ...props }: Props): JSX.Element => {
 						bg={'transparent'}
 					/>
 				</Modal.Header>
-				<Modal.Body pt={8}>{props.children}</Modal.Body>
-				{footer.hasContent && (
-					<div>
-						<Flex p={'md'} pt={0} justify={'flex-end'} gap={10}>
-							{footer.showCancelButton && (
-								<Button
-									variant="default"
-									onClick={footer.onCancel || props.onClose}
-								>
-									{footer.cancelText || t('btn_cancel')}
-								</Button>
-							)}
-							{footer.showOkButton && (
-								<Button
-									type="submit"
-									loading={footer.isConfirming}
-									loaderProps={{ type: 'dots' }}
-									onClick={footer.onOk}
-									onSubmit={footer.onOk}
-								>
-									{footer.okText || t('btn_save')}
-								</Button>
-							)}
-						</Flex>
-					</div>
-				)}
+				<FocusTrap active={props.opened}>
+					<Modal.Body pt={8}>{props.children}</Modal.Body>
+					{footer.hasContent && (
+						<div>
+							<Flex p={'md'} pt={0} justify={'flex-end'} gap={10}>
+								{footer.showCancelButton && (
+									<Button
+										variant="default"
+										onClick={footer.onCancel || props.onClose}
+									>
+										{footer.cancelText || t('btn_cancel')}
+									</Button>
+								)}
+								{footer.showOkButton && (
+									<Button
+										data-autofocus
+										type="submit"
+										loading={footer.isConfirming}
+										loaderProps={{ type: 'dots' }}
+										onClick={footer.onOk}
+										onSubmit={footer.onOk}
+									>
+										{footer.okText || t('btn_save')}
+									</Button>
+								)}
+							</Flex>
+						</div>
+					)}
+				</FocusTrap>
 			</Modal.Content>
 		</Modal.Root>
 	);

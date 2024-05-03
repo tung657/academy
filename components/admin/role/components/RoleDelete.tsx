@@ -5,28 +5,25 @@ import { getNotifications } from '@/components/mantines/notification/getNotifica
 import { userState } from '@/store/user/atom';
 import { IBaseDelete } from '@/types';
 import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_ACTION,
-	useDeleteAction,
-} from '@/utils/query-loader/action.loader';
 import { ActionIcon, Box, Center, Text, Tooltip } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconTrash } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+import { CACHE_ROLE, useDeleteRole } from '@/utils/query-loader/role.loader';
 
 interface Props {
 	label: string;
 	id: string | number;
 }
 
-export const ActionDelete = ({ label, id }: Props): JSX.Element => {
+export const RoleDelete = ({ label, id }: Props): JSX.Element => {
 	const [opened, { open, close }] = useDisclosure();
 	const t = useTranslations();
 
 	const userRecoil = useRecoilValue(userState);
 
-	const deleteQuery = useDeleteAction({
+	const deleteQuery = useDeleteRole({
 		config: {
 			onSuccess: async (data) => {
 				if (data.success === false) {
@@ -34,7 +31,7 @@ export const ActionDelete = ({ label, id }: Props): JSX.Element => {
 					return;
 				}
 				getNotifications('success', t, data.message);
-				await queryClient.invalidateQueries([CACHE_ACTION.SEARCH]);
+				await queryClient.invalidateQueries([CACHE_ROLE.SEARCH]);
 				handleCloseModal();
 			},
 			onError: (error) => {
@@ -45,7 +42,7 @@ export const ActionDelete = ({ label, id }: Props): JSX.Element => {
 
 	const handleSubmit = () => {
 		const dataPost: IBaseDelete = {
-			list_json: [{ action_code: id }],
+			list_json: [{ role_id: id }],
 			lu_user_id: userRecoil.user_id,
 		};
 

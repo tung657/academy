@@ -62,13 +62,14 @@ export const LoginForm = (): JSX.Element => {
 					return;
 				}
 				const redirectParam = searchParams.get('redirect');
-				await getNotifications('success', t, data.message);
+				getNotifications('success', t, data.message);
 
 				router.push(redirectParam || DASHBOARD_URL);
 				router.refresh();
 			},
 			onError: (error) => {
-				getNotifications('error', t, error.response?.data.message);
+				const message = error.response?.data.message || error.message;
+				getNotifications('error', t, message);
 			},
 		},
 	});

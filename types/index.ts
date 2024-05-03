@@ -3,7 +3,7 @@ export * from './employee';
 export * from './feature';
 export * from './global';
 export * from './position';
-export * from './role-function';
+export * from './role-feature';
 export * from './role-permission';
 export * from './role';
 export * from './slide';

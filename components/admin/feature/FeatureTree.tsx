@@ -20,6 +20,7 @@ import { InputSearch } from '../../mantines/inputs/InputSearch';
 import { useSearchParams } from 'next/navigation';
 import { ActionTable } from './components/action/ActionTable';
 import { SEARCH_CONTENT } from '@/utils/config';
+import { TitleRender } from '@/components/mantines/typographies/TitleRender';
 
 export const FeatureTree = (): JSX.Element => {
 	const searchParams = useSearchParams();
@@ -79,6 +80,9 @@ export const FeatureTree = (): JSX.Element => {
 			</Grid.Col>
 			<Grid.Col span={{ base: 12, md: 6, lg: 8 }}>
 				<Card shadow="sm">
+					<TitleRender order={3} pt={4} pb={8}>
+						Chi tiết tính năng
+					</TitleRender>
 					<ActionTable />
 				</Card>
 			</Grid.Col>

@@ -3,8 +3,9 @@ import { query } from '../db';
 
 export async function createRole(roleModel: IRole): Promise<any> {
 	try {
-		const sql = 'CALL InsertRole(?, ?, ?, @err_code, @err_msg)';
+		const sql = 'CALL InsertRole(?, ?, ?, ?, @err_code, @err_msg)';
 		await query(sql, [
+			roleModel.role_code,
 			roleModel.role_name,
 			roleModel.description,
 			roleModel.created_by_user_id,
@@ -58,12 +59,16 @@ export async function getRoleById(id: number): Promise<any> {
 
 export async function searchRole(search: ISearchRoles): Promise<any[]> {
 	try {
-		const sql = 'CALL SearchRoles(?, ?, ?, @err_code, @err_msg)';
+		const sql = 'CALL SearchRole(?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
 
 		const [results] = await query(sql, [
 			search.page_index || 0,
 			search.page_size || 0,
 			search.search_content,
+			null,
+			null,
+			null,
+			null,
 		]);
 		return results;
 	} catch (error: any) {

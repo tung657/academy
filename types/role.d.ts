@@ -8,7 +8,7 @@ export interface IRole extends IBaseData {
 }
 
 export interface ISearchRoles extends IBaseSearch {
-	role_name: string;
-	role_code: string;
-	description: string;
+	role_name?: string;
+	role_code?: string;
+	description?: string;
 }

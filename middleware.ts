@@ -33,6 +33,8 @@ const nextIntlMiddleware = createMiddleware({
 
 export default async function middleware(req: NextRequest) {
 	const BASE_URL = removePrefix(process.env.NEXT_PUBLIC_BASE_URL, '/api');
+	if (req.nextUrl.pathname === '/admin')
+		return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
 	const LOGIN = `${BASE_URL}${LOGIN_URL}?redirect=${
 		req.nextUrl.pathname + req.nextUrl.search
 	}`;

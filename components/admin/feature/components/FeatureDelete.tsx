@@ -22,9 +22,9 @@ export const FeatureDelete = (): JSX.Element => {
 
 	const [featureSelected, setFeatureSelected] =
 		useRecoilState(featureSelectedState);
-	const userProfile = useRecoilValue(userState);
+	const userRecoil = useRecoilValue(userState);
 
-	const deleteFeature = useDeleteFeature({
+	const deleteQuery = useDeleteFeature({
 		config: {
 			onSuccess: async (data) => {
 				if (data.success === false) {
@@ -45,10 +45,10 @@ export const FeatureDelete = (): JSX.Element => {
 	const handleSubmit = () => {
 		const dataPost: IBaseDelete = {
 			list_json: [{ function_id: featureSelected?.key }],
-			lu_user_id: userProfile.user_id,
+			lu_user_id: userRecoil.user_id,
 		};
 
-		deleteFeature.mutate(dataPost);
+		deleteQuery.mutate(dataPost);
 	};
 
 	const handleOpenModal = () => {
@@ -72,7 +72,7 @@ export const FeatureDelete = (): JSX.Element => {
 				title={t('features.title_delete')}
 				footer={{
 					onOk: () => handleSubmit(),
-					isConfirming: deleteFeature.isLoading,
+					isConfirming: deleteQuery.isLoading,
 					okText: t('global.btn_confirm'),
 				}}
 			>

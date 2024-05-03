@@ -6,8 +6,8 @@ const connectionConfig: PoolOptions = {
 	database: process.env.NEXT_PUBLIC_MYSQL_DATABASE,
 	user: process.env.NEXT_PUBLIC_MYSQL_USER,
 	password: process.env.MYSQL_PASSWORD,
-	// enableKeepAlive: true,
-	// connectionLimit: 10,
+	enableKeepAlive: true,
+	connectionLimit: 20,
 };
 
 // export class Database {

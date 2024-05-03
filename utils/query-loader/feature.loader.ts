@@ -39,7 +39,7 @@ const useGetFeatureByRole = ({
 	id,
 	config,
 }: {
-	id: string;
+	id: number;
 	config?: QueryConfig<typeof getFeatureByRole>;
 }) => {
 	return useQuery<ExtractFnReturnType<typeof getFeatureByRole>>({

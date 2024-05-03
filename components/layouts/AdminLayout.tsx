@@ -1,6 +1,13 @@
 'use client';
 
-import { AppShell, Box, Container, rem, useMantineTheme } from '@mantine/core';
+import {
+	AppShell,
+	Box,
+	Container,
+	MantineProvider,
+	rem,
+	useMantineTheme,
+} from '@mantine/core';
 import { getCookie } from 'cookies-next';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { TitleRender } from '../mantines/typographies/TitleRender';
@@ -12,6 +19,7 @@ import { useEffect } from 'react';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';
 import HeaderNav from '../header-nav/HeaderNav';
+import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 
 interface Props {
 	children: React.ReactNode;
@@ -30,52 +38,80 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
 
+	const { data: features, isLoading } = useSearchFeatures({
+		params: {},
+	});
+
 	useEffect(() => {
-		if (userData) {
-			setUserProfile(JSON.parse(userData));
+		if (userData && features) {
+			setUserProfile({ ...JSON.parse(userData), features });
 		}
 
 		return () => {
 			resetUserProfile();
 		};
-	}, [userData, setUserProfile, resetUserProfile]);
+	}, [userData, features, setUserProfile, resetUserProfile]);
 
 	return (
-		<AppShell
-			layout="alt"
-			header={{ height: 60 }}
-			navbar={{
-				width: 300,
-				breakpoint: 'md',
-				collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
+		<MantineProvider
+			theme={{
+				defaultRadius: 'md',
+				components: {
+					TextInput: {
+						defaultProps: {
+							size: 'sm',
+						},
+					},
+					Select: {
+						defaultProps: {
+							size: 'sm',
+						},
+					},
+					Button: {
+						defaultProps: {
+							size: 'sm',
+							loaderProps: { type: 'dots' },
+						},
+					},
+				},
 			}}
-			padding={'md'}
 		>
-			<AppShell.Header
-				style={{
-					height: rem(60),
-					border: 'none',
-					boxShadow: tablet_match ? theme.shadows.md : theme.shadows.sm,
+			<AppShell
+				layout="alt"
+				header={{ height: 60 }}
+				navbar={{
+					width: 300,
+					breakpoint: 'md',
+					collapsed: { mobile: !mobileOpened, desktop: !desktopOpened },
 				}}
+				padding={'md'}
 			>
-				<Container fluid py="sm" px="lg">
-					<HeaderNav
-						desktopOpened={desktopOpened}
-						mobileOpened={mobileOpened}
-						toggleDesktop={toggleDesktop}
-						toggleMobile={toggleMobile}
-					/>
-				</Container>
-			</AppShell.Header>
-			<AppShell.Navbar bg={'teal.7'} p={'md'} c={'white'}>
-				<Sidebar onClose={toggleMobile} />
-			</AppShell.Navbar>
-			<AppShell.Main>
-				<TitleRender order={2} pb={16}>
-					{t(`${path}.heading`)}
-				</TitleRender>
-				<Box>{children}</Box>
-			</AppShell.Main>
-		</AppShell>
+				<AppShell.Header
+					style={{
+						height: rem(60),
+						border: 'none',
+						boxShadow: tablet_match ? theme.shadows.md : theme.shadows.sm,
+					}}
+				>
+					<Container fluid py="sm" px="lg">
+						<HeaderNav
+							desktopOpened={desktopOpened}
+							mobileOpened={mobileOpened}
+							toggleDesktop={toggleDesktop}
+							toggleMobile={toggleMobile}
+						/>
+					</Container>
+				</AppShell.Header>
+				<AppShell.Navbar bg={'teal.7'} p={'md'} c={'white'}>
+					<Sidebar loading={isLoading} onClose={toggleMobile} />
+				</AppShell.Navbar>
+				<AppShell.Main>
+					<TitleRender order={2} pb={16}>
+						{t(`${path}.heading`)}
+					</TitleRender>
+					<Box>{children}</Box>
+				</AppShell.Main>
+			</AppShell>
+		</MantineProvider>
 	);
 }

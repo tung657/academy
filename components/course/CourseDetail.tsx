@@ -93,7 +93,6 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 		});
 
 	useEffect(() => {
-		// console.log(overviewRef)
 		if (
 			scroll.y <=
 			overviewRef?.current?.offsetTop + overviewRef?.current?.clientHeight - 130

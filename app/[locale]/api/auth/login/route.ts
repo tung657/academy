@@ -4,8 +4,6 @@ import { SignJWT } from 'jose';
 import { getJwtSecretKey, setUserDataCookie } from '@/helpers/auth';
 import { MD5 } from 'crypto-js';
 import { authenticateRepository } from '@/helpers/repositories/user.repository';
-import { getFunctionByUserIdRepository } from '@/helpers/repositories/feature.repository';
-import { getFeatureTree } from '@/utils/array';
 import { LOCAL_TOKEN } from '@/utils/config';
 
 export interface IApiUserLoginRequest {
@@ -45,9 +43,8 @@ export async function POST(request: NextRequest) {
 			});
 		}
 
-		let features = await getFunctionByUserIdRepository(user.user_id);
-		let featureTree = getFeatureTree(features, 1, 0);
-		user.features = featureTree;
+		// let features = await getFunctionByUserIdRepository(user.user_id);
+		// let featureTree = getFeatureTree(features, 1, 0);
 
 		const userModal = {
 			user_id: user.user_id,
@@ -88,7 +85,7 @@ export async function POST(request: NextRequest) {
 		// Store public user data as a cookie
 		// const userData = user.exportPublic();
 		const { password, ...dataUser } = user;
-		setUserDataCookie({ ...dataUser, features: featureTree });
+		setUserDataCookie({ ...dataUser });
 
 		return response;
 	} catch (error: any) {

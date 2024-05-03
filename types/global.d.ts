@@ -49,4 +49,5 @@ export interface IBaseSearch {
 	page_size?: number;
 	page_index?: number;
 	search_content?: string;
+	user_id?: string;
 }

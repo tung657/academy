@@ -42,6 +42,7 @@ export const theme = createTheme({
 			defaultProps: {
 				size: 'md',
 				loaderProps: { type: 'dots' },
+				gradient: { from: 'primary.3', to: 'primary.6', deg: 135 },
 			},
 		},
 	},

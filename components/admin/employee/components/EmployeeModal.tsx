@@ -26,7 +26,6 @@ import {
 	Box,
 	Button,
 	Grid,
-	Loader,
 	LoadingOverlay,
 	TextInput,
 	Textarea,
@@ -47,7 +46,7 @@ interface Props {
 export const EmployeeModal = ({ id }: Props): JSX.Element => {
 	const t = useTranslations();
 	const [opened, { close, open }] = useDisclosure();
-	const userProfile = useRecoilValue(userState);
+	const userRecoil = useRecoilValue(userState);
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
@@ -155,10 +154,10 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 
 		if (!id) {
 			// Create
-			dataPost.created_by_user_id = userProfile.user_id;
+			dataPost.created_by_user_id = userRecoil.user_id;
 			createEmployee.mutate(dataPost);
 		} else {
-			dataPost.lu_user_id = userProfile.user_id;
+			dataPost.lu_user_id = userRecoil.user_id;
 			updateEmployee.mutate(dataPost);
 		}
 	};
@@ -267,8 +266,7 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 										? branchOptions
 										: []
 								}
-								rightSection={loadingBranch ? <Loader size={'sm'} /> : null}
-								disabled={loadingBranch ? true : false}
+								loading={loadingBranch}
 								{...form.getInputProps('branch_id')}
 							/>
 						</Grid.Col>
@@ -283,8 +281,7 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 										? positionOptions
 										: []
 								}
-								rightSection={loadingPosition ? <Loader size={'sm'} /> : null}
-								disabled={loadingPosition ? true : false}
+								loading={loadingPosition}
 								{...form.getInputProps('position_id')}
 							/>
 						</Grid.Col>
@@ -295,8 +292,7 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 								placeholder={t('employees.fields.role')}
 								withAsterisk
 								data={roleOptions && roleOptions?.length > 0 ? roleOptions : []}
-								rightSection={loadingRole ? <Loader size={'sm'} /> : null}
-								disabled={loadingRole ? true : false}
+								loading={loadingRole}
 								{...form.getInputProps('role_id')}
 							/>
 						</Grid.Col>

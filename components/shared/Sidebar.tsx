@@ -1,6 +1,5 @@
 'use client';
 
-import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import {
 	ActionIcon,
 	AppShell,
@@ -22,13 +21,13 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 import { usePathname } from '@/libs/i18n-navigation';
 import Link from 'next/link';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/store/user/atom';
 
-export const Sidebar = ({ onClose }: any): JSX.Element => {
+export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 	const tablet_match = useMediaQuery('(max-width: 768px)');
 	const pathname = usePathname();
-	const { data: features, isLoading } = useSearchFeatures({
-		params: {},
-	});
+	const userRecoil = useRecoilValue(userState);
 
 	const icons = [
 		<IconDashboard key={'1'} stroke={1.3} />,
@@ -38,7 +37,7 @@ export const Sidebar = ({ onClose }: any): JSX.Element => {
 	];
 
 	const renderNav = (children: any[]) => {
-		if (children?.length === 0) return false;
+		if (!children?.length) return false;
 		return children?.map((item, index) => (
 			<NavLink
 				component={Link}
@@ -97,7 +96,7 @@ export const Sidebar = ({ onClose }: any): JSX.Element => {
 							<Skeleton height={32} mt={6} radius="sm" />
 						</Stack>
 					) : (
-						renderNav(features || [])
+						renderNav(userRecoil?.features || [])
 					)}
 				</ScrollArea>
 			</AppShell.Section>

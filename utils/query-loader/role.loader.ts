@@ -1,4 +1,3 @@
-import { AxiosRequestConfig } from 'axios';
 import {
 	getRoleDropdown,
 	createRole,
@@ -13,6 +12,7 @@ import {
 	MutationConfig,
 	QueryConfig,
 } from './react-query';
+import { ISearchRoles } from '@/types';
 
 export const CACHE_ROLE = {
 	SEARCH: 'ROLES',
@@ -53,7 +53,7 @@ const useSearchRoles = ({
 	params,
 	config,
 }: {
-	params: AxiosRequestConfig['params'];
+	params: ISearchRoles;
 	config?: QueryConfig<typeof searchRoles>;
 }) => {
 	return useQuery<ExtractFnReturnType<typeof searchRoles>>({

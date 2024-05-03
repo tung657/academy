@@ -40,7 +40,6 @@ export async function deleteActionRepository(
 	try {
 		const sql = 'CALL DeleteAction(?, ?, @err_code, @err_msg)';
 		await query(sql, [JSON.stringify(list_json), updated_by_id]);
-		console.log(JSON.stringify(list_json));
 		return true;
 	} catch (error: any) {
 		throw new Error(error.message);

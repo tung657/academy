@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
 import {
 	MRT_PaginationState,
+	MRT_TableOptions,
 	MantineReactTable,
 	useMantineReactTable,
 } from 'mantine-react-table';
@@ -17,9 +18,8 @@ import {
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { calcTotalPages } from '@/utils/format-number';
 
-interface Props {
+interface Props extends MRT_TableOptions<any> {
 	columns: any;
-	data?: any[];
 	totalItems?: number;
 	isLoading?: boolean;
 }
@@ -27,6 +27,7 @@ interface Props {
 interface ITableParams extends Props {
 	TopAction?: ReactNode;
 	enabledToolbar?: boolean;
+	enabledSearch?: boolean;
 }
 
 interface ITableBasic extends Props {
@@ -46,6 +47,8 @@ export const RenderTableParams = ({
 	isLoading = false,
 	TopAction = null,
 	enabledToolbar = true,
+	enabledSearch = true,
+	...props
 }: ITableParams): JSX.Element => {
 	const searchParams = useSearchParams();
 	const page = searchParams.get(SEARCH_PAGE) || 1;
@@ -87,8 +90,9 @@ export const RenderTableParams = ({
 		paginationDisplayMode: 'pages',
 		renderTopToolbarCustomActions: () => TopAction,
 		initialState: {
-			showGlobalFilter: true,
+			showGlobalFilter: enabledSearch,
 		},
+		enableGlobalFilter: enabledSearch,
 		enableToolbarInternalActions: enabledToolbar,
 		manualFiltering: true,
 		enableColumnActions: false,
@@ -101,10 +105,12 @@ export const RenderTableParams = ({
 		mantinePaginationProps: {
 			total: calcTotalPages(pageSize, totalItems),
 			size: 'sm',
+			rowsPerPageOptions: ['5', '10', '50', '100'],
 		},
 		mantineTopToolbarProps: {
-			display: TopAction || enabledToolbar ? 'grid' : 'none',
+			display: TopAction || enabledSearch || enabledToolbar ? 'grid' : 'none',
 		},
+		...props,
 		state: {
 			isLoading,
 			showProgressBars: isLoading,
@@ -113,6 +119,7 @@ export const RenderTableParams = ({
 				pageIndex: page ? +page - 1 : 0,
 				pageSize: pageSize ? +pageSize : 10,
 			},
+			...props.state,
 		},
 	});
 
@@ -131,6 +138,7 @@ export const RenderTableBasic = ({
 	setPagination,
 	searchContent,
 	setSearchContent,
+	...props
 }: ITableBasic): JSX.Element => {
 	const handleFilter = (value: string) => {
 		setPagination((prev) => ({
@@ -165,11 +173,13 @@ export const RenderTableBasic = ({
 		mantineTopToolbarProps: {
 			display: TopAction || enabledSearch || enabledToolbar ? 'grid' : 'none',
 		},
+		...props,
 		state: {
 			isLoading,
 			showProgressBars: isLoading,
 			globalFilter: searchContent,
 			pagination,
+			...props.state,
 		},
 	});
 

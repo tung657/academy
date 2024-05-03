@@ -62,7 +62,7 @@ export const FeatureModal = ({
 	});
 
 	const featureSelected = useRecoilValue(featureSelectedState);
-	const userProfile = useRecoilValue(userState);
+	const userRecoil = useRecoilValue(userState);
 	const [parentFeature, setParentFeature] = useState<
 		IFeatureDataNode | undefined
 	>(featureSelected);
@@ -90,7 +90,7 @@ export const FeatureModal = ({
 		},
 	});
 
-	const createFeature = useCreateFeature({
+	const createQuery = useCreateFeature({
 		config: {
 			onSuccess: async (data) => {
 				if (data.success === false) {
@@ -107,7 +107,7 @@ export const FeatureModal = ({
 		},
 	});
 
-	const updateFeature = useUpdateFeature({
+	const updateQuery = useUpdateFeature({
 		config: {
 			onSuccess: async (data) => {
 				if (data.success === false) {
@@ -133,11 +133,11 @@ export const FeatureModal = ({
 		};
 
 		if (isCreate) {
-			dataPost.created_by_user_id = userProfile.user_id;
-			createFeature.mutate(dataPost);
+			dataPost.created_by_user_id = userRecoil.user_id;
+			createQuery.mutate(dataPost);
 		} else {
-			dataPost.lu_user_id = userProfile.user_id;
-			updateFeature.mutate(dataPost);
+			dataPost.lu_user_id = userRecoil.user_id;
+			updateQuery.mutate(dataPost);
 		}
 	};
 
@@ -172,7 +172,7 @@ export const FeatureModal = ({
 				}
 				footer={{
 					onOk: form.onSubmit(handleSubmit),
-					isConfirming: updateFeature.isLoading || createFeature.isLoading,
+					isConfirming: updateQuery.isLoading || createQuery.isLoading,
 				}}
 			>
 				<Box component="form" onSubmit={form.onSubmit(handleSubmit)}>

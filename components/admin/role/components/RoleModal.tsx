@@ -3,12 +3,6 @@ import { getNotifications } from '@/components/mantines/notification/getNotifica
 import { userState } from '@/store/user/atom';
 import { convertToString } from '@/utils/array';
 import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_ACTION,
-	useCreateAction,
-	useGetActionDetail,
-	useUpdateAction,
-} from '@/utils/query-loader/action.loader';
 import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
@@ -25,34 +19,38 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
-import { featureSelectedState } from '@/store/feature/atom';
+import {
+	CACHE_ROLE,
+	useCreateRole,
+	useGetRoleById,
+	useUpdateRole,
+} from '@/utils/query-loader/role.loader';
 
 interface Props {
 	id?: string;
 }
 
-export const ActionModal = ({ id }: Props): JSX.Element => {
+export const RoleModal = ({ id }: Props): JSX.Element => {
 	const t = useTranslations();
 	const [opened, { close, open }] = useDisclosure();
 	const userRecoil = useRecoilValue(userState);
-	const featureSelected = useRecoilValue(featureSelectedState);
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
-			action_code: '',
-			action_name: '',
+			role_code: '',
+			role_name: '',
 			description: '',
 		},
 		validate: {
-			action_code: isNotEmpty(t('validation.required')),
-			action_name: isNotEmpty(t('validation.required')),
+			role_code: isNotEmpty(t('validation.required')),
+			role_name: isNotEmpty(t('validation.required')),
 		},
 	});
 
-	const getDetail = useGetActionDetail({
+	const getDetail = useGetRoleById({
 		id: id!,
-		enabled: !!id && opened,
 		config: {
+			enabled: !!id && opened,
 			onSuccess: (data) => {
 				if (!data.success && data.message) {
 					getNotifications('error', t, data.message);
@@ -67,7 +65,7 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 		},
 	});
 
-	const createQuery = useCreateAction({
+	const createQuery = useCreateRole({
 		config: {
 			onSuccess: (data) => {
 				if (!data.success && data.message) {
@@ -75,13 +73,13 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 					return;
 				}
 				getNotifications('success', t, data.message);
-				queryClient.invalidateQueries([CACHE_ACTION.SEARCH]);
+				queryClient.invalidateQueries([CACHE_ROLE.SEARCH]);
 				handleCancel();
 			},
 		},
 	});
 
-	const updateQuery = useUpdateAction({
+	const updateQuery = useUpdateRole({
 		config: {
 			onSuccess: (data) => {
 				if (!data.success && data.message) {
@@ -89,7 +87,7 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 					return;
 				}
 				getNotifications('success', t, data.message);
-				queryClient.invalidateQueries([CACHE_ACTION.SEARCH]);
+				queryClient.invalidateQueries([CACHE_ROLE.SEARCH]);
 				handleCancel();
 			},
 		},
@@ -98,7 +96,6 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 	const handleSubmit = (values: any) => {
 		const dataPost: any = {
 			...values,
-			function_id: featureSelected?.key,
 		};
 
 		if (!id) {
@@ -119,16 +116,11 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 	return (
 		<>
 			{!id ? (
-				<Button
-					disabled={!featureSelected}
-					size="sm"
-					leftSection={<IconPlus size={20} />}
-					onClick={open}
-				>
+				<Button size="sm" leftSection={<IconPlus size={20} />} onClick={open}>
 					{t('global.create')}
 				</Button>
 			) : (
-				<Tooltip disabled={!featureSelected} label={t('global.edit')}>
+				<Tooltip label={t('global.edit')}>
 					<ActionIcon radius={'md'} variant="default" c="yellow" onClick={open}>
 						<IconEdit style={{ width: '80%', height: '80%' }} />
 					</ActionIcon>
@@ -139,7 +131,7 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 				opened={opened}
 				onClose={handleCancel}
 				size={700}
-				title={!id ? t('actions.title_create') : t('actions.title_update')}
+				title={!id ? t('roles.title_create') : t('roles.title_update')}
 				footer={{
 					onOk: form.onSubmit(handleSubmit),
 					isConfirming: createQuery.isLoading || updateQuery.isLoading,
@@ -152,27 +144,27 @@ export const ActionModal = ({ id }: Props): JSX.Element => {
 							<TextInput
 								size="sm"
 								disabled={!!id}
-								label={t('actions.fields.action_code')}
-								placeholder={t('actions.fields.action_code')}
+								label={t('roles.fields.role_code')}
+								placeholder={t('roles.fields.role_code')}
 								withAsterisk
-								{...form.getInputProps('action_code')}
+								{...form.getInputProps('role_code')}
 							/>
 						</Grid.Col>
 						<Grid.Col span={6}>
 							<TextInput
 								size="sm"
-								label={t('actions.fields.action_name')}
-								placeholder={t('actions.fields.action_name')}
+								label={t('roles.fields.role_name')}
+								placeholder={t('roles.fields.role_name')}
 								withAsterisk
-								{...form.getInputProps('action_name')}
+								{...form.getInputProps('role_name')}
 							/>
 						</Grid.Col>
 
 						<Grid.Col span={12}>
 							<Textarea
 								size="sm"
-								label={t('actions.fields.description')}
-								placeholder={t('actions.fields.description')}
+								label={t('roles.fields.description')}
+								placeholder={t('roles.fields.description')}
 								{...form.getInputProps('description')}
 							/>
 						</Grid.Col>

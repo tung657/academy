@@ -24,7 +24,7 @@ export const EmployeeDelete = ({ label, id }: Props): JSX.Element => {
 	const [opened, { open, close }] = useDisclosure();
 	const t = useTranslations();
 
-	const userProfile = useRecoilValue(userState);
+	const userRecoil = useRecoilValue(userState);
 
 	const deleteQuery = useDeleteEmployee({
 		config: {
@@ -46,7 +46,7 @@ export const EmployeeDelete = ({ label, id }: Props): JSX.Element => {
 	const handleSubmit = () => {
 		const dataPost: IBaseDelete = {
 			list_json: [{ employee_id: id }],
-			lu_user_id: userProfile.user_id,
+			lu_user_id: userRecoil.user_id,
 		};
 
 		deleteQuery.mutate(dataPost);
@@ -68,7 +68,7 @@ export const EmployeeDelete = ({ label, id }: Props): JSX.Element => {
 					variant="default"
 					c="red"
 					onClick={handleOpenModal}
-					disabled={id === userProfile.user_name}
+					disabled={id === userRecoil.user_name}
 				>
 					<IconTrash style={{ width: '80%', height: '80%' }} />
 				</ActionIcon>

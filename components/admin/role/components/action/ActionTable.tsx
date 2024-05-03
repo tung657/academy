@@ -1,27 +1,38 @@
 'use client';
 
-import { featureSelectedState } from '@/store/feature/atom';
+import { featureSelectedState, roleState } from '@/store/feature/atom';
 import { useSearchActions } from '@/utils/query-loader/action.loader';
 import { useMemo, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { MRT_PaginationState, type MRT_ColumnDef } from 'mantine-react-table';
+import {
+	MRT_PaginationState,
+	MRT_RowSelectionState,
+	type MRT_ColumnDef,
+} from 'mantine-react-table';
 import { IAction } from '@/types';
 import { useTranslations } from 'next-intl';
 import { RenderTableBasic } from '@/libs/table';
-import { ActionModal } from './ActionModal';
-import { Flex } from '@mantine/core';
-import { ActionDelete } from './ActionDelete';
+import { ERROR_TIMEOUT } from '@/utils/config';
+import { getPermissionsByFunction } from '@/utils/services/permission.service';
 
 export const ActionTable = (): JSX.Element => {
 	const featureSelected = useRecoilValue(featureSelectedState);
 	const t = useTranslations();
 	const [searchContent, setSearchContent] = useState('');
+	const [rowSelection, setRowSelection] = useState<MRT_RowSelectionState>({});
 	const [pagination, setPagination] = useState<MRT_PaginationState>({
 		pageIndex: 0,
 		pageSize: 10,
 	});
 
-	const { data: dataActions, isFetching } = useSearchActions({
+	const roleId = useRecoilValue(roleState);
+	const functionId = useRecoilValue(featureSelectedState);
+
+	const {
+		data: dataActions,
+		isFetching,
+		refetch,
+	} = useSearchActions({
 		params: {
 			page_index: pagination.pageIndex + 1,
 			page_size: pagination.pageSize,
@@ -30,6 +41,17 @@ export const ActionTable = (): JSX.Element => {
 		},
 		config: {
 			enabled: !!featureSelected,
+			onSuccess: async (data) => {
+				if (data.message === ERROR_TIMEOUT) {
+					refetch();
+				}
+				const newData = await getPermissionsByFunction({
+					roleId,
+					functionId,
+				});
+
+				if (!newData?.message) setRowSelection(newData);
+			},
 		},
 	});
 
@@ -47,25 +69,13 @@ export const ActionTable = (): JSX.Element => {
 				accessorKey: 'description', //access nested data with dot notation
 				header: t('actions.fields.description'),
 			},
-			{
-				header: t('actions.fields.action'),
-				size: 70,
-				Cell: ({ row: { original } }) => (
-					<Flex justify={'center'} gap={8}>
-						<ActionModal id={original.action_code} />
-						<ActionDelete
-							label={original.action_name}
-							id={original.action_code}
-						/>
-					</Flex>
-				),
-			},
 		],
 		[t],
 	);
 
 	return (
 		<RenderTableBasic
+			enableRowSelection
 			columns={columns}
 			data={dataActions?.data || []}
 			pagination={pagination}
@@ -74,7 +84,8 @@ export const ActionTable = (): JSX.Element => {
 			setSearchContent={setSearchContent}
 			isLoading={isFetching}
 			totalItems={dataActions?.totalItems}
-			TopAction={<ActionModal />}
+			onRowSelectionChange={setRowSelection}
+			state={{ rowSelection }}
 		/>
 	);
 };

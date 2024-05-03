@@ -27,7 +27,13 @@ export const getFeatureById = async (
 	return res.data;
 };
 
-export const getFeatureByRole = async (id: string): Promise<IFeature> => {
+export const getFeaturesByUser = async (user_id: string): Promise<any> => {
+	const res = await apiClient?.get(`${prefix}/get-features-user/${user_id}`);
+
+	return res?.data;
+};
+
+export const getFeatureByRole = async (id: number): Promise<IFeature> => {
 	const res = await apiClient.get(`${prefix}/get-by-role/` + id);
 	return res.data;
 };

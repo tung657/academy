@@ -1,13 +1,21 @@
+import { IFeatureDataNode } from '@/types';
+
+// START FOR TREE
 export function getFeatureTree(
 	data: any[],
 	level: number,
 	root: number,
-): any[] {
+): IFeatureDataNode[] {
 	let result: any[] = [];
-	for (let i = 0; i < data.length; i++) {
-		if (data[i].level == level && data[i].parent_id == root) {
-			let row = Object.assign({}, data[i]);
-			let lowerLevel: any[] = getFeatureTree(data, level + 1, row.function_id);
+	const dataSorted = data.sort((a, b) => a.sort_order - b.sort_order);
+	for (let i = 0; i < dataSorted.length; i++) {
+		if (dataSorted[i].level == level && dataSorted[i].parent_id == root) {
+			let row = Object.assign({}, dataSorted[i]);
+			let lowerLevel: any[] = getFeatureTree(
+				dataSorted,
+				level + 1,
+				row.function_id,
+			);
 			let levelResult = {
 				title: row.function_name,
 				key: row.function_id,
@@ -38,6 +46,66 @@ export function getNodeTree(dataTree: any[], id: number | string): any {
 
 	return result;
 }
+
+export const checkIfNotEnoughLeafs = (
+	tree: any[] = [],
+	functions: number[] = [],
+) => {
+	const cloneFunctions = JSON.parse(JSON.stringify(functions));
+
+	if (!tree || tree.length === 0) {
+		return false; // Return 1 to indicate one leaf node.
+	}
+
+	const parentToRemove: string[] = [];
+
+	for (let i = 0; i < tree.length; i++) {
+		const children = tree[i].children;
+		if (children) {
+			const c = children.find(
+				(child: any) => !cloneFunctions.includes(child.key),
+			);
+			checkIfNotEnoughLeafs(children, cloneFunctions);
+
+			if (c) {
+				parentToRemove.push(tree[i].key);
+			}
+		}
+	}
+
+	return parentToRemove;
+};
+
+export const filterNot = (
+	origin: any[] = [],
+	filter: any[] = [],
+	keyFilter: string | number,
+) => {
+	let result = [];
+	result = origin.filter((element) => !filter.includes(element[keyFilter]));
+	return result;
+};
+
+export const flattenTree = (tree: any = []) => {
+	const stack = [...tree];
+	const result = [];
+
+	while (stack.length > 0) {
+		const node = stack.pop();
+		// Add the current node's value to the result
+		const { children, ...values } = node;
+		result.push({ ...values });
+
+		// Add children to the stack in reverse order
+		for (let i = node.children.length - 1; i >= 0; i--) {
+			stack.push(node.children[i]);
+		}
+	}
+
+	return result;
+};
+
+// END FOR TREE
 
 export function removeEmptyObject(obj: any) {
 	const newObj: any = {};
@@ -87,6 +155,7 @@ export function convertToString(o: any) {
 		}
 
 		if (typeof o[k] === 'number') o[k] = '' + o[k];
+		else if (!o[k]) o[k] = '';
 	});
 
 	return o;

@@ -86,7 +86,7 @@ export async function searchFeatureRepository(
 	}
 }
 
-export async function getFeaturesByRolesIdRepository(role_id: string) {
+export async function getFeaturesByRoleIdRepository(role_id: number) {
 	try {
 		const sql = 'CALL GetActiveFunctionByRoleId(?, @err_code, @err_msg)';
 		const [results] = await query(sql, [role_id]);
