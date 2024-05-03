@@ -1,5 +1,3 @@
-'use client';
-
 import { useRouter } from '@/libs/i18n-navigation';
 import { LOGIN_URL } from '@/libs/urls';
 import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
@@ -33,14 +31,14 @@ type HeaderNavProps = {
 const HeaderNav = (props: HeaderNavProps) => {
 	const { desktopOpened, toggleDesktop, toggleMobile, mobileOpened } = props;
 	const { setColorScheme, colorScheme } = useMantineColorScheme();
-	const navigation = useRouter();
+	const router = useRouter();
 
 	const handleLogout = () => {
 		deleteCookie(LOCAL_TOKEN);
 		deleteCookie(LOCAL_USER);
 
-		navigation.push(LOGIN_URL);
-		navigation.refresh();
+		router.push(LOGIN_URL);
+		router.refresh();
 	};
 
 	return (

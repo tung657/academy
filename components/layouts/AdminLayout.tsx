@@ -28,8 +28,8 @@ interface Props {
 export default function AdminLayout({ children }: Props): JSX.Element {
 	const t = useTranslations();
 	const pathname = usePathname();
-	const setUserProfile = useSetRecoilState(userState);
-	const resetUserProfile = useResetRecoilState(userState);
+	const setUserRecoil = useSetRecoilState(userState);
+	const resetUserRecoil = useResetRecoilState(userState);
 	const theme = useMantineTheme();
 	const tablet_match = useMediaQuery('(max-width: 768px)');
 	const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
@@ -38,19 +38,28 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
 
-	const { data: features, isLoading } = useSearchFeatures({
+	const { isLoading } = useSearchFeatures({
 		params: {},
+		config: {
+			onSuccess: (data) => {
+				if (!data.success && data.message) {
+					return;
+				}
+
+				setUserRecoil((prev) => ({ ...prev, features: data }));
+			},
+		},
 	});
 
 	useEffect(() => {
-		if (userData && features) {
-			setUserProfile({ ...JSON.parse(userData), features });
+		if (userData) {
+			setUserRecoil({ ...JSON.parse(userData) });
 		}
 
 		return () => {
-			resetUserProfile();
+			resetUserRecoil();
 		};
-	}, [userData, features, setUserProfile, resetUserProfile]);
+	}, [userData, setUserRecoil, resetUserRecoil]);
 
 	return (
 		<MantineProvider

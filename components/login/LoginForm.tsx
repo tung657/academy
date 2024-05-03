@@ -75,7 +75,6 @@ export const LoginForm = (): JSX.Element => {
 	});
 
 	const handleSubmit = (values: Record<string, unknown>) => {
-		// getNotifications('success', t);
 		loginMutate.mutate(values as any);
 	};
 
