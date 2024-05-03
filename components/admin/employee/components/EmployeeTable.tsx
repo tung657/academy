@@ -103,7 +103,7 @@ export const EmployeeTable = (): JSX.Element => {
 	return (
 		<RenderTableParams
 			columns={columns}
-			data={dataEmployees?.data}
+			data={dataEmployees?.data || []}
 			totalItems={dataEmployees?.totalItems}
 			isLoading={isFetching}
 			TopAction={<EmployeeModal />}
