@@ -1,8 +1,5 @@
 import CryptoJS from 'crypto-js';
 
-import { storageService } from '@/utils/storage';
-import { LOCAL_USER } from '@/utils/config';
-
 export const ACCESSES = {
 	ADD_CUSTOMER: 'customer_add',
 	CO_CANCEL: 'co_cancel',
@@ -10,10 +7,10 @@ export const ACCESSES = {
 	CO_EMPLOYEE_DROPDOWN: 'co_employee_dropdown',
 };
 
-export const checkAccess = (role: string) => {
-	const roles = storageService.getStorage(LOCAL_USER)?.actions || [];
-	return !!roles.find((i: any) => i.action_code === role);
-};
+// export const checkAccess = (role: string) => {
+// 	const roles = storageService.getStorage(LOCAL_USER)?.actions || [];
+// 	return !!roles.find((i: any) => i.action_code === role);
+// };
 
 const SECRET_PASSWORD = 'left to right! ha!';
 

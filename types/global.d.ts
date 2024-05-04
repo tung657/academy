@@ -42,7 +42,8 @@ export interface IBaseResponse<T = any> {
 }
 
 export interface IBasePage {
-	params: { id: string };
+	children: React.ReactNode;
+	params?: { id?: string; locale?: string };
 }
 
 export interface IBaseSearch {

@@ -8,7 +8,6 @@ import { removePrefix } from './utils/format-string';
 // Add whatever paths you want to PROTECT here
 const authRoutes = [
 	'/admin/*',
-
 	// '/api/slides/get-by-id/*'
 ];
 

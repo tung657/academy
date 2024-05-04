@@ -53,6 +53,7 @@
 	},
 	"messages": {
 		"warning_delete": "Bạn có chắc chắn muốn xoá",
+		"logout_success": "Đăng xuất thành công, đang chuyển hướng",
 		"success": {
 			"title": "Thành công",
 			"message": "Thao tác thành công"
@@ -69,16 +70,6 @@
 			"title": "Thông báo",
 			"message": "Thao tác thành công"
 		}
-	},
-	"login": {
-		"meta_title": "Hệ thống quản trị",
-		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
-		"heading_login": "Đăng nhập",
-		"heading_forget": "Quên mật khẩu",
-		"username": "Đăng nhập",
-		"password": "Mật khẩu",
-		"email": "Email",
-		"forget_password": "Quên mật khẩu"
 	},
 	"home": {
 		"meta_title": "Viện trí tuệ nhân tạo Việt Nam",
@@ -117,6 +108,29 @@
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
 	},
 
+	"login": {
+		"meta_title": "Hệ thống quản trị",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"heading_login": "Đăng nhập",
+		"heading_forget": "Quên mật khẩu",
+		"username": "Đăng nhập",
+		"password": "Mật khẩu",
+		"email": "Email",
+		"forget_password": "Quên mật khẩu",
+		"logout": "Đăng xuất",
+		"profile": "Thông tin cá nhân",
+		"change_password": "Đổi mật khẩu"
+	},
+	"profile": {
+		"fields": {
+			"full_name": "Họ và tên",
+			"gender": "Giới tính",
+			"email": "Email",
+			"date_of_birth": "Ngày sinh",
+			"phone_number": "Số điện thoại",
+			"address": "Địa chỉ"
+		}
+	},
 	"features": {
 		"heading": "Quản lý tính năng",
 		"title_create": "Thêm mới tính năng",

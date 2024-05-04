@@ -4,17 +4,9 @@ import { useEffect, useState } from 'react';
 
 // ? Store
 import StoreProvider from '@/app/[locale]/StoreProvider';
+import { IBasePage } from '@/types';
 
-// ? Conponents
-
-interface Props {
-	children: React.ReactNode;
-	params: {
-		locale: string;
-	};
-}
-
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: IBasePage) {
 	//? Fix Hydration failed
 	const [showChild, setShowChild] = useState(false);
 	useEffect(() => {

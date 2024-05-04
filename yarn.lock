@@ -205,6 +205,13 @@
   dependencies:
     clsx "2.1.0"
 
+"@mantine/dropzone@7.7.0":
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/@mantine/dropzone/-/dropzone-7.7.0.tgz#cb084e0782df5e272e99723f08c4eb07f1c63a9e"
+  integrity sha512-nHqWnpG6jQ95DZmGml6Z0KD2VOWAe5rEXNRxpcobNG8g7hLVgbkptHY7KtILjC46mQM5BsNWUyZsUW1Tv44eeQ==
+  dependencies:
+    react-dropzone-esm "15.0.1"
+
 "@mantine/form@7.7.0":
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/@mantine/form/-/form-7.7.0.tgz#998ff6b8e29a1fb4e901ab8970f5c4367eb4f67a"
@@ -2210,6 +2217,11 @@ mime-types@^2.1.12:
   dependencies:
     mime-db "1.52.0"
 
+mime@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-4.0.3.tgz#cd4a1aa052fc980dfc34f111fe1be9e8b878c5d2"
+  integrity sha512-KgUb15Oorc0NEKPbvfa0wRU+PItIEZmiv+pyAO2i0oTIVTJhlzMclU7w4RXWQrSOVH5ax/p/CkIO7KI4OyFJTQ==
+
 minimatch@9.0.3, minimatch@^9.0.1:
   version "9.0.3"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.3.tgz#a6e00c3de44c3a542bfaae70abfc22420a6da825"
@@ -2635,6 +2647,13 @@ react-dom@^18:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
+
+react-dropzone-esm@15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/react-dropzone-esm/-/react-dropzone-esm-15.0.1.tgz#8c689638aaa9feb5b2a429dd565acfa6792263e5"
+  integrity sha512-RdeGpqwHnoV/IlDFpQji7t7pTtlC2O1i/Br0LWkRZ9hYtLyce814S71h5NolnCZXsIN5wrZId6+8eQj2EBnEzg==
+  dependencies:
+    prop-types "^15.8.1"
 
 react-is@^16.13.1:
   version "16.13.1"

@@ -25,6 +25,10 @@
 	padding-bottom: 4px;
 }
 
+.mantine-Tooltip-tooltip {
+	z-index: 1000 !important;
+}
+
 // Customize tree
 .rc-tree {
 	.rc-tree-treenode {

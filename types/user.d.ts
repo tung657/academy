@@ -51,6 +51,10 @@ export interface IUserStorage {
 	email: string;
 	phone_number: string;
 	position_id: number;
+	position_name: string;
+	date_of_birth: string;
+	address: string;
+	gender?: 0 | 1;
 	features?: IFeatureDataNode[];
 }
 

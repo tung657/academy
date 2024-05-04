@@ -81,10 +81,7 @@ export const RoleTree = (): JSX.Element => {
 				</Flex>
 				{isLoading ? (
 					<Card mih={200} shadow="sm">
-						<LoadingOverlay
-							visible={isLoading}
-							loaderProps={{ type: 'bars' }}
-						/>
+						<LoadingOverlay visible={isLoading} />
 					</Card>
 				) : (
 					<Card shadow="sm">

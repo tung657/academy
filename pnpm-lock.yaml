@@ -17,6 +17,9 @@ importers:
       '@mantine/dates':
         specifier: 7.7.0
         version: 7.7.0(@mantine/core@7.7.0(@mantine/hooks@7.7.0(react@18.2.0))(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.7.0(react@18.2.0))(dayjs@1.11.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@mantine/dropzone':
+        specifier: 7.7.0
+        version: 7.7.0(@mantine/core@7.7.0(@mantine/hooks@7.7.0(react@18.2.0))(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.7.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@mantine/form':
         specifier: 7.7.0
         version: 7.7.0(react@18.2.0)
@@ -59,6 +62,9 @@ importers:
       mantine-react-table:
         specifier: 2.0.0-beta.1
         version: 2.0.0-beta.1(@mantine/core@7.7.0(@mantine/hooks@7.7.0(react@18.2.0))(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/dates@7.7.0(@mantine/core@7.7.0(@mantine/hooks@7.7.0(react@18.2.0))(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.7.0(react@18.2.0))(dayjs@1.11.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.7.0(react@18.2.0))(@tabler/icons-react@3.1.0(react@18.2.0))(clsx@2.1.0)(dayjs@1.11.10)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      mime:
+        specifier: ^4.0.3
+        version: 4.0.3
       mysql2:
         specifier: ^3.9.4
         version: 3.9.4
@@ -246,6 +252,14 @@ packages:
       '@mantine/core': 7.7.0
       '@mantine/hooks': 7.7.0
       dayjs: '>=1.0.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
+
+  '@mantine/dropzone@7.7.0':
+    resolution: {integrity: sha512-nHqWnpG6jQ95DZmGml6Z0KD2VOWAe5rEXNRxpcobNG8g7hLVgbkptHY7KtILjC46mQM5BsNWUyZsUW1Tv44eeQ==}
+    peerDependencies:
+      '@mantine/core': 7.7.0
+      '@mantine/hooks': 7.7.0
       react: ^18.2.0
       react-dom: ^18.2.0
 
@@ -1411,6 +1425,11 @@ packages:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
 
+  mime@4.0.3:
+    resolution: {integrity: sha512-KgUb15Oorc0NEKPbvfa0wRU+PItIEZmiv+pyAO2i0oTIVTJhlzMclU7w4RXWQrSOVH5ax/p/CkIO7KI4OyFJTQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
 
@@ -1667,6 +1686,12 @@ packages:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
       react: ^18.2.0
+
+  react-dropzone-esm@15.0.1:
+    resolution: {integrity: sha512-RdeGpqwHnoV/IlDFpQji7t7pTtlC2O1i/Br0LWkRZ9hYtLyce814S71h5NolnCZXsIN5wrZId6+8eQj2EBnEzg==}
+    engines: {node: '>= 10.13'}
+    peerDependencies:
+      react: '>= 16.8 || 18.0.0'
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -2232,6 +2257,14 @@ snapshots:
       dayjs: 1.11.10
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+
+  '@mantine/dropzone@7.7.0(@mantine/core@7.7.0(@mantine/hooks@7.7.0(react@18.2.0))(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(@mantine/hooks@7.7.0(react@18.2.0))(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@mantine/core': 7.7.0(@mantine/hooks@7.7.0(react@18.2.0))(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@mantine/hooks': 7.7.0(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-dropzone-esm: 15.0.1(react@18.2.0)
 
   '@mantine/form@7.7.0(react@18.2.0)':
     dependencies:
@@ -3556,6 +3589,8 @@ snapshots:
     dependencies:
       mime-db: 1.52.0
 
+  mime@4.0.3: {}
+
   minimatch@3.1.2:
     dependencies:
       brace-expansion: 1.1.11
@@ -3832,6 +3867,11 @@ snapshots:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  react-dropzone-esm@15.0.1(react@18.2.0):
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
 
   react-is@16.13.1: {}
 

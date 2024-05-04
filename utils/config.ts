@@ -1,7 +1,7 @@
 import { LocalePrefix } from '@/types/global';
-import { storagePrefix } from './storage';
 // as-needed help hide locale default
 const localePrefix: LocalePrefix = 'as-needed';
+const storagePrefix = 'AIA_';
 
 // FIXME: Update this configuration file based on your project information
 export const AppConfig = {

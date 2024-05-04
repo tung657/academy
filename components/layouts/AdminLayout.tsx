@@ -6,6 +6,7 @@ import {
 	Box,
 	Container,
 	Flex,
+	MantineColorScheme,
 	MantineProvider,
 	colorsTuple,
 	rem,
@@ -17,7 +18,7 @@ import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { Sidebar } from '../shared/Sidebar';
 import { useTranslations } from 'next-intl';
-import { usePathname } from '@/libs/i18n-navigation';
+import { usePathname, useRouter } from '@/libs/i18n-navigation';
 import { LOCAL_COLOR, LOCAL_USER } from '@/utils/config';
 import { useEffect, useState } from 'react';
 import { useResetRecoilState, useSetRecoilState } from 'recoil';
@@ -25,16 +26,17 @@ import { userState } from '@/store/user/atom';
 import HeaderNav from '../header-nav/HeaderNav';
 import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import { IconCheck } from '@tabler/icons-react';
-
-interface Props {
-	children: React.ReactNode;
-}
+import { IBasePage } from '@/types';
 
 const dataColors = ['#0CA678', '#1098AD', '#C92A2A'];
 
-export default function AdminLayout({ children }: Props): JSX.Element {
+export default function AdminLayout({
+	children,
+	params,
+}: IBasePage): JSX.Element {
 	const t = useTranslations();
 	const pathname = usePathname();
+	const router = useRouter();
 	const setUserRecoil = useSetRecoilState(userState);
 	const resetUserRecoil = useResetRecoilState(userState);
 	const theme = useMantineTheme();
@@ -48,6 +50,11 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
+
+	if (params?.locale !== 'vi') {
+		router.push(pathname, { locale: 'vi' });
+		router.refresh();
+	}
 
 	const { isFetching: isLoading } = useSearchFeatures({
 		params: {},
@@ -130,6 +137,7 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 					<ColorRender
 						primaryColor={primaryColor}
 						setPrimaryColor={setPrimaryColor}
+						colorScheme={colorScheme}
 					/>
 				</AppShell.Navbar>
 				<AppShell.Main bg={colorScheme === 'light' ? 'gray.1' : 'dark'}>
@@ -146,14 +154,20 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 function ColorRender({
 	primaryColor,
 	setPrimaryColor,
+	colorScheme,
 }: {
 	primaryColor: string;
 	setPrimaryColor: React.Dispatch<React.SetStateAction<string>>;
+	colorScheme: MantineColorScheme;
 }): JSX.Element {
 	return (
 		<>
-			<AppShell.Section mt={-42} p={8} bg={'rgba(0, 0, 0, .2)'}>
-				<Flex justify={'center'} gap={8}>
+			<AppShell.Section
+				mt={-42}
+				style={{ zIndex: 1 }}
+				bg={colorScheme === 'light' ? 'white' : 'dark'}
+			>
+				<Flex justify={'center'} p={8} gap={8} bg={'rgba(0, 0, 0, .2)'}>
 					{dataColors.map((color) => (
 						<ActionIcon
 							radius={'xl'}

@@ -1,6 +1,3 @@
-import { useRouter } from '@/libs/i18n-navigation';
-import { LOGIN_URL } from '@/libs/urls';
-import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
 import {
 	ActionIcon,
 	Burger,
@@ -14,10 +11,9 @@ import {
 	IconLayoutSidebarLeftCollapse,
 	IconLayoutSidebarLeftExpand,
 	IconMoonStars,
-	IconPower,
 	IconSunHigh,
 } from '@tabler/icons-react';
-import { deleteCookie } from 'cookies-next';
+import { AvatarDropdown } from './AvatarDropdown';
 
 const ICON_SIZE = 20;
 
@@ -31,19 +27,10 @@ type HeaderNavProps = {
 const HeaderNav = (props: HeaderNavProps) => {
 	const { desktopOpened, toggleDesktop, toggleMobile, mobileOpened } = props;
 	const { setColorScheme, colorScheme } = useMantineColorScheme();
-	const router = useRouter();
-
-	const handleLogout = () => {
-		deleteCookie(LOCAL_TOKEN);
-		deleteCookie(LOCAL_USER);
-
-		router.push(LOGIN_URL);
-		router.refresh();
-	};
 
 	return (
 		<Group justify="space-between">
-			<Group gap={0}>
+			<Group>
 				<Tooltip label="Toggle side navigation">
 					<ActionIcon visibleFrom="md" onClick={toggleDesktop}>
 						{desktopOpened ? (
@@ -68,18 +55,6 @@ const HeaderNav = (props: HeaderNavProps) => {
 						style={{ width: tablet_match ? 'auto' : rem(400) }}
 					/>
 				)} */}
-			</Group>
-			<Group>
-				{/* {mobile_match && (
-					<ActionIcon>
-						<IconSearch size={ICON_SIZE} />
-					</ActionIcon>
-				)} */}
-				<Tooltip label="Logout">
-					<ActionIcon onClick={handleLogout}>
-						<IconPower size={ICON_SIZE} />
-					</ActionIcon>
-				</Tooltip>
 				<Menu shadow="lg" width={200}>
 					<Menu.Target>
 						<Tooltip label="Switch color modes">
@@ -112,6 +87,9 @@ const HeaderNav = (props: HeaderNavProps) => {
 						</Menu.Item>
 					</Menu.Dropdown>
 				</Menu>
+			</Group>
+			<Group>
+				<AvatarDropdown />
 			</Group>
 		</Group>
 	);
