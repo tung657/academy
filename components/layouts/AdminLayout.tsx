@@ -9,6 +9,7 @@ import {
 	MantineProvider,
 	colorsTuple,
 	rem,
+	useMantineColorScheme,
 	useMantineTheme,
 } from '@mantine/core';
 import { getCookie, setCookie } from 'cookies-next';
@@ -43,11 +44,12 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 	const [primaryColor, setPrimaryColor] = useState(
 		getCookie(LOCAL_COLOR) || dataColors[0],
 	);
+	const { colorScheme } = useMantineColorScheme();
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 	const userData = getCookie(LOCAL_USER);
 
-	const { isLoading } = useSearchFeatures({
+	const { isFetching: isLoading } = useSearchFeatures({
 		params: {},
 		config: {
 			onSuccess: (data) => {
@@ -123,14 +125,14 @@ export default function AdminLayout({ children }: Props): JSX.Element {
 						/>
 					</Container>
 				</AppShell.Header>
-				<AppShell.Navbar bg={'primary'} c={'white'}>
-					<Sidebar loading={isLoading} onClose={toggleMobile} />
+				<AppShell.Navbar>
+					<Sidebar isLoading={isLoading} onClose={toggleMobile} />
 					<ColorRender
 						primaryColor={primaryColor}
 						setPrimaryColor={setPrimaryColor}
 					/>
 				</AppShell.Navbar>
-				<AppShell.Main>
+				<AppShell.Main bg={colorScheme === 'light' ? 'gray.1' : 'dark'}>
 					<TitleRender order={2} pb={16}>
 						{t(`${path}.heading`)}
 					</TitleRender>
@@ -150,7 +152,7 @@ function ColorRender({
 }): JSX.Element {
 	return (
 		<>
-			<AppShell.Section mt={-16} p={8} bg={'rgba(0, 0, 0, .2)'}>
+			<AppShell.Section mt={-42} p={8} bg={'rgba(0, 0, 0, .2)'}>
 				<Flex justify={'center'} gap={8}>
 					{dataColors.map((color) => (
 						<ActionIcon

@@ -1,16 +1,29 @@
+
 .root {
-	border-radius: 10px;
-
-	&:not(.active, .activeFather):hover {
-		background-color: rgba($color: #000000, $alpha: 0.1);
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	
+	&:not(.active, .active-father):hover {
+		background-color: rgba($color: #000000, $alpha: 0.05);
 	}
-
+}
+.nav-link {
+	border-left: 2px solid #ddd;
+	border-radius: 0;
 }
 
-.activeFather {
-	background-color: rgba($color: #ffffff, $alpha: 0.3) !important;
+.active-father {
+	background: linear-gradient(-45deg, #acacac, transparent);
+	// background-color: rgba($color: #ffffff, $alpha: 0.3) !important;
+	// background-color: transparentize($color: #000, $amount: 0.3);
+	background-color: var(--mantine-color-primary-filled) !important;
+	color: #fff;
 }
 
 .active {
-	background-color: rgba($color: #000000, $alpha: 0.2) !important;
+	border-left: 2px solid var(--mantine-color-primary-filled);
+	border-radius: 0 !important;
+	background-color: rgba($color: #222, $alpha: 0.1) !important;
+	// background-color: var(--mantine-color-primary-filled) !important;
+	// color: #fff;
 }

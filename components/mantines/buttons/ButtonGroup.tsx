@@ -13,12 +13,12 @@ export const ButtonPlus = ({
 }: Props): JSX.Element => {
 	return tooltip ? (
 		<Tooltip label={'Tạo mới'}>
-			<Button variant="outline" color="blue" {...props}>
+			<Button bg={'white'} variant="outline" color="blue" {...props}>
 				<IconPlus stroke={1.7} size={20} />
 			</Button>
 		</Tooltip>
 	) : (
-		<Button variant="outline" color="blue" {...props}>
+		<Button bg={'white'} variant="outline" color="blue" {...props}>
 			<IconPlus stroke={1.7} size={20} />
 		</Button>
 	);
@@ -30,12 +30,12 @@ export const ButtonEdit = ({
 }: Props): JSX.Element => {
 	return tooltip ? (
 		<Tooltip label={'Chỉnh sửa'}>
-			<Button variant="outline" color="orange" {...props}>
+			<Button bg={'white'} variant="outline" color="orange" {...props}>
 				<IconEdit stroke={1.7} size={20} />
 			</Button>
 		</Tooltip>
 	) : (
-		<Button variant="outline" color="orange" {...props}>
+		<Button bg={'white'} variant="outline" color="orange" {...props}>
 			<IconEdit stroke={1.7} size={20} />
 		</Button>
 	);
@@ -47,12 +47,12 @@ export const ButtonTrash = ({
 }: Props): JSX.Element => {
 	return tooltip ? (
 		<Tooltip label={'Xoá'}>
-			<Button variant="outline" color="red" {...props}>
+			<Button bg={'white'} variant="outline" color="red" {...props}>
 				<IconTrash stroke={1.7} size={20} />
 			</Button>
 		</Tooltip>
 	) : (
-		<Button variant="outline" color="red" {...props}>
+		<Button bg={'white'} variant="outline" color="red" {...props}>
 			<IconTrash stroke={1.7} size={20} />
 		</Button>
 	);

@@ -46,7 +46,7 @@ export const FeatureTree = (): JSX.Element => {
 	return (
 		<Grid>
 			<Grid.Col span={{ base: 12, md: 6, lg: 4 }}>
-				<Flex justify={'space-between'} gap={16}>
+				<Flex justify={'space-between'} gap={16} mb={8}>
 					<InputSearch />
 					<Button.Group>
 						<FeatureModal isCreate treeData={featuresTree} />
@@ -80,7 +80,7 @@ export const FeatureTree = (): JSX.Element => {
 			</Grid.Col>
 			<Grid.Col span={{ base: 12, md: 6, lg: 8 }}>
 				<Card shadow="sm">
-					<TitleRender order={3} pt={4} pb={8}>
+					<TitleRender order={3} pt={8} pb={8}>
 						Chi tiết tính năng
 					</TitleRender>
 					<ActionTable />
