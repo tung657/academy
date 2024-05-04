@@ -59,7 +59,7 @@ export async function createEmployee(employee: IUser): Promise<any> {
 export async function updateEmployee(employee: IUser): Promise<any> {
 	try {
 		const sql =
-			'CALL UpdateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
+			'CALL UpdateEmployee(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
 		await query(sql, [
 			employee.user_id,
 			employee.employee_id,
@@ -72,6 +72,7 @@ export async function updateEmployee(employee: IUser): Promise<any> {
 			employee.email,
 			employee.avatar,
 			employee.role_id,
+			employee.address,
 			employee.lu_user_id,
 		]);
 		return true;

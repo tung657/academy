@@ -17,6 +17,7 @@ export interface IUser extends IBaseData {
 	branch_id: number;
 	user_role_id: string;
 	role_id: string;
+	address: string;
 
 	profile_id: string;
 	type: string;

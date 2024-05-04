@@ -25,7 +25,7 @@ const MEDIA_URL = '/media';
 // -------------------------- START ADMIN --------------------------------------
 const ADMIN_URL = '/admin';
 
-const LOGIN_URL = '/login';
+const LOGIN_URL = `/login`;
 
 const DASHBOARD_URL = `${ADMIN_URL}/dashboard`;
 // -------------------------- END ADMIN --------------------------------------

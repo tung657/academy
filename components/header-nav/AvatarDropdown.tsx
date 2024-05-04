@@ -167,8 +167,13 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 
 				getNotifications('success', t, data.message);
 				setUserRecoil((prev) => ({ ...prev, ...variables }) as IUserStorage);
+				deleteCookie(LOCAL_USER);
 				const dataUser = JSON.parse(getCookie(LOCAL_USER) || '{}');
-				setCookie(LOCAL_USER, JSON.stringify({ ...dataUser, ...variables }));
+				setCookie(LOCAL_USER, JSON.stringify({ ...dataUser, ...variables }), {
+					path: '/admin/',
+					maxAge: 86400, // 24 hours
+					sameSite: 'strict',
+				});
 				handleCancel();
 			},
 		},
@@ -176,9 +181,11 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
-		const { position_id, user_name } = userRecoil;
+		const { position_id, user_name, user_id, avatar } = userRecoil;
 		const dataPost = {
 			...values,
+			avatar,
+			user_id,
 			position_id,
 			employee_id: user_name,
 			date_of_birth: dayjs(values.date_of_birth).format(formatDatePost),

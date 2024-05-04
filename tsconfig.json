@@ -32,7 +32,8 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"app/global-error.tsx"
-, "app/[locale]/(main)/admin/not-found.tsx"	],
+		"app/global-error.tsx",
+		"app/[locale]/(main)/admin/not-found.tsx"
+	],
 	"exclude": ["node_modules"]
 }

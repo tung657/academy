@@ -17,7 +17,6 @@ import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { useState } from 'react';
 import { getNotifications } from '../mantines/notification/getNotifications';
 import { useLogin } from '@/utils/query-loader/user.loader';
-import { useRouter } from '@/libs/i18n-navigation';
 import { useSearchParams } from 'next/navigation';
 import { DASHBOARD_URL } from '@/libs/urls';
 
@@ -27,7 +26,6 @@ export const LoginForm = (): JSX.Element => {
 	const t = useTranslations();
 
 	const [typeForm, setTypeForm] = useState<loginType>('login');
-	const router = useRouter();
 	const searchParams = useSearchParams();
 
 	const form1 = useForm({
@@ -64,8 +62,9 @@ export const LoginForm = (): JSX.Element => {
 				const redirectParam = searchParams.get('redirect');
 				getNotifications('success', t, data.message);
 
-				router.push(redirectParam || DASHBOARD_URL);
-				router.refresh();
+				// router.refresh();
+				// router.push(redirectParam || DASHBOARD_URL);
+				window.open(redirectParam || DASHBOARD_URL, '_parent');
 			},
 			onError: (error) => {
 				const message = error.response?.data.message || error.message;
@@ -96,6 +95,7 @@ export const LoginForm = (): JSX.Element => {
 							placeholder={t('login.username')}
 							size="md"
 							withAsterisk
+							autoComplete="on"
 							spellCheck={false}
 							{...form1.getInputProps('user_name')}
 						/>

@@ -21,7 +21,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
 import { LOCAL_COLOR, LOCAL_USER } from '@/utils/config';
 import { useEffect, useState } from 'react';
-import { useResetRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';
 import HeaderNav from '../header-nav/HeaderNav';
 import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
@@ -40,7 +40,7 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 	const t = useTranslations();
 	const pathname = usePathname();
 	const router = useRouter();
-	const setUserRecoil = useSetRecoilState(userState);
+	const [, setUserRecoil] = useRecoilState(userState);
 	const resetUserRecoil = useResetRecoilState(userState);
 	const theme = useMantineTheme();
 	const tablet_match = useMediaQuery('(max-width: 768px)');
@@ -52,7 +52,6 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 	const { colorScheme } = useMantineColorScheme();
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
-	const userData = getCookie(LOCAL_USER);
 
 	if (params?.locale !== 'vi') {
 		router.push(pathname, { locale: 'vi' });
@@ -66,6 +65,8 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 				if (!data.success && data.message) {
 					return;
 				}
+				const userData = getCookie(LOCAL_USER);
+				userData && setUserRecoil({ ...JSON.parse(userData) });
 
 				setUserRecoil((prev) => ({ ...prev, features: data }));
 			},
@@ -73,14 +74,11 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 	});
 
 	useEffect(() => {
-		if (userData) {
-			setUserRecoil({ ...JSON.parse(userData) });
-		}
-
 		return () => {
 			resetUserRecoil();
 		};
-	}, [userData, setUserRecoil, resetUserRecoil]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<MantineProvider
