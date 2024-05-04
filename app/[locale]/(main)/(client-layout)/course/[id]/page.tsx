@@ -1,17 +1,23 @@
 import { CourseDetail } from '@/components/course/CourseDetail';
 import { dataCourses } from '@/components/course/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { IBasePage } from '@/types';
 import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata({ params }: IBasePage) {
+interface Props {
+	params: {
+		locale: string;
+		id: string;
+	};
+}
+
+export async function generateMetadata({ params }: Props) {
 	const t = await getTranslations('product');
 
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
 	await fetch('https://jsonplaceholder.typicode.com/todos');
-	const title = dataCourses?.find((c) => c.id === +params.id)?.title;
+	const title = dataCourses?.find((c) => c.id === Number(params?.id))?.title;
 
 	return {
 		title: `${title} | ${AppConfig.name}`,
@@ -19,8 +25,8 @@ export async function generateMetadata({ params }: IBasePage) {
 	};
 }
 
-export default async function CourseDetailPage({ params }: IBasePage) {
-	const course = dataCourses?.find((c) => c.id === +params.id);
+export default async function CourseDetailPage({ params }: Props) {
+	const course = dataCourses?.find((c) => c.id === Number(params?.id));
 
 	return (
 		<>

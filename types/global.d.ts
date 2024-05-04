@@ -41,11 +41,6 @@ export interface IBaseResponse<T = any> {
 	success?: boolean;
 }
 
-export interface IBasePage {
-	children: React.ReactNode;
-	params?: { id?: string; locale?: string };
-}
-
 export interface IBaseSearch {
 	page_size?: number;
 	page_index?: number;

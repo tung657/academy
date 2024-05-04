@@ -1,11 +1,17 @@
 import { JobDetail } from '@/components/job/JobDetail';
 import { dataJobs } from '@/components/job/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { IBasePage } from '@/types';
 import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata({ params }: IBasePage) {
+interface Props {
+	params: {
+		id: string;
+		locale: string;
+	};
+}
+
+export async function generateMetadata({ params }: Props) {
 	const t = await getTranslations('job');
 
 	// Cannot fetch api from localhost with production
@@ -19,7 +25,7 @@ export async function generateMetadata({ params }: IBasePage) {
 	};
 }
 
-export default async function CourseDetailPage({ params }: IBasePage) {
+export default async function CourseDetailPage({ params }: Props) {
 	const job = dataJobs?.find((c) => c.id === +params.id);
 
 	return (

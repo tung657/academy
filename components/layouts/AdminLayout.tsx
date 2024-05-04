@@ -26,14 +26,17 @@ import { userState } from '@/store/user/atom';
 import HeaderNav from '../header-nav/HeaderNav';
 import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import { IconCheck } from '@tabler/icons-react';
-import { IBasePage } from '@/types';
 
 const dataColors = ['#0CA678', '#1098AD', '#C92A2A'];
 
-export default function AdminLayout({
-	children,
-	params,
-}: IBasePage): JSX.Element {
+interface Props {
+	children: React.ReactNode;
+	params: {
+		locale: string;
+	};
+}
+
+export default function AdminLayout({ children, params }: Props): JSX.Element {
 	const t = useTranslations();
 	const pathname = usePathname();
 	const router = useRouter();

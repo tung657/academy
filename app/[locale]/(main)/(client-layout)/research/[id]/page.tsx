@@ -4,12 +4,18 @@ import {
 	researchTypeOptions,
 } from '@/components/research/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { IBasePage } from '@/types';
 import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 
-export async function generateMetadata({ params }: IBasePage) {
+interface Props {
+	params: {
+		locale: string;
+		id: string;
+	};
+}
+
+export async function generateMetadata({ params }: Props) {
 	const t = await getTranslations('research');
 
 	// Cannot fetch api from localhost with production
@@ -23,7 +29,7 @@ export async function generateMetadata({ params }: IBasePage) {
 	};
 }
 
-export default async function ProductDetailPage({ params }: IBasePage) {
+export default async function ProductDetailPage({ params }: Props) {
 	const title = researchTypeOptions.find((i) => i.id.toString() === params.id)
 		?.label;
 

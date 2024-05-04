@@ -2,7 +2,6 @@ import { useRouter } from '@/libs/i18n-navigation';
 import { LOGIN_URL } from '@/libs/urls';
 import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
 import {
-	ActionIcon,
 	Avatar,
 	Box,
 	Flex,
@@ -21,7 +20,6 @@ import {
 	IconKey,
 	IconMoodHeart,
 	IconPower,
-	IconRefresh,
 	IconUpload,
 	IconUserEdit,
 } from '@tabler/icons-react';

@@ -5,9 +5,15 @@ import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
 import 'rc-tree/assets/index.css';
 import '@mantine/dropzone/styles.css';
-import { IBasePage } from '@/types';
 
-export async function generateMetadata(props: IBasePage) {
+interface Props {
+	children: React.ReactNode;
+	params: {
+		locale: string;
+	};
+}
+
+export async function generateMetadata(props: Props) {
 	const t = await getTranslations({
 		locale: props?.params?.locale,
 		namespace: 'home',
@@ -19,7 +25,7 @@ export async function generateMetadata(props: IBasePage) {
 	};
 }
 
-export default function Layout({ children, params }: IBasePage) {
+export default function Layout({ children, params }: Props) {
 	return (
 		<AdminLayout params={params}>
 			<Suspense fallback={<Loading />}>{children}</Suspense>

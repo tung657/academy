@@ -1,12 +1,18 @@
 import { NotFoundTitle } from '@/components/errors/404';
 import AdminLayout from '@/components/layouts/AdminLayout';
-import { IBasePage } from '@/types';
 import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata(props: IBasePage) {
+interface Props {
+	children: React.ReactNode;
+	params: {
+		locale: string;
+	};
+}
+
+export async function generateMetadata(props: Props) {
 	const t = await getTranslations({
 		locale: props.params?.locale,
 		namespace: 'global',
@@ -17,7 +23,7 @@ export async function generateMetadata(props: IBasePage) {
 	};
 }
 
-export default function Error({ params }: IBasePage) {
+export default function Error({ params }: Props) {
 	return (
 		<AdminLayout params={params}>
 			<NotFoundTitle />
