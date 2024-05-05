@@ -49,6 +49,8 @@
 		"required": "Trường này là bắt buộc",
 		"phone": "Số điện thoại không đúng định dạng",
 		"email": "Email không đúng định dạng",
+		"password": "Mật khẩu ít nhất có 6 ký tự",
+		"password_confirm": "Mật khẩu không khớp",
 		"username": "Tài khoản từ 8 - 20 ký tự, không được chứa ký tự đặc biệt"
 	},
 	"messages": {
@@ -128,7 +130,10 @@
 			"email": "Email",
 			"date_of_birth": "Ngày sinh",
 			"phone_number": "Số điện thoại",
-			"address": "Địa chỉ"
+			"address": "Địa chỉ",
+			"old_password": "Mật khẩu cũ",
+			"new_password": "Mật khẩu mới",
+			"confirm_password": "Xác nhận mật khẩu"
 		}
 	},
 	"features": {
@@ -184,7 +189,7 @@
 			"role": "Quyền",
 			"full_name": "Họ và tên",
 			"phone_number": "Số điện thoại",
-			"gender": "Gender",
+			"gender": "Giới tính",
 			"birth": "Ngày sinh",
 			"email": "Email",
 			"address": "Địa chỉ",

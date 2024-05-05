@@ -53,7 +53,7 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 			employee_id: '',
 			full_name: '',
 			phone_number: '',
-			gender: '1',
+			gender: '',
 			date_of_birth: dateParser?.('1999-01-01'),
 			email: '',
 			branch_id: '',

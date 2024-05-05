@@ -26,4 +26,5 @@ export const getUrlDetail = (url?: string, id?: string | number) => {
 export const patterns = {
 	phone: /(84|0[3|5|7|8|9])+([0-9]{8,12})\b/,
 	username: /^(?=[a-zA-Z0-9._]{6,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/,
+	password: /^.{6,}$/,
 };

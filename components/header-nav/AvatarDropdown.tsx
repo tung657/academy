@@ -8,6 +8,7 @@ import {
 	Grid,
 	Group,
 	Menu,
+	PasswordInput,
 	Text,
 	TextInput,
 	Textarea,
@@ -30,11 +31,14 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { userState } from '@/store/user/atom';
 import { ModalRender } from '../mantines/modal/ModalRender';
 import { useEffect, useState } from 'react';
-import { useForm } from '@mantine/form';
+import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import { Dropzone, IMAGE_MIME_TYPE, FileWithPath } from '@mantine/dropzone';
 import logo from '@/assets/images/logos/logo.jpg';
 import classes from './scss/avatar-dropdown.module.scss';
-import { useUpdateEmployee } from '@/utils/query-loader/user.loader';
+import {
+	useChangePasswordEmployee,
+	useUpdateEmployee,
+} from '@/utils/query-loader/user.loader';
 import { SelectRender } from '../mantines/inputs/SelectRender';
 import { genderOptions } from '@/libs/dropdown';
 import { DateInput } from '@mantine/dates';
@@ -42,10 +46,12 @@ import {
 	dateParser,
 	formatDatePost,
 	formatDateShow,
+	patterns,
 } from '@/utils/format-string';
 import dayjs from 'dayjs';
 import { IUserStorage } from '@/types';
 import { uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
 
 export const AvatarDropdown = (): JSX.Element => {
 	const router = useRouter();
@@ -69,6 +75,7 @@ export const AvatarDropdown = (): JSX.Element => {
 			<Menu
 				shadow="lg"
 				width={200}
+				trapFocus={false}
 				transitionProps={{ transition: 'fade-down' }}
 				trigger="click"
 				position="bottom-end"
@@ -133,6 +140,7 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 	const [files, setFiles] = useState<FileWithPath[]>();
 	const [loading, setLoading] = useState(false);
 	const form = useForm({
+		...getRuleForms(),
 		initialValues: {
 			full_name: userRecoil.full_name,
 			phone_number: userRecoil.phone_number,
@@ -140,6 +148,13 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 			email: userRecoil.email,
 			date_of_birth: dateParser?.(userRecoil.date_of_birth),
 			address: userRecoil.address,
+		},
+		validate: {
+			full_name: isNotEmpty(t('validation.required')),
+			phone_number: matches(patterns.phone, t('validation.phone')),
+			gender: isNotEmpty(t('validation.required')),
+			email: isEmail(t('validation.email')),
+			date_of_birth: isNotEmpty(t('validation.required')),
 		},
 	});
 
@@ -227,7 +242,6 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 				footer={{
 					onOk: form.onSubmit(handleSubmit),
 					isConfirming: loading,
-					okText: t('global.btn_confirm'),
 				}}
 			>
 				<Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
@@ -352,6 +366,61 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 
 function ChangePasswordModal({ opened, setOpened }: any): JSX.Element {
 	const t = useTranslations();
+	const userRecoil = useRecoilValue(userState);
+	const form = useForm({
+		...getRuleForms(),
+		initialValues: {
+			old_password: '',
+			new_password: '',
+			confirm_password: '',
+		},
+		validate: {
+			old_password: isNotEmpty(t('validation.required')),
+			new_password: matches(patterns.password, t('validation.password')),
+			confirm_password: (value, values) =>
+				value !== values.new_password ? t('validation.password_confirm') : null,
+		},
+	});
+
+	const handleLogout = () => {
+		getNotifications(
+			'success',
+			t,
+			'Đổi mật khẩu thành công! Vui lòng đăng nhập lại',
+		);
+		deleteCookie(LOCAL_TOKEN);
+		deleteCookie(LOCAL_USER);
+		window && window.open(LOGIN_URL, '_parent');
+	};
+
+	const updateQuery = useChangePasswordEmployee({
+		config: {
+			onSuccess: (data) => {
+				if (!data.success && data.message) {
+					getNotifications('error', t, data.message);
+					return;
+				}
+
+				// getNotifications('success', t, data.message);
+				handleCancel();
+				handleLogout();
+			},
+		},
+	});
+
+	const handleCancel = () => {
+		form.reset();
+		updateQuery.reset();
+		setOpened(false);
+	};
+
+	const handleSubmit = (values: any) => {
+		updateQuery.mutate({
+			...values,
+			user_id: userRecoil.user_id,
+			lu_user_id: userRecoil.user_id,
+		});
+	};
 
 	return (
 		<>
@@ -364,9 +433,43 @@ function ChangePasswordModal({ opened, setOpened }: any): JSX.Element {
 
 			<ModalRender
 				opened={opened}
-				onClose={() => setOpened(false)}
+				onClose={handleCancel}
 				title={t('login.change_password')}
-			></ModalRender>
+				size={500}
+				footer={{
+					onOk: form.onSubmit(handleSubmit),
+					isConfirming: updateQuery.isLoading,
+				}}
+			>
+				<Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
+					<Grid gutter={16}>
+						<Grid.Col>
+							<PasswordInput
+								label={t('profile.fields.old_password')}
+								placeholder={t('profile.fields.old_password')}
+								withAsterisk
+								{...form.getInputProps('old_password')}
+							/>
+						</Grid.Col>
+						<Grid.Col>
+							<PasswordInput
+								label={t('profile.fields.new_password')}
+								placeholder={t('profile.fields.new_password')}
+								withAsterisk
+								{...form.getInputProps('new_password')}
+							/>
+						</Grid.Col>
+						<Grid.Col>
+							<PasswordInput
+								label={t('profile.fields.confirm_password')}
+								placeholder={t('profile.fields.confirm_password')}
+								withAsterisk
+								{...form.getInputProps('confirm_password')}
+							/>
+						</Grid.Col>
+					</Grid>
+				</Box>
+			</ModalRender>
 		</>
 	);
 }
