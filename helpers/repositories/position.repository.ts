@@ -1,4 +1,4 @@
-import { IPosition, ISearchPositions } from '@/types';
+import { IPosition, ISearchPosition } from '@/types';
 import { query } from '../db';
 
 export async function createPosition(positionModel: IPosition): Promise<any> {
@@ -56,7 +56,7 @@ export async function getPositionById(id: number): Promise<any> {
 	}
 }
 
-export async function searchPosition(search: ISearchPositions): Promise<any[]> {
+export async function searchPosition(search: ISearchPosition): Promise<any[]> {
 	try {
 		const sql = 'CALL SearchPositions(?, ?, ?, @err_code, @err_msg)';
 

@@ -6,4 +6,4 @@ export interface IPosition extends IBaseData {
 	description: string;
 }
 
-export interface ISearchPositions extends IBaseSearch {}
+export interface ISearchPosition extends IBaseSearch {}

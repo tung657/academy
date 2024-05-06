@@ -3,7 +3,7 @@ import {
 	IBaseDelete,
 	IBaseResponse,
 	IPosition,
-	ISearchPositions,
+	ISearchPosition,
 } from '@/types';
 import { OptionsData } from '@mantine/core';
 
@@ -16,7 +16,7 @@ export const getPositionDropdown = async (): Promise<OptionsData> => {
 };
 
 export const searchPositions = async (
-	params: ISearchPositions,
+	params: ISearchPosition,
 ): Promise<IBaseResponse<IPosition[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);
 
