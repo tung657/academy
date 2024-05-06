@@ -99,6 +99,7 @@ export const RenderTableParams = ({
 		onGlobalFilterChange: handleFilter,
 		mantineSearchTextInputProps: {
 			size: 'sm',
+			placeholder: 'Tìm kiếm',
 		},
 		manualPagination: true,
 		onPaginationChange: setPagination,
@@ -163,6 +164,7 @@ export const RenderTableBasic = ({
 		onGlobalFilterChange: handleFilter,
 		mantineSearchTextInputProps: {
 			size: 'sm',
+			placeholder: 'Tìm kiếm',
 		},
 		manualPagination: true,
 		onPaginationChange: setPagination,

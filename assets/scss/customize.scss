@@ -29,6 +29,14 @@
 	z-index: 1000 !important;
 }
 
+.mrt-table-pagination p.mantine-Text-root {
+	visibility: hidden;
+	&::after {
+		content: "Số lượng mỗi trang";
+		visibility: initial;
+	}
+}
+
 // Customize tree
 .rc-tree {
 	.rc-tree-treenode {
