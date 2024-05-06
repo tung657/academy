@@ -24,8 +24,10 @@ import { useEffect, useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 import { userState } from '@/store/user/atom';
 import HeaderNav from '../header-nav/HeaderNav';
-import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
+import { useGetFeaturesByUser } from '@/utils/query-loader/feature.loader';
 import { IconCheck } from '@tabler/icons-react';
+import { getFeatureTree } from '@/utils/array';
+import { notFound } from 'next/navigation';
 
 const dataColors = ['#0CA678', '#1098AD', '#C92A2A'];
 
@@ -58,17 +60,24 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 		router.refresh();
 	}
 
-	const { isFetching: isLoading } = useSearchFeatures({
-		params: {},
+	const {
+		data: dataFeatures,
+		isSuccess,
+		isFetching: isLoading,
+	} = useGetFeaturesByUser({
+		user_id: JSON.parse(getCookie(LOCAL_USER) || '{}')?.user_id,
 		config: {
 			onSuccess: (data) => {
 				if (!data.success && data.message) {
 					return;
 				}
+
+				const features = getFeatureTree(data, 1, 0);
+
 				const userData = getCookie(LOCAL_USER);
 				userData && setUserRecoil({ ...JSON.parse(userData) });
 
-				setUserRecoil((prev) => ({ ...prev, features: data }));
+				setUserRecoil((prev) => ({ ...prev, features }));
 			},
 		},
 	});
@@ -79,6 +88,12 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	if (
+		isSuccess &&
+		!dataFeatures?.find((feature: any) => feature.url === pathname)
+	)
+		return notFound();
 
 	return (
 		<MantineProvider

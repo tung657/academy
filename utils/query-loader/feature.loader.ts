@@ -4,6 +4,7 @@ import {
 	deleteFeature,
 	getFeatureById,
 	getFeatureByRole,
+	getFeaturesByUser,
 	searchFeatures,
 	updateFeature,
 } from '../services/feature.service';
@@ -64,6 +65,21 @@ const useSearchFeatures = ({
 	});
 };
 
+// Search list
+const useGetFeaturesByUser = ({
+	user_id,
+	config,
+}: {
+	user_id: string;
+	config?: QueryConfig<typeof getFeaturesByUser>;
+}) => {
+	return useQuery<ExtractFnReturnType<typeof getFeaturesByUser>>({
+		...config,
+		queryKey: [CACHE_FEATURE.SEARCH, user_id],
+		queryFn: async () => getFeaturesByUser(user_id),
+	});
+};
+
 // Update
 const useUpdateFeature = ({
 	config,
@@ -116,4 +132,5 @@ export {
 	useGetFeatureByRole,
 	useSearchFeatures,
 	useUpdateFeature,
+	useGetFeaturesByUser,
 };

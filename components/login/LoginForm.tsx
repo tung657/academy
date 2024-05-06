@@ -14,11 +14,12 @@ import {
 import { isEmail, isNotEmpty, useForm } from '@mantine/form';
 import { getRuleForms } from '@/utils/validation';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { getNotifications } from '../mantines/notification/getNotifications';
 import { useLogin } from '@/utils/query-loader/user.loader';
 import { useSearchParams } from 'next/navigation';
 import { DASHBOARD_URL } from '@/libs/urls';
+import { useSendResetPassword } from '@/utils/query-loader/email.loader';
 
 type loginType = 'login' | 'forget';
 
@@ -28,7 +29,7 @@ export const LoginForm = (): JSX.Element => {
 	const [typeForm, setTypeForm] = useState<loginType>('login');
 	const searchParams = useSearchParams();
 
-	const form1 = useForm({
+	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
 			user_name: '',
@@ -38,17 +39,6 @@ export const LoginForm = (): JSX.Element => {
 		validate: {
 			user_name: isNotEmpty(t('validation.required')),
 			password: isNotEmpty(t('validation.required')),
-		},
-	});
-
-	const form2 = useForm({
-		...getRuleForms(),
-		initialValues: {
-			email: '',
-		},
-		validateInputOnChange: false,
-		validate: {
-			email: isEmail(t('validation.email')),
 		},
 	});
 
@@ -84,7 +74,7 @@ export const LoginForm = (): JSX.Element => {
 				<div className={classes.shape}></div>
 			</div>
 			{typeForm === 'login' ? (
-				<Box component="form" onSubmit={form1.onSubmit(handleSubmit)}>
+				<Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
 					<TitleRender order={3} mb={16} fw={'bold'} tt={'uppercase'}>
 						{t('login.heading_login')}
 					</TitleRender>
@@ -97,14 +87,14 @@ export const LoginForm = (): JSX.Element => {
 							withAsterisk
 							autoComplete="on"
 							spellCheck={false}
-							{...form1.getInputProps('user_name')}
+							{...form.getInputProps('user_name')}
 						/>
 						<PasswordInput
 							size="md"
 							withAsterisk
 							label={t('login.password')}
 							placeholder={t('login.password')}
-							{...form1.getInputProps('password')}
+							{...form.getInputProps('password')}
 						/>
 
 						<Flex justify={'flex-end'}>
@@ -119,32 +109,79 @@ export const LoginForm = (): JSX.Element => {
 					</Stack>
 				</Box>
 			) : (
-				<Box component="form" onSubmit={form2.onSubmit(handleSubmit)}>
-					<TitleRender order={3} mb={16} fw={'bold'} tt={'uppercase'}>
-						{t('login.heading_forget')}
-					</TitleRender>
-					<Stack>
-						<TextInput
-							label={t('login.email')}
-							placeholder={t('login.email')}
-							size="md"
-							withAsterisk
-							spellCheck={false}
-							{...form2.getInputProps('email')}
-						/>
-
-						<Flex justify={'flex-end'}>
-							<Anchor c={'blue'} onClick={() => setTypeForm('login')}>
-								{t('login.heading_login')}
-							</Anchor>
-						</Flex>
-
-						<ButtonBubble type="submit">
-							{t('global.btn_send_message')}
-						</ButtonBubble>
-					</Stack>
-				</Box>
+				<ResetPwd setTypeForm={setTypeForm} />
 			)}
 		</section>
 	);
 };
+
+function ResetPwd({
+	setTypeForm,
+}: {
+	setTypeForm: Dispatch<SetStateAction<loginType>>;
+}): JSX.Element {
+	const t = useTranslations();
+	const form = useForm({
+		...getRuleForms(),
+		initialValues: {
+			email: '',
+		},
+		validateInputOnChange: false,
+		validate: {
+			email: isEmail(t('validation.email')),
+		},
+	});
+
+	const emailQuery = useSendResetPassword({
+		config: {
+			onSuccess: (data) => {
+				if (!data.success) {
+					getNotifications('error', t, data.message);
+					return;
+				}
+				getNotifications('success', t, data.message);
+			},
+			onError: (error) => {
+				const message = error.response?.data.message || error.message;
+				getNotifications('error', t, message);
+			},
+		},
+	});
+
+	const handleSubmit = (values: any) => {
+		const dataPost = {
+			...values,
+			url: window.location.origin,
+		};
+
+		emailQuery.mutate(dataPost);
+	};
+
+	return (
+		<Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
+			<TitleRender order={3} mb={16} fw={'bold'} tt={'uppercase'}>
+				{t('login.heading_forget')}
+			</TitleRender>
+			<Stack>
+				<TextInput
+					label={t('login.email')}
+					placeholder={t('login.email')}
+					size="md"
+					withAsterisk
+					spellCheck={false}
+					{...form.getInputProps('email')}
+				/>
+
+				<Flex justify={'flex-end'}>
+					<Anchor c={'blue'} onClick={() => setTypeForm('login')}>
+						{t('login.heading_login')}
+					</Anchor>
+				</Flex>
+
+				<ButtonBubble type="submit" loading={emailQuery.isLoading}>
+					{t('global.btn_send_message')}
+				</ButtonBubble>
+			</Stack>
+		</Box>
+	);
+}

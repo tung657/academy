@@ -152,7 +152,7 @@ export async function changePassword(data: any) {
 }
 export async function resetPassword(user_name: string, new_password: string) {
 	try {
-		const sql = 'CALL ResetPw(?, ?, @err_code, @err_msg)';
+		const sql = 'CALL ResetPassword(?, ?, @err_code, @err_msg)';
 		await query(sql, [user_name, new_password]);
 		return true;
 	} catch (error: any) {

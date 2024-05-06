@@ -20,6 +20,8 @@ const JOB_URL = '/jobs';
 const JOB_DETAIL_URL = `${JOB_URL}/:id`;
 
 const MEDIA_URL = '/media';
+
+const VERIFY_RESET_PASSWORD_URL = '/verify-reset-password';
 // -------------------------- END CLIENT --------------------------------------
 
 // -------------------------- START ADMIN --------------------------------------
@@ -44,6 +46,7 @@ export {
 	JOB_URL,
 	JOB_DETAIL_URL,
 	MEDIA_URL,
+	VERIFY_RESET_PASSWORD_URL,
 
 	// Admin
 	ADMIN_URL,
