@@ -174,6 +174,28 @@
 		}
 	},
 
+	"products": {
+		"heading": "Quản lý sản phẩm",
+		"title_create": "Thêm mới sản phẩm",
+		"title_update": "Chi tiết sản phẩm",
+		"title_delete": "Xoá sản phẩm",
+		"fields": {
+			"serial": "STT",
+			"thumbnail": "Ảnh đại diện",
+			"product_name": "Tên sản phẩm",
+			"en_product_name": "Tên sản phẩm (EN)",
+			"description": "Mô tả",
+			"en_description": "Mô tả (EN)",
+			"content": "Nội dung",
+			"en_content": "Nội dung (EN)",
+			"link": "Liên kết",
+			"slogan": "Slogan",
+			"en_slogan": "Slogan (EN)",
+			"sort_order": "Xếp hạng (ASC)",
+			"action": "Thao tác"
+		}
+	},
+
 	"employees": {
 		"heading": "Quản lý nhân viên",
 		"title_create": "Thêm mới nhân viên",

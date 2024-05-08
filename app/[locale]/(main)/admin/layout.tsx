@@ -1,10 +1,10 @@
-import Loading from '@/app/loading';
 import AdminLayout from '@/components/layouts/AdminLayout';
 import { AppConfig } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
-import { Suspense } from 'react';
 import 'rc-tree/assets/index.css';
 import '@mantine/dropzone/styles.css';
+import 'react-quill/dist/quill.snow.css';
+import 'quill-image-uploader/dist/quill.imageUploader.min.css';
 
 interface Props {
 	children: React.ReactNode;
@@ -26,9 +26,5 @@ export async function generateMetadata(props: Props) {
 }
 
 export default function Layout({ children, params }: Props) {
-	return (
-		<AdminLayout params={params}>
-			<Suspense fallback={<Loading />}>{children}</Suspense>
-		</AdminLayout>
-	);
+	return <AdminLayout params={params}>{children}</AdminLayout>;
 }

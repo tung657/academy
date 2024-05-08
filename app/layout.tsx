@@ -15,6 +15,8 @@ import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 import GlobalError from './global-error';
 import { AppConfig } from '@/utils/config';
 import { Notifications } from '@mantine/notifications';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 const inter = Nunito({ subsets: ['latin'] });
 
@@ -42,22 +44,24 @@ export default function RootLayout({
 				<ColorSchemeScript defaultColorScheme="light" />
 			</head>
 			<body className={inter.className}>
-				<MantineProvider
-					theme={{
-						...theme,
-						primaryColor: 'primary',
-						primaryShade: { light: 6, dark: 7 },
-					}}
-					withGlobalClasses
-				>
-					<NextIntlClientProvider locale={locale} messages={messages}>
-						<ErrorBoundary errorComponent={GlobalError}>
-							{children}
+				<Suspense fallback={<Loading />}>
+					<MantineProvider
+						theme={{
+							...theme,
+							primaryColor: 'primary',
+							primaryShade: { light: 6, dark: 7 },
+						}}
+						withGlobalClasses
+					>
+						<NextIntlClientProvider locale={locale} messages={messages}>
+							<ErrorBoundary errorComponent={GlobalError}>
+								{children}
 
-							<Notifications position="top-right" zIndex={10000} />
-						</ErrorBoundary>
-					</NextIntlClientProvider>
-				</MantineProvider>
+								<Notifications position="top-right" zIndex={10000} />
+							</ErrorBoundary>
+						</NextIntlClientProvider>
+					</MantineProvider>
+				</Suspense>
 			</body>
 		</html>
 	);

@@ -111,6 +111,19 @@ export const RenderTableParams = ({
 		mantineTopToolbarProps: {
 			display: TopAction || enabledSearch || enabledToolbar ? 'grid' : 'none',
 		},
+		mantineTableHeadCellProps: {
+			align: 'center',
+			bg: '#DFE2E2',
+			p: 8,
+			style: {
+				borderInlineEnd: '1px solid #f0f0f0',
+			},
+		},
+		mantineTableProps: {
+			withRowBorders: true,
+			withColumnBorders: true,
+			borderColor: '#f0f0f0',
+		},
 		...props,
 		state: {
 			isLoading,
@@ -174,6 +187,19 @@ export const RenderTableBasic = ({
 		},
 		mantineTopToolbarProps: {
 			display: TopAction || enabledSearch || enabledToolbar ? 'grid' : 'none',
+		},
+		mantineTableHeadCellProps: {
+			align: 'center',
+			bg: '#DFE2E2',
+			p: 8,
+			style: {
+				borderInlineEnd: '1px solid #f0f0f0',
+			},
+		},
+		mantineTableProps: {
+			withRowBorders: true,
+			withColumnBorders: true,
+			borderColor: '#f0f0f0',
 		},
 		...props,
 		state: {

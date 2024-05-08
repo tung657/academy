@@ -179,7 +179,10 @@ export const FeatureModal = ({
 					<LoadingOverlay visible={loadingFeature} />
 					<Grid gutter={16}>
 						<Grid.Col>
-							<Menu transitionProps={{ transition: 'pop-top-left' }}>
+							<Menu
+								transitionProps={{ transition: 'pop-top-left' }}
+								zIndex={1100}
+							>
 								<Menu.Target>
 									<div>
 										<InputLabel>{t('features.fields.parent')}</InputLabel>

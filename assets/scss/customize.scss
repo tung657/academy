@@ -32,8 +32,34 @@
 .mrt-table-pagination p.mantine-Text-root {
 	visibility: hidden;
 	&::after {
-		content: "Số lượng mỗi trang";
+		content: 'Số lượng mỗi trang';
 		visibility: initial;
+	}
+}
+
+.quill {
+	.ql-toolbar {
+		border-top-left-radius: 0.5rem !important;
+		border-top-right-radius: 0.5rem !important;
+	}
+
+	&:has(.ql-toolbar:nth-child(2)) {
+		& .ql-toolbar:nth-child(1) {
+			display: none;
+		}
+	}
+
+	.ql-container {
+		border-bottom-left-radius: 0.5rem !important;
+		border-bottom-right-radius: 0.5rem !important;
+
+		.ql-editor {
+			min-height: 12em;
+		}
+	}
+
+	.ql-tooltip {
+		left: 0 !important;
 	}
 }
 

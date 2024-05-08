@@ -271,30 +271,30 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 														? userRecoil.avatar
 														: logo.src
 											})`,
-											backgroundSize: 'contain',
-											backgroundRepeat: 'no-repeat',
-											backgroundPosition: 'center center',
 										}}
+										bgsz={'contain'}
+										bgr={'no-repeat'}
+										bgp={'center center'}
 										multiple={false}
-										onReject={(fileReject) => {
-											console.log(fileReject);
+										onReject={() => {
 											getNotifications('error', t, 'File không thể quá 1MB');
 										}}
 										onDrop={setFiles}
-									></Dropzone>
+									>
+										<Flex
+											className={classes.dropzoneAction}
+											p={8}
+											w={'100%'}
+											justify={'center'}
+											align={'center'}
+											gap={8}
+											fw={700}
+											c={'white'}
+										>
+											<IconUpload />
+										</Flex>
+									</Dropzone>
 								</Tooltip>
-								<Flex
-									className={classes.dropzoneAction}
-									p={8}
-									w={'100%'}
-									justify={'center'}
-									align={'center'}
-									gap={8}
-									fw={700}
-									c={'white'}
-								>
-									<IconUpload />
-								</Flex>
 							</div>
 							<Text fz="sm" py={8}>
 								File {'<'} 1MB

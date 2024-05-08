@@ -33,8 +33,10 @@ const nextIntlMiddleware = createMiddleware({
 export default async function middleware(req: NextRequest) {
 	const BASE_URL = removePrefix(process.env.NEXT_PUBLIC_BASE_URL, '/api');
 	if (req.nextUrl.pathname === '/admin')
-		return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
-	const LOGIN = `${BASE_URL}${LOGIN_URL}?redirect=${
+		return NextResponse.redirect(
+			`${req.nextUrl.origin}${BASE_URL}${DASHBOARD_URL}`,
+		);
+	const LOGIN = `${req.nextUrl.origin}${BASE_URL}${LOGIN_URL}?redirect=${
 		req.nextUrl.pathname + req.nextUrl.search
 	}`;
 
@@ -72,7 +74,9 @@ export default async function middleware(req: NextRequest) {
 			// If you have an admin role and path, secure it here
 			if (req.nextUrl.pathname.startsWith('/admin')) {
 				if (req.nextUrl.pathname === ADMIN_URL) {
-					return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
+					return NextResponse.redirect(
+						`${req.nextUrl.origin}${BASE_URL}${DASHBOARD_URL}`,
+					);
 				}
 			}
 		} catch (error) {
@@ -105,7 +109,9 @@ export default async function middleware(req: NextRequest) {
 
 	if (redirectToApp) {
 		// Redirect to app dashboard
-		return NextResponse.redirect(`${BASE_URL}${DASHBOARD_URL}`);
+		return NextResponse.redirect(
+			`${req.nextUrl.origin}${BASE_URL}${DASHBOARD_URL}`,
+		);
 	} else {
 		// Return the original response unaltered
 		return nextIntlMiddleware(req);
