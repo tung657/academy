@@ -37,7 +37,7 @@ export default function RootLayout({
 	const messages = useMessages();
 
 	return (
-		<html lang={locale}>
+		<html lang={locale || 'vi'}>
 			<head>
 				<link href="/favicon.ico" rel="icon" type="image/x-icon" />
 				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
