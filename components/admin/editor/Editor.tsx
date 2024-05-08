@@ -93,8 +93,6 @@ export function RichEditor({ loading, value, setValue }: Props) {
 			modules={modules}
 			defaultValue={value}
 			formats={formats}
-		>
-			{/* <div className="my-editing-area" /> */}
-		</ReactQuill>
+		/>
 	);
 }

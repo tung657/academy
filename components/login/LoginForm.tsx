@@ -20,6 +20,7 @@ import { useLogin } from '@/utils/query-loader/user.loader';
 import { useSearchParams } from 'next/navigation';
 import { DASHBOARD_URL } from '@/libs/urls';
 import { useSendResetPassword } from '@/utils/query-loader/email.loader';
+import { ERROR_TIMEOUT } from '@/utils/config';
 
 type loginType = 'login' | 'forget';
 
@@ -44,8 +45,12 @@ export const LoginForm = (): JSX.Element => {
 
 	const loginMutate = useLogin({
 		config: {
-			onSuccess: async (data) => {
-				if (!data.success) {
+			onSuccess: async (data, variables) => {
+				if (data.message === ERROR_TIMEOUT) {
+					loginMutate.mutate(variables);
+					return;
+				}
+				if (!data.success && data.message) {
 					getNotifications('error', t, data.message);
 					return;
 				}
