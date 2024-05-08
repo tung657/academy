@@ -1,7 +1,7 @@
 import { dataCourses } from '@/components/course/data/data-fake';
 import { dataJobs } from '@/components/job/data/data-fake';
 import { researchTypeOptions } from '@/components/research/data/data-fake';
-import { searchProduct } from '@/helpers/repositories/product.repository';
+import { apiClient } from '@/helpers';
 
 type SitemapType = Array<{
 	url: string;
@@ -21,7 +21,9 @@ type SitemapType = Array<{
 }>;
 
 export default async function sitemap(): Promise<SitemapType> {
-	const products = await searchProduct({});
+	const products = await apiClient.post(
+		'https://web-dev.aiacademy.edu.vn/api/products/search',
+	);
 
 	const courseList = dataCourses.map((data) => ({
 		url: `/course/${data.id}`,
@@ -56,7 +58,7 @@ export default async function sitemap(): Promise<SitemapType> {
 		},
 	}));
 
-	const productsList = products.map((data) => ({
+	const productsList = products.data.map((data: any) => ({
 		url: `/product/${data.product_id}`,
 		lastModified: new Date(),
 		alternates: {
