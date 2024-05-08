@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
 		fileName: file.name,
 		size: file.size,
 		lastModified: new Date(file.lastModified),
-		url: `/api/file/${btoa(uploadDir + '/' + file.name)}`,
+		url: `${req.nextUrl.origin}/api/file/${btoa(uploadDir + '/' + file.name)}`,
 		preview: ['mp4'].includes(extension.toLowerCase())
 			? `/play?filename=${filename}`
 			: undefined,

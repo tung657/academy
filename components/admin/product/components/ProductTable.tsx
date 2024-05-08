@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, Flex, Group, Image, Text } from '@mantine/core';
+import { Anchor, Flex, Group, Image, Text, Tooltip } from '@mantine/core';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
@@ -62,15 +62,18 @@ export const ProductTable = (): JSX.Element => {
 				accessorKey: 'description', //access nested data with dot notation
 				header: t('products.fields.description'),
 				Cell: ({ renderedCellValue }) => (
-					<Text truncate="end" maw={200}>
-						{renderedCellValue}
-					</Text>
+					<Tooltip label={renderedCellValue}>
+						<Text truncate="end" maw={200}>
+							{renderedCellValue}
+						</Text>
+					</Tooltip>
 				),
 			},
 			{
 				accessorKey: 'link', //access nested data with dot notation
 				header: t('products.fields.link'),
 				size: 60,
+				maxSize: 60,
 				Cell: ({ renderedCellValue }) => (
 					<Anchor
 						href={renderedCellValue?.toString()}
@@ -87,6 +90,13 @@ export const ProductTable = (): JSX.Element => {
 				accessorKey: 'slogan', //access nested data with dot notation
 				header: t('products.fields.slogan'),
 				size: 100,
+				Cell: ({ renderedCellValue }) => (
+					<Tooltip label={renderedCellValue}>
+						<Text truncate="end" maw={100}>
+							{renderedCellValue}
+						</Text>
+					</Tooltip>
+				),
 			},
 			{
 				accessorKey: 'sort_order', //access nested data with dot notation

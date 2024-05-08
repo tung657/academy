@@ -5,15 +5,23 @@ import { ButtonCustomProps } from '@/types';
 
 interface Props extends ButtonCustomProps {
 	colorHover?: string;
+	component?: any;
 }
 
 export const ButtonBubble = ({
 	colorHover = '#221638',
 	size = 'md',
+	component,
 	...props
 }: Props): JSX.Element => {
 	return (
-		<Button size={size} radius={'xl'} className={classes.button} {...props}>
+		<Button
+			component={component}
+			size={size}
+			radius={'xl'}
+			className={classes.button}
+			{...props}
+		>
 			{props.children}
 			<div style={{ background: colorHover }} />
 		</Button>

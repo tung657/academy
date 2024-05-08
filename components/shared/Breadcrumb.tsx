@@ -1,7 +1,15 @@
 'use client';
 
 import { usePathname } from '@/libs/i18n-navigation';
-import { Breadcrumbs, Container, Flex, Image, Text, rem } from '@mantine/core';
+import {
+	Anchor,
+	Breadcrumbs,
+	Container,
+	Flex,
+	Image,
+	Text,
+	rem,
+} from '@mantine/core';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -10,7 +18,7 @@ import classes from './scss/breadcrumb.module.scss';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
-import { IconChevronRight, IconHome } from '@tabler/icons-react';
+import { IconChevronRight } from '@tabler/icons-react';
 import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
 import { imgOthers } from '@/assets/images/others';
 
@@ -80,20 +88,27 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 							/>
 						}
 					>
-						<Link href={HOME_URL} className={classes.link}>
-							<IconHome stroke={1.6} size={20} />
-						</Link>
+						<Anchor
+							href={HOME_URL}
+							component={Link}
+							className={classes.link}
+							fw={500}
+						>
+							{t('home')}
+						</Anchor>
 						{breadcrumbs?.map((item, index) =>
 							item.href ? (
-								<Link
+								<Anchor
+									component={Link}
 									className={classes.link}
 									key={index}
 									href={item?.href || ''}
+									fw={500}
 								>
 									<Text fz={rem(16)} fw={600} p={4}>
 										{item.title}
 									</Text>
-								</Link>
+								</Anchor>
 							) : (
 								<Text fz={rem(16)} key={index} fw={400} c={'dimmed'} p={4}>
 									{item.title}

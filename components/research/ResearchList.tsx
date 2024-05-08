@@ -23,7 +23,7 @@ export const ResearchList = (): JSX.Element => {
 						<Container size="xl">
 							<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 								<Grid.Col span={{ base: 12, md: 6 }} order={index % 2 ? 2 : 1}>
-									<Text fz={22} fw={700} c={'primary'} pb={16} pl={16}>
+									<Text fz={'h3'} fw={700} c={'primary'} pb={16} pl={16}>
 										Nghiên cứu của AIA
 									</Text>
 									<TitleRender order={2} pb={16} pl={16}>
