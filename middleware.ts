@@ -28,6 +28,8 @@ const nextIntlMiddleware = createMiddleware({
 	defaultLocale: AppConfig.defaultLocale,
 
 	localePrefix: AppConfig.localePrefix,
+
+	localeDetection: false,
 });
 
 export default async function middleware(req: NextRequest) {
