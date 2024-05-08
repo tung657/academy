@@ -58,7 +58,7 @@ export default async function sitemap(): Promise<SitemapType> {
 		},
 	}));
 
-	const productsList = products.data.map((data: any) => ({
+	const productsList = products?.data?.data?.map((data: any) => ({
 		url: `/product/${data.product_id}`,
 		lastModified: new Date(),
 		alternates: {
