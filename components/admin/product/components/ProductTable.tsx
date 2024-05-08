@@ -45,7 +45,12 @@ export const ProductTable = (): JSX.Element => {
 				header: t('products.fields.thumbnail'),
 				size: 100,
 				Cell: ({ renderedCellValue, row: { original } }) => (
-					<Image src={renderedCellValue} alt={original.product_name} />
+					<Image
+						mah={50}
+						fit="contain"
+						src={renderedCellValue}
+						alt={original.product_name}
+					/>
 				),
 			},
 			{
@@ -67,7 +72,11 @@ export const ProductTable = (): JSX.Element => {
 				header: t('products.fields.link'),
 				size: 60,
 				Cell: ({ renderedCellValue }) => (
-					<Anchor href={renderedCellValue?.toString()} target="_blank">
+					<Anchor
+						href={renderedCellValue?.toString()}
+						target="_blank"
+						rel="noopener"
+					>
 						<Group align="center" gap={4}>
 							<IconLink stroke={1.2} size={20} /> Đường dẫn
 						</Group>

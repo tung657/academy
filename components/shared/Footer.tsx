@@ -127,7 +127,12 @@ export default function FooterLinks() {
 						wrap="nowrap"
 					>
 						{socials?.map((social) => (
-							<Link href={social.link} key={social.label} target="_blank">
+							<Link
+								href={social.link}
+								key={social.label}
+								target="_blank"
+								rel="noopener"
+							>
 								<ActionIcon size="lg" color="primary" variant="subtle">
 									{renderIcon(social.icon)}
 								</ActionIcon>

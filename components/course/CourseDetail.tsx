@@ -340,6 +340,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 													<Anchor
 														href={props?.instructor.facebook}
 														target="_blank"
+														rel="noopener"
 													>
 														<ThemeIcon
 															radius={'sm'}
@@ -357,6 +358,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 													<Anchor
 														href={props?.instructor.twitter}
 														target="_blank"
+														rel="noopener"
 													>
 														<ThemeIcon
 															radius={'sm'}
@@ -374,6 +376,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 													<Anchor
 														href={props?.instructor.instagram}
 														target="_blank"
+														rel="noopener"
 													>
 														<ThemeIcon
 															radius={'sm'}
@@ -392,6 +395,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 													<Anchor
 														href={props?.instructor.linkedin}
 														target="_blank"
+														rel="noopener"
 													>
 														<ThemeIcon
 															radius={'sm'}

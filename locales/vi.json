@@ -37,7 +37,7 @@
 		"product": "Sản phẩm",
 		"contact": "Liên hệ",
 		"jobs": "Tuyển dụng",
-		"media": "Truyền thông"
+		"blogs": "Blog"
 	},
 	"validation": {
 		"fields": {
@@ -108,6 +108,13 @@
 	"contact": {
 		"meta_title": "Liên hệ",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
+	},
+	"blogs": {
+		"meta_title": "Blog",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"title": "Bài viết nổi bật",
+		"title_sub": "Tổng hợp các bài viết chia sẻ về kinh nghiệm tự học lập trình online và các kỹ thuật lập trình.",
+		"title_suggestion": "Chủ đề được đề xuất"
 	},
 
 	"login": {

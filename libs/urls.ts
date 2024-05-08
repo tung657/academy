@@ -19,7 +19,8 @@ const CONTACT_URL = '/contact';
 const JOB_URL = '/jobs';
 const JOB_DETAIL_URL = `${JOB_URL}/:id`;
 
-const MEDIA_URL = '/media';
+const BLOG_URL = '/blogs';
+const BLOG_DETAIL_URL = `${BLOG_URL}/:id`;
 
 const VERIFY_RESET_PASSWORD_URL = '/verify-reset-password';
 // -------------------------- END CLIENT --------------------------------------
@@ -45,7 +46,8 @@ export {
 	CONTACT_URL,
 	JOB_URL,
 	JOB_DETAIL_URL,
-	MEDIA_URL,
+	BLOG_URL,
+	BLOG_DETAIL_URL,
 	VERIFY_RESET_PASSWORD_URL,
 
 	// Admin
@@ -69,20 +71,20 @@ export const generateTreeUrls = (t: any): NavTree[] => {
 			path: PRODUCT_URL,
 		},
 		{
-			title: t('nav.' + getPathKey(COURSE_URL)),
-			path: COURSE_URL,
-		},
-		{
 			title: t('nav.' + getPathKey(RESEARCH_URL)),
 			path: RESEARCH_URL,
+		},
+		{
+			title: t('nav.' + getPathKey(COURSE_URL)),
+			path: COURSE_URL,
 		},
 		{
 			title: t('nav.' + getPathKey(JOB_URL)),
 			path: JOB_URL,
 		},
 		{
-			title: t('nav.' + getPathKey(MEDIA_URL)),
-			path: MEDIA_URL,
+			title: t('nav.' + getPathKey(BLOG_URL)),
+			path: BLOG_URL,
 		},
 		{
 			title: t('nav.' + getPathKey(CONTACT_URL)),

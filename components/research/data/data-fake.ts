@@ -20,10 +20,16 @@ export const researchTypeOptions = [
 		id: 3,
 	},
 	{
-		label: 'Học máy sâu (DML)',
+		label: 'Học sâu - Học  máy',
 		thumbnail: imgResearches.img4,
 		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
 		id: 4,
+	},
+	{
+		label: 'Tối ưu',
+		thumbnail: imgResearches.img4,
+		description: `PageFly là bộ công cụ hoàn thiện nhất trên nền tảng Shopify để tối ưu chuyển đổi cho doanh nghiệp. Đây là sản phẩm tiên phong của BraveBits với định hướng phát triển cho mọi nền tảng thương mại điện tử.`,
+		id: 5,
 	},
 ];
 

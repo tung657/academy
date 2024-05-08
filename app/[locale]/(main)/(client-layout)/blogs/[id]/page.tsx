@@ -1,12 +1,12 @@
-import { Media } from '@/components/media/Media';
 import { getTranslations } from 'next-intl/server';
 import { AppConfig } from '@/utils/config';
-import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { BlogDetail } from '@/components/blogs/detail/BlogDetail';
+import { dataJobs } from '@/components/job/data/data-fake';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
 		locale: props.params.locale,
-		namespace: 'media',
+		namespace: 'blogs',
 	});
 
 	return {
@@ -15,11 +15,10 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 	};
 }
 
-export default async function MediaPage() {
+export default async function BlogDetailPage() {
 	return (
 		<>
-			<Breadcrumb />
-			<Media></Media>
+			<BlogDetail dataDetail={dataJobs[0]} />
 		</>
 	);
 }

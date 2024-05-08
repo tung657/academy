@@ -200,7 +200,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 													? URL.createObjectURL(files[0])
 													: form.getInputProps('thumbnail').value
 														? form.getInputProps('thumbnail').value
-														: null
+														: ''
 											})`,
 										}}
 										bgsz={'contain'}
@@ -269,6 +269,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 														: undefined
 												}
 												target="_blank"
+												rel="noopener"
 												c={form.getInputProps('link').value ? '' : 'gray'}
 											>
 												<IconLink stroke={1.4} size={20} />
