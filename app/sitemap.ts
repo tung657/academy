@@ -1,6 +1,7 @@
 import { dataCourses } from '@/components/course/data/data-fake';
 import { dataJobs } from '@/components/job/data/data-fake';
 import { researchTypeOptions } from '@/components/research/data/data-fake';
+import { searchProduct } from '@/helpers/repositories/product.repository';
 
 type SitemapType = Array<{
 	url: string;
@@ -20,6 +21,8 @@ type SitemapType = Array<{
 }>;
 
 export default async function sitemap(): Promise<SitemapType> {
+	const products = await searchProduct({});
+
 	const courseList = dataCourses.map((data) => ({
 		url: `/course/${data.id}`,
 		lastModified: new Date(),
@@ -53,6 +56,17 @@ export default async function sitemap(): Promise<SitemapType> {
 		},
 	}));
 
+	const productsList = products.map((data) => ({
+		url: `/product/${data.product_id}`,
+		lastModified: new Date(),
+		alternates: {
+			languages: {
+				en: `/en/product/${data.product_id}`,
+				vi: `/product/${data.product_id}`,
+			},
+		},
+	}));
+
 	return [
 		{
 			url: '/',
@@ -75,6 +89,7 @@ export default async function sitemap(): Promise<SitemapType> {
 				},
 			},
 		},
+		...productsList,
 
 		// course and detail
 		{
@@ -116,12 +131,12 @@ export default async function sitemap(): Promise<SitemapType> {
 		...jobsList,
 
 		{
-			url: '/media',
+			url: '/blogs',
 			lastModified: new Date(),
 			alternates: {
 				languages: {
-					vi: '/media',
-					en: '/en/media',
+					vi: '/blogs',
+					en: '/en/blogs',
 				},
 			},
 		},

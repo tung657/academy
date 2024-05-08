@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useMemo, useRef } from 'react';
+import { Dispatch, SetStateAction, useMemo, useRef } from 'react';
 import ReactQuill, { Quill } from 'react-quill';
 // #1 import quill-image-uploader
 import ImageUploader from 'quill-image-uploader';
@@ -76,13 +76,8 @@ export function RichEditor({ loading, value, setValue }: Props) {
 				},
 			},
 		}),
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[],
 	);
-
-	useEffect(() => {
-		setValue(ref.current?.state?.value);
-	}, [ref.current?.state?.value, setValue]);
 
 	return loading ? (
 		<></>
@@ -93,6 +88,7 @@ export function RichEditor({ loading, value, setValue }: Props) {
 			modules={modules}
 			defaultValue={value}
 			formats={formats}
+			onChange={setValue}
 		/>
 	);
 }

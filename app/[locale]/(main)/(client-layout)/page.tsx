@@ -19,14 +19,14 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,
-			url: 'https://aiacademy-dev.edu.vn',
+			url: 'https://web-dev.aiacademy.edu.vn',
 			siteName: AppConfig.name,
 			images: [
 				{
-					url: '/api/file/' + btoa('2024-05-08/how-its-work.png'),
+					url: '/assets/images/home/home.png',
 					width: 1800,
 					height: 1600,
-					alt: 'My custom alt',
+					alt: `${t('meta_title')} | ${AppConfig.name}`,
 				},
 			],
 			locale: props.params.locale,

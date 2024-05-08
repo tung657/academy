@@ -3,7 +3,14 @@ import { getTranslations } from 'next-intl/server';
 import { AppConfig } from '@/utils/config';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 
-export async function generateMetadata(props: { params: { locale: string } }) {
+interface Props {
+	params: {
+		locale: string;
+		id: string;
+	};
+}
+
+export async function generateMetadata(props: Props) {
 	const t = await getTranslations({
 		locale: props.params.locale,
 		namespace: 'course',
