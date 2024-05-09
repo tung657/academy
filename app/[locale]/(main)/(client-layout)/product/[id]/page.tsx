@@ -1,7 +1,7 @@
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { apiClient } from '@/helpers';
 import { IProduct } from '@/types';
-import { AppConfig, BASE_URL, ORIGIN_URL } from '@/utils/config';
+import { AppConfig, BASE_URL, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props) {
 	return {
 		title: `${title} | ${AppConfig.name}`,
 		description: data.description,
+		keywords: [data.product_name, ...metaKeywords],
 		openGraph: {
 			title: `${title} | ${AppConfig.name}`,
 			description: data.description,

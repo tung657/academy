@@ -2,7 +2,7 @@ import { ProductList } from '@/components/product/ProductList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { apiClient } from '@/helpers';
 import { IBaseResponse, IProduct } from '@/types';
-import { AppConfig, BASE_URL, ORIGIN_URL } from '@/utils/config';
+import { AppConfig, BASE_URL, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 
 interface Props {
@@ -21,6 +21,7 @@ export async function generateMetadata(props: Props) {
 	return {
 		title: `${t('meta_title')} | ${AppConfig.name}`,
 		description: `${t('meta_description')}`,
+		keywords: ['sản phẩm aia', ...metaKeywords],
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,

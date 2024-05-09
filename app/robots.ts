@@ -1,3 +1,4 @@
+import { ORIGIN_URL } from '@/utils/config';
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
@@ -7,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
 			allow: '/',
 			disallow: ['/admin', '/login'],
 		},
-		// sitemap: 'https://acme.com/sitemap.xml',
+		sitemap: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/sitemap.xml`,
 	};
 }

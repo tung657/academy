@@ -11,6 +11,13 @@ export const AppConfig = {
 	localePrefix,
 };
 
+export const metaKeywords = [
+	'aia',
+	'aiacademy',
+	'aiacademy vn',
+	'viện trí tuệ nhân tạo việt nam',
+];
+
 // For mantine notification
 
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
