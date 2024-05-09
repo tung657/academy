@@ -204,7 +204,26 @@
 			"link": "Liên kết",
 			"slogan": "Slogan",
 			"en_slogan": "Slogan (EN)",
-			"sort_order": "Xếp hạng (ASC)",
+			"sort_order": "ASC",
+			"action": "Thao tác"
+		}
+	},
+	"instructors": {
+		"heading": "Quản lý chuyên gia",
+		"title_create": "Thêm mới chuyên gia",
+		"title_update": "Chi tiết chuyên gia",
+		"title_delete": "Xoá chuyên gia",
+		"fields": {
+			"serial": "STT",
+			"avatar": "Ảnh đại diện",
+			"instructor_name": "Tên chuyên gia",
+			"major": "Chuyên môn",
+			"socials": "Mạng xã hội",
+			"fb_link": "Facebook link",
+			"x_link": "X link",
+			"ins_link": "Instagram link",
+			"linkedin_link": "LinkedIn link",
+			"sort_order": "ASC",
 			"action": "Thao tác"
 		}
 	},
