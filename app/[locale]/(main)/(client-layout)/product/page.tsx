@@ -42,15 +42,17 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function ProductPage() {
-	const products = (await apiClient.post(
-		`/products/search`,
-		{},
-		{
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		},
-	)) as IBaseResponse<IProduct[]>;
+	const products = (
+		await apiClient.post(
+			`/products/search`,
+			{},
+			{
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			},
+		)
+	).data as IBaseResponse<IProduct[]>;
 
-	if (!products?.data) return notFound();
+	if (!products?.data || products.message) return notFound();
 
 	return (
 		<>
