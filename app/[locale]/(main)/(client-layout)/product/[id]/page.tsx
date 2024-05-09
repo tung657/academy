@@ -1,10 +1,8 @@
 import { ProductDetail } from '@/components/product/ProductDetail';
-import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { apiClient } from '@/helpers';
 import { IProduct } from '@/types';
 import { AppConfig, BASE_URL, ORIGIN_URL } from '@/utils/config';
 import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
 
 interface Props {
 	params: {
@@ -60,16 +58,13 @@ export default async function ProductDetailPage({ params }: Props) {
 		})
 	).data as IProduct;
 
-	if (!data) return notFound();
-
-	const title = data.product_name;
+	// if (!data) return notFound();
 
 	return (
 		<>
-			<Breadcrumb lastLabel={title} />
-			<Suspense>
-				<ProductDetail dataDetail={data} />
-			</Suspense>
+			<ProductDetail
+				dataDetail={data?.message ? undefined : data ? data : undefined}
+			/>
 		</>
 	);
 }

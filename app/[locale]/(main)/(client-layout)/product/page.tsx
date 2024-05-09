@@ -4,7 +4,6 @@ import { apiClient } from '@/helpers';
 import { IBaseResponse, IProduct } from '@/types';
 import { AppConfig, BASE_URL, ORIGIN_URL } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {
@@ -52,12 +51,14 @@ export default async function ProductPage() {
 		)
 	).data as IBaseResponse<IProduct[]>;
 
-	if (!products?.data || products.message) return notFound();
+	// if (!products?.data || products.message) return notFound();
 
 	return (
 		<>
 			<Breadcrumb />
-			<ProductList data={products?.data || []} />
+			<ProductList
+				data={products?.message ? [] : products.data ? products.data : []}
+			/>
 		</>
 	);
 }

@@ -2,8 +2,7 @@ import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyJwtToken } from './helpers/auth';
 import { ADMIN_URL, DASHBOARD_URL, LOGIN_URL } from './libs/urls';
-import { AppConfig, LOCAL_TOKEN } from './utils/config';
-import { removePrefix } from './utils/format-string';
+import { AppConfig, LOCAL_TOKEN, ORIGIN_URL } from './utils/config';
 
 // Add whatever paths you want to PROTECT here
 const authRoutes = [
@@ -33,12 +32,11 @@ const nextIntlMiddleware = createMiddleware({
 });
 
 export default async function middleware(req: NextRequest) {
-	const BASE_URL = removePrefix(process.env.NEXT_PUBLIC_BASE_URL, '/api');
+	const BASE_URL = ORIGIN_URL;
+	const HOME_URL = `${BASE_URL}${DASHBOARD_URL}`;
 	if (req.nextUrl.pathname === '/admin')
-		return NextResponse.redirect(
-			`${req.nextUrl.origin}${BASE_URL}${DASHBOARD_URL}`,
-		);
-	const LOGIN = `${req.nextUrl.origin}${BASE_URL}${LOGIN_URL}?redirect=${
+		return NextResponse.redirect(`${HOME_URL}`);
+	const LOGIN = `${BASE_URL}${LOGIN_URL}?redirect=${
 		req.nextUrl.pathname + req.nextUrl.search
 	}`;
 
@@ -76,9 +74,7 @@ export default async function middleware(req: NextRequest) {
 			// If you have an admin role and path, secure it here
 			if (req.nextUrl.pathname.startsWith('/admin')) {
 				if (req.nextUrl.pathname === ADMIN_URL) {
-					return NextResponse.redirect(
-						`${req.nextUrl.origin}${BASE_URL}${DASHBOARD_URL}`,
-					);
+					return NextResponse.redirect(`${HOME_URL}`);
 				}
 			}
 		} catch (error) {
@@ -111,9 +107,7 @@ export default async function middleware(req: NextRequest) {
 
 	if (redirectToApp) {
 		// Redirect to app dashboard
-		return NextResponse.redirect(
-			`${req.nextUrl.origin}${BASE_URL}${DASHBOARD_URL}`,
-		);
+		return NextResponse.redirect(`${HOME_URL}`);
 	} else {
 		// Return the original response unaltered
 		return nextIntlMiddleware(req);

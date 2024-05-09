@@ -11,6 +11,8 @@ export interface IProduct extends IBaseData {
 	sort_order: number;
 	thumbnail: string;
 	link: string;
+	avatar?: string;
+	created_user?: string;
 	slogan?: string;
 	en_slogan?: string;
 }

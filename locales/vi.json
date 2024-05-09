@@ -13,6 +13,10 @@
 		"create": "Thêm mới",
 		"edit": "Chỉnh sửa",
 		"detail": "Chi tiết",
+		"share_with_fb": "Chia sẻ lên Facebook",
+		"share_with_x": "Chia sẻ lên Twitter",
+		"share_with_email": "Chia sẻ tới Email",
+		"share_with_link": "Sao chép đường dẫn",
 		"restore_pw": "Khôi phục mật khẩu",
 		"delete": "Xoá",
 		"address": {
@@ -57,6 +61,7 @@
 	"messages": {
 		"warning_delete": "Bạn có chắc chắn muốn xoá",
 		"logout_success": "Đăng xuất thành công, đang chuyển hướng",
+		"copied": "Sao chép thành công",
 		"success": {
 			"title": "Thành công",
 			"message": "Thao tác thành công"

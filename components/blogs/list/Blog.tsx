@@ -18,10 +18,10 @@ import {
 	Title,
 } from '@mantine/core';
 import { useTranslations } from 'next-intl';
-import { IconDots } from '@tabler/icons-react';
 import dayjs from 'dayjs';
 import { formatDateShow, getUrlDetail } from '@/utils/format-string';
 import { BLOG_DETAIL_URL } from '@/libs/urls';
+import { ShareSocial } from '@/components/shared/ShareSocial';
 
 export const Blog = (): JSX.Element => {
 	const t = useTranslations();
@@ -38,8 +38,8 @@ export const Blog = (): JSX.Element => {
 					<Text pb={16} pt={8}>
 						{t('blogs.title_sub')}
 					</Text>
-					<Grid gutter={{ base: 24, md: 84 }}>
-						<Grid.Col span={8}>
+					<Grid gutter={{ base: 24, md: 64 }}>
+						<Grid.Col span={{ base: 12, md: 8 }} order={{ base: 2, md: 1 }}>
 							<Stack>
 								{dataBlogs.map((item) => (
 									<Card key={item.id} withBorder>
@@ -50,9 +50,7 @@ export const Blog = (): JSX.Element => {
 													{item.author}
 												</Text>
 											</Group>
-											<Group>
-												<IconDots size={20} stroke={1.2} />
-											</Group>
+											<ShareSocial />
 										</Flex>
 										<Flex align={'center'} gap={16}>
 											<Stack gap={8}>
@@ -95,14 +93,14 @@ export const Blog = (): JSX.Element => {
 								))}
 							</Stack>
 						</Grid.Col>
-						<Grid.Col span={4}>
-							<Title order={3} c={'gray.6'} mb={8}>
+						<Grid.Col span={{ base: 12, md: 4 }} order={{ base: 1, md: 2 }}>
+							<Title order={3} c={'gray.7'} mb={8}>
 								{t('blogs.title_suggestion')}
 							</Title>
 							<Group>
 								{dataTypesBlogs.map((item) => (
 									<Anchor key={item.id}>
-										<Pill color={'gray.6'} size="md">
+										<Pill c={'gray.7'} size="md">
 											{item.label}
 										</Pill>
 									</Anchor>

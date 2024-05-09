@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { existsSync } from 'fs';
 import fs from 'fs/promises';
 import path from 'path';
+import { ORIGIN_URL } from '@/utils/config';
 
 export const dynamic = 'force-dynamic';
 
@@ -54,7 +55,7 @@ export async function POST(req: NextRequest) {
 		fileName: file.name,
 		size: file.size,
 		lastModified: new Date(file.lastModified),
-		url: `${req.nextUrl.origin}/api/file/${btoa(uploadDir + '/' + file.name)}`,
+		url: `${ORIGIN_URL}/api/file/${btoa(uploadDir + '/' + file.name)}`,
 		preview: ['mp4'].includes(extension.toLowerCase())
 			? `/play?filename=${filename}`
 			: undefined,

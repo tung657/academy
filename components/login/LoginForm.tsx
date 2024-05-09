@@ -20,7 +20,7 @@ import { useLogin } from '@/utils/query-loader/user.loader';
 import { useSearchParams } from 'next/navigation';
 import { DASHBOARD_URL } from '@/libs/urls';
 import { useSendResetPassword } from '@/utils/query-loader/email.loader';
-import { ERROR_TIMEOUT } from '@/utils/config';
+import { ERROR_TIMEOUT, ORIGIN_URL } from '@/utils/config';
 
 type loginType = 'login' | 'forget';
 
@@ -156,7 +156,7 @@ function ResetPwd({
 	const handleSubmit = (values: any) => {
 		const dataPost = {
 			...values,
-			url: window.location.origin,
+			url: ORIGIN_URL,
 		};
 
 		emailQuery.mutate(dataPost);

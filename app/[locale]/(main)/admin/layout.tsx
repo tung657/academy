@@ -5,6 +5,7 @@ import 'rc-tree/assets/index.css';
 import '@mantine/dropzone/styles.css';
 import 'react-quill/dist/quill.snow.css';
 import 'quill-image-uploader/dist/quill.imageUploader.min.css';
+import { Notifications } from '@mantine/notifications';
 
 interface Props {
 	children: React.ReactNode;
@@ -26,5 +27,10 @@ export async function generateMetadata(props: Props) {
 }
 
 export default function Layout({ children, params }: Props) {
-	return <AdminLayout params={params}>{children}</AdminLayout>;
+	return (
+		<AdminLayout params={params}>
+			{children}
+			<Notifications position="top-right" zIndex={10000} />
+		</AdminLayout>
+	);
 }

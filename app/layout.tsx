@@ -13,7 +13,6 @@ import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 import GlobalError from './global-error';
 import { AppConfig, ORIGIN_URL } from '@/utils/config';
-import { Notifications } from '@mantine/notifications';
 import { Suspense } from 'react';
 import Loading from './loading';
 import { getTranslations } from 'next-intl/server';
@@ -80,8 +79,6 @@ export default function RootLayout({
 						<NextIntlClientProvider locale={locale} messages={messages}>
 							<ErrorBoundary errorComponent={GlobalError}>
 								{children}
-
-								<Notifications position="top-right" zIndex={10000} />
 							</ErrorBoundary>
 						</NextIntlClientProvider>
 					</MantineProvider>
