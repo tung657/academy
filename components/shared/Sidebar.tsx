@@ -79,7 +79,7 @@ export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 					<Flex justify="space-between" align="center" gap="sm">
 						<Group justify="center" style={{ flex: tablet_match ? 'auto' : 1 }}>
 							<Anchor component={Link} href={DASHBOARD_URL}>
-								<Image src={logo.src} mah={50} alt="Logo" />
+								<Image src={logo.src} mah={50} alt="Logo" loading="lazy" />
 							</Anchor>
 						</Group>
 						{tablet_match && (

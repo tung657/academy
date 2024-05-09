@@ -32,7 +32,7 @@ import { useRecoilValue } from 'recoil';
 import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { useState } from 'react';
 import { IInstructor } from '@/types/instructor';
-import { uploadFile } from '@/utils/services/file.service';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
 
 interface Props {
 	id?: number;
@@ -44,6 +44,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 	const userRecoil = useRecoilValue(userState);
 	const [files, setFiles] = useState<FileWithPath[]>();
 	const [loading, setLoading] = useState(false);
+	const [pathNeedDelete, setPathNeedDelete] = useState<string>();
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
@@ -103,6 +104,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 					getNotifications('error', t, data.message);
 					return;
 				}
+				pathNeedDelete && deleteFile(pathNeedDelete);
 				getNotifications('success', t, data.message);
 				queryClient.invalidateQueries([CACHE_INSTRUCTOR.SEARCH]);
 				handleCancel();
@@ -120,6 +122,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 		if (files) {
 			const formData = new FormData();
 			formData.append('file', files[0]);
+			id && setPathNeedDelete(dataPost.avatar);
 			const dataUpload = await uploadFile(formData);
 			if (dataUpload.url) dataPost.avatar = dataUpload.url;
 		}
@@ -137,6 +140,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 	};
 
 	const handleCancel = () => {
+		setPathNeedDelete(undefined);
 		form.reset();
 		close();
 	};

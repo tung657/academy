@@ -53,6 +53,7 @@ export const InstructorTable = (): JSX.Element => {
 					<Image
 						mah={50}
 						fit="contain"
+						loading="lazy"
 						src={renderedCellValue}
 						alt={original.instructor_name}
 					/>
@@ -132,6 +133,7 @@ export const InstructorTable = (): JSX.Element => {
 						<InstructorDelete
 							label={original.instructor_name}
 							id={original.instructor_id}
+							path={original.avatar}
 						/>
 					</Flex>
 				),

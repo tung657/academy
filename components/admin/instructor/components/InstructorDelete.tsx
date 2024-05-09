@@ -14,13 +14,15 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconTrash } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+import { deleteFile } from '@/utils/services/file.service';
 
 interface Props {
 	label: string;
 	id: string | number;
+	path?: string;
 }
 
-export const InstructorDelete = ({ label, id }: Props): JSX.Element => {
+export const InstructorDelete = ({ label, id, path }: Props): JSX.Element => {
 	const [opened, { open, close }] = useDisclosure();
 	const t = useTranslations();
 
@@ -33,6 +35,7 @@ export const InstructorDelete = ({ label, id }: Props): JSX.Element => {
 					getNotifications('error', t, data.message);
 					return;
 				}
+				path && deleteFile(path);
 				getNotifications('success', t, data.message);
 				await queryClient.invalidateQueries([CACHE_INSTRUCTOR.SEARCH]);
 				handleCloseModal();

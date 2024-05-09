@@ -1,4 +1,5 @@
 import { apiClient } from '@/helpers';
+import { IBaseResponse } from '@/types';
 
 const prefix = '/file';
 
@@ -20,8 +21,10 @@ export const uploadFile = async (
 	return result.data;
 };
 
-export const deleteFile = async (data: { filePath: string }): Promise<any> => {
-	const result = await apiClient.post(`${prefix}/delete-file`, data);
+export const deleteFile = async (
+	filePath: string | string[],
+): Promise<IBaseResponse> => {
+	const result = await apiClient.post(`${prefix}/delete`, { paths: filePath });
 
 	return result.data;
 };

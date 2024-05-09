@@ -33,7 +33,7 @@ import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { useState } from 'react';
 import { RichEditor } from '../../editor/Editor';
 import { IProduct } from '@/types';
-import { uploadFile } from '@/utils/services/file.service';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
 
 interface Props {
 	id?: number;
@@ -47,6 +47,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 	const [dataEditor, setDataEditor] = useState<string>('');
 	const [dataEnEditor, setDataEnEditor] = useState<string>('');
 	const [loading, setLoading] = useState(false);
+	const [pathNeedDelete, setPathNeedDelete] = useState<string>();
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
@@ -108,6 +109,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 					getNotifications('error', t, data.message);
 					return;
 				}
+				pathNeedDelete && deleteFile(pathNeedDelete);
 				getNotifications('success', t, data.message);
 				queryClient.invalidateQueries([CACHE_PRODUCT.SEARCH]);
 				handleCancel();
@@ -126,6 +128,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 		if (files) {
 			const formData = new FormData();
 			formData.append('file', files[0]);
+			id && setPathNeedDelete(dataPost.thumbnail);
 			const dataUpload = await uploadFile(formData);
 			if (dataUpload.url) dataPost.thumbnail = dataUpload.url;
 		}
@@ -143,6 +146,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 	};
 
 	const handleCancel = () => {
+		setPathNeedDelete(undefined);
 		form.reset();
 		close();
 	};

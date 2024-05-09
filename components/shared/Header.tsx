@@ -162,6 +162,7 @@ export default function Header(): JSX.Element {
 							src={logo}
 							width={130}
 							height={54}
+							loading="lazy"
 							priority
 							alt="logo"
 							placeholder="blur"
@@ -190,6 +191,7 @@ export default function Header(): JSX.Element {
 							src={logo}
 							width={130}
 							height={54}
+							loading="lazy"
 							priority
 							alt="logo"
 							placeholder="blur"

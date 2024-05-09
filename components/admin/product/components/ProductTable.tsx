@@ -48,6 +48,7 @@ export const ProductTable = (): JSX.Element => {
 					<Image
 						mah={50}
 						fit="contain"
+						loading="lazy"
 						src={renderedCellValue}
 						alt={original.product_name}
 					/>
@@ -115,6 +116,7 @@ export const ProductTable = (): JSX.Element => {
 						<ProductDelete
 							label={original.product_name}
 							id={original.product_id}
+							path={original.thumbnail}
 						/>
 					</Flex>
 				),
