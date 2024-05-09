@@ -23,6 +23,7 @@ type SitemapType = Array<{
 export default async function sitemap(): Promise<SitemapType> {
 	const products = await apiClient.post(
 		'https://web-dev.aiacademy.edu.vn/api/products/search',
+		{}
 	);
 
 	const courseList = dataCourses.map((data) => ({
