@@ -23,7 +23,7 @@ type SitemapType = Array<{
 export default async function sitemap(): Promise<SitemapType> {
 	const products = await apiClient.post(
 		'https://web-dev.aiacademy.edu.vn/api/products/search',
-		{}
+		{},
 	);
 
 	const courseList = dataCourses.map((data) => ({
@@ -59,16 +59,17 @@ export default async function sitemap(): Promise<SitemapType> {
 		},
 	}));
 
-	const productsList = products?.data?.data?.map((data: any) => ({
-		url: `/product/${data.product_id}`,
-		lastModified: new Date(),
-		alternates: {
-			languages: {
-				en: `/en/product/${data.product_id}`,
-				vi: `/product/${data.product_id}`,
+	const productsList =
+		products?.data?.data?.map((data: any) => ({
+			url: `/product/${data.product_id}`,
+			lastModified: new Date(),
+			alternates: {
+				languages: {
+					en: `/en/product/${data.product_id}`,
+					vi: `/product/${data.product_id}`,
+				},
 			},
-		},
-	}));
+		})) || [];
 
 	return [
 		{

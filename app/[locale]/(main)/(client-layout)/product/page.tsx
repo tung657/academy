@@ -1,8 +1,8 @@
 import { ProductList } from '@/components/product/ProductList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { searchProduct } from '@/helpers/repositories/product.repository';
-import { IProduct } from '@/types';
-import { AppConfig } from '@/utils/config';
+import { apiClient } from '@/helpers';
+import { IBaseResponse, IProduct } from '@/types';
+import { AppConfig, BASE_URL, ORIGIN_URL } from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
@@ -25,7 +25,7 @@ export async function generateMetadata(props: Props) {
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,
-			url: 'https://web-dev.aiacademy.edu.vn/product',
+			url: `${ORIGIN_URL}/product`,
 			siteName: AppConfig.name,
 			images: [
 				{
@@ -42,14 +42,20 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function ProductPage() {
-	const products = (await searchProduct({})) as IProduct[];
+	const products = (await apiClient.post(
+		`/products/search`,
+		{},
+		{
+			baseURL: `${ORIGIN_URL}${BASE_URL}`,
+		},
+	)) as IBaseResponse<IProduct[]>;
 
-	if (!products) return notFound();
+	if (!products?.data) return notFound();
 
 	return (
 		<>
 			<Breadcrumb />
-			<ProductList data={products} />
+			<ProductList data={products?.data || []} />
 		</>
 	);
 }

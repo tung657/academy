@@ -3,7 +3,7 @@ import { CarouselHome } from '@/components/home/Carousel';
 import { MemberHome } from '@/components/home/MemberHome';
 import { MissionValue } from '@/components/home/MissionValue';
 import { Partner } from '@/components/home/Partner';
-import { AppConfig } from '@/utils/config';
+import { AppConfig, ORIGIN_URL } from '@/utils/config';
 import { Container } from '@mantine/core';
 import { getTranslations } from 'next-intl/server';
 
@@ -19,7 +19,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,
-			url: 'https://web-dev.aiacademy.edu.vn',
+			url: ORIGIN_URL,
 			siteName: AppConfig.name,
 			images: [
 				{

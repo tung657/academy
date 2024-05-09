@@ -1,8 +1,8 @@
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { getProductById } from '@/helpers/repositories/product.repository';
+import { apiClient } from '@/helpers';
 import { IProduct } from '@/types';
-import { AppConfig } from '@/utils/config';
+import { AppConfig, BASE_URL, ORIGIN_URL } from '@/utils/config';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -16,7 +16,10 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
-	const data = await getProductById(+params.id);
+	const data = (await apiClient.get(`/products/get-by-id/${params.id}`, {
+		baseURL: `${ORIGIN_URL}${BASE_URL}`,
+	})) as IProduct;
+
 	if (!data) return notFound();
 	const title = `${data.product_name}`;
 
@@ -26,7 +29,7 @@ export async function generateMetadata({ params }: Props) {
 		openGraph: {
 			title: `${title} | ${AppConfig.name}`,
 			description: data.description,
-			url: 'https://web-dev.aiacademy.edu.vn/product/' + +params.id,
+			url: `${ORIGIN_URL}/product/` + +params.id,
 			siteName: AppConfig.name,
 			images: [
 				{
@@ -49,7 +52,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ProductDetailPage({ params }: Props) {
-	const data = (await getProductById(+params.id)) as IProduct;
+	const data = (await apiClient.get(`/products/get-by-id/${params.id}`, {
+		baseURL: `${ORIGIN_URL}${BASE_URL}`,
+	})) as IProduct;
 
 	if (!data) return notFound();
 

@@ -12,7 +12,7 @@ import { theme } from '@/theme/theme';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 import GlobalError from './global-error';
-import { AppConfig } from '@/utils/config';
+import { AppConfig, ORIGIN_URL } from '@/utils/config';
 import { Notifications } from '@mantine/notifications';
 import { Suspense } from 'react';
 import Loading from './loading';
@@ -29,11 +29,11 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 	return {
 		title: `${t('meta_title')} | ${AppConfig.name}`,
 		description: `${t('meta_description')}`,
-		metadataBase: new URL('https://web-dev.aiacademy.edu.vn'),
+		metadataBase: new URL(ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'),
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,
-			url: 'https://web-dev.aiacademy.edu.vn',
+			url: ORIGIN_URL,
 			siteName: AppConfig.name,
 			images: [
 				{
