@@ -1,8 +1,7 @@
 'use client';
 
-import { Box, Container, Grid, Image, Text } from '@mantine/core';
+import { Anchor, Box, Container, Grid, Image, Text } from '@mantine/core';
 
-import Link from 'next/link';
 import { PRODUCT_DETAIL_URL } from '@/libs/urls';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconArrowRight } from '@tabler/icons-react';
@@ -11,6 +10,7 @@ import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { getUrlDetail } from '@/utils/format-string';
 import { useTranslations } from 'next-intl';
 import { IProduct } from '@/types';
+import { Link } from '@/libs/i18n-navigation';
 
 interface Props {
 	data: IProduct[];
@@ -41,7 +41,8 @@ export const ProductList = ({ data }: Props): JSX.Element => {
 									<Text pb={16} pl={16}>
 										{item.description}
 									</Text>
-									<Link
+									<Anchor
+										component={Link}
 										href={getUrlDetail(PRODUCT_DETAIL_URL, item.product_id)}
 									>
 										<ButtonBubble
@@ -52,7 +53,7 @@ export const ProductList = ({ data }: Props): JSX.Element => {
 										>
 											{t('global.see_details')}
 										</ButtonBubble>
-									</Link>
+									</Anchor>
 								</Grid.Col>
 								<Grid.Col span={{ base: 12, md: 6 }} order={(index + 1) % 2}>
 									<Image

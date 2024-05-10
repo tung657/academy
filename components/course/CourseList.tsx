@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import {
+	Anchor,
 	Box,
 	Card,
 	Container,
@@ -17,12 +18,11 @@ import {
 
 import classes from './scss/course-list.module.scss';
 
-import Link from 'next/link';
 import { COURSE_DETAIL_URL } from '@/libs/urls';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconCalendar } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
-import { usePathname, useRouter } from '@/libs/i18n-navigation';
+import { Link, usePathname, useRouter } from '@/libs/i18n-navigation';
 import { dataCourses } from './data/data-fake';
 import { SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { getUrlDetail } from '@/utils/format-string';
@@ -75,14 +75,15 @@ export const CourseList = (): JSX.Element => {
 									</Card.Section>
 
 									<Group justify="space-between" mt="md">
-										<Link
+										<Anchor
+											component={Link}
 											className={classes.title}
 											href={getUrlDetail(COURSE_DETAIL_URL, item.id)}
 										>
 											<TitleRender order={3} fz={{ base: 'lg', md: 'h3' }}>
 												{item.title}
 											</TitleRender>
-										</Link>
+										</Anchor>
 									</Group>
 
 									<Text py={16}>{item.description}</Text>

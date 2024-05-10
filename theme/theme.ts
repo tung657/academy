@@ -45,5 +45,10 @@ export const theme = createTheme({
 				gradient: { from: 'primary.3', to: 'primary.6', deg: 135 },
 			},
 		},
+		Anchor: {
+			defaultProps: {
+				td: 'none',
+			},
+		},
 	},
 });

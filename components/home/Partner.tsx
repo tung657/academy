@@ -3,16 +3,7 @@
 import { useRef } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
-import {
-	Box,
-	Card,
-	Text,
-	Flex,
-	Container,
-	Title,
-	Stack,
-	Avatar,
-} from '@mantine/core';
+import { Box, Card, Text, Flex, Container, Stack, Avatar } from '@mantine/core';
 
 import classes from './scss/partner.module.scss';
 import { imgHome } from '@/assets/images/home';
@@ -78,7 +69,9 @@ export const Partner = (): JSX.Element => {
 												style={{ color: 'transparent' }}
 											/>
 											<Stack gap={4} align="flex-start">
-												<Title order={4}>John Wick</Title>
+												<Text fz={'h4'} fw={700}>
+													John Wick
+												</Text>
 												<Text fz={16} fw={700} c={'gray.6'}>
 													CEO{' '}
 												</Text>

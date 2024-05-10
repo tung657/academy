@@ -1,5 +1,6 @@
 'use client';
 import {
+	Anchor,
 	BackgroundImage,
 	Box,
 	Container,
@@ -18,8 +19,8 @@ import {
 	IconBrandTwitterFilled,
 } from '@tabler/icons-react';
 import classes from './scss/member.module.scss';
-import Link from 'next/link';
 import { imgOthers } from '@/assets/images/others';
+import { Link } from '@/libs/i18n-navigation';
 
 const dataMembers = [...Array(8)].map((_, index) => ({
 	id: index,
@@ -72,7 +73,11 @@ export const MemberHome = (): JSX.Element => {
 											alt={item.title}
 										/>
 										<Flex className={classes.socials}>
-											<Link href={item.links.facebook}>
+											<Anchor
+												component={Link}
+												href={item.links.facebook}
+												aria-label={item.title}
+											>
 												<ThemeIcon
 													className={classes.socialItem}
 													radius={'xl'}
@@ -84,8 +89,8 @@ export const MemberHome = (): JSX.Element => {
 														size={20}
 													/>
 												</ThemeIcon>
-											</Link>
-											<Link href={item.links.facebook}>
+											</Anchor>
+											<Anchor component={Link} href={item.links.facebook}>
 												<ThemeIcon
 													className={classes.socialItem}
 													radius={'xl'}
@@ -97,7 +102,7 @@ export const MemberHome = (): JSX.Element => {
 														size={20}
 													/>
 												</ThemeIcon>
-											</Link>
+											</Anchor>
 										</Flex>
 									</Box>
 

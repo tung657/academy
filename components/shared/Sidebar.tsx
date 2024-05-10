@@ -22,8 +22,7 @@ import {
 	IconX,
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
-import { usePathname } from '@/libs/i18n-navigation';
-import Link from 'next/link';
+import { Link, usePathname } from '@/libs/i18n-navigation';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@/store/user/atom';
 import logo from '@/assets/images/logos/logo.jpg';

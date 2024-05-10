@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from '@/libs/i18n-navigation';
+import { Link, usePathname } from '@/libs/i18n-navigation';
 import {
 	Anchor,
 	Breadcrumbs,
@@ -16,7 +16,6 @@ import { useEffect, useState } from 'react';
 
 import classes from './scss/breadcrumb.module.scss';
 import { TitleRender } from '../mantines/typographies/TitleRender';
-import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
 import { IconChevronRight } from '@tabler/icons-react';
 import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';

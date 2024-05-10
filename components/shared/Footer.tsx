@@ -7,6 +7,7 @@ import {
 	rem,
 	Box,
 	Image,
+	Anchor,
 } from '@mantine/core';
 import {
 	IconBrandTwitter,
@@ -15,12 +16,12 @@ import {
 	IconBrandLinkedin,
 } from '@tabler/icons-react';
 import classes from './scss/footer.module.scss';
-import Link from 'next/link';
 import { HOME_URL } from '@/libs/urls';
 import logo from '@/assets/images/logos/logo.jpg';
 import React from 'react';
 import { imgOthers } from '@/assets/images/others';
 import { LanguagePicker } from '../langs/LanguagePicker';
+import { Link } from '@/libs/i18n-navigation';
 
 const data = [
 	{
@@ -105,7 +106,11 @@ export default function FooterLinks() {
 		<footer className={classes.footer}>
 			<Container size="xl" className={classes.inner}>
 				<div className={classes.logo}>
-					<Link href={HOME_URL} style={{ textDecoration: 'none' }}>
+					<Anchor
+						component={Link}
+						href={HOME_URL}
+						style={{ textDecoration: 'none' }}
+					>
 						<Image
 							src={logo.src}
 							maw={300}
@@ -113,7 +118,7 @@ export default function FooterLinks() {
 							fit="cover"
 							loading="lazy"
 						/>
-					</Link>
+					</Anchor>
 					<Text size="sm" className={classes.description}>
 						Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa
 						Đô, quận Cầu Giấy, TP Hà Nội
@@ -127,7 +132,8 @@ export default function FooterLinks() {
 						wrap="nowrap"
 					>
 						{socials?.map((social) => (
-							<Link
+							<Anchor
+								aria-label={social.label}
 								href={social.link}
 								key={social.label}
 								target="_blank"
@@ -136,7 +142,7 @@ export default function FooterLinks() {
 								<ActionIcon size="lg" color="primary" variant="subtle">
 									{renderIcon(social.icon)}
 								</ActionIcon>
-							</Link>
+							</Anchor>
 						))}
 
 						<LanguagePicker pl={6} />
@@ -145,9 +151,7 @@ export default function FooterLinks() {
 				<div className={classes.groups}>{groups}</div>
 			</Container>
 			<Container size="xl" className={classes.afterFooter}>
-				<Text c="dimmed" size="sm">
-					© 2024 AI Academy Viet Nam.
-				</Text>
+				<Text size="sm">© 2024 AI Academy Viet Nam.</Text>
 			</Container>
 			<Box className={classes.footerMap}>
 				<Image

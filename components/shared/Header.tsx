@@ -13,18 +13,18 @@ import {
 	Collapse,
 	Flex,
 	Box,
+	Anchor,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
 import classes from './scss/header.module.scss';
-import Link from 'next/link';
 import { useTranslations } from 'use-intl';
 import Image from 'next/image';
 import logo from '@/assets/images/logos/logo.jpg';
 import { HOME_URL, generateTreeUrls } from '@/libs/urls';
 import { NavTree } from '@/types/global';
 import React, { useState } from 'react';
-import { usePathname } from '@/libs/i18n-navigation';
+import { Link, usePathname } from '@/libs/i18n-navigation';
 
 export default function Header(): JSX.Element {
 	const t = useTranslations();
@@ -61,7 +61,8 @@ export default function Header(): JSX.Element {
 					withinPortal
 				>
 					<Menu.Target>
-						<Link
+						<Anchor
+							component={Link}
 							href={link.path}
 							className={`${classes.link} ${handleActiveClass(link.path)}`}
 						>
@@ -69,7 +70,7 @@ export default function Header(): JSX.Element {
 								<span className={classes.linkLabel}>{link.title}</span>
 								<IconChevronDown size="0.9rem" stroke={1.5} />
 							</Center>
-						</Link>
+						</Anchor>
 					</Menu.Target>
 					<Menu.Dropdown>{menuItems}</Menu.Dropdown>
 				</Menu>
@@ -77,13 +78,14 @@ export default function Header(): JSX.Element {
 		}
 
 		return (
-			<Link
+			<Anchor
+				component={Link}
 				key={link.path}
 				href={link.path}
 				className={`${classes.link} ${handleActiveClass(link.path)}`}
 			>
 				{link.title}
-			</Link>
+			</Anchor>
 		);
 	});
 
@@ -97,13 +99,14 @@ export default function Header(): JSX.Element {
 						<Flex align={'center'}>
 							{/* <Box component="span" mr={5}>
 								</Box> */}
-							<Link
+							<Anchor
+								component={Link}
 								href={item.path}
 								className={`${classes.link} ${handleActiveClass(item.path)}`}
 								onClick={toggleDrawer}
 							>
 								{item.title}
-							</Link>
+							</Anchor>
 							<IconChevronDown
 								onClick={() =>
 									setOpenCollapse((prev: any) => ({
@@ -125,28 +128,30 @@ export default function Header(): JSX.Element {
 						</Flex>
 						{item.children.map((i) => (
 							<Collapse key={i.path} in={openCollapse[item.path]}>
-								<Link
+								<Anchor
+									component={Link}
 									style={{ marginLeft: 10, fontWeight: 400 }}
 									href={i.path}
 									className={`${classes.link} ${handleActiveClass(i.path)}`}
 									onClick={toggleDrawer}
 								>
 									{i.title}
-								</Link>
+								</Anchor>
 							</Collapse>
 						))}
 					</React.Fragment>
 				);
 			}
 			return (
-				<Link
+				<Anchor
+					component={Link}
 					key={item.path}
 					href={item.path}
 					className={`${classes.link} ${handleActiveClass(item.path)}`}
 					onClick={toggleDrawer}
 				>
 					{item.title}
-				</Link>
+				</Anchor>
 			);
 		});
 
@@ -157,17 +162,20 @@ export default function Header(): JSX.Element {
 		<header className={classes.header}>
 			<Container size="xl">
 				<Box className={classes.inner} mr={-12}>
-					<Link href={HOME_URL} style={{ textDecoration: 'none' }}>
+					<Anchor
+						component={Link}
+						href={HOME_URL}
+						style={{ textDecoration: 'none' }}
+					>
 						<Image
 							src={logo}
 							width={130}
 							height={54}
-							loading="lazy"
 							priority
 							alt="logo"
 							placeholder="blur"
 						/>
-					</Link>
+					</Anchor>
 					<Group gap={5} visibleFrom="sm">
 						{items}
 					</Group>
@@ -186,17 +194,16 @@ export default function Header(): JSX.Element {
 				size="79%"
 				padding="md"
 				title={
-					<Link href={HOME_URL}>
+					<Anchor component={Link} href={HOME_URL}>
 						<Image
 							src={logo}
 							width={130}
 							height={54}
-							loading="lazy"
 							priority
 							alt="logo"
 							placeholder="blur"
 						/>
-					</Link>
+					</Anchor>
 				}
 				hiddenFrom="sm"
 				zIndex={1000000}
@@ -204,16 +211,16 @@ export default function Header(): JSX.Element {
 				<ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
 					<Divider my="sm" />
 
-					{/* <Link href={HOME_URL} className={classes.link}>
+					{/* <Anchor href={HOME_URL} className={classes.link}>
 						{t('nav.home')}
-					</Link> */}
+					</Anchor> */}
 					{/* {treeUrls?.map((link) =>
 						link.children ? (
 							<></>
 						) : (
-							<Link key={link.path} href={link.path} className={classes.link}>
+							<Anchor key={link.path} href={link.path} className={classes.link}>
 								{link.title}
-							</Link>
+							</Anchor>
 						),
 					)} */}
 					{generateTreeMobile(treeUrls)}

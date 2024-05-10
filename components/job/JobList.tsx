@@ -1,6 +1,7 @@
 'use client';
 
 import {
+	Anchor,
 	Box,
 	Button,
 	Card,
@@ -20,10 +21,10 @@ import { imgOthers } from '@/assets/images/others';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { dataJobs } from './data/data-fake';
 import { intlUSD } from '@/utils/format-number';
-import { Link } from '@/libs/i18n-navigation';
 import { useTranslations } from 'next-intl';
 import { JOB_DETAIL_URL } from '@/libs/urls';
 import { getUrlDetail } from '@/utils/format-string';
+import { Link } from '@/libs/i18n-navigation';
 
 export const JobList = (): JSX.Element => {
 	const t = useTranslations();
@@ -107,9 +108,12 @@ export const JobList = (): JSX.Element => {
 											</div>
 										</Group>
 
-										<Link href={getUrlDetail(JOB_DETAIL_URL, job.id)}>
+										<Anchor
+											component={Link}
+											href={getUrlDetail(JOB_DETAIL_URL, job.id)}
+										>
 											<Button radius={'xl'}>{t('global.see_details')}</Button>
-										</Link>
+										</Anchor>
 									</Flex>
 								</Card>
 							))}

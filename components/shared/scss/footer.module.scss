@@ -72,7 +72,7 @@
 
 .link {
 	display: block;
-	color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
+	// color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
 	font-size: var(--mantine-font-size-sm);
 	padding-top: 3px;
 	padding-bottom: 3px;
@@ -85,9 +85,6 @@
 .title {
 	font-size: var(--mantine-font-size-lg);
 	font-weight: 700;
-	font-family:
-		Greycliff CF,
-		var(--mantine-font-family);
 	margin-bottom: calc(var(--mantine-spacing-xs) / 2);
 	color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 }

@@ -40,31 +40,6 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 			<Container size="xl">
 				<Box pt={{ base: 24, lg: 24 }} pb={{ base: 50, lg: 60 }}>
 					<Flex gap={64}>
-						<Affix
-							withinPortal={false}
-							style={{ position: 'sticky' }}
-							position={{
-								top: 95,
-								left: 0,
-							}}
-							h={200}
-						>
-							<Box w={300}>
-								<Group gap={4} c={'gray.7'} className={classes.btnBack}>
-									<IconChevronLeft stroke={1.8} size={20} />
-									<UnstyledButton fw={700} onClick={() => router.back()}>
-										{t('global.btn_cancel')}
-									</UnstyledButton>
-								</Group>
-								<Divider my={16} />
-								<Text fz={'md'} fw={700}>
-									{dataDetail?.created_user}
-								</Text>
-								<Text fz={'sm'} c={'dimmed'} mt={6}>
-									Stop thinking, start doing!
-								</Text>
-							</Box>
-						</Affix>
 						<Box>
 							<TitleRender order={2}>{dataDetail?.product_name}</TitleRender>
 							<Flex justify={'space-between'} align={'center'} py={24}>
@@ -130,6 +105,31 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 								{t('global.go_to')}
 							</ButtonBubble>
 						</Box>
+						<Affix
+							withinPortal={false}
+							style={{ position: 'sticky' }}
+							position={{
+								top: 95,
+								left: 0,
+							}}
+							h={200}
+						>
+							<Box w={300}>
+								<Group gap={4} c={'gray.7'} className={classes.btnBack}>
+									<IconChevronLeft stroke={1.8} size={20} />
+									<UnstyledButton fw={700} onClick={() => router.back()}>
+										{t('global.btn_cancel')}
+									</UnstyledButton>
+								</Group>
+								<Divider my={16} />
+								<Text fz={'md'} fw={700}>
+									{dataDetail?.created_user}
+								</Text>
+								<Text fz={'sm'} c={'dimmed'} mt={6}>
+									Stop thinking, start doing!
+								</Text>
+							</Box>
+						</Affix>
 					</Flex>
 				</Box>
 			</Container>

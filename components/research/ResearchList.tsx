@@ -1,8 +1,7 @@
 'use client';
 
-import { Box, Container, Grid, Image, Text } from '@mantine/core';
+import { Anchor, Box, Container, Grid, Image, Text } from '@mantine/core';
 
-import Link from 'next/link';
 import { RESEARCH_DETAIL_URL } from '@/libs/urls';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconArrowRight } from '@tabler/icons-react';
@@ -10,6 +9,7 @@ import { IconArrowRight } from '@tabler/icons-react';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { getUrlDetail } from '@/utils/format-string';
 import { researchTypeOptions } from './data/data-fake';
+import { Link } from '@/libs/i18n-navigation';
 
 export const ResearchList = (): JSX.Element => {
 	return (
@@ -32,7 +32,10 @@ export const ResearchList = (): JSX.Element => {
 									<Text pb={16} pl={16}>
 										{research.description}
 									</Text>
-									<Link href={getUrlDetail(RESEARCH_DETAIL_URL, research.id)}>
+									<Anchor
+										component={Link}
+										href={getUrlDetail(RESEARCH_DETAIL_URL, research.id)}
+									>
 										<ButtonBubble
 											ml={16}
 											variant="filled"
@@ -41,7 +44,7 @@ export const ResearchList = (): JSX.Element => {
 										>
 											Xem chi tiết
 										</ButtonBubble>
-									</Link>
+									</Anchor>
 								</Grid.Col>
 
 								<Grid.Col span={{ base: 12, md: 6 }} order={index % 2 ? 1 : 2}>

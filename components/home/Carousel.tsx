@@ -1,6 +1,7 @@
 'use client';
 
 import {
+	Anchor,
 	AspectRatio,
 	Container,
 	Flex,
@@ -18,11 +19,12 @@ import classes from './scss/carousel.module.scss';
 import { Carousel } from '@mantine/carousel';
 import { IconArrowRight } from '@tabler/icons-react';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import Link from 'next/link';
 import { useRef } from 'react';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { imgHome } from '@/assets/images/home';
+import { JOB_URL } from '@/libs/urls';
+import { Link } from '@/libs/i18n-navigation';
 
 const data = [
 	{
@@ -105,15 +107,15 @@ function Card({ image, title, category, description }: Props) {
 							<Text c="white">{description}</Text>
 
 							<Group mt="sm" gap={16}>
-								<Link href={'#about-us'}>
+								<Anchor component={Link} href={JOB_URL}>
 									<ButtonBubble
 										variant="filled"
 										size="md"
 										leftSection={<IconArrowRight />}
 									>
-										Về chúng tôi
+										Gia nhập chúng tôi
 									</ButtonBubble>
-								</Link>
+								</Anchor>
 							</Group>
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 4 }}>
