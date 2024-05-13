@@ -88,7 +88,6 @@ export default async function middleware(req: NextRequest) {
 	// // Redirect login to app if already logged in
 	if (req.nextUrl.pathname === LOGIN_URL) {
 		const token = req.cookies.get(LOCAL_TOKEN);
-
 		if (token) {
 			try {
 				const payload = await verifyJwtToken(token.value);

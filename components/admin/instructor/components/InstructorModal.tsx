@@ -183,7 +183,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 								alignItems: 'center',
 							}}
 						>
-							<Box className={'dropzone-wrap'} w={'100%'} h={200}>
+							<Box className={'dropzone-wrap'} ta={'center'} w={180} h={180}>
 								<Input.Label mb={4}>
 									{t('instructors.fields.avatar')}
 								</Input.Label>
@@ -191,9 +191,9 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 									<Dropzone
 										h={'100%'}
 										w={'100%'}
-										radius={'sm'}
+										radius={'50%'}
 										accept={IMAGE_MIME_TYPE}
-										maxSize={3 * 1024 ** 2}
+										maxSize={1 * 1024 ** 2}
 										style={{
 											backgroundImage: `url(${
 												files
@@ -213,10 +213,10 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 										onDrop={setFiles}
 									></Dropzone>
 								</Tooltip>
+								<Text fz="sm" py={8}>
+									File {'<'} 1MB
+								</Text>
 							</Box>
-							<Text fz="sm" py={8}>
-								File {'<'} 3MB
-							</Text>
 						</Grid.Col>
 						<Grid.Col span={8}>
 							<Grid gutter={16}>

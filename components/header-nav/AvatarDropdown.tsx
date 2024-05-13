@@ -1,4 +1,3 @@
-import { useRouter } from '@/libs/i18n-navigation';
 import { LOGIN_URL } from '@/libs/urls';
 import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
 import {
@@ -54,7 +53,6 @@ import { uploadFile } from '@/utils/services/file.service';
 import { getRuleForms } from '@/utils/validation';
 
 export const AvatarDropdown = (): JSX.Element => {
-	const router = useRouter();
 	const t = useTranslations();
 	const userRecoil = useRecoilValue(userState);
 	const [openedProfile, setOpenProfile] = useState(false);
@@ -65,8 +63,7 @@ export const AvatarDropdown = (): JSX.Element => {
 		deleteCookie(LOCAL_TOKEN);
 		deleteCookie(LOCAL_USER);
 		setTimeout(() => {
-			router.push(LOGIN_URL);
-			router.refresh();
+			window && window.open(LOGIN_URL + '?q=true', '_parent');
 		}, 500);
 	};
 

@@ -82,6 +82,15 @@ export async function POST(request: NextRequest) {
 			sameSite: 'strict', // This does not allow other sites to access
 		});
 
+		// response.cookies.set({
+		// 	name: LOCAL_TOKEN,
+		// 	value: token,
+		// 	path: '/login', // Accessible site-wide
+		// 	maxAge: 86400, // 24-hours or whatever you like
+		// 	// httpOnly: true, // This prevents scripts from accessing
+		// 	sameSite: 'strict', // This does not allow other sites to access
+		// });
+
 		// Store public user data as a cookie
 		// const userData = user.exportPublic();
 		const { password, ...dataUser } = user;

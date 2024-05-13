@@ -56,7 +56,8 @@
 		"email": "Email không đúng định dạng",
 		"password": "Mật khẩu ít nhất có 6 ký tự",
 		"password_confirm": "Mật khẩu không khớp",
-		"username": "Tài khoản từ 8 - 20 ký tự, không được chứa ký tự đặc biệt"
+		"username": "Tài khoản từ 8 - 20 ký tự, không được chứa ký tự đặc biệt",
+		"pattern": "Dữ liệu không hợp lệ"
 	},
 	"messages": {
 		"warning_delete": "Bạn có chắc chắn muốn xoá",
@@ -224,6 +225,28 @@
 			"ins_link": "Instagram link",
 			"linkedin_link": "LinkedIn link",
 			"sort_order": "ASC",
+			"action": "Thao tác"
+		}
+	},
+	"courses": {
+		"heading": "Quản lý khóa học",
+		"title_create": "Thêm mới khóa học",
+		"title_update": "Chi tiết khóa học",
+		"title_delete": "Xoá khóa học",
+		"title_detail_create": "Thêm mới chi tiết khóa học",
+		"title_detail_update": "Chi tiết chi tiết khóa học",
+		"title_detail_delete": "Xoá chi tiết khóa học",
+		"fields": {
+			"serial": "STT",
+			"thumbnail": "Ảnh đại diện",
+			"course_name": "Tên khóa học",
+			"preview": "Đường dẫn xem trước",
+			"description": "Mô tả",
+			"overview": "Giới thiệu",
+			"content": "Nội dung khóa học",
+
+			"name_detail": "Tên chi tiết",
+			"list_videos": "Danh sách bài học",
 			"action": "Thao tác"
 		}
 	},

@@ -187,7 +187,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 								alignItems: 'center',
 							}}
 						>
-							<Box className={'dropzone-wrap'} w={'100%'} h={200}>
+							<Box className={'dropzone-wrap'} w={'100%'} h={180}>
 								<Input.Label mb={4}>
 									{t('products.fields.thumbnail')}
 								</Input.Label>
@@ -197,7 +197,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 										w={'100%'}
 										radius={'sm'}
 										accept={IMAGE_MIME_TYPE}
-										maxSize={3 * 1024 ** 2}
+										maxSize={2 * 1024 ** 2}
 										style={{
 											backgroundImage: `url(${
 												files
@@ -212,15 +212,15 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 										bgp={'center center'}
 										multiple={false}
 										onReject={() => {
-											getNotifications('error', t, 'File không thể quá 1MB');
+											getNotifications('error', t, 'File không thể quá 2MB');
 										}}
 										onDrop={setFiles}
 									></Dropzone>
 								</Tooltip>
+								<Text fz="sm" py={8} ta={'center'}>
+									File {'<'} 2MB
+								</Text>
 							</Box>
-							<Text fz="sm" py={8}>
-								File {'<'} 3MB
-							</Text>
 						</Grid.Col>
 						<Grid.Col span={8}>
 							<Grid gutter={16}>
