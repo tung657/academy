@@ -109,7 +109,6 @@ export const CourseTable = (): JSX.Element => {
 				// 		)}
 				// 	</Group>
 				// ),
-				
 			},
 			{
 				accessorKey: 'sort_order', //access nested data with dot notation
