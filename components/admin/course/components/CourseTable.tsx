@@ -1,6 +1,6 @@
 'use client';
 
-import { Anchor, Flex, Group, Image, ThemeIcon } from '@mantine/core';
+import { Flex, Image } from '@mantine/core';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
@@ -11,12 +11,6 @@ import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { CourseDelete } from './CourseDelete';
 import { ICourse } from '@/types/course';
 import { RenderTableParams } from '@/libs/table';
-import {
-	IconBrandFacebookFilled,
-	IconBrandInstagram,
-	IconBrandLinkedin,
-	IconBrandX,
-} from '@tabler/icons-react';
 
 export const CourseTable = (): JSX.Element => {
 	const t = useTranslations();
@@ -71,50 +65,50 @@ export const CourseTable = (): JSX.Element => {
 			},
 			{
 				header: t('courses.fields.socials'),
-				Cell: ({ row: { original } }) => (
-					<Group justify="center">
-						{original.fb_link && (
-							<Anchor href={original.fb_link} target="_blank" rel="noopener">
-								<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-									<IconBrandFacebookFilled
-										style={{ width: '70%', height: '70%' }}
-										color="#222"
-									/>
-								</ThemeIcon>
-							</Anchor>
-						)}
-						{original.x_link && (
-							<Anchor href={original.x_link} target="_blank" rel="noopener">
-								<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-									<IconBrandX
-										style={{ width: '70%', height: '70%' }}
-										color="#222"
-									/>
-								</ThemeIcon>
-							</Anchor>
-						)}
-						{original.ins_link && (
-							<Anchor href={original.fb_link} target="_blank" rel="noopener">
-								<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-									<IconBrandInstagram
-										style={{ width: '70%', height: '70%' }}
-										color="#222"
-									/>
-								</ThemeIcon>
-							</Anchor>
-						)}
-						{original.linkedin_link && (
-							<Anchor href={original.fb_link} target="_blank" rel="noopener">
-								<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-									<IconBrandLinkedin
-										style={{ width: '70%', height: '70%' }}
-										color="#222"
-									/>
-								</ThemeIcon>
-							</Anchor>
-						)}
-					</Group>
-				),
+				// Cell: ({ row: { original } }) => (
+				// 	<Group justify="center">
+				// 		{original.fb_link && (
+				// 			<Anchor href={original.fb_link} target="_blank" rel="noopener">
+				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
+				// 					<IconBrandFacebookFilled
+				// 						style={{ width: '70%', height: '70%' }}
+				// 						color="#222"
+				// 					/>
+				// 				</ThemeIcon>
+				// 			</Anchor>
+				// 		)}
+				// 		{original.x_link && (
+				// 			<Anchor href={original.x_link} target="_blank" rel="noopener">
+				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
+				// 					<IconBrandX
+				// 						style={{ width: '70%', height: '70%' }}
+				// 						color="#222"
+				// 					/>
+				// 				</ThemeIcon>
+				// 			</Anchor>
+				// 		)}
+				// 		{original.ins_link && (
+				// 			<Anchor href={original.fb_link} target="_blank" rel="noopener">
+				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
+				// 					<IconBrandInstagram
+				// 						style={{ width: '70%', height: '70%' }}
+				// 						color="#222"
+				// 					/>
+				// 				</ThemeIcon>
+				// 			</Anchor>
+				// 		)}
+				// 		{original.linkedin_link && (
+				// 			<Anchor href={original.fb_link} target="_blank" rel="noopener">
+				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
+				// 					<IconBrandLinkedin
+				// 						style={{ width: '70%', height: '70%' }}
+				// 						color="#222"
+				// 					/>
+				// 				</ThemeIcon>
+				// 			</Anchor>
+				// 		)}
+				// 	</Group>
+				// ),
 			},
 			{
 				accessorKey: 'sort_order', //access nested data with dot notation
@@ -133,7 +127,7 @@ export const CourseTable = (): JSX.Element => {
 						<CourseDelete
 							label={original.course_name}
 							id={original.course_id}
-							path={original.avatar}
+							// path={original.avatar}
 						/>
 					</Flex>
 				),
