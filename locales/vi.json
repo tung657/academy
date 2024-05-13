@@ -272,5 +272,17 @@
 			"address": "Địa chỉ",
 			"action": "Thao tác"
 		}
+	},
+	"positions": {
+		"heading": "Quản lý chức vụ",
+		"title_create": "Thêm mới chức vụ",
+		"title_update": "Chi tiết chức vụ",
+		"title_delete": "Xoá chức vụ",
+		"fields": {
+			"serial": "STT",
+			"position": "Chức vụ",
+			"description":"Mô tả",
+			"action": "Thao tác"
+		}
 	}
 }
