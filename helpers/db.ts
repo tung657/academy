@@ -10,14 +10,19 @@ const connectionConfig: PoolOptions = {
 	connectionLimit: 20,
 };
 
-// export class Database {
-// 	private pool: Pool;
-
-// 	constructor() {
-// 		this.pool = createPool(connectionConfig);
-// 	}
-// }
 let globalPool: Pool | undefined = undefined;
+
+const registerService = (name: string, initFn: () => {}) => {
+	if (process.env.NODE_ENV === 'development') {
+		if (!(name in global)) {
+			// @ts-ignore
+			global[name] = initFn();
+		}
+		// @ts-ignore
+		return global[name];
+	}
+	return initFn();
+};
 
 export async function connect(): Promise<PoolConnection> {
 	// If the pool was already created, return it instead of creating a new one.
@@ -31,7 +36,7 @@ export async function connect(): Promise<PoolConnection> {
 }
 
 export async function query(sql: string, values: any[]): Promise<any> {
-	let connection = await connect();
+	let connection = await registerService('db', connect);
 	try {
 		const [results] = await connection.query(sql, values);
 		const [outParam] = await connection.query('SELECT @err_code, @err_msg');
