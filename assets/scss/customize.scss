@@ -25,6 +25,45 @@
 // background table in home page
 .background-secondary {
 	background-color: var(--background-secondary);
+	position: relative;
+	padding-bottom: calc(10.5104vw + 45px);
+	color: var(--mantine-color-body);
+	z-index: 2;
+
+	@media only screen and (min-width: 768px) {
+		&::before {
+			content: '';
+			width: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			z-index: -1;
+			height: calc(100% - 10.5104vw);
+			pointer-events: none;
+			background:
+				url(https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/logo-bg-1.png)
+					no-repeat right 90px,
+				url(https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/logo-bg-2.png)
+					no-repeat left calc(100% - 120px),
+				url(https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/dots-orange.png)
+					no-repeat 60vw 100%;
+		}
+	}
+
+	&::after {
+		content: '';
+		width: 100%;
+		left: 0;
+		position: absolute;
+		bottom: 0;
+		height: 10.5104vw;
+		pointer-events: none;
+		background: linear-gradient(
+			354deg,
+			rgba(255, 255, 255, 1) 50%,
+			var(--background-secondary) 50%
+		);
+	}
 }
 
 // custom label input

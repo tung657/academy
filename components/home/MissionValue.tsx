@@ -1,7 +1,6 @@
 'use client';
-import { BackgroundImage, Box, Container, Flex, Grid } from '@mantine/core';
+import { Box, Container, Flex, Grid } from '@mantine/core';
 import { TitleCombo } from '../mantines/typographies/TitleCombo';
-import { imgOthers } from '@/assets/images/others';
 import React from 'react';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconBrain, IconDiamond, IconMedal2 } from '@tabler/icons-react';
@@ -49,23 +48,14 @@ export const MissionValue = (): JSX.Element => {
 	return (
 		<>
 			<section className="background-secondary">
-				<BackgroundImage
-					src={imgOthers.circleShapeIcon}
-					style={{
-						backgroundSize: 'inherit',
-						backgroundRepeat: 'no-repeat',
-						backgroundPosition: 'bottom right',
-					}}
-				>
-					<Container size="xl">
-						<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
-							<TitleCombo
-								titleChildren={'Sứ mệnh của chúng tôi'}
-								description="Sứ mệnh của chúng tôi là trở thành đòn bẩy cho sức trẻ Việt Nam để khám phá những tiềm năng và đạt thành công trên trường quốc tế. Con đường chúng tôi chọn dù còn nhiều chông gai, nhưng với những gì “thế giới phẳng” mang lại, đây là cơ hội vàng để các tài năng tỏa sáng."
-							/>
-						</Box>
-					</Container>
-				</BackgroundImage>
+				<Container size="xl">
+					<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
+						<TitleCombo
+							titleChildren={'Sứ mệnh của chúng tôi'}
+							description="Sứ mệnh của chúng tôi là trở thành đòn bẩy cho sức trẻ Việt Nam để khám phá những tiềm năng và đạt thành công trên trường quốc tế. Con đường chúng tôi chọn dù còn nhiều chông gai, nhưng với những gì “thế giới phẳng” mang lại, đây là cơ hội vàng để các tài năng tỏa sáng."
+						/>
+					</Box>
+				</Container>
 			</section>
 			<section>
 				<Container size="xl">
