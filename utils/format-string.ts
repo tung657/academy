@@ -72,3 +72,11 @@ export function getReadingTime(html: string): number {
 
 	return Math.ceil(html.split(' ').length / 224);
 }
+
+export const handleGetKeyYB = (yb?: string): string => {
+	if (!yb) return '';
+
+	const list = yb.split('/');
+
+	return list[list.length - 1];
+};

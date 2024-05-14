@@ -43,19 +43,18 @@ export const PositionTable = (): JSX.Element => {
 			{
 				accessorKey: 'position_name', //access nested data with dot notation
 				header: t('positions.fields.position'),
-				size: 150,
 			},
 
 			{
 				accessorKey: 'description', //access nested data with dot notation
 				header: t('positions.fields.description'),
-				size: 100,
 			},
 			{
 				header: t('positions.fields.action'),
 				size: 70,
+				mantineTableBodyCellProps: { align: 'center' },
 				Cell: ({ row: { original } }) => (
-					<Flex justify={'center'} gap={8}>
+					<Flex gap={8}>
 						<PositionModal id={original.position_id} />
 						<PositionDelete
 							label={original.position_name}

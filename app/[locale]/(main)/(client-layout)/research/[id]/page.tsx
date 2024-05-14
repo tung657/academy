@@ -16,7 +16,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-	const t = await getTranslations('research');
+	const t = await getTranslations('researches');
 
 	// Cannot fetch api from localhost with production
 	// Cannot resolve

@@ -17,18 +17,27 @@
 	height: 100%;
 }
 
+// make checkbox center of body table
+.mantine-Table-td .mantine-Checkbox-body {
+	justify-content: center;
+}
+
+// background table in home page
 .background-secondary {
 	background-color: var(--background-secondary);
 }
 
+// custom label input
 .mantine-TextInput-label {
 	padding-bottom: 4px;
 }
 
+// Need to show on modal
 .mantine-Tooltip-tooltip {
 	z-index: 1000 !important;
 }
 
+// Custom name options of table
 .mrt-table-pagination p.mantine-Text-root {
 	visibility: hidden;
 	&::after {

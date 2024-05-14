@@ -18,7 +18,7 @@ export interface ICourseDetail extends IBaseData {
 	course_id?: string;
 	name_detail: string;
 	description: string;
-	list_videos: string;
+	list_videos: string | string[];
 	total_time: string;
 }
 

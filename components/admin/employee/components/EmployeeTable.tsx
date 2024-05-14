@@ -49,7 +49,7 @@ export const EmployeeTable = (): JSX.Element => {
 			{
 				accessorKey: 'position_name', //access nested data with dot notation
 				header: t('employees.fields.position'),
-				size: 150,
+				size: 100,
 			},
 			{
 				accessorKey: 'full_name', //access nested data with dot notation
@@ -58,12 +58,14 @@ export const EmployeeTable = (): JSX.Element => {
 			{
 				accessorKey: 'phone_number', //access nested data with dot notation
 				header: t('employees.fields.phone_number'),
-				size: 100,
+				enableSorting: false,
+				size: 80,
 			},
 			{
 				accessorKey: 'gender', //access nested data with dot notation
 				header: t('employees.fields.gender'),
-				size: 70,
+				enableSorting: false,
+				size: 60,
 				Cell: ({ renderedCellValue }) =>
 					renderedCellValue === 1 ? 'Nam' : 'Nữ',
 			},
@@ -77,11 +79,12 @@ export const EmployeeTable = (): JSX.Element => {
 			{
 				accessorKey: 'email', //access nested data with dot notation
 				header: t('employees.fields.email'),
-				size: 100,
+				size: 140,
 			},
 			{
 				header: t('employees.fields.action'),
-				size: 70,
+				size: 80,
+				mantineTableBodyCellProps: { align: 'center' },
 				Cell: ({ row: { original } }) => (
 					<Flex justify={'center'} gap={8}>
 						<EmployeeResetPw

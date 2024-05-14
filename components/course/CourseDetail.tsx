@@ -17,23 +17,15 @@ import {
 	Image,
 	Modal,
 	Overlay,
-	Pill,
-	PillGroup,
 	SegmentedControl,
 	SegmentedControlItem,
-	Spoiler,
 	Stack,
 	Text,
-	ThemeIcon,
 	TypographyStylesProvider,
 } from '@mantine/core';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import {
 	IconBook,
-	IconBrandFacebookFilled,
-	IconBrandInstagram,
-	IconBrandLinkedin,
-	IconBrandTwitterFilled,
 	IconChevronRight,
 	IconClock,
 	IconPlaystationTriangle,
@@ -46,10 +38,9 @@ import {
 	useWindowScroll,
 } from '@mantine/hooks';
 import React, { useEffect, useState } from 'react';
-import { dataCourses } from './data/data-fake';
 import classes from './scss/course-detail.module.scss';
-
-const dataInterface = dataCourses[0];
+import { ICourse } from '@/types/course';
+import { handleGetKeyYB } from '@/utils/format-string';
 
 const segmentData: SegmentedControlItem[] = [
 	{
@@ -66,11 +57,11 @@ const segmentData: SegmentedControlItem[] = [
 	},
 ];
 interface Props {
-	props?: typeof dataInterface;
+	data?: ICourse;
 	isMobile?: boolean;
 }
 
-export const CourseDetail = ({ props }: Props): JSX.Element => {
+export const CourseDetail = ({ data }: Props): JSX.Element => {
 	const isMobile = useMediaQuery('(max-width: 62em)');
 	const [showInfo, setShowInfo] = useState<string[]>([]);
 	const [valueSegment, setValueSegment] = useState(segmentData[0].value);
@@ -163,11 +154,11 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 							</Affix>
 
 							<Box pt={24} ref={overviewRef}>
-								<TitleRender order={3}>{'Bạn sẽ học được gì'}</TitleRender>
+								{/* <TitleRender order={3}>{'Bạn sẽ học được gì'}</TitleRender>
 								<TypographyStylesProvider my={16}>
 									<div
 										dangerouslySetInnerHTML={{
-											__html: props?.overview || '',
+											__html: data?.overview || '',
 										}}
 									/>
 								</TypographyStylesProvider>
@@ -175,7 +166,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 								<TitleRender order={3}>{'Kỹ năng bạn sẽ đạt được'}</TitleRender>
 								<Group my={16}>
 									<PillGroup size="md">
-										{props?.skills_gain?.map((item, index) => (
+										{data?.skills_gain?.map((item, index) => (
 											<Pill key={index} radius={'sm'}>
 												{item}
 											</Pill>
@@ -190,11 +181,19 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 											__html: props?.who_need || '',
 										}}
 									/>
+								</TypographyStylesProvider> */}
+
+								<TypographyStylesProvider my={16}>
+									<div
+										dangerouslySetInnerHTML={{
+											__html: data?.overview || '',
+										}}
+									/>
 								</TypographyStylesProvider>
 							</Box>
 
 							<Box pt={24} ref={outcomesRef}>
-								<TitleRender order={3}>
+								{/* <TitleRender order={3}>
 									{'Xây dựng chuyên môn về chủ đề của bạn'}
 								</TitleRender>
 								<TypographyStylesProvider my={16}>
@@ -221,21 +220,29 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 											}}
 										/>
 									</TypographyStylesProvider>
-								</Spoiler>
+								</Spoiler> */}
+								<TypographyStylesProvider my={16}>
+									<div
+										dangerouslySetInnerHTML={{
+											__html: data?.content || '',
+										}}
+									/>
+								</TypographyStylesProvider>
 								<Accordion py={16} radius={'md'} variant="contained" multiple>
-									{props?.courses?.map((item, index) => (
-										<Accordion.Item key={index} value={index.toString()}>
+									{data?.course_details?.map((item, index) => (
+										<Accordion.Item
+											key={item.course_detail_id}
+											value={index?.toString()}
+										>
 											<Accordion.Control>
 												<Flex justify="space-between" align={'center'}>
 													<Stack gap={4}>
-														<TitleRender order={4}>{item.title}</TitleRender>
+														<TitleRender order={4}>
+															{item.name_detail}
+														</TitleRender>
 														<Text c={'dimmed'} fz={14}>
-															Module {item.sort_order} •{' '}
-															{item.videos.reduce(
-																(prev, curr) => prev + curr.duration,
-																0,
-															)}{' '}
-															phút để hoàn thành
+															Module {index + 1} • {item.total_time} phút để
+															hoàn thành
 														</Text>
 													</Stack>
 													<TitleRender
@@ -251,14 +258,15 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 											<Accordion.Panel>
 												{item.description}
 												<TitleRender order={5} mt={16} mb={4}>
-													{"What's included"}
+													{'Danh sách bài học'}
 												</TitleRender>
 												<Group gap={4} align="center" mb={8}>
 													<IconPlaystationTriangle
 														style={{ transform: 'rotate(90deg)' }}
 														stroke={1}
 													/>
-													{item.videos.length} videos
+													{(item.list_videos as string).split('|').length}{' '}
+													videos
 												</Group>
 												<Anchor
 													style={{ userSelect: 'none' }}
@@ -288,22 +296,31 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 													</Group>
 												</Anchor>
 												<Collapse in={showInfo.includes(index.toString())}>
-													{item.videos.map((video, index) => (
-														<React.Fragment key={index}>
-															<Flex
-																justify={'space-between'}
-																align={'center'}
-																py={8}
-															>
-																<Text fw={500}>{video.title}</Text>
-																<Button variant="light" color={'cyan'}>
-																	{video.duration} phút
-																</Button>
-															</Flex>
+													{(item.list_videos as string)
+														.split('|')
+														.map((video, index) => {
+															const data = video.split(':');
 
-															{item.videos.length - 1 > index && <Divider />}
-														</React.Fragment>
-													))}
+															return (
+																<React.Fragment key={index}>
+																	<Flex
+																		justify={'space-between'}
+																		align={'center'}
+																		py={8}
+																	>
+																		<Text fw={500}>{data[0]}</Text>
+																		<Button variant="light" color={'cyan'}>
+																			{data[1]} phút
+																		</Button>
+																	</Flex>
+
+																	{(item.list_videos as string).split('|')
+																		.length -
+																		1 >
+																		index && <Divider />}
+																</React.Fragment>
+															);
+														})}
 												</Collapse>
 											</Accordion.Panel>
 										</Accordion.Item>
@@ -312,7 +329,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 							</Box>
 
 							<Box pt={24} ref={instructorRef} pb={32}>
-								<TitleRender order={3} mb={16}>
+								{/* <TitleRender order={3} mb={16}>
 									{'Giảng viên'}
 								</TitleRender>
 								<Grid align={'center'}>
@@ -413,11 +430,11 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 											</Group>
 										</Stack>
 									</Grid.Col>
-								</Grid>
+								</Grid> */}
 							</Box>
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 4 }}>
-							<CoursePreview props={props} isMobile={isMobile} />
+							<CoursePreview data={data} isMobile={isMobile} />
 						</Grid.Col>
 					</Grid>
 				</Box>
@@ -426,7 +443,7 @@ export const CourseDetail = ({ props }: Props): JSX.Element => {
 	);
 };
 
-function CoursePreview({ props, isMobile }: Props) {
+function CoursePreview({ data, isMobile }: Props) {
 	const [opened, { open, close }] = useDisclosure();
 
 	return (
@@ -441,9 +458,7 @@ function CoursePreview({ props, isMobile }: Props) {
 							w={'100%'}
 							h={'100%'}
 							loading="lazy"
-							src={
-								'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
-							}
+							src={data?.thumbnail}
 							alt="about"
 						/>
 						<Overlay radius={'md'} opacity={0.35} />
@@ -455,7 +470,7 @@ function CoursePreview({ props, isMobile }: Props) {
 						<IconClock stroke={1.2} />
 					</Text>
 
-					<Text>{props?.time}</Text>
+					<Text>{data?.course_details.length} tuần</Text>
 				</Flex>
 
 				<Divider />
@@ -465,13 +480,7 @@ function CoursePreview({ props, isMobile }: Props) {
 						<IconBook stroke={1.2} />
 					</Text>
 
-					<Text>
-						{props?.courses.reduce(
-							(prev, curr) => prev + curr.videos.length,
-							0,
-						)}{' '}
-						bài
-					</Text>
+					<Text>10 bài</Text>
 				</Flex>
 			</Card>
 
@@ -489,7 +498,9 @@ function CoursePreview({ props, isMobile }: Props) {
 							height="100%"
 							data-pagefly-popup="true"
 							allowFullScreen
-							src="https://www.youtube.com/embed/-6PFfp_Lerw?&amp;autoplay=1&amp;loop=0&amp;mute=0&amp;controls=1&amp;enablejsapi=1"
+							src={`https://www.youtube.com/embed/${handleGetKeyYB(
+								data?.preview,
+							)}?&amp;autoplay=1&amp;loop=0&amp;mute=0&amp;controls=1&amp;enablejsapi=1`}
 						></iframe>
 					</AspectRatio>
 				</div>

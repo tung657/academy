@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Image } from '@mantine/core';
+import { Flex, Image, Text } from '@mantine/core';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
@@ -40,8 +40,8 @@ export const CourseTable = (): JSX.Element => {
 					renderedRowIndex ? ++renderedRowIndex : 1,
 			},
 			{
-				accessorKey: 'avatar', //access nested data with dot notation
-				header: t('courses.fields.avatar'),
+				accessorKey: 'thumbnail', //access nested data with dot notation
+				header: t('courses.fields.thumbnail'),
 				size: 100,
 				Cell: ({ renderedCellValue, row: { original } }) => (
 					<Image
@@ -56,71 +56,24 @@ export const CourseTable = (): JSX.Element => {
 			{
 				accessorKey: 'course_name', //access nested data with dot notation
 				header: t('courses.fields.course_name'),
-				size: 100,
+				size: 200,
 			},
 			{
-				accessorKey: 'major', //access nested data with dot notation
-				header: t('courses.fields.major'),
-				size: 100,
-			},
-			{
-				header: t('courses.fields.socials'),
-				// Cell: ({ row: { original } }) => (
-				// 	<Group justify="center">
-				// 		{original.fb_link && (
-				// 			<Anchor href={original.fb_link} target="_blank" rel="noopener">
-				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-				// 					<IconBrandFacebookFilled
-				// 						style={{ width: '70%', height: '70%' }}
-				// 						color="#222"
-				// 					/>
-				// 				</ThemeIcon>
-				// 			</Anchor>
-				// 		)}
-				// 		{original.x_link && (
-				// 			<Anchor href={original.x_link} target="_blank" rel="noopener">
-				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-				// 					<IconBrandX
-				// 						style={{ width: '70%', height: '70%' }}
-				// 						color="#222"
-				// 					/>
-				// 				</ThemeIcon>
-				// 			</Anchor>
-				// 		)}
-				// 		{original.ins_link && (
-				// 			<Anchor href={original.fb_link} target="_blank" rel="noopener">
-				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-				// 					<IconBrandInstagram
-				// 						style={{ width: '70%', height: '70%' }}
-				// 						color="#222"
-				// 					/>
-				// 				</ThemeIcon>
-				// 			</Anchor>
-				// 		)}
-				// 		{original.linkedin_link && (
-				// 			<Anchor href={original.fb_link} target="_blank" rel="noopener">
-				// 				<ThemeIcon radius={'sm'} color="#e1e1e1" className="icon">
-				// 					<IconBrandLinkedin
-				// 						style={{ width: '70%', height: '70%' }}
-				// 						color="#222"
-				// 					/>
-				// 				</ThemeIcon>
-				// 			</Anchor>
-				// 		)}
-				// 	</Group>
-				// ),
-			},
-			{
-				accessorKey: 'sort_order', //access nested data with dot notation
-				header: t('courses.fields.sort_order'),
-				mantineTableBodyCellProps: {
-					align: 'center',
-				},
-				size: 50,
+				accessorKey: 'description', //access nested data with dot notation
+				header: t('courses.fields.description'),
+				size: 300,
+				Cell: ({ renderedCellValue }) => (
+					<Text title={renderedCellValue?.toString()} truncate="end" maw={300}>
+						{renderedCellValue}
+					</Text>
+				),
 			},
 			{
 				header: t('courses.fields.action'),
 				size: 70,
+				mantineTableBodyCellProps: {
+					align: 'center',
+				},
 				Cell: ({ row: { original } }) => (
 					<Flex justify={'center'} gap={8}>
 						<CourseModal id={original.course_id} />

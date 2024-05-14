@@ -37,7 +37,7 @@
 	"nav": {
 		"home": "Trang chủ",
 		"about-us": "Về chúng tôi",
-		"course": "Khoá học",
+		"course": "Đào tạo",
 		"research": "Nghiên cứu",
 		"product": "Sản phẩm",
 		"contact": "Liên hệ",
@@ -84,19 +84,11 @@
 		"meta_title": "Viện trí tuệ nhân tạo Việt Nam",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
 	},
-	"product": {
-		"meta_title": "Sản phẩm",
-		"meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam"
-	},
-	"course": {
-		"meta_title": "Khoá học",
-		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
-	},
-	"research": {
+	"researches": {
 		"meta_title": "Nghiên cứu",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
 	},
-	"job": {
+	"jobs": {
 		"meta_title": "Tuyển dụng",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
 		"title": "Tham gia cùng chúng tôi",
@@ -189,6 +181,8 @@
 	},
 
 	"products": {
+		"meta_title": "Sản phẩm",
+		"meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam",
 		"heading": "Quản lý sản phẩm",
 		"title_create": "Thêm mới sản phẩm",
 		"title_update": "Chi tiết sản phẩm",
@@ -229,21 +223,25 @@
 		}
 	},
 	"courses": {
-		"heading": "Quản lý khóa học",
-		"title_create": "Thêm mới khóa học",
-		"title_update": "Chi tiết khóa học",
-		"title_delete": "Xoá khóa học",
-		"title_detail_create": "Thêm mới chi tiết khóa học",
-		"title_detail_update": "Chi tiết chi tiết khóa học",
-		"title_detail_delete": "Xoá chi tiết khóa học",
+		"meta_title": "Đào tạo",
+		"meta_description": "Đào tạo viện trí tuệ nhân tạo Việt Nam",
+		"heading": "Quản lý đào tạo",
+		"title_create": "Thêm mới đào tạo",
+		"title_update": "Chi tiết đào tạo",
+		"title_delete": "Xoá đào tạo",
+		"title_detail_create": "Thêm mới chi tiết đào tạo",
+		"title_detail_update": "Chi tiết chi tiết đào tạo",
+		"title_detail_delete": "Xoá chi tiết đào tạo",
+		"search_placeholder": "Tìm kiếm",
+		"title_sub": "Danh sách đào tạo của AIA",
 		"fields": {
 			"serial": "STT",
 			"thumbnail": "Ảnh đại diện",
-			"course_name": "Tên khóa học",
+			"course_name": "Tên đào tạo",
 			"preview": "Đường dẫn xem trước",
 			"description": "Mô tả",
 			"overview": "Giới thiệu",
-			"content": "Nội dung khóa học",
+			"content": "Nội dung đào tạo",
 
 			"name_detail": "Tên chi tiết",
 			"list_videos": "Danh sách bài học",
@@ -281,7 +279,7 @@
 		"fields": {
 			"serial": "STT",
 			"position": "Chức vụ",
-			"description":"Mô tả",
+			"description": "Mô tả",
 			"action": "Thao tác"
 		}
 	}

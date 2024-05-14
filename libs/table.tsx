@@ -88,6 +88,15 @@ export const RenderTableParams = ({
 		columns,
 		data: data || [], //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
 		paginationDisplayMode: 'pages',
+		mantineTableBodyCellProps: (cell) => {
+			if (cell.cell.id.includes('mrt-row-select'))
+				return {
+					align: 'center',
+				};
+
+			return cell.cell;
+		},
+		layoutMode: 'grid',
 		renderTopToolbarCustomActions: () => TopAction,
 		initialState: {
 			showGlobalFilter: enabledSearch,
@@ -166,6 +175,14 @@ export const RenderTableBasic = ({
 		columns,
 		data: data || [], //must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
 		paginationDisplayMode: 'pages',
+		mantineTableBodyCellProps: (cell) => {
+			if (cell.cell.id.includes('mrt-row-select'))
+				return {
+					align: 'center',
+				};
+
+			return cell.cell;
+		},
 		renderTopToolbarCustomActions: () => TopAction,
 		initialState: {
 			showGlobalFilter: enabledSearch,

@@ -3,7 +3,6 @@ import { getNotifications } from '@/components/mantines/notification/getNotifica
 
 import { userState } from '@/store/user/atom';
 import { convertToString } from '@/utils/array';
-import { formatDatePost } from '@/utils/format-string';
 
 import {
 	useCreatePosition,
@@ -30,7 +29,6 @@ import {
 import { isNotEmpty, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
-import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 
@@ -99,7 +97,6 @@ export const PositionModal = ({ id }: Props): JSX.Element => {
 	});
 
 	const handleSubmit = (values: any) => {
-		console.log(values);
 		const dataPost: any = {
 			...values,
 		};

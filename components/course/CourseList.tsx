@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import {
 	Anchor,
 	Box,
@@ -23,34 +21,33 @@ import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconCalendar } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
 import { Link, usePathname, useRouter } from '@/libs/i18n-navigation';
-import { dataCourses } from './data/data-fake';
+// import { dataCourses } from './data/data-fake';
 import { SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { getUrlDetail } from '@/utils/format-string';
+import { IBaseResponse } from '@/types';
+import { ICourse } from '@/types/course';
+import { calcTotalPages } from '@/utils/format-number';
+import { InputSearch } from '../mantines/inputs/InputSearch';
+import { useTranslations } from 'next-intl';
 
-export const CourseList = (): JSX.Element => {
+interface Props {
+	data: IBaseResponse<ICourse[]>;
+}
+
+export const CourseList = ({ data }: Props): JSX.Element => {
+	const t = useTranslations();
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const pathname = usePathname();
+	const theme = useMantineTheme();
 	const page = searchParams.get(SEARCH_PAGE) || 1;
 	const pageSize = searchParams.get(SEARCH_SIZE) || 6;
-
-	const [dataPagination, setDataPagination] = useState(
-		dataCourses.slice((+page - 1) * +pageSize, +pageSize * +page),
-	);
-	const theme = useMantineTheme();
 
 	const handleChangePagination = (page: number, pageSizeNew?: number) => {
 		const current = new URLSearchParams(searchParams.toString());
 
-		const data = dataCourses.slice(
-			(page - 1) * (pageSizeNew || +pageSize),
-			(pageSizeNew || +pageSize) * page,
-		);
-
 		current.set(SEARCH_PAGE, page.toString());
 		pageSizeNew && current.set(SEARCH_SIZE, pageSizeNew.toString());
-
-		setDataPagination(data);
 
 		router.push(`${pathname}?${current}`);
 		router.refresh();
@@ -60,10 +57,14 @@ export const CourseList = (): JSX.Element => {
 		<section className={classes.section}>
 			<Container size="xl">
 				<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
+					<Flex justify={'space-between'} align={'center'} pb={24}>
+						<TitleRender order={3}>{t('courses.title_sub')}</TitleRender>
+						<InputSearch size="md" />
+					</Flex>
 					<Grid gutter={24}>
-						{dataPagination.map((item) => (
-							<Grid.Col key={item.id} span={{ base: 12, sm: 6, md: 4 }}>
-								<Card shadow="sm" padding="xl" radius="md">
+						{data?.data?.map((item) => (
+							<Grid.Col key={item.course_id} span={{ base: 12, sm: 6, md: 4 }}>
+								<Card shadow="sm" padding="md" radius="md">
 									<Card.Section>
 										<Image
 											src={item.thumbnail}
@@ -74,23 +75,23 @@ export const CourseList = (): JSX.Element => {
 										/>
 									</Card.Section>
 
-									<Group justify="space-between" mt="md">
+									<Group justify="space-between" my="md">
 										<Anchor
 											component={Link}
 											className={classes.title}
-											href={getUrlDetail(COURSE_DETAIL_URL, item.id)}
+											href={getUrlDetail(COURSE_DETAIL_URL, item.course_id)}
 										>
 											<TitleRender order={3} fz={{ base: 'lg', md: 'h3' }}>
-												{item.title}
+												{item.course_name}
 											</TitleRender>
 										</Anchor>
 									</Group>
 
-									<Text py={16}>{item.description}</Text>
+									<Text lineClamp={4}>{item.description}</Text>
 
-									<Group align="center" gap={4}>
+									<Group align="center" gap={4} mt={'md'}>
 										<IconCalendar color={theme.colors.primary[4]} />{' '}
-										<Text c={theme.colors.gray[7]}>{item.time}</Text>
+										<Text c={theme.colors.gray[7]}>{item.course_id}</Text>
 									</Group>
 								</Card>
 							</Grid.Col>
@@ -99,10 +100,7 @@ export const CourseList = (): JSX.Element => {
 						<Grid.Col span={12}>
 							<Flex justify={'center'}>
 								<Pagination
-									total={
-										dataCourses.length / +pageSize +
-										(dataCourses.length % +pageSize ? 1 : 0)
-									}
+									total={calcTotalPages(pageSize, data?.totalItems)}
 									value={+page}
 									onChange={handleChangePagination}
 									size={'lg'}

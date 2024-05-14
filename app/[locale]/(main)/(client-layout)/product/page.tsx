@@ -2,8 +2,15 @@ import { ProductList } from '@/components/product/ProductList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { apiClient } from '@/helpers';
 import { IBaseResponse, IProduct } from '@/types';
-import { AppConfig, BASE_URL, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import {
+	AppConfig,
+	BASE_URL,
+	ERROR_TIMEOUT,
+	ORIGIN_URL,
+	metaKeywords,
+} from '@/utils/config';
 import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {
@@ -15,7 +22,7 @@ interface Props {
 export async function generateMetadata(props: Props) {
 	const t = await getTranslations({
 		locale: props.params.locale,
-		namespace: 'product',
+		namespace: 'products',
 	});
 
 	return {
@@ -42,7 +49,7 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function ProductPage() {
-	const products = (
+	let products: IBaseResponse<IProduct[]> = (
 		await apiClient.post(
 			`/products/search`,
 			{},
@@ -52,7 +59,19 @@ export default async function ProductPage() {
 		)
 	).data as IBaseResponse<IProduct[]>;
 
-	// if (!products?.data || products.message) return notFound();
+	// DB sometimes returns error
+	while (products.message === ERROR_TIMEOUT && !products.success) {
+		products = (
+			await apiClient.post(
+				`/products/search`,
+				{},
+				{
+					baseURL: `${ORIGIN_URL}${BASE_URL}`,
+				},
+			)
+		).data as IBaseResponse<IProduct[]>;
+	}
+	if (products.message && !products.success) return notFound();
 
 	return (
 		<>

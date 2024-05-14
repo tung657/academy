@@ -1,7 +1,7 @@
 import { ModalRender } from '@/components/mantines/modal/ModalRender';
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
+import { convertToString, getUpdatedArray } from '@/utils/array';
 import { queryClient } from '@/utils/query-loader/react-query';
 import {
 	CACHE_COURSE,
@@ -42,6 +42,7 @@ import {
 	ButtonTrash,
 } from '@/components/mantines/buttons/ButtonGroup';
 import _ from 'lodash';
+import { RichEditor } from '../../editor/Editor';
 
 interface Props {
 	id?: number;
@@ -55,22 +56,18 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 	const [loading, setLoading] = useState(false);
 	const [pathNeedDelete, setPathNeedDelete] = useState<string>();
 	const [courseDetail, setCourseDetail] = useState<ICourseDetail[]>([]);
+	const [overviewEditor, setOverviewEditor] = useState<string>('');
+	const [contentEditor, setContentEditor] = useState<string>('');
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
 			course_name: '',
-			avatar: '',
-			major: [],
-			fb_link: '',
-			x_link: '',
-			ins_link: '',
-			linkedin_link: '',
-			sort_order: 1,
+			thumbnail: '',
+			preview: '',
+			description: '',
 		},
 		validate: {
 			course_name: isNotEmpty(t('validation.required')),
-			major: isNotEmpty(t('validation.required')),
-			sort_order: isNotEmpty(t('validation.required')),
 		},
 	});
 
@@ -84,11 +81,16 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 					return;
 				}
 
-				// form.setValues(convertToString(data) as any);
 				form.setValues({
 					...convertToString(data),
-					// major: data?.major.split(', '),
 				});
+				setOverviewEditor(data.overview);
+				setContentEditor(data.content);
+				const dataClone = _.clone(data.course_details);
+				dataClone.forEach((item) => {
+					item.list_videos = (item.list_videos as string).split(', ');
+				});
+				setCourseDetail(dataClone);
 			},
 		},
 	});
@@ -126,7 +128,13 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 		setLoading(true);
 		const dataPost: ICourse = {
 			...values,
-			major: values.major?.join(', '),
+			overview: overviewEditor,
+			content: contentEditor,
+			course_details: getUpdatedArray(
+				getDetail.data?.course_details || [],
+				courseDetail,
+				'course_detail_id',
+			).map((i) => ({ ...i, list_videos: i.list_videos.join('|') })),
 		};
 
 		if (files) {
@@ -240,7 +248,7 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 								<Grid.Col span={6}>
 									<TextInput
 										label={t('courses.fields.preview')}
-										placeholder={t('courses.fields.preview')}
+										placeholder={'VD: https://youtu.be/-6PFfp_Lerw'}
 										rightSection={
 											<Anchor
 												h={20}
@@ -276,6 +284,24 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 								setCourseDetail={setCourseDetail}
 							/>
 						</Grid.Col>
+
+						<Grid.Col span={12}>
+							<Input.Label>{t('courses.fields.overview')}</Input.Label>
+							<RichEditor
+								loading={getDetail.isFetching}
+								value={overviewEditor}
+								setValue={setOverviewEditor}
+							/>
+						</Grid.Col>
+
+						<Grid.Col span={12}>
+							<Input.Label>{t('courses.fields.content')}</Input.Label>
+							<RichEditor
+								loading={getDetail.isFetching}
+								value={contentEditor}
+								setValue={setContentEditor}
+							/>
+						</Grid.Col>
 					</Grid>
 				</Box>
 			</ModalRender>
@@ -303,10 +329,9 @@ function CourseDetailTable({
 		},
 		validate: {
 			name_detail: isNotEmpty(t('validation.required')),
-			description: isNotEmpty(t('validation.required')),
+			// description: isNotEmpty(t('validation.required')),
 			list_videos: (values: string[]) => {
-				return values?.length > 0 &&
-					values.every((i) => /^[^\d:]+:\d+$/.test(i))
+				return values?.length > 0 && values.every((i) => /^[^:]+:\d+$/.test(i))
 					? null
 					: t('validation.pattern');
 			},
@@ -315,9 +340,7 @@ function CourseDetailTable({
 
 	const handleSubmit = (values: any) => {
 		const dataPost: ICourseDetail = {
-			name_detail: values.name_detail,
-			description: values.description,
-			list_videos: values.list_videos,
+			...values,
 			total_time: values.list_videos.reduce((prev: number, curr: string) => {
 				const l = curr.split(':');
 				return prev + Number(l[1]);
@@ -334,9 +357,11 @@ function CourseDetailTable({
 				(i) => i.id === values.id || i.course_detail_id === values.id,
 			);
 
-			dataClone[index] = { ...dataClone[index], ...dataPost };
+			if (index >= 0) {
+				dataClone[index] = { ...dataClone[index], ...dataPost };
 
-			setCourseDetail(dataClone);
+				setCourseDetail(dataClone);
+			}
 
 			handleCancel();
 			return;
@@ -352,14 +377,14 @@ function CourseDetailTable({
 		handleCancel();
 	};
 
-	const handleOpen = (data?: any) => {
-		if (data)
+	const handleOpen = (isEditing?: boolean, data?: any) => {
+		if (isEditing)
 			form.setValues({
 				...data,
-				isEditing: true,
+				isEditing,
 				list_videos:
 					typeof data.list_videos === 'string'
-						? data.list_videos.split(', ')
+						? data.list_videos.split('|')
 						: data.list_videos,
 			});
 
@@ -383,8 +408,8 @@ function CourseDetailTable({
 	return (
 		<>
 			<Flex justify={'space-between'} align={'center'}>
-				<Text fw={900}>Chi tiết khóa học</Text>
-				<Button onClick={handleOpen}>Thêm chi tiết</Button>
+				<Text fw={900}>Chi tiết khóa học (theo tuần)</Text>
+				<Button onClick={() => handleOpen()}>Thêm chi tiết</Button>
 			</Flex>
 			<ScrollArea h={180}>
 				<Stack py={8}>
@@ -398,7 +423,7 @@ function CourseDetailTable({
 						>
 							{item.name_detail}
 							<Group gap={4}>
-								<ButtonEdit size="xs" onClick={() => handleOpen(item)} />
+								<ButtonEdit size="xs" onClick={() => handleOpen(true, item)} />
 								<ButtonTrash
 									size="xs"
 									onClick={() => handleDelete(item.id || item.course_detail_id)}
@@ -435,7 +460,7 @@ function CourseDetailTable({
 							<Textarea
 								label={t('courses.fields.description')}
 								placeholder={t('courses.fields.description')}
-								withAsterisk
+								// withAsterisk
 								{...form.getInputProps('description')}
 							/>
 						</Grid.Col>
@@ -444,6 +469,7 @@ function CourseDetailTable({
 								label={t('courses.fields.list_videos')}
 								placeholder={'Tên_bài:số_phút'}
 								withAsterisk
+								splitChars={['|']}
 								{...form.getInputProps('list_videos')}
 							/>
 						</Grid.Col>

@@ -1,7 +1,13 @@
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { apiClient } from '@/helpers';
 import { IProduct } from '@/types';
-import { AppConfig, BASE_URL, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import {
+	AppConfig,
+	BASE_URL,
+	ERROR_TIMEOUT,
+	ORIGIN_URL,
+	metaKeywords,
+} from '@/utils/config';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -14,13 +20,23 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
-	const data = (
+	let data = (
 		await apiClient.get(`/products/get-by-id/${params.id}`, {
 			baseURL: `${ORIGIN_URL}${BASE_URL}`,
 		})
 	).data as IProduct;
 
-	if (!data || data.message) return notFound();
+	// DB sometimes returns error
+	while (data.message === ERROR_TIMEOUT && !data.success) {
+		data = (
+			await apiClient.get(`/products/get-by-id/${params.id}`, {
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			})
+		).data as IProduct;
+	}
+	if (data.message && !data.success) return notFound();
+
+	// if (!data || data.message) return notFound();
 	const title = `${data.product_name}`;
 
 	return {
@@ -53,13 +69,21 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ProductDetailPage({ params }: Props) {
-	const data = (
+	let data = (
 		await apiClient.get(`/products/get-by-id/${params.id}`, {
 			baseURL: `${ORIGIN_URL}${BASE_URL}`,
 		})
 	).data as IProduct;
 
-	// if (!data) return notFound();
+	// DB sometimes returns error
+	while (data.message === ERROR_TIMEOUT && !data.success) {
+		data = (
+			await apiClient.get(`/products/get-by-id/${params.id}`, {
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			})
+		).data as IProduct;
+	}
+	if (data.message && !data.success) return notFound();
 
 	return (
 		<>
