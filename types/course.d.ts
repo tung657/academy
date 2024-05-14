@@ -1,4 +1,5 @@
 import { IBaseData, IBaseSearch } from './global';
+import { IInstructor } from './instructor';
 
 export interface ICourse extends IBaseData {
 	course_id: number;
@@ -9,6 +10,8 @@ export interface ICourse extends IBaseData {
 	overview: string;
 	content: string;
 	sort_order: number;
+	instructor_id: number;
+	instructor?: IInstructor;
 	course_details: ICourseDetail[];
 }
 

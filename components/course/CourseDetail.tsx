@@ -21,11 +21,16 @@ import {
 	SegmentedControlItem,
 	Stack,
 	Text,
+	ThemeIcon,
 	TypographyStylesProvider,
 } from '@mantine/core';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import {
 	IconBook,
+	IconBrandFacebookFilled,
+	IconBrandInstagram,
+	IconBrandLinkedin,
+	IconBrandX,
 	IconChevronRight,
 	IconClock,
 	IconPlaystationTriangle,
@@ -329,33 +334,33 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 							</Box>
 
 							<Box pt={24} ref={instructorRef} pb={32}>
-								{/* <TitleRender order={3} mb={16}>
+								<TitleRender order={3} mb={16}>
 									{'Giảng viên'}
 								</TitleRender>
 								<Grid align={'center'}>
 									<Grid.Col span={{ base: 12, md: 4 }}>
 										<Image
-											src={props?.instructor.avatar}
+											src={data?.instructor?.avatar}
 											w={'100%'}
 											h={'auto'}
 											width={590}
 											height={450}
 											loading="lazy"
-											alt={props?.instructor.full_name}
+											alt={data?.instructor?.instructor_name}
 										/>
 									</Grid.Col>
 									<Grid.Col span={{ base: 12, md: 8 }}>
 										<Stack gap={4}>
 											<TitleRender order={3}>
-												{props?.instructor.full_name}
+												{data?.instructor?.instructor_name}
 											</TitleRender>
 											<Text c={'primary'} fw={500} mb={4}>
-												{props?.instructor.master}
+												{data?.instructor?.major}
 											</Text>
 											<Group gap={4}>
-												{props?.instructor.facebook && (
+												{data?.instructor?.fb_link && (
 													<Anchor
-														href={props?.instructor.facebook}
+														href={data?.instructor.fb_link}
 														target="_blank"
 														rel="noopener"
 													>
@@ -371,9 +376,9 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 														</ThemeIcon>
 													</Anchor>
 												)}
-												{props?.instructor.twitter && (
+												{data?.instructor?.x_link && (
 													<Anchor
-														href={props?.instructor.twitter}
+														href={data?.instructor.x_link}
 														target="_blank"
 														rel="noopener"
 													>
@@ -382,16 +387,16 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 															className={classes.icon}
 															color="#e1e1e1"
 														>
-															<IconBrandTwitterFilled
+															<IconBrandX
 																style={{ width: '70%', height: '70%' }}
 																color="#222"
 															/>
 														</ThemeIcon>
 													</Anchor>
 												)}
-												{props?.instructor.instagram && (
+												{data?.instructor?.ins_link && (
 													<Anchor
-														href={props?.instructor.instagram}
+														href={data?.instructor.ins_link}
 														target="_blank"
 														rel="noopener"
 													>
@@ -408,9 +413,9 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 														</ThemeIcon>
 													</Anchor>
 												)}
-												{props?.instructor.linkedin && (
+												{data?.instructor?.linkedin_link && (
 													<Anchor
-														href={props?.instructor.linkedin}
+														href={data?.instructor.linkedin_link}
 														target="_blank"
 														rel="noopener"
 													>
@@ -430,7 +435,7 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 											</Group>
 										</Stack>
 									</Grid.Col>
-								</Grid> */}
+								</Grid>
 							</Box>
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 4 }}>

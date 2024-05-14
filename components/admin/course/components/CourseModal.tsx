@@ -43,6 +43,8 @@ import {
 } from '@/components/mantines/buttons/ButtonGroup';
 import _ from 'lodash';
 import { RichEditor } from '../../editor/Editor';
+import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { useGetInstructorDropdown } from '@/utils/query-loader/instructor.loader';
 
 interface Props {
 	id?: number;
@@ -65,9 +67,11 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 			thumbnail: '',
 			preview: '',
 			description: '',
+			instructor_id: '',
 		},
 		validate: {
 			course_name: isNotEmpty(t('validation.required')),
+			instructor_id: isNotEmpty(t('validation.required')),
 		},
 	});
 
@@ -123,6 +127,13 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 			},
 		},
 	});
+
+	const { data: instructorOptions, isFetching: loadingInstructor } =
+		useGetInstructorDropdown({
+			config: {
+				enabled: opened,
+			},
+		});
 
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
@@ -269,11 +280,26 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 								</Grid.Col>
 
 								<Grid.Col span={12}>
+									<SelectRender
+										label={t('courses.fields.instructor_name')}
+										placeholder={t('courses.fields.instructor_name')}
+										withAsterisk
+										data={
+											instructorOptions && instructorOptions?.length > 0
+												? instructorOptions
+												: []
+										}
+										loading={loadingInstructor}
+										{...form.getInputProps('instructor_id')}
+									/>
+								</Grid.Col>
+
+								<Grid.Col span={12}>
 									<Textarea
 										label={t('courses.fields.description')}
 										placeholder={t('courses.fields.description')}
 										{...form.getInputProps('description')}
-										rows={5}
+										rows={4}
 									/>
 								</Grid.Col>
 							</Grid>

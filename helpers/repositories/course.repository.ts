@@ -4,7 +4,7 @@ import { query } from '../db';
 export async function createCourse(courseModel: ICourse): Promise<any> {
 	try {
 		const sql =
-			'CALL InsertCourse(?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
+			'CALL InsertCourse(?, ?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
 		await query(sql, [
 			courseModel.course_name,
 			courseModel.preview,
@@ -12,6 +12,7 @@ export async function createCourse(courseModel: ICourse): Promise<any> {
 			courseModel.thumbnail,
 			courseModel.overview,
 			courseModel.content,
+			courseModel.instructor_id,
 			JSON.stringify(courseModel.course_details),
 			courseModel.created_by_user_id,
 		]);
@@ -24,7 +25,7 @@ export async function createCourse(courseModel: ICourse): Promise<any> {
 export async function updateCourse(courseModel: ICourse): Promise<any> {
 	try {
 		const sql =
-			'CALL UpdateCourse(?, ?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
+			'CALL UpdateCourse(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
 		await query(sql, [
 			courseModel.course_id,
 			courseModel.course_name,
@@ -33,6 +34,7 @@ export async function updateCourse(courseModel: ICourse): Promise<any> {
 			courseModel.thumbnail,
 			courseModel.overview,
 			courseModel.content,
+			courseModel.instructor_id,
 			JSON.stringify(courseModel.course_details),
 			courseModel.lu_user_id,
 		]);

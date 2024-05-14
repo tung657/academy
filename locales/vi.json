@@ -242,6 +242,7 @@
 			"description": "Mô tả",
 			"overview": "Giới thiệu",
 			"content": "Nội dung đào tạo",
+			"instructor_name": "Tên chuyên gia",
 
 			"name_detail": "Tên chi tiết",
 			"list_videos": "Danh sách bài học",

@@ -1,4 +1,4 @@
-import { Button, Flex, FocusTrap, Modal, ModalProps } from '@mantine/core';
+import { Box, Button, Flex, FocusTrap, Modal, ModalProps } from '@mantine/core';
 import { TitleRender } from '../typographies/TitleRender';
 import { useTranslations } from 'next-intl';
 
@@ -52,8 +52,14 @@ export const ModalRender = ({ footer, ...props }: Props): JSX.Element => {
 				<FocusTrap active={props.opened}>
 					<Modal.Body pt={8}>{props.children}</Modal.Body>
 					{footer.hasContent && (
-						<div>
-							<Flex p={'md'} pt={0} justify={'flex-end'} gap={10}>
+						<Box
+							pos={'sticky'}
+							px={'md'}
+							py={'sm'}
+							bottom={0}
+							bg={'var(--mantine-color-body)'}
+						>
+							<Flex pt={0} justify={'flex-end'} gap={10}>
 								{footer.showCancelButton && (
 									<Button
 										variant="default"
@@ -75,7 +81,7 @@ export const ModalRender = ({ footer, ...props }: Props): JSX.Element => {
 									</Button>
 								)}
 							</Flex>
-						</div>
+						</Box>
 					)}
 				</FocusTrap>
 			</Modal.Content>
