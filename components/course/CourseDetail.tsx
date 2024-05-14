@@ -46,31 +46,17 @@ import React, { useEffect, useState } from 'react';
 import classes from './scss/course-detail.module.scss';
 import { ICourse } from '@/types/course';
 import { handleGetKeyYB } from '@/utils/format-string';
+import { useTranslations } from 'next-intl';
 
-const segmentData: SegmentedControlItem[] = [
-	{
-		label: 'Giới thiệu',
-		value: 'overview',
-	},
-	{
-		label: 'Nội dung khoá học',
-		value: 'outcomes',
-	},
-	{
-		label: 'Giảng viên',
-		value: 'instructor',
-	},
-];
 interface Props {
 	data?: ICourse;
 	isMobile?: boolean;
 }
 
 export const CourseDetail = ({ data }: Props): JSX.Element => {
+	const t = useTranslations();
 	const isMobile = useMediaQuery('(max-width: 62em)');
 	const [showInfo, setShowInfo] = useState<string[]>([]);
-	const [valueSegment, setValueSegment] = useState(segmentData[0].value);
-
 	const [scroll] = useWindowScroll();
 	const { scrollIntoView: scrollOverview, targetRef: overviewRef } =
 		useScrollIntoView<HTMLDivElement>({
@@ -87,6 +73,22 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 			offset: 130,
 			duration: 300,
 		});
+
+	const segmentData: SegmentedControlItem[] = [
+		{
+			label: t('courses.fields.overview'),
+			value: 'overview',
+		},
+		{
+			label: t('courses.fields.content'),
+			value: 'outcomes',
+		},
+		{
+			label: t('courses.fields.instructor'),
+			value: 'instructor',
+		},
+	];
+	const [valueSegment, setValueSegment] = useState(segmentData[0].value);
 
 	useEffect(() => {
 		if (
@@ -256,7 +258,7 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 														mr={4}
 														textWrap="nowrap"
 													>
-														Xem thêm
+														{t('global.view_more')}
 													</TitleRender>
 												</Flex>
 											</Accordion.Control>
@@ -270,8 +272,7 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 														style={{ transform: 'rotate(90deg)' }}
 														stroke={1}
 													/>
-													{(item.list_videos as string).split('|').length}{' '}
-													videos
+													{item.list_videos.length} videos
 												</Group>
 												<Anchor
 													style={{ userSelect: 'none' }}
@@ -301,9 +302,8 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 													</Group>
 												</Anchor>
 												<Collapse in={showInfo.includes(index.toString())}>
-													{(item.list_videos as string)
-														.split('|')
-														.map((video, index) => {
+													{(item.list_videos as string[]).map(
+														(video, index) => {
 															const data = video.split(':');
 
 															return (
@@ -319,13 +319,13 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 																		</Button>
 																	</Flex>
 
-																	{(item.list_videos as string).split('|')
-																		.length -
-																		1 >
-																		index && <Divider />}
+																	{item.list_videos.length - 1 > index && (
+																		<Divider />
+																	)}
 																</React.Fragment>
 															);
-														})}
+														},
+													)}
 												</Collapse>
 											</Accordion.Panel>
 										</Accordion.Item>
@@ -335,7 +335,7 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 
 							<Box pt={24} ref={instructorRef} pb={32}>
 								<TitleRender order={3} mb={16}>
-									{'Giảng viên'}
+									{t('courses.fields.instructor')}
 								</TitleRender>
 								<Grid align={'center'}>
 									<Grid.Col span={{ base: 12, md: 4 }}>
@@ -449,6 +449,7 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 };
 
 function CoursePreview({ data, isMobile }: Props) {
+	const t = useTranslations();
 	const [opened, { open, close }] = useDisclosure();
 
 	return (
@@ -475,7 +476,9 @@ function CoursePreview({ data, isMobile }: Props) {
 						<IconClock stroke={1.2} />
 					</Text>
 
-					<Text>{data?.course_details.length} tuần</Text>
+					<Text tt="lowercase">
+						{data?.course_details.length} {t('global.week')}
+					</Text>
 				</Flex>
 
 				<Divider />
@@ -485,7 +488,13 @@ function CoursePreview({ data, isMobile }: Props) {
 						<IconBook stroke={1.2} />
 					</Text>
 
-					<Text>10 bài</Text>
+					<Text>
+						{data?.course_details.reduce(
+							(prev, curr) => prev + curr.list_videos.length,
+							0,
+						)}{' '}
+						bài
+					</Text>
 				</Flex>
 			</Card>
 

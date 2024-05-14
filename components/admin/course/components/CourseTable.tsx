@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Image, Text } from '@mantine/core';
+import { Anchor, Flex, Group, Image, Text } from '@mantine/core';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
@@ -11,6 +11,8 @@ import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { CourseDelete } from './CourseDelete';
 import { ICourse } from '@/types/course';
 import { RenderTableParams } from '@/libs/table';
+import { ADMIN_INSTRUCTOR_URL } from '@/libs/urls';
+import { Link } from '@/libs/i18n-navigation';
 
 export const CourseTable = (): JSX.Element => {
 	const t = useTranslations();
@@ -95,7 +97,19 @@ export const CourseTable = (): JSX.Element => {
 			data={dataCourses?.data || []}
 			totalItems={dataCourses?.totalItems}
 			isLoading={isFetching}
-			TopAction={<CourseModal />}
+			TopAction={
+				<Group>
+					<CourseModal />
+					<Anchor
+						component={Link}
+						href={ADMIN_INSTRUCTOR_URL}
+						target="_blank"
+						rel="noopener"
+					>
+						Đến chuyên gia
+					</Anchor>
+				</Group>
+			}
 		/>
 	);
 };

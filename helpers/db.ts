@@ -55,7 +55,7 @@ export async function query(sql: string, values: any[]): Promise<any> {
 }
 
 export async function queryList(sql: string, values: any[]): Promise<any> {
-	let connection = await connect();
+	let connection = await registerService('db', connect);
 	try {
 		const [results] = await connection.query(sql, values);
 		const [outParam] = await connection.query('SELECT @err_code, @err_msg');

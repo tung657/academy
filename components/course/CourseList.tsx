@@ -29,6 +29,7 @@ import { ICourse } from '@/types/course';
 import { calcTotalPages } from '@/utils/format-number';
 import { InputSearch } from '../mantines/inputs/InputSearch';
 import { useTranslations } from 'next-intl';
+import { Empty } from '../errors/empty';
 
 interface Props {
 	data: IBaseResponse<ICourse[]>;
@@ -62,40 +63,49 @@ export const CourseList = ({ data }: Props): JSX.Element => {
 						<InputSearch size="md" />
 					</Flex>
 					<Grid gutter={24}>
-						{data?.data?.map((item) => (
-							<Grid.Col key={item.course_id} span={{ base: 12, sm: 6, md: 4 }}>
-								<Card shadow="sm" padding="md" radius="md">
-									<Card.Section>
-										<Image
-											src={item.thumbnail}
-											height={250}
-											alt="Norway"
-											width={140}
-											loading="lazy"
-										/>
-									</Card.Section>
+						{data.data?.length === 0 ? (
+							<Empty />
+						) : (
+							data?.data?.map((item) => (
+								<Grid.Col
+									key={item.course_id}
+									span={{ base: 12, sm: 6, md: 4 }}
+								>
+									<Card shadow="sm" padding="md" radius="md">
+										<Card.Section>
+											<Image
+												src={item.thumbnail}
+												height={250}
+												alt="Norway"
+												width={140}
+												loading="lazy"
+											/>
+										</Card.Section>
 
-									<Group justify="space-between" my="md">
-										<Anchor
-											component={Link}
-											className={classes.title}
-											href={getUrlDetail(COURSE_DETAIL_URL, item.course_id)}
-										>
-											<TitleRender order={3} fz={{ base: 'lg', md: 'h3' }}>
-												{item.course_name}
-											</TitleRender>
-										</Anchor>
-									</Group>
+										<Group justify="space-between" my="md">
+											<Anchor
+												component={Link}
+												className={classes.title}
+												href={getUrlDetail(COURSE_DETAIL_URL, item.course_id)}
+											>
+												<TitleRender order={3} fz={{ base: 'lg', md: 'h3' }}>
+													{item.course_name}
+												</TitleRender>
+											</Anchor>
+										</Group>
 
-									<Text lineClamp={4}>{item.description}</Text>
+										<Text lineClamp={4}>{item.description}</Text>
 
-									<Group align="center" gap={4} mt={'md'}>
-										<IconCalendar color={theme.colors.primary[4]} />{' '}
-										<Text c={theme.colors.gray[7]}>{item.course_id}</Text>
-									</Group>
-								</Card>
-							</Grid.Col>
-						))}
+										<Group align="center" gap={4} mt={'md'}>
+											<IconCalendar color={theme.colors.primary[4]} />{' '}
+											<Text c={theme.colors.gray[7]} tt={'lowercase'}>
+												{item.duration} {t('global.week')}
+											</Text>
+										</Group>
+									</Card>
+								</Grid.Col>
+							))
+						)}
 
 						<Grid.Col span={12}>
 							<Flex justify={'center'}>

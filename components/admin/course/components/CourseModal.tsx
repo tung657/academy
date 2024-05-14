@@ -91,9 +91,6 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 				setOverviewEditor(data.overview);
 				setContentEditor(data.content);
 				const dataClone = _.clone(data.course_details);
-				dataClone.forEach((item) => {
-					item.list_videos = (item.list_videos as string).split(', ');
-				});
 				setCourseDetail(dataClone);
 			},
 		},

@@ -13,6 +13,7 @@ export interface ICourse extends IBaseData {
 	instructor_id: number;
 	instructor?: IInstructor;
 	course_details: ICourseDetail[];
+	duration?: number;
 }
 
 export interface ICourseDetail extends IBaseData {

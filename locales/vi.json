@@ -13,12 +13,15 @@
 		"create": "Thêm mới",
 		"edit": "Chỉnh sửa",
 		"detail": "Chi tiết",
+		"week": "Tuần",
 		"share_with_fb": "Chia sẻ lên Facebook",
 		"share_with_x": "Chia sẻ lên Twitter",
 		"share_with_email": "Chia sẻ tới Email",
 		"share_with_link": "Sao chép đường dẫn",
 		"restore_pw": "Khôi phục mật khẩu",
 		"delete": "Xoá",
+		"view_more": "Xem thêm",
+		"empty": "Không có dữ liệu",
 		"address": {
 			"title": "Địa chỉ",
 			"content": "Tầng 2, toà CT1 Tràng An complex, số 1 Phùng Chí Kiên, phường Nghĩa Đô, quận Cầu Giấy, TP Hà Nội"
@@ -243,6 +246,7 @@
 			"overview": "Giới thiệu",
 			"content": "Nội dung đào tạo",
 			"instructor_name": "Tên chuyên gia",
+			"instructor": "Giảng viên",
 
 			"name_detail": "Tên chi tiết",
 			"list_videos": "Danh sách bài học",

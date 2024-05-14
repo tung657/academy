@@ -37,6 +37,7 @@ const ADMIN_PRODUCT_URL = `${ADMIN_CUSTOMER_URL}/products`;
 
 const ADMIN_MANAGE_URL = `${ADMIN_URL}/manager`;
 const ADMIN_USER_URL = `${ADMIN_MANAGE_URL}/employees`;
+const ADMIN_INSTRUCTOR_URL = `${ADMIN_MANAGE_URL}/instructors`;
 
 const ADMIN_CONFIG_URL = `${ADMIN_URL}/config`;
 const ADMIN_FEATURE_URL = `${ADMIN_CONFIG_URL}/features`;
@@ -66,6 +67,7 @@ export {
 	ADMIN_PRODUCT_URL,
 	ADMIN_USER_URL,
 	ADMIN_FEATURE_URL,
+	ADMIN_INSTRUCTOR_URL,
 };
 
 export const generateTreeUrls = (t: any): NavTree[] => {
