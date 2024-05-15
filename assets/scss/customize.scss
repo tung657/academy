@@ -1,6 +1,6 @@
 #page-preloader {
 	background-color: #13130d !important;
-	background-image: url(https://ozeum.themerex.net/wp-content/uploads/2019/11/flower-preloader.png);
+	background-image: url('https://ozeum.themerex.net/wp-content/uploads/2019/11/flower-preloader.png');
 
 	background-color: #f0f0f0;
 	background-position: center;
@@ -41,11 +41,11 @@
 			height: calc(100% - 10.5104vw);
 			pointer-events: none;
 			background:
-				url(https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/logo-bg-1.png)
+				url('https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/logo-bg-1.png')
 					no-repeat right 90px,
-				url(https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/logo-bg-2.png)
+				url('https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/logo-bg-2.png')
 					no-repeat left calc(100% - 120px),
-				url(https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/dots-orange.png)
+				url('https://cdn.shopify.com/s/files/1/0458/5167/2729/t/6/assets/dots-orange.png')
 					no-repeat 60vw 100%;
 		}
 	}

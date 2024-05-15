@@ -1,6 +1,6 @@
 {
-	"name": "next-antd",
-	"version": "0.1.0",
+	"name": "web-aia",
+	"version": "0.3.2",
 	"private": true,
 	"license": "MIT",
 	"scripts": {
