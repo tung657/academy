@@ -45,6 +45,7 @@ import _ from 'lodash';
 import { RichEditor } from '../../editor/Editor';
 import { SelectRender } from '@/components/mantines/inputs/SelectRender';
 import { useGetInstructorDropdown } from '@/utils/query-loader/instructor.loader';
+import { removeVietnameseTones } from '@/utils/format-string';
 
 interface Props {
 	id?: number;
@@ -147,7 +148,7 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 
 		if (files) {
 			const formData = new FormData();
-			formData.append('file', files[0]);
+			formData.append('file', files[0], removeVietnameseTones(files[0].name));
 			id && setPathNeedDelete(dataPost.thumbnail);
 			const dataUpload = await uploadFile(formData);
 			if (dataUpload.url) dataPost.thumbnail = dataUpload.url;

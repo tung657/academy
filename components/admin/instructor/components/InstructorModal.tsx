@@ -33,6 +33,7 @@ import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { useState } from 'react';
 import { IInstructor } from '@/types/instructor';
 import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { removeVietnameseTones } from '@/utils/format-string';
 
 interface Props {
 	id?: number;
@@ -121,7 +122,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 
 		if (files) {
 			const formData = new FormData();
-			formData.append('file', files[0]);
+			formData.append('file', files[0], removeVietnameseTones(files[0].name));
 			id && setPathNeedDelete(dataPost.avatar);
 			const dataUpload = await uploadFile(formData);
 			if (dataUpload.url) dataPost.avatar = dataUpload.url;

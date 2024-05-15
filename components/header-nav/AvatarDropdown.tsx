@@ -46,10 +46,11 @@ import {
 	formatDatePost,
 	formatDateShow,
 	patterns,
+	removeVietnameseTones,
 } from '@/utils/format-string';
 import dayjs from 'dayjs';
 import { IUserStorage } from '@/types';
-import { uploadFile } from '@/utils/services/file.service';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
 import { getRuleForms } from '@/utils/validation';
 
 export const AvatarDropdown = (): JSX.Element => {
@@ -134,6 +135,7 @@ export const AvatarDropdown = (): JSX.Element => {
 function ProfileModal({ opened, setOpened }: any): JSX.Element {
 	const t = useTranslations();
 	const [userRecoil, setUserRecoil] = useRecoilState(userState);
+	const [pathNeedDelete, setPathNeedDelete] = useState<string>();
 	const [files, setFiles] = useState<FileWithPath[]>();
 	const [loading, setLoading] = useState(false);
 	const form = useForm({
@@ -186,6 +188,7 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 					maxAge: 86400, // 24 hours
 					sameSite: 'strict',
 				});
+				pathNeedDelete && deleteFile(pathNeedDelete);
 				handleCancel();
 			},
 		},
@@ -205,8 +208,9 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 
 		if (files) {
 			const formData = new FormData();
-			formData.append('file', files[0]);
+			formData.append('file', files[0], removeVietnameseTones(files[0].name));
 			const dataUpload = await uploadFile(formData);
+			dataPost.avatar && setPathNeedDelete(dataPost.avatar);
 			if (dataUpload.url) dataPost.avatar = dataUpload.url;
 		}
 
@@ -218,6 +222,7 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 	const handleCancel = () => {
 		form.reset();
 		updateQuery.reset();
+		setPathNeedDelete(undefined);
 		setFiles(undefined);
 		setOpened(false);
 	};

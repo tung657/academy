@@ -103,6 +103,11 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 				},
 				defaultRadius: 'md',
 				components: {
+					Text: {
+						defaultProps: {
+							size: 'sm',
+						},
+					},
 					TextInput: {
 						defaultProps: {
 							size: 'sm',

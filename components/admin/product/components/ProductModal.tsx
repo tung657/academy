@@ -34,6 +34,7 @@ import { useState } from 'react';
 import { RichEditor } from '../../editor/Editor';
 import { IProduct } from '@/types';
 import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { removeVietnameseTones } from '@/utils/format-string';
 
 interface Props {
 	id?: number;
@@ -127,7 +128,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 
 		if (files) {
 			const formData = new FormData();
-			formData.append('file', files[0]);
+			formData.append('file', files[0], removeVietnameseTones(files[0].name));
 			id && setPathNeedDelete(dataPost.thumbnail);
 			const dataUpload = await uploadFile(formData);
 			if (dataUpload.url) dataPost.thumbnail = dataUpload.url;
