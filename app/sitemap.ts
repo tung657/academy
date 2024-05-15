@@ -1,4 +1,3 @@
-import { dataCourses } from '@/components/course/data/data-fake';
 import { dataJobs } from '@/components/job/data/data-fake';
 import { researchTypeOptions } from '@/components/research/data/data-fake';
 import { apiClient } from '@/helpers';
@@ -27,22 +26,10 @@ export default async function sitemap(): Promise<SitemapType> {
 		{},
 	);
 
-	const courseList = dataCourses.map((data) => ({
-		url: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/course/${
-			data.id
-		}`,
-		lastModified: new Date(),
-		alternates: {
-			languages: {
-				en: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/en/course/${
-					data.id
-				}`,
-				vi: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/course/${
-					data.id
-				}`,
-			},
-		},
-	}));
+	const courses = await apiClient.post(
+		`${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/api/courses/search`,
+		{},
+	);
 
 	const researchList = researchTypeOptions.map((data) => ({
 		url: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/research/${
@@ -75,6 +62,24 @@ export default async function sitemap(): Promise<SitemapType> {
 			},
 		},
 	}));
+
+	const coursesList =
+		courses?.data?.data?.map((data: any) => ({
+			url: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/course/${
+				data.course_id
+			}`,
+			lastModified: new Date(),
+			alternates: {
+				languages: {
+					en: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/en/course/${
+						data.course_id
+					}`,
+					vi: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/course/${
+						data.course_id
+					}`,
+				},
+			},
+		})) || [];
 
 	const productsList =
 		products?.data?.data?.map((data: any) => ({
@@ -129,7 +134,7 @@ export default async function sitemap(): Promise<SitemapType> {
 				},
 			},
 		},
-		...courseList,
+		...coursesList,
 
 		// research and detail
 		{

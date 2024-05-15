@@ -94,6 +94,7 @@ export async function POST(request: NextRequest) {
 		// Store public user data as a cookie
 		// const userData = user.exportPublic();
 		const { password, ...dataUser } = user;
+		console.log(password);
 		setUserDataCookie({ ...dataUser });
 
 		return response;

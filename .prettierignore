@@ -1,7 +1,8 @@
-node_modules
 .next
-.husky
-coverage
-.prettierignore
-.stylelintignore
-.eslintignore
+.cache
+package-lock.json
+public
+node_modules
+next-env.d.ts
+next.config.ts
+yarn.lock

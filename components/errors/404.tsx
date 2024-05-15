@@ -6,15 +6,15 @@ export function NotFoundTitle() {
 	return (
 		<Container size="xl" className={classes.root}>
 			<div className={classes.label}>404</div>
-			<Title className={classes.title}>You have found a secret place.</Title>
-			<Text c="dimmed" size="lg" ta="center" className={classes.description}>
-				Unfortunately, this is only a 404 page. You may have mistyped the
-				address, or the page has been moved to another URL.
+			<Title className={classes.title}>Có vẻ bạn đang bị lạc.</Title>
+			<Text size="lg" ta="center" className={classes.description}>
+				Thật không may, đây là trang 404. Bạn có thể đã gõ nhầm địa chỉ, hoặc
+				trang này đã được di chuyển tới địa chỉ khác.
 			</Text>
 			<Group justify="center">
 				<a href={HOME_URL}>
 					<Button variant="light" size="md">
-						Take me back to home page
+						Đến trang chủ
 					</Button>
 				</a>
 			</Group>

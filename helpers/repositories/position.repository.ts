@@ -58,7 +58,7 @@ export async function getPositionById(id: number): Promise<any> {
 
 export async function searchPosition(search: ISearchPosition): Promise<any[]> {
 	try {
-		const sql = 'CALL SearchPositions(?, ?, ?, @err_code, @err_msg)';
+		const sql = 'CALL SearchPosition(?, ?, ?, @err_code, @err_msg)';
 
 		const [results] = await query(sql, [
 			search.page_index || 0,
