@@ -19,7 +19,6 @@ import {
 	Input,
 	LoadingOverlay,
 	NumberInput,
-	Text,
 	TextInput,
 	Textarea,
 	Tooltip,
@@ -29,12 +28,13 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconLink, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
-import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@mantine/dropzone';
+import { FileWithPath } from '@mantine/dropzone';
 import { useState } from 'react';
 import { RichEditor } from '../../editor/Editor';
 import { IProduct } from '@/types';
 import { deleteFile, uploadFile } from '@/utils/services/file.service';
 import { removeVietnameseTones } from '@/utils/format-string';
+import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
 
 interface Props {
 	id?: number;
@@ -148,6 +148,7 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 
 	const handleCancel = () => {
 		setPathNeedDelete(undefined);
+		setFiles(undefined);
 		form.reset();
 		close();
 	};
@@ -188,40 +189,17 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 								alignItems: 'center',
 							}}
 						>
-							<Box className={'dropzone-wrap'} w={'100%'} h={180}>
-								<Input.Label mb={4}>
-									{t('products.fields.thumbnail')}
-								</Input.Label>
-								<Tooltip label="Upload">
-									<Dropzone
-										h={'100%'}
-										w={'100%'}
-										radius={'sm'}
-										accept={IMAGE_MIME_TYPE}
-										maxSize={2 * 1024 ** 2}
-										style={{
-											backgroundImage: `url(${
-												files
-													? URL.createObjectURL(files[0])
-													: form.getInputProps('thumbnail').value
-														? form.getInputProps('thumbnail').value
-														: ''
-											})`,
-										}}
-										bgsz={'contain'}
-										bgr={'no-repeat'}
-										bgp={'center center'}
-										multiple={false}
-										onReject={() => {
-											getNotifications('error', t, 'File không thể quá 2MB');
-										}}
-										onDrop={setFiles}
-									></Dropzone>
-								</Tooltip>
-								<Text fz="sm" py={8} ta={'center'}>
-									File {'<'} 2MB
-								</Text>
-							</Box>
+							<DropzoneRender
+								fileUrl={
+									files
+										? URL.createObjectURL(files[0])
+										: form.getInputProps('thumbnail').value
+											? form.getInputProps('thumbnail').value
+											: ''
+								}
+								onDrops={setFiles}
+								limit={2}
+							/>
 						</Grid.Col>
 						<Grid.Col span={8}>
 							<Grid gutter={16}>

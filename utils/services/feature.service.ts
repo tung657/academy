@@ -45,7 +45,7 @@ export const createFeature = async (data: IFeature): Promise<IBaseResponse> => {
 };
 
 export const updateFeature = async (data: IFeature): Promise<IBaseResponse> => {
-	const res = await apiClient?.put(`${prefix}/update`, data);
+	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };

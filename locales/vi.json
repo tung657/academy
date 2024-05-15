@@ -87,10 +87,6 @@
 		"meta_title": "Viện trí tuệ nhân tạo Việt Nam",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
 	},
-	"researches": {
-		"meta_title": "Nghiên cứu",
-		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
-	},
 	"jobs": {
 		"meta_title": "Tuyển dụng",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
@@ -134,6 +130,7 @@
 	},
 	"profile": {
 		"fields": {
+			"avatar": "Ảnh đại diện",
 			"full_name": "Họ và tên",
 			"gender": "Giới tính",
 			"email": "Email",
@@ -250,6 +247,37 @@
 
 			"name_detail": "Tên chi tiết",
 			"list_videos": "Danh sách bài học",
+			"action": "Thao tác"
+		}
+	},
+	"researches": {
+		"meta_title": "Nghiên cứu",
+		"meta_description": "Nghiên cứu viện trí tuệ nhân tạo Việt Nam",
+		"heading": "Quản lý nghiên cứu",
+		"title_create": "Thêm mới nghiên cứu",
+		"title_update": "Chi tiết nghiên cứu",
+		"title_delete": "Xoá nghiên cứu",
+		"fields": {
+			"serial": "STT",
+			"thumbnail": "Ảnh đại diện",
+			"research_type_name": "Loại nghiên cứu",
+			"research_name": "Tên nghiên cứu",
+			"description": "Mô tả",
+			"slogan": "Slogan",
+			"action": "Thao tác"
+		}
+	},
+	"research_types": {
+		"heading": "Quản lý loại nghiên cứu",
+		"title_create": "Thêm mới loại nghiên cứu",
+		"title_update": "Chi tiết loại nghiên cứu",
+		"title_delete": "Xoá loại nghiên cứu",
+		"fields": {
+			"serial": "STT",
+			"thumbnail": "Ảnh đại diện",
+			"research_type_name": "Loại nghiên cứu",
+			"description": "Mô tả",
+			"slogan": "Slogan",
 			"action": "Thao tác"
 		}
 	},

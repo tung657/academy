@@ -41,7 +41,7 @@ export const createEmployee = async (data: IUser): Promise<IBaseResponse> => {
 };
 
 export const updateEmployee = async (data: IUser): Promise<IBaseResponse> => {
-	const res = await apiClient?.put(`${prefix}/update`, data);
+	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };

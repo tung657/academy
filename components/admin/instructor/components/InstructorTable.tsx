@@ -48,7 +48,11 @@ export const InstructorTable = (): JSX.Element => {
 			{
 				accessorKey: 'avatar', //access nested data with dot notation
 				header: t('instructors.fields.avatar'),
-				size: 100,
+				size: 70,
+				enableSorting: false,
+				mantineTableBodyCellProps: {
+					align: 'center',
+				},
 				Cell: ({ renderedCellValue, row: { original } }) => (
 					<Image
 						mah={50}
@@ -126,7 +130,10 @@ export const InstructorTable = (): JSX.Element => {
 			},
 			{
 				header: t('instructors.fields.action'),
-				size: 70,
+				mantineTableBodyCellProps: {
+					align: 'center',
+				},
+				size: 50,
 				Cell: ({ row: { original } }) => (
 					<Flex justify={'center'} gap={8}>
 						<InstructorModal id={original.instructor_id} />

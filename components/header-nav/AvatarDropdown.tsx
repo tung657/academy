@@ -11,7 +11,6 @@ import {
 	Text,
 	TextInput,
 	Textarea,
-	Tooltip,
 	UnstyledButton,
 	rem,
 } from '@mantine/core';
@@ -20,7 +19,6 @@ import {
 	IconKey,
 	IconMoodHeart,
 	IconPower,
-	IconUpload,
 	IconUserEdit,
 } from '@tabler/icons-react';
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
@@ -31,9 +29,8 @@ import { userState } from '@/store/user/atom';
 import { ModalRender } from '../mantines/modal/ModalRender';
 import { useEffect, useState } from 'react';
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
-import { Dropzone, IMAGE_MIME_TYPE, FileWithPath } from '@mantine/dropzone';
+import { FileWithPath } from '@mantine/dropzone';
 import logo from '@/assets/images/logos/logo.jpg';
-import classes from './scss/avatar-dropdown.module.scss';
 import {
 	useChangePasswordEmployee,
 	useUpdateEmployee,
@@ -52,6 +49,7 @@ import dayjs from 'dayjs';
 import { IUserStorage } from '@/types';
 import { deleteFile, uploadFile } from '@/utils/services/file.service';
 import { getRuleForms } from '@/utils/validation';
+import { DropzoneRender } from '../shared/dropzone/DropzoneRender';
 
 export const AvatarDropdown = (): JSX.Element => {
 	const t = useTranslations();
@@ -257,50 +255,21 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 								alignItems: 'center',
 							}}
 						>
-							<div className={classes.dropzoneWrap}>
-								<Tooltip label="Upload">
-									<Dropzone
-										h={'100%'}
-										w={'100%'}
-										radius={'50%'}
-										accept={IMAGE_MIME_TYPE}
-										maxSize={1 * 1024 ** 2}
-										style={{
-											backgroundImage: `url(${
-												files
-													? URL.createObjectURL(files[0])
-													: userRecoil.avatar
-														? userRecoil.avatar
-														: logo.src
-											})`,
-										}}
-										bgsz={'contain'}
-										bgr={'no-repeat'}
-										bgp={'center center'}
-										multiple={false}
-										onReject={() => {
-											getNotifications('error', t, 'File không thể quá 1MB');
-										}}
-										onDrop={setFiles}
-									>
-										<Flex
-											className={classes.dropzoneAction}
-											p={8}
-											w={'100%'}
-											justify={'center'}
-											align={'center'}
-											gap={8}
-											fw={700}
-											c={'white'}
-										>
-											<IconUpload />
-										</Flex>
-									</Dropzone>
-								</Tooltip>
-							</div>
-							<Text fz="sm" py={8}>
-								File {'<'} 1MB
-							</Text>
+							<Box ta={'center'} w={180} h={180}>
+								<DropzoneRender
+									fileUrl={
+										files
+											? URL.createObjectURL(files[0])
+											: userRecoil.avatar
+												? userRecoil.avatar
+												: logo.src
+									}
+									onDrops={setFiles}
+									limit={1}
+									label={t('profile.fields.avatar')}
+									radius={'50%'}
+								/>
+							</Box>
 						</Grid.Col>
 						<Grid.Col span={8}>
 							<Grid gutter={16}>
@@ -352,7 +321,7 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 								</Grid.Col>
 							</Grid>
 						</Grid.Col>
-						<Grid.Col span={12}>
+						<Grid.Col span={12} mt={42}>
 							<Textarea
 								label={t('profile.fields.address')}
 								placeholder={t('profile.fields.address')}

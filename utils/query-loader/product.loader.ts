@@ -4,7 +4,7 @@ import {
 	createProduct,
 	deleteProduct,
 	getProductById,
-	searchProducts,
+	searchProduct,
 	updateProduct,
 } from '../services/product.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -49,17 +49,17 @@ const useGetProductDropdown = ({
 };
 
 // Search list
-const useSearchProducts = ({
+const useSearchProduct = ({
 	params,
 	config,
 }: {
 	params: AxiosRequestConfig['params'];
-	config?: QueryConfig<typeof searchProducts>;
+	config?: QueryConfig<typeof searchProduct>;
 }) => {
-	return useQuery<ExtractFnReturnType<typeof searchProducts>>({
+	return useQuery<ExtractFnReturnType<typeof searchProduct>>({
 		...config,
 		queryKey: [CACHE_PRODUCT.SEARCH, params],
-		queryFn: async () => searchProducts(params),
+		queryFn: async () => searchProduct(params),
 	});
 };
 
@@ -113,6 +113,6 @@ export {
 	useGetProductDropdown,
 	useDeleteProduct,
 	useGetProductById,
-	useSearchProducts,
+	useSearchProduct,
 	useUpdateProduct,
 };

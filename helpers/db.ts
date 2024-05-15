@@ -6,6 +6,7 @@ const connectionConfig: PoolOptions = {
 	database: process.env.NEXT_PUBLIC_MYSQL_DATABASE,
 	user: process.env.NEXT_PUBLIC_MYSQL_USER,
 	password: process.env.MYSQL_PASSWORD,
+	keepAliveInitialDelay: 10000,
 	enableKeepAlive: true,
 	connectionLimit: 20,
 };
@@ -36,7 +37,7 @@ export async function connect(): Promise<PoolConnection> {
 }
 
 export async function query(sql: string, values: any[]): Promise<any> {
-	let connection = await registerService('db', connect);
+	let connection = (await registerService('db', connect)) as PoolConnection;
 	try {
 		const [results] = await connection.query(sql, values);
 		const [outParam] = await connection.query('SELECT @err_code, @err_msg');

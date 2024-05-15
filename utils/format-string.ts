@@ -57,7 +57,7 @@ export function formatTimeSince(value: string) {
 	return rtf.format(-Math.floor(interval), 'second');
 }
 
-export function getReadingTime(html: string): number {
+export function transformHtmlToString(html: string): string {
 	html = html.replace(/<style([\s\S]*?)<\/style>/gi, '');
 	html = html.replace(/<script([\s\S]*?)<\/script>/gi, '');
 	html = html.replace(/<\/div>/gi, '\n');
@@ -70,7 +70,14 @@ export function getReadingTime(html: string): number {
 
 	html = html.replace(/\n/g, '');
 
-	return Math.ceil(html.split(' ').length / 224);
+	return html;
+}
+
+export function getReadingTime(html: string): number {
+	html = transformHtmlToString(html);
+	const avgTime = 224;
+
+	return Math.ceil(html.split(' ').length / avgTime);
 }
 
 export const handleGetKeyYB = (yb?: string): string => {

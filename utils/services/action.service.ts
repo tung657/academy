@@ -33,7 +33,7 @@ export const createAction = async (data: IAction): Promise<IBaseResponse> => {
 };
 
 export const updateAction = async (data: IAction): Promise<IBaseResponse> => {
-	const res = await apiClient?.put(`${prefix}/update`, data);
+	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };

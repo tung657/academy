@@ -31,7 +31,7 @@ export const createRole = async (data: IRole): Promise<IBaseResponse> => {
 };
 
 export const updateRole = async (data: IRole): Promise<IBaseResponse> => {
-	const res = await apiClient?.put(`${prefix}/update`, data);
+	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };

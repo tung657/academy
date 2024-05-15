@@ -92,3 +92,66 @@ export function RichEditor({ loading, value, setValue }: Props) {
 		/>
 	);
 }
+
+export function RichEditorBasic({ loading, value, setValue }: Props) {
+	const ref = useRef<any>(null);
+
+	const formats = [
+		'header',
+		'bold',
+		'italic',
+		'underline',
+		'strike',
+		'blockquote',
+		'list',
+		'bullet',
+		'indent',
+		'link',
+		// 'imageBlot', // #5 Optinal if using custom formats
+		'code-block',
+		'color',
+		'code',
+		'align',
+		'background',
+	];
+
+	const modules = useMemo(
+		() => ({
+			toolbar: [
+				[{ header: [1, 2, 3, 4, 5, 6, false] }, { font: [] }],
+				[{ size: [] }],
+				[{ color: [] }, { background: [] }], // dropdown with defaults from theme
+				[{ align: [] }],
+				['bold', 'italic', 'underline', 'strike', 'blockquote'],
+				[
+					{ list: 'ordered' },
+					{ list: 'bullet' },
+					{ indent: '-1' },
+					{ indent: '+1' },
+				],
+				['link'],
+				['code', 'code-block'],
+				['clean'],
+			],
+			clipboard: {
+				// toggle to add extra line breaks when pasting HTML:
+				matchVisual: false,
+			},
+			blotFormatter: {},
+		}),
+		[],
+	);
+
+	return loading ? (
+		<></>
+	) : (
+		<ReactQuill
+			ref={ref}
+			theme="snow"
+			modules={modules}
+			defaultValue={value}
+			formats={formats}
+			onChange={setValue}
+		/>
+	);
+}

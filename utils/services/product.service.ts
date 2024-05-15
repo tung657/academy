@@ -11,7 +11,7 @@ export const getProductDropdown = async (): Promise<OptionsData> => {
 	return res.data;
 };
 
-export const searchProducts = async (
+export const searchProduct = async (
 	params: ISearchProduct,
 ): Promise<IBaseResponse<IProduct[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);

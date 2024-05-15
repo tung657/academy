@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { PositionModal } from './PositionModal';
-import { useSearchPositions } from '@/utils/query-loader/position.loader';
+import { useSearchPosition } from '@/utils/query-loader/position.loader';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { PositionDelete } from './PositionDelete';
 import { IPosition } from '@/types';
@@ -20,7 +20,7 @@ export const PositionTable = (): JSX.Element => {
 	const pageSize = searchParams.get(SEARCH_SIZE) || 10;
 	const searchContent = searchParams.get(SEARCH_CONTENT) || '';
 
-	const { data: dataPositions, isFetching } = useSearchPositions({
+	const { data: dataPositions, isFetching } = useSearchPosition({
 		params: {
 			page_index: +page,
 			page_size: +pageSize,

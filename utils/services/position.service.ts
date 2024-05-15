@@ -15,7 +15,7 @@ export const getPositionDropdown = async (): Promise<OptionsData> => {
 	return res.data;
 };
 
-export const searchPositions = async (
+export const searchPosition = async (
 	params: ISearchPosition,
 ): Promise<IBaseResponse<IPosition[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);
@@ -42,7 +42,7 @@ export const createPosition = async (
 export const updatePosition = async (
 	data: IPosition,
 ): Promise<IBaseResponse> => {
-	const res = await apiClient?.put(`${prefix}/update`, data);
+	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };

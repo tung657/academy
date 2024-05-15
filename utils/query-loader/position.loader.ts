@@ -4,7 +4,7 @@ import {
 	createPosition,
 	deletePosition,
 	getPositionById,
-	searchPositions,
+	searchPosition,
 	updatePosition,
 } from '../services/position.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -49,17 +49,17 @@ const useGetPositionDropdown = ({
 };
 
 // Search list
-const useSearchPositions = ({
+const useSearchPosition = ({
 	params,
 	config,
 }: {
 	params: AxiosRequestConfig['params'];
-	config?: QueryConfig<typeof searchPositions>;
+	config?: QueryConfig<typeof searchPosition>;
 }) => {
-	return useQuery<ExtractFnReturnType<typeof searchPositions>>({
+	return useQuery<ExtractFnReturnType<typeof searchPosition>>({
 		...config,
 		queryKey: [CACHE_POSITION.SEARCH, params],
-		queryFn: async () => searchPositions(params),
+		queryFn: async () => searchPosition(params),
 	});
 };
 
@@ -113,6 +113,6 @@ export {
 	useGetPositionDropdown,
 	useDeletePosition,
 	useGetPositionById,
-	useSearchPositions,
+	useSearchPosition,
 	useUpdatePosition,
 };

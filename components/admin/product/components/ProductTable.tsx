@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { ProductModal } from './ProductModal';
-import { useSearchProducts } from '@/utils/query-loader/product.loader';
+import { useSearchProduct } from '@/utils/query-loader/product.loader';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { ProductDelete } from './ProductDelete';
 import { IProduct } from '@/types';
@@ -20,7 +20,7 @@ export const ProductTable = (): JSX.Element => {
 	const pageSize = searchParams.get(SEARCH_SIZE) || 10;
 	const searchContent = searchParams.get(SEARCH_CONTENT) || '';
 
-	const { data: dataProducts, isFetching } = useSearchProducts({
+	const { data: dataProducts, isFetching } = useSearchProduct({
 		params: {
 			page_index: +page,
 			page_size: +pageSize,

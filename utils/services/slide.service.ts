@@ -20,7 +20,7 @@ export const searchSlides = async (
 };
 
 export const updateSlide = async (data: ISlide): Promise<any> => {
-	const res = await apiClient?.put(`${prefix}/update`, data);
+	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };
