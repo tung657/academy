@@ -315,5 +315,19 @@
 			"description": "Mô tả",
 			"action": "Thao tác"
 		}
+	},
+	"contacts": {
+		"heading": "Quản lý liên hệ",
+		"title_create": "Thêm mới liên hệ",
+		"title_update": "Chi tiết liên hệ",
+		"title_delete": "Xoá liên hệ",
+		"fields": {
+			"serial": "STT",
+			"customer_name": "tên khách hàng",
+			"email": "email",
+			"phone_number": "số điện thoại",
+			"description": "Mô tả",
+			"action": "Thao tác"
+		}
 	}
 }

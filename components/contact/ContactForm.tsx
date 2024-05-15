@@ -11,10 +11,14 @@ import { imgContacts } from '@/assets/images/contact';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { IconCheck } from '@tabler/icons-react';
 import { patterns } from '@/utils/format-string';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/store/user/atom';
+import { useCreateContact } from '@/utils/query-loader/contact.loader';
+import { getNotifications } from '../mantines/notification/getNotifications';
 
 export const ContactForm = (): JSX.Element => {
 	const t = useTranslations();
-
+	const userRecoil = useRecoilValue(userState);
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
@@ -30,10 +34,25 @@ export const ContactForm = (): JSX.Element => {
 			message: isNotEmpty(t('validation.required')),
 		},
 	});
-
+	const createContact = useCreateContact({
+		config: {
+			onSuccess: (data) => {
+				if (!data.success && data.message) {
+					getNotifications('error', t, data.message);
+					return;
+				}
+				getNotifications('success', t, data.message);
+			},
+		},
+	});
 	const handleSubmit = (values: Record<string, unknown>) => {
 		// TODO: send message
+		const dataPost: any = {
+			...values,
+		};
 		console.log(values);
+		dataPost.created_by_user_id = userRecoil.user_id;
+		createContact.mutate(dataPost);
 	};
 
 	return (
