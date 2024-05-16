@@ -5,7 +5,7 @@ import { JobList } from '@/components/job/JobList';
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
 		locale: props.params.locale,
-		namespace: 'job',
+		namespace: 'jobs',
 	});
 
 	return {

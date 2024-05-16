@@ -1,7 +1,4 @@
-import { researchTypeOptions } from '@/components/research/data/data-fake';
-
 export const dataTypesBlogs = [
-	...researchTypeOptions,
 	{
 		id: 10,
 		label: 'Others',

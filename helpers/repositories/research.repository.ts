@@ -62,6 +62,19 @@ export async function getResearchById(id: number): Promise<any> {
 	}
 }
 
+export async function getResearchByParent(id: number): Promise<any> {
+	try {
+		const sql = 'CALL GetResearchByParent(?, @err_code, @err_msg)';
+		const [results] = await query(sql, [id]);
+		if (Array.isArray(results) && results.length > 0) {
+			return results;
+		}
+		return null;
+	} catch (error: any) {
+		throw new Error(error.message);
+	}
+}
+
 export async function searchResearch(search: ISearchResearch): Promise<any[]> {
 	try {
 		const sql = 'CALL SearchResearch(?, ?, ?, @err_code, @err_msg)';

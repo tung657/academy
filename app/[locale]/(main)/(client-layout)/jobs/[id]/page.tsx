@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-	const t = await getTranslations('job');
+	const t = await getTranslations('jobs');
 
 	// Cannot fetch api from localhost with production
 	// Cannot resolve

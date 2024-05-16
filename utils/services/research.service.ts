@@ -27,6 +27,14 @@ export const getResearchById = async (
 	return res.data;
 };
 
+export const getResearchByParent = async (
+	id: string | number,
+): Promise<IBaseResponse<IResearch[]>> => {
+	const res = await apiClient?.get(`${prefix}/get-by-parent/${id}`);
+
+	return res.data;
+};
+
 export const createResearch = async (
 	data: IResearch,
 ): Promise<IBaseResponse> => {

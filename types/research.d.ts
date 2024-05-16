@@ -4,6 +4,7 @@ export interface IResearch extends IBaseData {
 	research_id: number;
 	research_type_id: number;
 	research_type_name: string;
+	type_description?: string;
 	thumbnail?: string;
 	research_name: string;
 	slogan?: string;

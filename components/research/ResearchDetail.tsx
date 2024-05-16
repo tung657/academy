@@ -1,20 +1,26 @@
 'use client';
 
-import { Box, Container, Grid, Image, Text } from '@mantine/core';
+import {
+	Box,
+	Container,
+	Grid,
+	Image,
+	Text,
+	TypographyStylesProvider,
+} from '@mantine/core';
 
 import { TitleRender } from '../mantines/typographies/TitleRender';
-import { dataResearches } from './data/data-fake';
-
-const dataInterface = dataResearches[0];
+import { IBaseResponse } from '@/types';
+import { IResearch } from '@/types/research';
 
 interface Props {
-	dataDetail?: (typeof dataInterface)[];
+	data: IBaseResponse<IResearch[]>;
 }
 
-export const ResearchDetail = ({ dataDetail }: Props): JSX.Element => {
+export const ResearchDetail = ({ data }: Props): JSX.Element => {
 	return (
 		<>
-			{dataDetail?.map((research, index) => (
+			{data?.data?.map((research, index) => (
 				<section
 					key={index}
 					className={index % 2 ? '' : 'background-secondary'}
@@ -23,14 +29,18 @@ export const ResearchDetail = ({ dataDetail }: Props): JSX.Element => {
 						<Container size="xl">
 							<Grid mt={24} gutter={{ base: 24, md: 64 }} align="center">
 								<Grid.Col span={{ base: 12, md: 6 }} order={index % 2 ? 2 : 1}>
-									<Text fz={22} fw={700} c={'primary'} pb={16} pl={16}>
-										Nghiên cứu của AIA
-									</Text>
+									{research?.slogan && (
+										<Text fz={'h3'} fw={700} c={'primary'} pb={16} pl={16}>
+											{research.slogan}
+										</Text>
+									)}
 									<TitleRender order={2} pb={16} pl={16}>
-										{research.label}
+										{research.research_name}
 									</TitleRender>
 									<Text pb={16} pl={16}>
-										{research.contents.join(' ')}
+										<TypographyStylesProvider
+											dangerouslySetInnerHTML={{ __html: research.description }}
+										></TypographyStylesProvider>
 									</Text>
 								</Grid.Col>
 
@@ -42,7 +52,7 @@ export const ResearchDetail = ({ dataDetail }: Props): JSX.Element => {
 										w={'100%'}
 										h={'auto'}
 										loading="lazy"
-										alt={research.label}
+										alt={research.research_name}
 									/>
 								</Grid.Col>
 							</Grid>

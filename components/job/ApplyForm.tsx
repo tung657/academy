@@ -60,46 +60,46 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 				opened={opened}
 				onClose={handleClose}
 				yOffset={85}
-				title={t('job.title_modal')}
+				title={t('jobs.title_modal')}
 			>
 				<Box component="form" onSubmit={form.onSubmit(() => {})}>
 					<Grid gutter={24}>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('job.fields.full_name')}
-								placeholder={t('job.fields.full_name')}
+								label={t('jobs.fields.full_name')}
+								placeholder={t('jobs.fields.full_name')}
 								withAsterisk
 								{...form.getInputProps('full_name')}
 							/>
 						</Grid.Col>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('job.fields.email')}
-								placeholder={t('job.fields.email')}
+								label={t('jobs.fields.email')}
+								placeholder={t('jobs.fields.email')}
 								withAsterisk
 								{...form.getInputProps('email')}
 							/>
 						</Grid.Col>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('job.fields.phone')}
-								placeholder={t('job.fields.phone')}
+								label={t('jobs.fields.phone')}
+								placeholder={t('jobs.fields.phone')}
 								withAsterisk
 								{...form.getInputProps('phone')}
 							/>
 						</Grid.Col>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('job.fields.facebook')}
-								placeholder={t('job.fields.facebook')}
+								label={t('jobs.fields.facebook')}
+								placeholder={t('jobs.fields.facebook')}
 								withAsterisk
 								{...form.getInputProps('facebook')}
 							/>
 						</Grid.Col>
 						<Grid.Col>
 							<SelectRender
-								label={t('job.fields.position')}
-								placeholder={t('job.fields.position')}
+								label={t('jobs.fields.position')}
+								placeholder={t('jobs.fields.position')}
 								withAsterisk
 								data={jobOptions}
 								{...form.getInputProps('position')}
@@ -108,12 +108,12 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 						<Grid.Col>
 							<FileInput
 								leftSection={<IconFileCv />}
-								label={t('job.fields.file')}
-								placeholder={t('job.fields.file')}
+								label={t('jobs.fields.file')}
+								placeholder={t('jobs.fields.file')}
 								leftSectionPointerEvents="none"
 							/>
 							<Text mt={4} c={'yellow'} fz={14}>
-								{t('job.note_form')}
+								{t('jobs.note_form')}
 							</Text>
 						</Grid.Col>
 					</Grid>

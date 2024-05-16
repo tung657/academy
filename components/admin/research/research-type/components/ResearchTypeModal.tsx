@@ -109,6 +109,7 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 		setLoading(true);
 		const dataPost: IResearchType = {
 			...values,
+			slogan: values.slogan ? values.slogan : 'Nghiên cứu của AIA',
 			description: dataEditor,
 		};
 
@@ -135,6 +136,7 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 	const handleCancel = () => {
 		setPathNeedDelete(undefined);
 		setFiles(undefined);
+		setDataEditor('');
 		form.reset();
 		close();
 	};

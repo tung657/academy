@@ -44,9 +44,9 @@ export const JobList = (): JSX.Element => {
 						w={{ md: '70%', lg: '50%' }}
 					>
 						<TitleRender order={1} fz={'h1'}>
-							{t('job.title')}
+							{t('jobs.title')}
 						</TitleRender>
-						<Text ta={'center'}>{t('job.description')}</Text>
+						<Text ta={'center'}>{t('jobs.description')}</Text>
 					</Stack>
 				</Container>
 
