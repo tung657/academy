@@ -7,7 +7,6 @@ import { useTranslations } from 'next-intl';
 import { ModalRender } from '../mantines/modal/ModalRender';
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import { getRuleForms } from '@/utils/validation';
-import { dataJobs } from './data/data-fake';
 import { SelectRender } from '../mantines/inputs/SelectRender';
 import { IconFileCv } from '@tabler/icons-react';
 import { patterns } from '@/utils/format-string';
@@ -20,10 +19,10 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 	const t = useTranslations();
 	const [opened, { close, open }] = useDisclosure();
 
-	const jobOptions = dataJobs.map((i) => ({
-		label: i.job_name,
-		value: i.id.toString(),
-	}));
+	// const jobOptions = dataJobs.map((i) => ({
+	// 	label: i.job_name,
+	// 	value: i.id.toString(),
+	// }));
 
 	const form = useForm({
 		...getRuleForms(),
@@ -101,7 +100,7 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 								label={t('jobs.fields.position')}
 								placeholder={t('jobs.fields.position')}
 								withAsterisk
-								data={jobOptions}
+								data={[]}
 								{...form.getInputProps('position')}
 							/>
 						</Grid.Col>

@@ -149,6 +149,9 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 	const handleCancel = () => {
 		setPathNeedDelete(undefined);
 		setFiles(undefined);
+		setLoading(false);
+		setDataEditor('');
+		setDataEnEditor('');
 		form.reset();
 		close();
 	};

@@ -87,22 +87,6 @@
 		"meta_title": "Viện trí tuệ nhân tạo Việt Nam",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
 	},
-	"jobs": {
-		"meta_title": "Tuyển dụng",
-		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
-		"title": "Tham gia cùng chúng tôi",
-		"description": "Chúng tôi không quan tâm lắm đến kinh nghiệm vốn có của bạn. Điều quan trọng là bạn có phải là người ham học hỏi, biết đứng dậy sau mỗi lần thất bại hay không. Làm việc tại AIA sẽ vất vả, nhưng những gì bạn nhận lại thì hoàn toàn xứng đáng.",
-		"title_modal": "Gửi CV",
-		"note_form": "Lưu ý: Nén nhiều file thành một file zip trước khi upload.",
-		"fields": {
-			"full_name": "Tên của bạn",
-			"email": "Email",
-			"phone": "Số điện thoại",
-			"facebook": "Địa chỉ Facebook",
-			"position": "Vị trí ứng tuyển",
-			"file": "CV đính kèm"
-		}
-	},
 	"contact": {
 		"meta_title": "Liên hệ",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
@@ -278,6 +262,36 @@
 			"research_type_name": "Loại nghiên cứu",
 			"description": "Mô tả",
 			"slogan": "Slogan",
+			"action": "Thao tác"
+		}
+	},
+	"jobs": {
+		"meta_title": "Tuyển dụng",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"title": "Tham gia cùng chúng tôi",
+		"description": "Chúng tôi không quan tâm lắm đến kinh nghiệm vốn có của bạn. Điều quan trọng là bạn có phải là người ham học hỏi, biết đứng dậy sau mỗi lần thất bại hay không. Làm việc tại AIA sẽ vất vả, nhưng những gì bạn nhận lại thì hoàn toàn xứng đáng.",
+		"title_modal": "Gửi CV",
+		"note_form": "Lưu ý: Nén nhiều file thành một file zip trước khi upload.",
+		"heading": "Quản lý tuyển dụng",
+		"title_create": "Thêm mới tuyển dụng",
+		"title_update": "Chi tiết tuyển dụng",
+		"title_delete": "Xoá tuyển dụng",
+		"fields": {
+			"full_name": "Tên của bạn",
+			"email": "Email",
+			"phone": "Số điện thoại",
+			"facebook": "Địa chỉ Facebook",
+			"position": "Vị trí ứng tuyển",
+			"file": "CV đính kèm",
+
+			"serial": "STT",
+			"job_name": "Tên tin tuyển dụng",
+			"icon": "Icon",
+			"type_time": "Loại thời gian",
+			"address": "Làm việc tại",
+			"salary": "Lương (VNĐ)",
+			"job_description": "Mô tả",
+			"status": "Trạng thái",
 			"action": "Thao tác"
 		}
 	},

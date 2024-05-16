@@ -45,6 +45,9 @@ export const CourseTable = (): JSX.Element => {
 				accessorKey: 'thumbnail', //access nested data with dot notation
 				header: t('courses.fields.thumbnail'),
 				size: 100,
+				mantineTableBodyCellProps: {
+					align: 'center',
+				},
 				Cell: ({ renderedCellValue, row: { original } }) => (
 					<Image
 						mah={50}
@@ -65,7 +68,7 @@ export const CourseTable = (): JSX.Element => {
 				header: t('courses.fields.description'),
 				size: 300,
 				Cell: ({ renderedCellValue }) => (
-					<Text title={renderedCellValue?.toString()} truncate="end" maw={300}>
+					<Text title={renderedCellValue?.toString()} truncate="end" maw={500}>
 						{renderedCellValue}
 					</Text>
 				),

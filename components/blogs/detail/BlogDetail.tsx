@@ -1,12 +1,9 @@
 'use client';
 import { Box, Container, Text, TypographyStylesProvider } from '@mantine/core';
 import { intlUSD } from '@/utils/format-number';
-import { dataJobs } from '@/components/job/data/data-fake';
 import { TitleRender } from '@/components/mantines/typographies/TitleRender';
-
-const dataInterface = dataJobs[0];
 interface Props {
-	dataDetail?: typeof dataInterface;
+	dataDetail?: any;
 }
 
 export const BlogDetail = ({ dataDetail }: Props): JSX.Element => {

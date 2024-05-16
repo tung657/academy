@@ -1,4 +1,3 @@
-import { dataJobs } from '@/components/job/data/data-fake';
 import { apiClient } from '@/helpers';
 import { ORIGIN_URL } from '@/utils/config';
 
@@ -37,20 +36,10 @@ export default async function sitemap(): Promise<SitemapType> {
 		{},
 	);
 
-	const jobsList = dataJobs.map((data) => ({
-		url: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/jobs/${data.id}`,
-		lastModified: new Date(),
-		alternates: {
-			languages: {
-				en: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/en/jobs/${
-					data.id
-				}`,
-				vi: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/jobs/${
-					data.id
-				}`,
-			},
-		},
-	}));
+	const jobs = await apiClient.post(
+		`${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/api/jobs/search`,
+		{ active_flag: 1 },
+	);
 
 	const coursesList =
 		courses?.data?.data?.map((data: any) => ({
@@ -101,6 +90,24 @@ export default async function sitemap(): Promise<SitemapType> {
 					}/en/research/${data.research_type_id}`,
 					vi: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/research/${
 						data.research_type_id
+					}`,
+				},
+			},
+		})) || [];
+
+	const jobsList =
+		jobs?.data?.data?.map((data: any) => ({
+			url: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/jobs/${
+				data.job_id
+			}`,
+			lastModified: new Date(),
+			alternates: {
+				languages: {
+					en: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/en/jobs/${
+						data.job_id
+					}`,
+					vi: `${ORIGIN_URL || 'https://web-dev.aiacademy.edu.vn'}/jobs/${
+						data.job_id
 					}`,
 				},
 			},

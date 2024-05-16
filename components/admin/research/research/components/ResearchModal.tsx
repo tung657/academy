@@ -145,6 +145,7 @@ export const ResearchModal = ({ id }: Props): JSX.Element => {
 	const handleCancel = () => {
 		setPathNeedDelete(undefined);
 		setFiles(undefined);
+		setLoading(false);
 		setDataEditor('');
 		form.reset();
 		close();

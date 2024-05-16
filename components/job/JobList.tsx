@@ -19,14 +19,19 @@ import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
 import classes from './scss/job-list.module.scss';
 import { imgOthers } from '@/assets/images/others';
 import { TitleRender } from '../mantines/typographies/TitleRender';
-import { dataJobs } from './data/data-fake';
 import { intlUSD } from '@/utils/format-number';
 import { useTranslations } from 'next-intl';
 import { JOB_DETAIL_URL } from '@/libs/urls';
 import { getUrlDetail } from '@/utils/format-string';
 import { Link } from '@/libs/i18n-navigation';
+import { IJob } from '@/types/job';
+import { IBaseResponse } from '@/types';
 
-export const JobList = (): JSX.Element => {
+interface Props {
+	data: IBaseResponse<IJob[]>;
+}
+
+export const JobList = ({ data }: Props): JSX.Element => {
 	const t = useTranslations();
 
 	return (
@@ -73,9 +78,9 @@ export const JobList = (): JSX.Element => {
 				<Container size="xl">
 					<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 						<Center style={{ flexDirection: 'column' }}>
-							{dataJobs.map((job) => (
+							{data?.data?.map((job) => (
 								<Card
-									key={job.id}
+									key={job.job_id}
 									shadow="md"
 									mb={16}
 									w={{ lg: '80%' }}
@@ -100,9 +105,9 @@ export const JobList = (): JSX.Element => {
 												</TitleRender>
 												<Text>
 													{[
-														job.duration,
-														'Làm việc tại ' + job.location,
-														intlUSD.format(job.salary) + '+ VND',
+														job.type_time,
+														'Làm việc tại ' + job.branch_name,
+														intlUSD.format(Number(job.salary)) + '+ VND',
 													].join(' • ')}
 												</Text>
 											</div>
@@ -110,7 +115,7 @@ export const JobList = (): JSX.Element => {
 
 										<Anchor
 											component={Link}
-											href={getUrlDetail(JOB_DETAIL_URL, job.id)}
+											href={getUrlDetail(JOB_DETAIL_URL, job.job_id)}
 										>
 											<Button radius={'xl'}>{t('global.see_details')}</Button>
 										</Anchor>
