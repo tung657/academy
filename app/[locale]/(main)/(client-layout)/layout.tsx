@@ -9,7 +9,7 @@ export default function Layout({ children }: Props) {
 	return (
 		<ClientLayout>
 			{children}
-			<Notifications />
+			<Notifications zIndex={2000} />
 		</ClientLayout>
 	);
 }

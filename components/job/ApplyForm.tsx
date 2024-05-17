@@ -9,7 +9,13 @@ import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import { getRuleForms } from '@/utils/validation';
 import { SelectRender } from '../mantines/inputs/SelectRender';
 import { IconFileCv } from '@tabler/icons-react';
-import { patterns } from '@/utils/format-string';
+import { patterns, removeVietnameseTones } from '@/utils/format-string';
+import { useState } from 'react';
+import { useCreateCV } from '@/utils/query-loader/cv.loader';
+import { getNotifications } from '../mantines/notification/getNotifications';
+import { ICV } from '@/types/cv';
+import { uploadFile } from '@/utils/services/file.service';
+import { useGetJobDropdown } from '@/utils/query-loader/job.loader';
 
 interface Props extends ButtonCustomProps {
 	positionId?: number;
@@ -18,33 +24,62 @@ interface Props extends ButtonCustomProps {
 export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 	const t = useTranslations();
 	const [opened, { close, open }] = useDisclosure();
-
-	// const jobOptions = dataJobs.map((i) => ({
-	// 	label: i.job_name,
-	// 	value: i.id.toString(),
-	// }));
+	const [loading, setLoading] = useState(false);
 
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
-			full_name: '',
+			candidate_name: '',
 			email: '',
-			phone: '',
-			facebook: '',
-			position: positionId?.toString() || '',
-			file: '',
+			phone_number: '',
+			fb_link: '',
+			position_id: positionId?.toString() || '',
 		},
 		validate: {
-			full_name: isNotEmpty(t('validation.required')),
+			candidate_name: isNotEmpty(t('validation.required')),
 			email: isEmail(t('validation.email')),
-			phone: matches(patterns.phone, t('validation.phone')),
-			facebook: isNotEmpty(t('validation.required')),
-			position: isNotEmpty(t('validation.required')),
-			file: isNotEmpty(t('validation.required')),
+			phone_number: matches(patterns.phone, t('validation.phone')),
+			position_id: isNotEmpty(t('validation.required')),
+			cv: isNotEmpty(t('validation.required')),
 		},
 	});
 
-	const handleClose = () => {
+	const createQuery = useCreateCV({
+		config: {
+			onSuccess: (data) => {
+				if (!data.success && data.message) {
+					getNotifications('error', t, data.message);
+					return;
+				}
+				getNotifications('success', t, data.message);
+				handleCancel();
+			},
+		},
+	});
+
+	const { data: jobOptions, isLoading: loadingJob } = useGetJobDropdown({});
+
+	const handleSubmit = async (values: any) => {
+		setLoading(true);
+
+		const dataPost: ICV = {
+			...values,
+			created_by_user_id: values.candidate_name,
+		};
+
+		if (values.cv) {
+			const formData = new FormData();
+			formData.append('file', values.cv, removeVietnameseTones(values.cv.name));
+			const dataUpload = await uploadFile(formData);
+			if (dataUpload.url) dataPost.cv = dataUpload.url;
+		}
+
+		await createQuery.mutateAsync(dataPost);
+
+		setLoading(false);
+	};
+
+	const handleCancel = () => {
 		form.reset();
 		close();
 	};
@@ -57,18 +92,22 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 
 			<ModalRender
 				opened={opened}
-				onClose={handleClose}
+				onClose={handleCancel}
 				yOffset={85}
 				title={t('jobs.title_modal')}
+				footer={{
+					onOk: form.onSubmit(handleSubmit),
+					isConfirming: loading,
+				}}
 			>
-				<Box component="form" onSubmit={form.onSubmit(() => {})}>
+				<Box component="form" onSubmit={form.onSubmit(handleSubmit)}>
 					<Grid gutter={24}>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('jobs.fields.full_name')}
-								placeholder={t('jobs.fields.full_name')}
+								label={t('jobs.fields.candidate_name')}
+								placeholder={t('jobs.fields.candidate_name')}
 								withAsterisk
-								{...form.getInputProps('full_name')}
+								{...form.getInputProps('candidate_name')}
 							/>
 						</Grid.Col>
 						<Grid.Col span={{ lg: 6 }}>
@@ -81,18 +120,17 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 						</Grid.Col>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('jobs.fields.phone')}
-								placeholder={t('jobs.fields.phone')}
+								label={t('jobs.fields.phone_number')}
+								placeholder={t('jobs.fields.phone_number')}
 								withAsterisk
-								{...form.getInputProps('phone')}
+								{...form.getInputProps('phone_number')}
 							/>
 						</Grid.Col>
 						<Grid.Col span={{ lg: 6 }}>
 							<TextInput
-								label={t('jobs.fields.facebook')}
-								placeholder={t('jobs.fields.facebook')}
-								withAsterisk
-								{...form.getInputProps('facebook')}
+								label={t('jobs.fields.fb_link')}
+								placeholder={t('jobs.fields.fb_link')}
+								{...form.getInputProps('fb_link')}
 							/>
 						</Grid.Col>
 						<Grid.Col>
@@ -100,16 +138,20 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 								label={t('jobs.fields.position')}
 								placeholder={t('jobs.fields.position')}
 								withAsterisk
-								data={[]}
-								{...form.getInputProps('position')}
+								data={jobOptions ? jobOptions : []}
+								loading={loadingJob}
+								{...form.getInputProps('position_id')}
 							/>
 						</Grid.Col>
 						<Grid.Col>
 							<FileInput
 								leftSection={<IconFileCv />}
-								label={t('jobs.fields.file')}
-								placeholder={t('jobs.fields.file')}
+								label={t('jobs.fields.cv')}
+								placeholder={t('jobs.fields.cv')}
 								leftSectionPointerEvents="none"
+								accept=".pdf"
+								multiple={false}
+								{...form.getInputProps('cv')}
 							/>
 							<Text mt={4} c={'yellow'} fz={14}>
 								{t('jobs.note_form')}

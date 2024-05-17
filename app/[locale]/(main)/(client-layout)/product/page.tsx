@@ -25,6 +25,32 @@ export async function generateMetadata(props: Props) {
 		namespace: 'products',
 	});
 
+	let products: IBaseResponse<IProduct[]> = (
+		await apiClient.post(
+			`/products/search`,
+			{ page_index: 1, page_size: 1 },
+			{
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			},
+		)
+	).data as IBaseResponse<IProduct[]>;
+
+	// DB sometimes returns error
+	while (products.message === ERROR_TIMEOUT && !products.success) {
+		products = (
+			await apiClient.post(
+				`/products/search`,
+				{ page_index: 1, page_size: 1 },
+				{
+					baseURL: `${ORIGIN_URL}${BASE_URL}`,
+				},
+			)
+		).data as IBaseResponse<IProduct[]>;
+	}
+	if (products.message && !products.success) return notFound();
+
+	const data = products?.data?.[0];
+
 	return {
 		title: `${t('meta_title')} | ${AppConfig.name}`,
 		description: `${t('meta_description')}`,
@@ -36,7 +62,7 @@ export async function generateMetadata(props: Props) {
 			siteName: AppConfig.name,
 			images: [
 				{
-					url: '/assets/images/product/product.png',
+					url: data?.thumbnail,
 					width: 1800,
 					height: 1600,
 					alt: `${t('meta_title')} | ${AppConfig.name}`,

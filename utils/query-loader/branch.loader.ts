@@ -49,7 +49,7 @@ const useGetBranchDropdown = ({
 };
 
 // Search list
-const useSearchBranches = ({
+const useSearchBranch = ({
 	params,
 	config,
 }: {
@@ -113,6 +113,6 @@ export {
 	useGetBranchDropdown,
 	useDeleteBranch,
 	useGetBranchById,
-	useSearchBranches,
+	useSearchBranch,
 	useUpdateBranch,
 };
