@@ -22,15 +22,15 @@ export const ContactForm = (): JSX.Element => {
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
-			full_name: '',
+			customer_name: '',
 			email: '',
-			phone: '',
+			phone_number: '',
 			message: '',
 		},
 		validate: {
-			full_name: isNotEmpty(t('validation.required')),
+			customer_name: isNotEmpty(t('validation.required')),
 			email: isEmail(t('validation.email')),
-			phone: matches(patterns.phone, t('validation.phone')),
+			phone_number: matches(patterns.phone, t('validation.phone')),
 			message: isNotEmpty(t('validation.required')),
 		},
 	});
@@ -82,7 +82,7 @@ export const ContactForm = (): JSX.Element => {
 									<InputFloat
 										label={t('validation.fields.name')}
 										placeholder={t('validation.fields.name')}
-										{...form.getInputProps('full_name')}
+										{...form.getInputProps('customer_name')}
 									/>
 									<InputFloat
 										label={t('validation.fields.email')}
@@ -92,7 +92,7 @@ export const ContactForm = (): JSX.Element => {
 									<InputFloat
 										label={t('validation.fields.phone')}
 										placeholder={t('validation.fields.phone')}
-										{...form.getInputProps('phone')}
+										{...form.getInputProps('phone_number')}
 									/>
 									<TextAreaFloat
 										label={t('validation.fields.message')}

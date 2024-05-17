@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex } from '@mantine/core';
+import { Flex, Text, Tooltip } from '@mantine/core';
 
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
@@ -12,6 +12,8 @@ import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { RenderTableParams } from '@/libs/table';
 import { IContact } from '@/types/contact';
 import { ContactDelete } from './ContactDelete';
+
+import { ContactModal } from './ContactModel';
 
 export const ContactTable = (): JSX.Element => {
 	const t = useTranslations();
@@ -53,8 +55,15 @@ export const ContactTable = (): JSX.Element => {
 				header: t('contacts.fields.phone_number'),
 			},
 			{
-				accessorKey: 'description', //access nested data with dot notation
-				header: t('contacts.fields.description'),
+				accessorKey: 'message', //access nested data with dot notation
+				header: t('contacts.fields.message'),
+				Cell: ({ renderedCellValue }) => (
+					<Tooltip label={renderedCellValue}>
+						<Text truncate="end" maw={200}>
+							{renderedCellValue}
+						</Text>
+					</Tooltip>
+				),
 			},
 			{
 				header: t('contacts.fields.action'),
@@ -62,6 +71,7 @@ export const ContactTable = (): JSX.Element => {
 				mantineTableBodyCellProps: { align: 'center' },
 				Cell: ({ row: { original } }) => (
 					<Flex gap={8}>
+						<ContactModal id={original.contact_id} />
 						<ContactDelete
 							label={original.customer_name}
 							id={original.contact_id}

@@ -335,12 +335,13 @@
 		"title_create": "Thêm mới liên hệ",
 		"title_update": "Chi tiết liên hệ",
 		"title_delete": "Xoá liên hệ",
+		"getdetail":"chi tiết liên hệ",
 		"fields": {
 			"serial": "STT",
-			"customer_name": "tên khách hàng",
-			"email": "email",
-			"phone_number": "số điện thoại",
-			"description": "Mô tả",
+			"customer_name": "Tên khách hàng",
+			"email": "Email",
+			"phone_number": "Số điện thoại",
+			"message": "Lời nhắn",
 			"action": "Thao tác"
 		}
 	}
