@@ -68,6 +68,7 @@ export {
 	ADMIN_USER_URL,
 	ADMIN_FEATURE_URL,
 	ADMIN_INSTRUCTOR_URL,
+	ADMIN_CUSTOMER_URL,
 };
 
 export const generateTreeUrls = (t: any): NavTree[] => {

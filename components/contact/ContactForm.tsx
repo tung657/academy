@@ -11,29 +11,48 @@ import { imgContacts } from '@/assets/images/contact';
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { IconCheck } from '@tabler/icons-react';
 import { patterns } from '@/utils/format-string';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/store/user/atom';
+import { useCreateContact } from '@/utils/query-loader/contact.loader';
+import { getNotifications } from '../mantines/notification/getNotifications';
 
 export const ContactForm = (): JSX.Element => {
 	const t = useTranslations();
-
+	const userRecoil = useRecoilValue(userState);
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
-			full_name: '',
+			customer_name: '',
 			email: '',
-			phone: '',
+			phone_number: '',
 			message: '',
 		},
 		validate: {
-			full_name: isNotEmpty(t('validation.required')),
+			customer_name: isNotEmpty(t('validation.required')),
 			email: isEmail(t('validation.email')),
-			phone: matches(patterns.phone, t('validation.phone')),
+			phone_number: matches(patterns.phone, t('validation.phone')),
 			message: isNotEmpty(t('validation.required')),
 		},
 	});
-
+	const createContact = useCreateContact({
+		config: {
+			onSuccess: (data) => {
+				if (!data.success && data.message) {
+					getNotifications('error', t, data.message);
+					return;
+				}
+				getNotifications('success', t, data.message);
+			},
+		},
+	});
 	const handleSubmit = (values: Record<string, unknown>) => {
 		// TODO: send message
+		const dataPost: any = {
+			...values,
+		};
 		console.log(values);
+		dataPost.created_by_user_id = userRecoil.user_id;
+		createContact.mutate(dataPost);
 	};
 
 	return (
@@ -63,7 +82,7 @@ export const ContactForm = (): JSX.Element => {
 									<InputFloat
 										label={t('validation.fields.name')}
 										placeholder={t('validation.fields.name')}
-										{...form.getInputProps('full_name')}
+										{...form.getInputProps('customer_name')}
 									/>
 									<InputFloat
 										label={t('validation.fields.email')}
@@ -73,7 +92,7 @@ export const ContactForm = (): JSX.Element => {
 									<InputFloat
 										label={t('validation.fields.phone')}
 										placeholder={t('validation.fields.phone')}
-										{...form.getInputProps('phone')}
+										{...form.getInputProps('phone_number')}
 									/>
 									<TextAreaFloat
 										label={t('validation.fields.message')}
