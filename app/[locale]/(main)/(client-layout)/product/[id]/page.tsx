@@ -89,6 +89,7 @@ export default async function ProductDetailPage({ params }: Props) {
 		<>
 			<ProductDetail
 				dataDetail={data?.message ? undefined : data ? data : undefined}
+				locale={params.locale}
 			/>
 		</>
 	);

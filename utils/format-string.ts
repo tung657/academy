@@ -29,12 +29,12 @@ export const patterns = {
 	password: /^.{6,}$/,
 };
 
-export function formatTimeSince(value: string) {
+export function formatTimeSince(value: string, locale: string = 'vi') {
 	const seconds = Math.floor(
 		(new Date().getTime() - new Date(value).getTime()) / 1000,
 	);
 	let interval = seconds / 31536000;
-	const rtf = new Intl.RelativeTimeFormat('vi', { numeric: 'auto' });
+	const rtf = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
 	if (interval > 1) {
 		return rtf.format(-Math.floor(interval), 'year');
 	}

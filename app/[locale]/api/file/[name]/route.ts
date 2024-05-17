@@ -11,7 +11,6 @@ export async function GET(
 	{ params }: { params: { name: string } },
 ) {
 	try {
-		console.log(atob(params.name));
 		const filePath = path.join(
 			process.cwd(),
 			process.env.STORE_PATH!,
