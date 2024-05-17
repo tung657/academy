@@ -8,6 +8,8 @@ import {
 	Divider,
 	Flex,
 	Group,
+	List,
+	ListItem,
 	Text,
 	TypographyStylesProvider,
 	UnstyledButton,
@@ -60,7 +62,25 @@ export const JobDetail = ({ data }: Props): JSX.Element => {
 								/>
 							</TypographyStylesProvider>
 
-							<ApplyForm mt={40} positionId={data?.job_id} />
+							<Box className="job-apply">
+								<TitleRender order={3} mb={8}>
+									Để ứng tuyển, vui lòng gửi cho chúng tôi:
+								</TitleRender>
+								<List spacing={4}>
+									<ListItem>
+										Thư ứng tuyển (cover letter): Nêu rõ tại sao bạn muốn làm
+										việc với chúng tôi, và tại sao chúng tôi nên làm việc cùng
+										bạn.
+									</ListItem>
+									<ListItem>
+										Portfolio: với phần trình bày ít nhất 2 dự án bạn đã làm
+										trong quá khứ.
+									</ListItem>
+									<ListItem>Resumé hoặc CV</ListItem>
+								</List>
+							</Box>
+
+							<ApplyForm positionId={data?.job_id} />
 						</Box>
 						<Affix
 							withinPortal={false}
