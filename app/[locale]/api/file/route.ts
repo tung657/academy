@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
 		const year = date.getFullYear().toString();
 		const month = (date.getMonth() + 1).toString().padStart(2, '0');
 		const day = date.getDate().toString().padStart(2, '0');
+		const time = date.getTime().toString();
 		const uploadDir = `${year}-${month}-${day}`;
 
 		const destinationDirPath = path.join(
@@ -43,25 +44,22 @@ export async function POST(req: NextRequest) {
 			await fs.mkdir(destinationDirPath, { recursive: true });
 		}
 
-		let filename = file.name;
-		while (existsSync(path.join(destinationDirPath, filename))) {
-			filename = `(1)` + filename;
-		}
+		const [extension, ...props] = file.name.split('.').reverse();
+		let filename =
+			props.join('.') + `_${year}_${month}_${day}_${time}.${extension}`;
 
 		await fs.writeFile(
 			path.join(destinationDirPath, filename),
 			Buffer.from(fileArrayBuffer),
 		);
 
-		const [extension] = filename.split('.').reverse();
-
 		return NextResponse.json({
-			fileName: file.name,
+			fileName: filename,
 			size: file.size,
 			lastModified: new Date(file.lastModified),
 			url: `${
 				process.env.NODE_ENV === 'development' ? '' : ORIGIN_URL
-			}/api/file/${btoa(uploadDir + '/' + file.name)}`,
+			}/api/file/${btoa(uploadDir + '/' + filename)}`,
 			preview: ['mp4'].includes(extension.toLowerCase())
 				? `/play?filename=${filename}`
 				: undefined,

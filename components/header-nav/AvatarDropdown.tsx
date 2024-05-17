@@ -221,6 +221,7 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 		form.reset();
 		updateQuery.reset();
 		setPathNeedDelete(undefined);
+		setLoading(false);
 		setFiles(undefined);
 		setOpened(false);
 	};

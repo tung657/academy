@@ -17,7 +17,7 @@ export const ResearchTable = (): JSX.Element => {
 	const t = useTranslations();
 	const searchParams = useSearchParams();
 	const page = searchParams.get(SEARCH_PAGE) || 1;
-	const pageSize = searchParams.get(SEARCH_SIZE) || 10;
+	const pageSize = searchParams.get(SEARCH_SIZE) || 5;
 	const searchContent = searchParams.get(SEARCH_CONTENT) || '';
 
 	const { data: dataResearches, isFetching } = useSearchResearch({
@@ -104,6 +104,7 @@ export const ResearchTable = (): JSX.Element => {
 
 	return (
 		<RenderTableParams
+			defaultPageSize={+pageSize}
 			columns={columns}
 			data={dataResearches?.data || []}
 			totalItems={dataResearches?.totalItems}

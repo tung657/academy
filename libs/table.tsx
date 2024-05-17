@@ -28,6 +28,7 @@ interface ITableParams extends Props {
 	TopAction?: ReactNode;
 	enabledToolbar?: boolean;
 	enabledSearch?: boolean;
+	defaultPageSize?: number;
 }
 
 interface ITableBasic extends Props {
@@ -48,11 +49,12 @@ export const RenderTableParams = ({
 	TopAction = null,
 	enabledToolbar = true,
 	enabledSearch = true,
+	defaultPageSize = 10,
 	...props
 }: ITableParams): JSX.Element => {
 	const searchParams = useSearchParams();
 	const page = searchParams.get(SEARCH_PAGE) || 1;
-	const pageSize = searchParams.get(SEARCH_SIZE) || 10;
+	const pageSize = searchParams.get(SEARCH_SIZE) || defaultPageSize;
 	const searchContent = searchParams.get(SEARCH_CONTENT) || '';
 	const router = useRouter();
 	const pathname = usePathname();
@@ -72,17 +74,16 @@ export const RenderTableParams = ({
 	};
 
 	useEffect(() => {
-		if (pagination.pageIndex + 1 && pagination.pageSize) {
-			const current = new URLSearchParams(searchParams.toString());
+		//do something when the pagination state changes
+		const current = new URLSearchParams(searchParams.toString());
 
-			current.set(SEARCH_PAGE, (pagination.pageIndex + 1).toString());
-			current.set(SEARCH_SIZE, pagination.pageSize.toString());
+		current.set(SEARCH_PAGE, (+pagination.pageIndex + 1).toString());
+		current.set(SEARCH_SIZE, pagination.pageSize.toString());
 
-			router.push(`${pathname}?${current}`);
-			router.refresh();
-		}
+		router.push(`${pathname}?${current}`);
+		router.refresh();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [pagination]);
+	}, [pagination.pageIndex, pagination.pageSize]);
 
 	const table = useMantineReactTable({
 		columns,
@@ -199,6 +200,7 @@ export const RenderTableBasic = ({
 		manualPagination: true,
 		onPaginationChange: setPagination,
 		mantinePaginationProps: {
+			rowsPerPageOptions: ['5', '10', '50', '100'],
 			total: calcTotalPages(pagination.pageSize, totalItems),
 			size: 'sm',
 		},

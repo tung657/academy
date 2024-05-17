@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { AppConfig } from '@/utils/config';
 import { BlogDetail } from '@/components/blogs/detail/BlogDetail';
-import { dataJobs } from '@/components/job/data/data-fake';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
@@ -18,7 +17,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 export default async function BlogDetailPage() {
 	return (
 		<>
-			<BlogDetail dataDetail={dataJobs[0]} />
+			<BlogDetail dataDetail={{}} />
 		</>
 	);
 }

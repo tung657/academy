@@ -1,6 +1,6 @@
 'use client';
 
-import { Flex, Image, Text, Tooltip } from '@mantine/core';
+import { Center, Flex, Image, Text, Tooltip } from '@mantine/core';
 import { MRT_ColumnDef, MRT_PaginationState } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
@@ -14,7 +14,7 @@ export const ResearchTypeTable = (): JSX.Element => {
 	const t = useTranslations();
 	const [pagination, setPagination] = useState<MRT_PaginationState>({
 		pageIndex: 0,
-		pageSize: 10,
+		pageSize: 5,
 	});
 	const [searchContent, setSearchContent] = useState('');
 
@@ -31,7 +31,7 @@ export const ResearchTypeTable = (): JSX.Element => {
 			{
 				accessorKey: 'serial', //access nested data with dot notation
 				header: t('researches.fields.serial'),
-				size: 15,
+				size: 25,
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},
@@ -47,20 +47,21 @@ export const ResearchTypeTable = (): JSX.Element => {
 				},
 				enableSorting: false,
 				Cell: ({ renderedCellValue, row: { original } }) => (
-					<Image
-						w={80}
-						mah={70}
-						fit="contain"
-						loading="lazy"
-						src={renderedCellValue}
-						alt={original.research_type_name}
-					/>
+					<Center>
+						<Image
+							w={80}
+							mah={70}
+							fit="contain"
+							loading="lazy"
+							src={renderedCellValue}
+							alt={original.research_type_name}
+						/>
+					</Center>
 				),
 			},
 			{
 				accessorKey: 'research_type_name', //access nested data with dot notation
 				header: t('researches.fields.research_type_name'),
-				size: 100,
 			},
 			{
 				accessorKey: 'slogan', //access nested data with dot notation
@@ -76,7 +77,7 @@ export const ResearchTypeTable = (): JSX.Element => {
 			},
 			{
 				header: t('researches.fields.action'),
-				size: 50,
+				size: 25,
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},

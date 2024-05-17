@@ -21,7 +21,6 @@ import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconCalendar } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
 import { Link, usePathname, useRouter } from '@/libs/i18n-navigation';
-// import { dataCourses } from './data/data-fake';
 import { SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { getUrlDetail } from '@/utils/format-string';
 import { IBaseResponse } from '@/types';

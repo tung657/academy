@@ -142,6 +142,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 	const handleCancel = () => {
 		setPathNeedDelete(undefined);
 		setFiles(undefined);
+		setLoading(false);
 		form.reset();
 		close();
 	};

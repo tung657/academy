@@ -1,11 +1,17 @@
 import { ResearchDetail } from '@/components/research/ResearchDetail';
-import {
-	dataResearches,
-	researchTypeOptions,
-} from '@/components/research/data/data-fake';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { AppConfig } from '@/utils/config';
-import { getTranslations } from 'next-intl/server';
+import { apiClient } from '@/helpers';
+import { IBaseResponse } from '@/types';
+import { IResearch } from '@/types/research';
+import {
+	AppConfig,
+	BASE_URL,
+	ERROR_TIMEOUT,
+	ORIGIN_URL,
+	metaKeywords,
+} from '@/utils/config';
+import { transformHtmlToString } from '@/utils/format-string';
+import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
 interface Props {
@@ -16,32 +22,79 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-	const t = await getTranslations('researches');
-
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
-	const title = researchTypeOptions.find((i) => i.id.toString() === params.id)
-		?.label;
+	let data = (
+		await apiClient.get(`/researches/get-by-parent/${params.id}`, {
+			baseURL: `${ORIGIN_URL}${BASE_URL}`,
+		})
+	).data as IBaseResponse<IResearch[]>;
+
+	// DB sometimes returns error
+	while (data.message === ERROR_TIMEOUT && !data.success) {
+		data = (
+			await apiClient.get(`/researches/get-by-parent/${params.id}`, {
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			})
+		).data as IBaseResponse<IResearch[]>;
+	}
+	if (data.message && !data.success) return notFound();
+
+	// if (!data || data.message) return notFound();
+	const item = data?.data?.[0];
+	const title = `${item?.research_type_name}`;
 
 	return {
 		title: `${title} | ${AppConfig.name}`,
-		description: `${t('meta_description')}`,
+		description: transformHtmlToString(item?.type_description + ''),
+		keywords: [item?.research_type_name, ...metaKeywords],
+		openGraph: {
+			title: `${title} | ${AppConfig.name}`,
+			description: transformHtmlToString(item?.type_description + ''),
+			url: `${ORIGIN_URL}/research/` + +params.id,
+			siteName: AppConfig.name,
+			images: [
+				{
+					url: '/assets/images/product/product.png',
+					width: 1800,
+					height: 1600,
+					alt: `${title} | ${AppConfig.name}`,
+				},
+				{
+					url: item?.thumbnail,
+					width: 1800,
+					height: 1600,
+					alt: `${title} | ${AppConfig.name}`,
+				},
+			],
+			locale: params.locale,
+			type: 'website',
+		},
 	};
 }
 
-export default async function ProductDetailPage({ params }: Props) {
-	const title = researchTypeOptions.find((i) => i.id.toString() === params.id)
-		?.label;
+export default async function ResearchDetailPage({ params }: Props) {
+	let data = (
+		await apiClient.get(`/researches/get-by-parent/${params.id}`, {
+			baseURL: `${ORIGIN_URL}${BASE_URL}`,
+		})
+	).data as IBaseResponse<IResearch[]>;
 
-	const dataDetail = dataResearches.filter(
-		(i) => i.type.toString() === params.id,
-	);
+	// DB sometimes returns error
+	while (data.message === ERROR_TIMEOUT && !data.success) {
+		data = (
+			await apiClient.get(`/researches/get-by-parent/${params.id}`, {
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			})
+		).data;
+	}
+	if (data.message && !data.success) return notFound();
 
 	return (
 		<>
-			<Breadcrumb lastLabel={title} />
+			<Breadcrumb lastLabel={data?.data?.[0]?.research_type_name} />
 			<Suspense>
-				<ResearchDetail dataDetail={dataDetail} />
+				<ResearchDetail data={data} />
 			</Suspense>
 		</>
 	);

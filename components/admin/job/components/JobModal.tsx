@@ -4,11 +4,11 @@ import { userState } from '@/store/user/atom';
 import { convertToString } from '@/utils/array';
 import { queryClient } from '@/utils/query-loader/react-query';
 import {
-	CACHE_RESEARCH_TYPE,
-	useCreateResearchType,
-	useGetResearchTypeById,
-	useUpdateResearchType,
-} from '@/utils/query-loader/research-type.loader';
+	CACHE_JOB,
+	useCreateJob,
+	useGetJobById,
+	useUpdateJob,
+} from '@/utils/query-loader/job.loader';
 import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
@@ -17,6 +17,7 @@ import {
 	Grid,
 	Input,
 	LoadingOverlay,
+	NumberInput,
 	TextInput,
 	Tooltip,
 } from '@mantine/core';
@@ -27,18 +28,19 @@ import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
 import { FileWithPath } from '@mantine/dropzone';
 import { useState } from 'react';
-import { RichEditorBasic } from '../../../editor/Editor';
-import { IResearchType } from '@/types/research-type';
+import { RichEditor } from '../../editor/Editor';
+import { IJob } from '@/types/job';
 import { deleteFile, uploadFile } from '@/utils/services/file.service';
 import { removeVietnameseTones } from '@/utils/format-string';
 import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
-import { CACHE_RESEARCH } from '@/utils/query-loader/research.loader';
+import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { useGetBranchDropdown } from '@/utils/query-loader/branch.loader';
 
 interface Props {
 	id?: number;
 }
 
-export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
+export const JobModal = ({ id }: Props): JSX.Element => {
 	const t = useTranslations();
 	const [opened, { close, open }] = useDisclosure();
 	const userRecoil = useRecoilValue(userState);
@@ -49,15 +51,22 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
-			research_type_name: '',
-			slogan: '',
+			job_name: '',
+			icon: '',
+			type_time: '',
+			address: '',
+			salary: '',
+			job_description: '',
 		},
 		validate: {
-			research_type_name: isNotEmpty(t('validation.required')),
+			job_name: isNotEmpty(t('validation.required')),
+			type_time: isNotEmpty(t('validation.required')),
+			address: isNotEmpty(t('validation.required')),
+			salary: isNotEmpty(t('validation.required')),
 		},
 	});
 
-	const getDetail = useGetResearchTypeById({
+	const getDetail = useGetJobById({
 		id: id!,
 		config: {
 			enabled: !!id && opened,
@@ -67,15 +76,16 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 					return;
 				}
 
+				// form.setValues(convertToString(data) as any);
 				form.setValues({
 					...convertToString(data),
 				});
-				setDataEditor(data.description);
+				setDataEditor(data.job_description);
 			},
 		},
 	});
 
-	const createQuery = useCreateResearchType({
+	const createQuery = useCreateJob({
 		config: {
 			onSuccess: (data) => {
 				if (!data.success && data.message) {
@@ -83,13 +93,13 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 					return;
 				}
 				getNotifications('success', t, data.message);
-				queryClient.invalidateQueries([CACHE_RESEARCH_TYPE.SEARCH]);
+				queryClient.invalidateQueries([CACHE_JOB.SEARCH]);
 				handleCancel();
 			},
 		},
 	});
 
-	const updateQuery = useUpdateResearchType({
+	const updateQuery = useUpdateJob({
 		config: {
 			onSuccess: (data) => {
 				if (!data.success && data.message) {
@@ -98,27 +108,32 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 				}
 				pathNeedDelete && deleteFile(pathNeedDelete);
 				getNotifications('success', t, data.message);
-				queryClient.invalidateQueries([CACHE_RESEARCH.SEARCH]);
-				queryClient.invalidateQueries([CACHE_RESEARCH_TYPE.SEARCH]);
+				queryClient.invalidateQueries([CACHE_JOB.SEARCH]);
 				handleCancel();
 			},
 		},
 	});
 
+	const { data: branchOptions, isFetching: loadingBranch } =
+		useGetBranchDropdown({
+			config: {
+				enabled: opened,
+			},
+		});
+
 	const handleSubmit = async (values: any) => {
 		setLoading(true);
-		const dataPost: IResearchType = {
+		const dataPost: IJob = {
 			...values,
-			slogan: values.slogan ? values.slogan : 'Nghiên cứu của AIA',
-			description: dataEditor,
+			job_description: dataEditor,
 		};
 
 		if (files) {
 			const formData = new FormData();
 			formData.append('file', files[0], removeVietnameseTones(files[0].name));
-			id && setPathNeedDelete(dataPost.thumbnail);
+			id && setPathNeedDelete(dataPost.icon);
 			const dataUpload = await uploadFile(formData);
-			if (dataUpload.url) dataPost.thumbnail = dataUpload.url;
+			if (dataUpload.url) dataPost.icon = dataUpload.url;
 		}
 
 		if (!id) {
@@ -145,7 +160,7 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 	return (
 		<>
 			{!id ? (
-				<Button leftSection={<IconPlus size={20} />} onClick={open}>
+				<Button size="sm" leftSection={<IconPlus size={20} />} onClick={open}>
 					{t('global.create')}
 				</Button>
 			) : (
@@ -160,11 +175,7 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 				opened={opened}
 				onClose={handleCancel}
 				size={'70%'}
-				title={
-					!id
-						? t('research_types.title_create')
-						: t('research_types.title_update')
-				}
+				title={!id ? t('jobs.title_create') : t('jobs.title_update')}
 				footer={{
 					onOk: form.onSubmit(handleSubmit),
 					isConfirming: loading,
@@ -174,7 +185,7 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 					<LoadingOverlay visible={getDetail.isFetching} />
 					<Grid gutter={16}>
 						<Grid.Col
-							span={4}
+							span={3}
 							display={'flex'}
 							style={{
 								flexDirection: 'column',
@@ -186,43 +197,79 @@ export const ResearchTypeModal = ({ id }: Props): JSX.Element => {
 								fileUrl={
 									files
 										? URL.createObjectURL(files[0])
-										: form.getInputProps('thumbnail').value
-											? form.getInputProps('thumbnail').value
+										: form.getInputProps('icon').value
+											? form.getInputProps('icon').value
 											: ''
 								}
 								onDrops={setFiles}
-								limit={2}
+								limit={0.1}
+								h={130}
+								label={t('jobs.fields.icon')}
+								{...form.getInputProps('icon')}
 							/>
 						</Grid.Col>
-						<Grid.Col span={8}>
+						<Grid.Col span={9}>
 							<Grid gutter={16}>
-								<Grid.Col span={12}>
+								<Grid.Col span={6}>
 									<TextInput
-										label={t('research_types.fields.research_type_name')}
-										placeholder={t('research_types.fields.research_type_name')}
+										size="sm"
+										label={t('jobs.fields.job_name')}
+										placeholder={t('jobs.fields.job_name')}
 										withAsterisk
-										{...form.getInputProps('research_type_name')}
+										{...form.getInputProps('job_name')}
+									/>
+								</Grid.Col>
+								<Grid.Col span={6}>
+									<SelectRender
+										data={['Full-time', 'Part-time']}
+										size="sm"
+										defaultValue={'Full-time'}
+										withAsterisk
+										label={t('jobs.fields.type_time')}
+										placeholder={t('jobs.fields.type_time')}
+										{...form.getInputProps('type_time')}
 									/>
 								</Grid.Col>
 
-								<Grid.Col span={12}>
-									<TextInput
-										label={t('research_types.fields.slogan')}
-										placeholder={t('research_types.fields.slogan')}
-										{...form.getInputProps('slogan')}
+								<Grid.Col span={6}>
+									<SelectRender
+										data={branchOptions ? branchOptions : []}
+										loading={loadingBranch}
+										size="sm"
+										withAsterisk
+										label={t('jobs.fields.address')}
+										placeholder={t('jobs.fields.address')}
+										{...form.getInputProps('address')}
+									/>
+								</Grid.Col>
+								<Grid.Col span={6}>
+									<NumberInput
+										size="sm"
+										min={0}
+										suffix="VNĐ"
+										label={t('jobs.fields.salary')}
+										placeholder={t('jobs.fields.salary')}
+										withAsterisk
+										allowDecimal={false}
+										thousandSeparator=","
+										{...form.getInputProps('salary')}
 									/>
 								</Grid.Col>
 							</Grid>
 						</Grid.Col>
-						<Grid.Col span={12} mt={48}>
-							<Input.Label>
-								{t('research_types.fields.description')}
-							</Input.Label>
-							<RichEditorBasic
-								loading={getDetail.isFetching}
-								value={dataEditor}
-								setValue={setDataEditor}
-							/>
+
+						<Grid.Col span={12} mt={24}>
+							<Input.Wrapper
+								label={t('jobs.fields.job_description')}
+								error={dataEditor ? '' : t('validation.required')}
+								withAsterisk
+							>
+								<RichEditor
+									loading={getDetail.isFetching}
+									value={dataEditor}
+									setValue={setDataEditor}
+								/>
+							</Input.Wrapper>
 						</Grid.Col>
 					</Grid>
 				</Box>

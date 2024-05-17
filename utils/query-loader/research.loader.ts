@@ -6,6 +6,7 @@ import {
 	getResearchById,
 	searchResearch,
 	updateResearch,
+	getResearchByParent,
 } from '../services/research.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import {
@@ -32,6 +33,21 @@ const useGetResearchById = ({
 		...config,
 		queryKey: [CACHE_RESEARCH.DETAIL, id],
 		queryFn: () => getResearchById(id),
+	});
+};
+
+// Get detail
+const useGetResearchByParent = ({
+	id,
+	config,
+}: {
+	id: string | number;
+	config?: QueryConfig<typeof getResearchByParent>;
+}) => {
+	return useQuery<ExtractFnReturnType<typeof getResearchByParent>>({
+		...config,
+		queryKey: [CACHE_RESEARCH.DETAIL, id],
+		queryFn: () => getResearchByParent(id),
 	});
 };
 
@@ -113,6 +129,7 @@ export {
 	useGetResearchDropdown,
 	useDeleteResearch,
 	useGetResearchById,
+	useGetResearchByParent,
 	useSearchResearch,
 	useUpdateResearch,
 };
