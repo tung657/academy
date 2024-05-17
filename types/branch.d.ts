@@ -9,4 +9,4 @@ export interface IBranch extends IBaseData {
 	embed_map?: number;
 }
 
-export interface ISearchBranches extends IBaseSearch {}
+export interface ISearchBranch extends IBaseSearch {}

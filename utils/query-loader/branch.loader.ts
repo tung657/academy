@@ -4,7 +4,7 @@ import {
 	createBranch,
 	deleteBranch,
 	getBranchById,
-	searchBranches,
+	searchBranch,
 	updateBranch,
 } from '../services/branch.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -54,12 +54,12 @@ const useSearchBranches = ({
 	config,
 }: {
 	params: AxiosRequestConfig['params'];
-	config?: QueryConfig<typeof searchBranches>;
+	config?: QueryConfig<typeof searchBranch>;
 }) => {
-	return useQuery<ExtractFnReturnType<typeof searchBranches>>({
+	return useQuery<ExtractFnReturnType<typeof searchBranch>>({
 		...config,
 		queryKey: [CACHE_BRANCH.SEARCH, params],
-		queryFn: async () => searchBranches(params),
+		queryFn: async () => searchBranch(params),
 	});
 };
 
