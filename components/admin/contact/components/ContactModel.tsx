@@ -1,9 +1,8 @@
-import { SelectRender } from '@/components/mantines/inputs/SelectRender';
 import { ModalRender } from '@/components/mantines/modal/ModalRender';
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { genderOptions } from '@/libs/dropdown';
+
 import { convertToString } from '@/utils/array';
-import { formatDateShow, patterns } from '@/utils/format-string';
+import { patterns } from '@/utils/format-string';
 import { useGetContactById } from '@/utils/query-loader/contact.loader';
 
 import { getRuleForms } from '@/utils/validation';
@@ -16,7 +15,7 @@ import {
 	Textarea,
 	Tooltip,
 } from '@mantine/core';
-import { DateInput } from '@mantine/dates';
+
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEye } from '@tabler/icons-react';
