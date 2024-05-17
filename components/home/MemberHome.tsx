@@ -1,4 +1,5 @@
 'use client';
+
 import {
 	Anchor,
 	BackgroundImage,
@@ -6,36 +7,28 @@ import {
 	Container,
 	Flex,
 	Grid,
-	Group,
 	Image,
 	Text,
 	ThemeIcon,
 	rem,
 } from '@mantine/core';
 import { TitleCombo } from '../mantines/typographies/TitleCombo';
-import { imgHome } from '@/assets/images/home';
 import {
 	IconBrandFacebookFilled,
-	IconBrandTwitterFilled,
+	IconBrandInstagram,
+	IconBrandLinkedin,
+	IconBrandXFilled,
 } from '@tabler/icons-react';
 import classes from './scss/member.module.scss';
 import { imgOthers } from '@/assets/images/others';
-import { Link } from '@/libs/i18n-navigation';
+import { IBaseResponse } from '@/types';
+import { IInstructor } from '@/types/instructor';
 
-const dataMembers = [...Array(8)].map((_, index) => ({
-	id: index,
-	image: imgHome.scientist,
-	title: 'Merv Adrian',
-	positions: ['Data Management'],
-	links: {
-		facebook: '/',
-		instagram: '/',
-		linkedin: '/',
-		twitter: '/',
-	},
-}));
+interface Props {
+	data: IBaseResponse<IInstructor[]>;
+}
 
-export const MemberHome = (): JSX.Element => {
+export const MemberHome = ({ data }: Props): JSX.Element => {
 	return (
 		<section className={`${classes.section} background-secondary`}>
 			<BackgroundImage
@@ -55,9 +48,9 @@ export const MemberHome = (): JSX.Element => {
 						/>
 
 						<Grid mt={24} gutter={32}>
-							{dataMembers.map((item) => (
+							{data?.data?.map((item) => (
 								<Grid.Col
-									key={item.id}
+									key={item.instructor_id}
 									span={{ base: 12, xs: 6, md: 3 }}
 									style={{ position: 'relative', textAlign: 'center' }}
 								>
@@ -65,57 +58,101 @@ export const MemberHome = (): JSX.Element => {
 										<Image
 											h={'auto'}
 											maw={'100%'}
-											src={item.image}
+											src={item.avatar}
 											width={550}
 											height={550}
 											radius={'sm'}
 											loading="lazy"
-											alt={item.title}
+											alt={item.instructor_name}
 										/>
 										<Flex className={classes.socials}>
-											<Anchor
-												component={Link}
-												href={item.links.facebook}
-												aria-label={item.title}
-											>
-												<ThemeIcon
-													className={classes.socialItem}
-													radius={'xl'}
-													size={'lg'}
-													color="white"
+											{item.fb_link && (
+												<Anchor
+													href={item.fb_link}
+													aria-label={item.instructor_name}
 												>
-													<IconBrandFacebookFilled
-														fill="var(--mantine-color-gray-7)"
-														size={20}
-													/>
-												</ThemeIcon>
-											</Anchor>
-											<Anchor component={Link} href={item.links.facebook}>
-												<ThemeIcon
-													className={classes.socialItem}
-													radius={'xl'}
-													size={'lg'}
-													color="white"
+													<ThemeIcon
+														className={classes.socialItem}
+														radius={'xl'}
+														size={'lg'}
+														color="white"
+													>
+														<IconBrandFacebookFilled
+															fill="var(--mantine-color-gray-7)"
+															size={20}
+														/>
+													</ThemeIcon>
+												</Anchor>
+											)}
+											{item.x_link && (
+												<Anchor
+													href={item.x_link}
+													aria-label={item.instructor_name}
+													target="_blank"
+													rel="noopener"
 												>
-													<IconBrandTwitterFilled
-														fill="var(--mantine-color-gray-7)"
-														size={20}
-													/>
-												</ThemeIcon>
-											</Anchor>
+													<ThemeIcon
+														className={classes.socialItem}
+														radius={'xl'}
+														size={'lg'}
+														color="white"
+													>
+														<IconBrandInstagram
+															fill="var(--mantine-color-gray-7)"
+															size={20}
+														/>
+													</ThemeIcon>
+												</Anchor>
+											)}
+											{item.ins_link && (
+												<Anchor
+													href={item.ins_link}
+													aria-label={item.instructor_name}
+													target="_blank"
+													rel="noopener"
+												>
+													<ThemeIcon
+														className={classes.socialItem}
+														radius={'xl'}
+														size={'lg'}
+														color="white"
+													>
+														<IconBrandLinkedin
+															fill="var(--mantine-color-gray-7)"
+															size={20}
+														/>
+													</ThemeIcon>
+												</Anchor>
+											)}
+											{item.linkedin_link && (
+												<Anchor
+													href={item.linkedin_link}
+													aria-label={item.instructor_name}
+													target="_blank"
+													rel="noopener"
+												>
+													<ThemeIcon
+														className={classes.socialItem}
+														radius={'xl'}
+														size={'lg'}
+														color="white"
+													>
+														<IconBrandXFilled
+															fill="var(--mantine-color-gray-7)"
+															size={20}
+														/>
+													</ThemeIcon>
+												</Anchor>
+											)}
 										</Flex>
 									</Box>
 
 									<Text fw={700} fz={rem(20)} mt={8}>
-										{item.title}
+										{item.instructor_name}
 									</Text>
-									<Group justify="center">
-										{item.positions.map((pos, index) => (
-											<Text c="primary" fz={rem(13)} fw={600} key={index}>
-												{pos}
-											</Text>
-										))}
-									</Group>
+									<Text c="primary" fz={rem(13)} fw={600}>
+										{item.major}
+									</Text>
 								</Grid.Col>
 							))}
 						</Grid>

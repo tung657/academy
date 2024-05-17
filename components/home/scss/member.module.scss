@@ -1,6 +1,7 @@
 .section {
 	.img-box {
 		position: relative;
+		overflow: hidden;
 
 		.socials {
 			position: absolute;
@@ -19,11 +20,11 @@
 				cursor: pointer;
 				transition: 0.3s;
 				&:hover {
-					background-color: var(--mantine-color-primary-filled);
-
+					background-color: var(--mantine-color-white);
+					
 					svg {
 						transition: 0.3s;
-						fill: var(--mantine-color-white);
+						fill: var(--mantine-color-primary-filled);
 					}
 				}
 			}
