@@ -64,7 +64,7 @@ export async function getBranchById(id: number): Promise<any> {
 
 export async function searchBranch(search: ISearchBranches): Promise<any[]> {
 	try {
-		const sql = 'CALL SearchBranches(?, ?, ?, ?, ?, @err_code, @err_msg)';
+		const sql = 'CALL SearchBranch(?, ?, ?, @err_code, @err_msg)';
 
 		const [results] = await query(sql, [
 			search.page_index || 0,

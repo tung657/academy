@@ -335,13 +335,28 @@
 		"title_create": "Thêm mới liên hệ",
 		"title_update": "Chi tiết liên hệ",
 		"title_delete": "Xoá liên hệ",
-		"getdetail":"chi tiết liên hệ",
+		"getdetail": "chi tiết liên hệ",
 		"fields": {
 			"serial": "STT",
 			"customer_name": "Tên khách hàng",
 			"email": "Email",
 			"phone_number": "Số điện thoại",
 			"message": "Lời nhắn",
+			"action": "Thao tác"
+		}
+	},
+	"branches": {
+		"heading": "Quản lý chi nhánh",
+		"title_create": "Thêm mới chi nhánh",
+		"title_update": "Chi tiết chi nhánh",
+		"title_delete": "Xoá chi nhánh",
+		"fields": {
+			"serial": "STT",
+			"branch_name": "Tên chi nhánh",
+			"email": "Email",
+			"phone": "Số điện thoại",
+			"address": "Địa chỉ",
+			"embed_map": "Bản đồ",
 			"action": "Thao tác"
 		}
 	}
