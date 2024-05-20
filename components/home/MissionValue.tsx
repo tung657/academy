@@ -4,6 +4,7 @@ import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import React from 'react';
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconBrain, IconDiamond, IconMedal2 } from '@tabler/icons-react';
+import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 const dataCores = [
 	{
@@ -61,19 +62,22 @@ export const MissionValue = (): JSX.Element => {
 				<Container size="xl">
 					<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 						<TitleCombo needWrapper={false} titleChildren={'Giá trị cốt lõi'} />
-
 						<Grid gutter={16} mt={'lg'}>
 							{dataCores.map((item, index) => (
 								<React.Fragment key={index}>
 									<Grid.Col span={{ base: 12, sm: 4 }}>
-										<Flex gap={8}>
-											{item.icon}
-											<TitleRender order={3} fz={{ base: 'h4', lg: 'h3' }}>
-												{item.title}
-											</TitleRender>
-										</Flex>
+										<ScrollMotion isX>
+											<Flex gap={8}>
+												{item.icon}
+												<TitleRender order={3} fz={{ base: 'h4', lg: 'h3' }}>
+													{item.title}
+												</TitleRender>
+											</Flex>
+										</ScrollMotion>
 									</Grid.Col>
-									<Grid.Col span={{ base: 12, sm: 8 }}>{item.content}</Grid.Col>
+									<Grid.Col span={{ base: 12, sm: 8 }}>
+										<ScrollMotion isX={50}>{item.content}</ScrollMotion>
+									</Grid.Col>
 								</React.Fragment>
 							))}
 						</Grid>

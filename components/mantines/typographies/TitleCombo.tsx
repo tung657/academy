@@ -3,6 +3,7 @@ import { TitleSub } from './TitleSub';
 import React from 'react';
 import { TitleRender } from './TitleRender';
 import classes from './scss/title.module.scss';
+import { ScrollMotion } from '@/components/shared/motion/ScrollMotion';
 
 interface Props extends TitleProps {
 	needWrapper?: boolean;
@@ -20,23 +21,35 @@ export const TitleCombo = ({
 }: Props): JSX.Element => {
 	return needWrapper ? (
 		<Box className={classes.sectionTitle}>
-			{titleSub && <TitleSub label={titleSub} />}
-			<TitleRender order={2} {...props}>
-				{titleChildren}
-			</TitleRender>
-			<Text fw={500} mt={16}>
-				{description}
-			</Text>
+			<ScrollMotion isY>
+				{titleSub && <TitleSub label={titleSub} />}
+			</ScrollMotion>
+			<ScrollMotion isY delay={0.1}>
+				<TitleRender order={2} {...props}>
+					{titleChildren}
+				</TitleRender>
+			</ScrollMotion>
+			<ScrollMotion isY delay={0.2}>
+				<Text fw={500} mt={16}>
+					{description}
+				</Text>
+			</ScrollMotion>
 		</Box>
 	) : (
 		<>
-			{titleSub && <TitleSub label={titleSub} />}
-			<TitleRender order={2} {...props}>
-				{titleChildren}
-			</TitleRender>
-			<Text fw={500} mt={16}>
-				{description}
-			</Text>
+			<ScrollMotion isY>
+				{titleSub && <TitleSub label={titleSub} />}
+			</ScrollMotion>
+			<ScrollMotion isY delay={0.1}>
+				<TitleRender order={2} {...props}>
+					{titleChildren}
+				</TitleRender>
+			</ScrollMotion>
+			<ScrollMotion isY delay={0.2}>
+				<Text fw={500} mt={16}>
+					{description}
+				</Text>
+			</ScrollMotion>
 		</>
 	);
 };
