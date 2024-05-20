@@ -14,6 +14,7 @@
 		"edit": "Chỉnh sửa",
 		"detail": "Chi tiết",
 		"download": "Download",
+		"register": "Đăng ký",
 		"week": "Tuần",
 		"minutes": "phút đọc",
 		"share_with_fb": "Chia sẻ lên Facebook",
@@ -54,7 +55,8 @@
 			"name": "Họ và tên",
 			"email": "Email",
 			"phone": "Số điện thoại",
-			"message": "Lời nhắn"
+			"message": "Lời nhắn",
+			"note": "Lời nhắn"
 		},
 		"required": "Trường này là bắt buộc",
 		"phone": "Số điện thoại không đúng định dạng",
@@ -195,6 +197,24 @@
 			"action": "Thao tác"
 		}
 	},
+	"course-registers": {
+		"meta_title": "Đăng ký đào tạo",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"heading": "Danh sách đăng ký đào tạo",
+		"title_create": "Thêm mới đào tạo",
+		"title_update": "Chi tiết đào tạo",
+		"title_delete": "Xoá đào tạo",
+		"fields": {
+			"serial": "STT",
+			"full_name": "Người đăng ký",
+			"course_name": "Khóa đào tạo",
+			"phone_number": "SĐT",
+			"email": "Email",
+			"note": "Lời nhắn",
+			"accept": "Trạng thái",
+			"action": "Thao tác"
+		}
+	},
 
 	"products": {
 		"meta_title": "Sản phẩm",
@@ -242,6 +262,7 @@
 		"meta_title": "Đào tạo",
 		"meta_description": "Đào tạo viện trí tuệ nhân tạo Việt Nam",
 		"heading": "Quản lý đào tạo",
+		"title_register": "Đăng ký khóa học",
 		"title_create": "Thêm mới đào tạo",
 		"title_update": "Chi tiết đào tạo",
 		"title_delete": "Xoá đào tạo",
@@ -369,7 +390,7 @@
 		"title_create": "Thêm mới liên hệ",
 		"title_update": "Chi tiết liên hệ",
 		"title_delete": "Xoá liên hệ",
-		"getdetail":"chi tiết liên hệ",
+		"getdetail": "chi tiết liên hệ",
 		"fields": {
 			"serial": "STT",
 			"customer_name": "Tên khách hàng",

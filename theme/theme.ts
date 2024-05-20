@@ -25,7 +25,7 @@ export const theme = createTheme({
 		Text: {
 			defaultProps: {
 				size: 'lg',
-				lh: 1.5,
+				// lh: 1.5,
 			},
 		},
 		TextInput: {

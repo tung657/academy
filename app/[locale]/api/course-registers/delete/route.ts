@@ -1,21 +1,21 @@
-import { createContact } from '@/helpers/repositories/contact.repository';
-import { IContact } from '@/types/contact';
+import { deleteCourseRegister } from '@/helpers/repositories/course-register.repository';
+import { IBaseDelete } from '@/types';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
 	try {
-		const body = (await request.json()) as IContact;
-		let dbResults = await createContact(body);
+		const { list_json, lu_user_id } = (await request.json()) as IBaseDelete;
+		let dbResults = await deleteCourseRegister(list_json, lu_user_id);
 		if (dbResults) {
 			return NextResponse.json({
-				message: 'Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.',
+				message: 'Xoá thành công',
 				success: true,
 			});
 		} else {
 			return NextResponse.json({
-				message: 'Vui lòng thử lại sau!',
+				message: 'Xoá thất bại',
 				success: false,
 			});
 		}

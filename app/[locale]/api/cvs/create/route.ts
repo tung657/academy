@@ -10,12 +10,12 @@ export async function POST(request: NextRequest) {
 		let dbResults = await createCV(body);
 		if (dbResults) {
 			return NextResponse.json({
-				message: 'Thêm mới thành công',
+				message: 'Gửi yêu cầu thành công! Chúng tôi sẽ liên hệ với bạn.',
 				success: true,
 			});
 		} else {
 			return NextResponse.json({
-				message: 'Thêm mới thất bại',
+				message: 'Gửi yêu cầu thất bại, vui lòng thử lại sau.',
 				success: false,
 			});
 		}

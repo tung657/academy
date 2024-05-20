@@ -118,6 +118,8 @@ export default async function Course({ searchParams }: Props) {
 		).data as IBaseResponse<ICourse[]>;
 	}
 
+	console.log(courses.message);
+
 	if (courses.message && !courses.success) return notFound();
 
 	return (

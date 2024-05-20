@@ -8,6 +8,7 @@ import {
 	Box,
 	Button,
 	Card,
+	Center,
 	Collapse,
 	Container,
 	Divider,
@@ -27,6 +28,7 @@ import {
 import { TitleRender } from '../mantines/typographies/TitleRender';
 import {
 	IconBook,
+	IconBooks,
 	IconBrandFacebookFilled,
 	IconBrandInstagram,
 	IconBrandLinkedin,
@@ -34,6 +36,7 @@ import {
 	IconChevronRight,
 	IconClock,
 	IconPlaystationTriangle,
+	IconUserStar,
 } from '@tabler/icons-react';
 import { imgCourses } from '@/assets/images/course';
 import {
@@ -47,6 +50,7 @@ import classes from './scss/course-detail.module.scss';
 import { ICourse } from '@/types/course';
 import { handleGetKeyYB } from '@/utils/format-string';
 import { useTranslations } from 'next-intl';
+import { CourseRegisterForm } from './CourseRegisterForm';
 
 interface Props {
 	data?: ICourse;
@@ -161,35 +165,6 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 							</Affix>
 
 							<Box pt={24} ref={overviewRef}>
-								{/* <TitleRender order={3}>{'Bạn sẽ học được gì'}</TitleRender>
-								<TypographyStylesProvider my={16}>
-									<div
-										dangerouslySetInnerHTML={{
-											__html: data?.overview || '',
-										}}
-									/>
-								</TypographyStylesProvider>
-
-								<TitleRender order={3}>{'Kỹ năng bạn sẽ đạt được'}</TitleRender>
-								<Group my={16}>
-									<PillGroup size="md">
-										{data?.skills_gain?.map((item, index) => (
-											<Pill key={index} radius={'sm'}>
-												{item}
-											</Pill>
-										))}
-									</PillGroup>
-								</Group>
-
-								<TitleRender order={3}>{'Khoá học này dành cho'}</TitleRender>
-								<TypographyStylesProvider my={16}>
-									<div
-										dangerouslySetInnerHTML={{
-											__html: props?.who_need || '',
-										}}
-									/>
-								</TypographyStylesProvider> */}
-
 								<TypographyStylesProvider my={16}>
 									<div
 										dangerouslySetInnerHTML={{
@@ -200,34 +175,6 @@ export const CourseDetail = ({ data }: Props): JSX.Element => {
 							</Box>
 
 							<Box pt={24} ref={outcomesRef}>
-								{/* <TitleRender order={3}>
-									{'Xây dựng chuyên môn về chủ đề của bạn'}
-								</TitleRender>
-								<TypographyStylesProvider my={16}>
-									<div
-										dangerouslySetInnerHTML={{
-											__html: props?.expertise || '',
-										}}
-									/>
-								</TypographyStylesProvider>
-
-								<TitleRender order={3}>
-									{`Khoá học này gồm ${props?.courses.length} phần`}
-								</TitleRender>
-								<Spoiler
-									showLabel="Xem thêm"
-									hideLabel="Ẩn bớt"
-									maxHeight={120}
-									my={16}
-								>
-									<TypographyStylesProvider>
-										<div
-											dangerouslySetInnerHTML={{
-												__html: props?.module_des || '',
-											}}
-										/>
-									</TypographyStylesProvider>
-								</Spoiler> */}
 								<TypographyStylesProvider my={16}>
 									<div
 										dangerouslySetInnerHTML={{
@@ -454,7 +401,13 @@ function CoursePreview({ data, isMobile }: Props) {
 
 	return (
 		<>
-			<Card shadow="xs" radius={'sm'} mt={isMobile ? 0 : -170}>
+			<Card
+				shadow="xs"
+				radius={'sm'}
+				mt={isMobile ? 0 : -170}
+				pos={isMobile ? 'initial' : 'sticky'}
+				top={80}
+			>
 				<div className={classes.video} onClick={open}>
 					<AspectRatio ratio={16 / 9} mx="auto">
 						<Image
@@ -471,10 +424,30 @@ function CoursePreview({ data, isMobile }: Props) {
 					</AspectRatio>
 				</div>
 
-				<Flex gap={16} my={16}>
-					<Text c="primary">
+				<Flex gap={16} mb={8} mt={16}>
+					<ThemeIcon variant="light">
+						<IconBooks stroke={1.2} />
+					</ThemeIcon>
+
+					<Text fw={600}>{data?.course_name}</Text>
+				</Flex>
+
+				<Divider />
+
+				<Flex gap={16} my={8}>
+					<ThemeIcon variant="light">
+						<IconUserStar stroke={1.2} />
+					</ThemeIcon>
+
+					<Text>{data?.instructor?.instructor_name}</Text>
+				</Flex>
+
+				<Divider />
+
+				<Flex gap={16} my={8}>
+					<ThemeIcon variant="light">
 						<IconClock stroke={1.2} />
-					</Text>
+					</ThemeIcon>
 
 					<Text tt="lowercase">
 						{data?.course_details.length} {t('global.week')}
@@ -483,10 +456,10 @@ function CoursePreview({ data, isMobile }: Props) {
 
 				<Divider />
 
-				<Flex gap={16} my={16}>
-					<Text c="primary">
+				<Flex gap={16} my={8}>
+					<ThemeIcon variant="light">
 						<IconBook stroke={1.2} />
-					</Text>
+					</ThemeIcon>
 
 					<Text>
 						{data?.course_details.reduce(
@@ -496,6 +469,12 @@ function CoursePreview({ data, isMobile }: Props) {
 						bài
 					</Text>
 				</Flex>
+
+				<Divider />
+
+				<Center mt={'1rem'}>
+					<CourseRegisterForm data={data} />
+				</Center>
 			</Card>
 
 			<Modal

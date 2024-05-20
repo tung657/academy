@@ -7,6 +7,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 	isY?: boolean | number;
 	once?: boolean;
 	delay?: number;
+	duration?: number;
 }
 
 export const ScrollMotion = ({
@@ -15,6 +16,7 @@ export const ScrollMotion = ({
 	isY,
 	once = false,
 	delay = 0,
+	duration = 0.5,
 }: Props): JSX.Element => {
 	const getValue = (v?: boolean | number): number => {
 		if (typeof v === 'number') return v;
@@ -25,7 +27,7 @@ export const ScrollMotion = ({
 		<motion.div
 			initial={{ x: getValue(isX), y: getValue(isY), opacity: 0 }}
 			whileInView={{ x: 0, y: 0, opacity: 1 }}
-			transition={{ duration: 0.5, type: 'just', delay }}
+			transition={{ duration, delay }}
 			viewport={{ once }}
 		>
 			{children}

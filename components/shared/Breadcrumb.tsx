@@ -65,7 +65,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 					pt={{ base: rem(60), md: rem(70), lg: rem(100) }}
 					pb={{ base: rem(60), md: rem(70), lg: rem(100) }}
 				>
-					<ScrollMotion isX>
+					<ScrollMotion once isX>
 						<TitleRender
 							order={1}
 							pb={16}
@@ -84,7 +84,11 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 						style={{ flexWrap: 'wrap' }}
 						separatorMargin={0}
 						separator={
-							<ScrollMotion isX delay={0.2}>
+							<ScrollMotion
+								once
+								isX
+								delay={Math.floor(breadcrumbs.length / 2) * 0.1 + 0.1}
+							>
 								<IconChevronRight
 									color="var(--mantine-color-primary-filled)"
 									stroke={1}
@@ -92,7 +96,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 							</ScrollMotion>
 						}
 					>
-						<ScrollMotion isX>
+						<ScrollMotion once isX>
 							<Anchor
 								href={HOME_URL}
 								component={Link}
@@ -103,7 +107,7 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 							</Anchor>
 						</ScrollMotion>
 						{breadcrumbs?.map((item, index) => (
-							<ScrollMotion key={index} isX delay={0.4 * (index + 1)}>
+							<ScrollMotion once key={index} isX delay={0.2 * (index + 1)}>
 								{item.href ? (
 									<Anchor
 										component={Link}
