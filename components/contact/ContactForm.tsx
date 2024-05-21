@@ -105,6 +105,7 @@ export const ContactForm = (): JSX.Element => {
 										fullWidth={false}
 										leftSection={<IconCheck />}
 										type="submit"
+										loading={createContact.isLoading}
 									>
 										{t('global.btn_send_message')}
 									</ButtonBubble>

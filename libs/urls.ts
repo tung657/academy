@@ -33,9 +33,10 @@ const LOGIN_URL = `/login`;
 const DASHBOARD_URL = `${ADMIN_URL}/dashboard`;
 
 const ADMIN_CUSTOMER_URL = `${ADMIN_URL}/customer`;
-const ADMIN_PRODUCT_URL = `${ADMIN_CUSTOMER_URL}/products`;
+const ADMIN_CONTACT_URL = `${ADMIN_CUSTOMER_URL}/contacts`;
 
 const ADMIN_MANAGE_URL = `${ADMIN_URL}/manager`;
+const ADMIN_PRODUCT_URL = `${ADMIN_MANAGE_URL}/products`;
 const ADMIN_USER_URL = `${ADMIN_MANAGE_URL}/employees`;
 const ADMIN_INSTRUCTOR_URL = `${ADMIN_MANAGE_URL}/instructors`;
 
@@ -65,6 +66,7 @@ export {
 	LOGIN_URL,
 	DASHBOARD_URL,
 	ADMIN_PRODUCT_URL,
+	ADMIN_CONTACT_URL,
 	ADMIN_USER_URL,
 	ADMIN_FEATURE_URL,
 	ADMIN_INSTRUCTOR_URL,
