@@ -1,4 +1,4 @@
-import { ButtonProps } from '@mantine/core';
+import { ButtonProps, OptionsData } from '@mantine/core';
 
 export type LocalePrefix = 'as-needed' | 'always' | 'never';
 
@@ -46,4 +46,14 @@ export interface IBaseSearch {
 	page_index?: number;
 	search_content?: string;
 	user_id?: string;
+}
+
+interface IOptionsData {
+	label: string;
+	value: string;
+}
+
+export interface IBaseDropdown extends Array<IOptionsData> {
+	message?: string;
+	success?: boolean;
 }

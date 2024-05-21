@@ -56,7 +56,7 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 								>
 									<Box className={classes.imgBox}>
 										<Image
-											h={'auto'}
+											h={290}
 											maw={'100%'}
 											src={item.avatar}
 											width={550}
@@ -70,6 +70,8 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 												<Anchor
 													href={item.fb_link}
 													aria-label={item.instructor_name}
+													target="_blank"
+													rel="noopener"
 												>
 													<ThemeIcon
 														className={classes.socialItem}

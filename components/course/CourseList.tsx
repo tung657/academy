@@ -31,6 +31,7 @@ import { useTranslations } from 'next-intl';
 import { Empty } from '../errors/empty';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 import { useTransition } from 'react';
+import { CourseLoading } from './CourseLoading';
 interface Props {
 	data: IBaseResponse<ICourse[]>;
 }
@@ -66,7 +67,7 @@ export const CourseList = ({ data }: Props): JSX.Element => {
 						<InputSearch startTransition={startTransition} size="md" />
 					</Flex>
 					{isPending ? (
-						<p>Loading...</p>
+						<CourseLoading />
 					) : (
 						<Grid gutter={24}>
 							{data.data?.length === 0 ? (
@@ -77,13 +78,13 @@ export const CourseList = ({ data }: Props): JSX.Element => {
 										key={item.course_id}
 										span={{ base: 12, sm: 6, md: 4 }}
 									>
-										<ScrollMotion isY={50}>
+										<ScrollMotion isY={50} once>
 											<Card shadow="sm" padding="md" radius="md">
 												<Card.Section>
 													<Image
 														src={item.thumbnail}
 														height={250}
-														alt="Norway"
+														alt={item.course_name}
 														width={140}
 														loading="lazy"
 													/>

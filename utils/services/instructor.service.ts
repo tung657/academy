@@ -1,11 +1,10 @@
 import { apiClient } from '@/helpers';
-import { IBaseDelete, IBaseResponse } from '@/types';
+import { IBaseDelete, IBaseDropdown, IBaseResponse } from '@/types';
 import { IInstructor, ISearchInstructor } from '@/types/instructor';
-import { OptionsData } from '@mantine/core';
 
 const prefix = '/instructors';
 
-export const getInstructorDropdown = async (): Promise<OptionsData> => {
+export const getInstructorDropdown = async (): Promise<IBaseDropdown> => {
 	const res = await apiClient?.get(`${prefix}/dropdown`);
 
 	return res.data;
