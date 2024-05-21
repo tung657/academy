@@ -9,9 +9,9 @@ export async function GET(
 ): Promise<NextResponse> {
 	try {
 		const id = params.id;
-		const product = await getBranchById(+id);
-		if (product) {
-			return NextResponse.json(product);
+		const data = await getBranchById(+id);
+		if (data) {
+			return NextResponse.json(data);
 		} else {
 			return NextResponse.json({
 				message: 'Bản ghi không tồn tại',

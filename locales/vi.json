@@ -399,5 +399,20 @@
 			"message": "Lời nhắn",
 			"action": "Thao tác"
 		}
+	},
+	"branches": {
+		"heading": "Quản lý chi nhánh",
+		"title_create": "Thêm mới chi nhánh",
+		"title_update": "Chi tiết chi nhánh",
+		"title_delete": "Xoá chi nhánh",
+		"fields": {
+			"serial": "STT",
+			"branch_name": "Tên chi nhánh",
+			"email": "Email",
+			"phone": "Số điện thoại",
+			"address": "Địa chỉ",
+			"embed_map": "Bản đồ",
+			"action": "Thao tác"
+		}
 	}
 }

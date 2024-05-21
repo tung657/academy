@@ -1,7 +1,7 @@
 import { IBaseData, IBaseSearch } from './global';
 
 export interface IBranch extends IBaseData {
-	branch_id?: number;
+	branch_id: string;
 	branch_name: string;
 	phone?: string;
 	address?: string;
