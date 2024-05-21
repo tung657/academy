@@ -15,10 +15,13 @@ import {
 } from '@mantine/core';
 import classes from './scss/sidebar.module.scss';
 import {
+	IconBuildingFactory2,
 	IconCircleKey,
 	IconDashboard,
+	IconNews,
 	IconNotebook,
 	IconUsersGroup,
+	IconWallpaper,
 	IconX,
 } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
@@ -37,7 +40,10 @@ export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 		<IconDashboard key={'1'} stroke={1.3} />,
 		<IconUsersGroup key={'2'} stroke={1.3} />,
 		<IconNotebook key={'3'} stroke={1.3} />,
-		<IconCircleKey key={'4'} stroke={1.3} />,
+		<IconBuildingFactory2 key={'4'} stroke={1.3} />,
+		<IconNews key={'5'} stroke={1.3} />,
+		<IconWallpaper key={'6'} stroke={1.3} />,
+		<IconCircleKey key={'7'} stroke={1.3} />,
 	];
 
 	const renderClassActive = (item: any) => {
@@ -90,7 +96,7 @@ export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 				</div>
 			</Box>
 			<AppShell.Section pl={'md'}>
-				<ScrollArea my="md" h={'calc(100vh - 100px)'}>
+				<ScrollArea my="md" h={'calc(100vh - 130px)'}>
 					{isLoading ? (
 						<Stack gap={4}>
 							<Skeleton height={32} mt={6} radius="sm" />

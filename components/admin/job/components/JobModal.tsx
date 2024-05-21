@@ -122,6 +122,10 @@ export const JobModal = ({ id }: Props): JSX.Element => {
 		});
 
 	const handleSubmit = async (values: any) => {
+		if (!dataEditor) {
+			getNotifications('warning', t, t('validation.warning'));
+			return;
+		}
 		setLoading(true);
 		const dataPost: IJob = {
 			...values,

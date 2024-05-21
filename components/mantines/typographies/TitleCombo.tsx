@@ -9,7 +9,7 @@ interface Props extends TitleProps {
 	needWrapper?: boolean;
 	titleSub?: string;
 	titleChildren: React.ReactNode;
-	description?: string;
+	description?: React.ReactNode;
 }
 
 export const TitleCombo = ({

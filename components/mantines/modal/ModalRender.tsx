@@ -58,6 +58,7 @@ export const ModalRender = ({ footer, ...props }: Props): JSX.Element => {
 							py={'sm'}
 							bottom={0}
 							bg={'var(--mantine-color-body)'}
+							style={{ zIndex: 1 }}
 						>
 							<Flex pt={0} justify={'flex-end'} gap={10}>
 								{footer.showCancelButton && (

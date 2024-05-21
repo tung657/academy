@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from 'axios';
 
 import { apiClient } from '@/helpers';
 import { ISlide } from '@/types/slide';
+import { IBaseDelete, IBaseResponse } from '@/types';
 
 const prefix = '/slides';
 
@@ -11,28 +12,30 @@ export const getSlideById = async (id: string | number): Promise<ISlide> => {
 	return res.data;
 };
 
-export const searchSlides = async (
+export const searchSlide = async (
 	params: AxiosRequestConfig['params'],
-): Promise<any> => {
+): Promise<IBaseResponse<ISlide[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);
 
 	return res.data;
 };
 
-export const updateSlide = async (data: ISlide): Promise<any> => {
+export const updateSlide = async (data: ISlide): Promise<IBaseResponse> => {
 	const res = await apiClient?.post(`${prefix}/update`, data);
 
 	return res.data;
 };
 
-export const createSlide = async (data: ISlide): Promise<any> => {
+export const createSlide = async (data: ISlide): Promise<IBaseResponse> => {
 	const res = await apiClient?.post(`${prefix}/create`, data);
 
 	return res.data;
 };
 
-export const deleteSlide = async (id: string | number): Promise<any> => {
-	const res = await apiClient?.delete(`${prefix}/delete/${id}`);
+export const deleteSlide = async (
+	data: IBaseDelete,
+): Promise<IBaseResponse> => {
+	const res = await apiClient?.post(`${prefix}/delete`, data);
 
 	return res.data;
 };

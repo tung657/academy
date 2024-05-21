@@ -48,7 +48,7 @@
 		"product": "Sản phẩm",
 		"contact": "Liên hệ",
 		"jobs": "Tuyển dụng",
-		"blogs": "Blog"
+		"blogs": "Tin tức"
 	},
 	"validation": {
 		"fields": {
@@ -58,6 +58,7 @@
 			"message": "Lời nhắn",
 			"note": "Lời nhắn"
 		},
+		"warning": "Bạn cần điền đầy đủ thông tin",
 		"required": "Trường này là bắt buộc",
 		"phone": "Số điện thoại không đúng định dạng",
 		"email": "Email không đúng định dạng",
@@ -96,7 +97,7 @@
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam"
 	},
 	"blogs": {
-		"meta_title": "Blog",
+		"meta_title": "Tin tức",
 		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
 		"title": "Bài viết nổi bật",
 		"title_sub": "Tổng hợp các bài viết chia sẻ về kinh nghiệm tự học lập trình online và các kỹ thuật lập trình.",
@@ -215,6 +216,21 @@
 			"action": "Thao tác"
 		}
 	},
+	"contacts": {
+		"heading": "Quản lý liên hệ",
+		"title_create": "Thêm mới liên hệ",
+		"title_update": "Chi tiết liên hệ",
+		"title_delete": "Xoá liên hệ",
+		"getdetail": "chi tiết liên hệ",
+		"fields": {
+			"serial": "STT",
+			"customer_name": "Tên khách hàng",
+			"email": "Email",
+			"phone_number": "Số điện thoại",
+			"message": "Lời nhắn",
+			"action": "Thao tác"
+		}
+	},
 
 	"products": {
 		"meta_title": "Sản phẩm",
@@ -236,6 +252,21 @@
 			"slogan": "Slogan",
 			"en_slogan": "Slogan (EN)",
 			"sort_order": "ASC",
+			"action": "Thao tác"
+		}
+	},
+	"branches": {
+		"heading": "Quản lý chi nhánh",
+		"title_create": "Thêm mới chi nhánh",
+		"title_update": "Chi tiết chi nhánh",
+		"title_delete": "Xoá chi nhánh",
+		"fields": {
+			"serial": "STT",
+			"branch_name": "Tên chi nhánh",
+			"email": "Email",
+			"phone": "Số điện thoại",
+			"address": "Địa chỉ",
+			"embed_map": "Bản đồ",
 			"action": "Thao tác"
 		}
 	},
@@ -350,6 +381,25 @@
 			"action": "Thao tác"
 		}
 	},
+	"slides": {
+		"heading": "Quản lý slide",
+		"title_create": "Thêm mới slide",
+		"title_update": "Chi tiết slide",
+		"title_delete": "Xoá slide",
+		"fields": {
+			"serial": "STT",
+			"caption": "Tiêu đề",
+			"btn_label": "Nút chuyển",
+			"btn_to": "Đường dẫn nút",
+			"big_image": "Ảnh desktop",
+			"small_image": "Ảnh mobile",
+			"preview": "Video preview",
+			"preview_thumbnail": "Ảnh bìa video",
+			"preview_link": "Link video",
+			"order": "Xếp hạng",
+			"action": "Thao tác"
+		}
+	},
 
 	"employees": {
 		"heading": "Quản lý nhân viên",
@@ -382,36 +432,6 @@
 			"serial": "STT",
 			"position": "Chức vụ",
 			"description": "Mô tả",
-			"action": "Thao tác"
-		}
-	},
-	"contacts": {
-		"heading": "Quản lý liên hệ",
-		"title_create": "Thêm mới liên hệ",
-		"title_update": "Chi tiết liên hệ",
-		"title_delete": "Xoá liên hệ",
-		"getdetail": "chi tiết liên hệ",
-		"fields": {
-			"serial": "STT",
-			"customer_name": "Tên khách hàng",
-			"email": "Email",
-			"phone_number": "Số điện thoại",
-			"message": "Lời nhắn",
-			"action": "Thao tác"
-		}
-	},
-	"branches": {
-		"heading": "Quản lý chi nhánh",
-		"title_create": "Thêm mới chi nhánh",
-		"title_update": "Chi tiết chi nhánh",
-		"title_delete": "Xoá chi nhánh",
-		"fields": {
-			"serial": "STT",
-			"branch_name": "Tên chi nhánh",
-			"email": "Email",
-			"phone": "Số điện thoại",
-			"address": "Địa chỉ",
-			"embed_map": "Bản đồ",
 			"action": "Thao tác"
 		}
 	}

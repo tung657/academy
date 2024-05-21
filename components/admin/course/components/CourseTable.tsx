@@ -48,12 +48,12 @@ export const CourseTable = (): JSX.Element => {
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},
-				Cell: ({ renderedCellValue, row: { original } }) => (
+				Cell: ({ row: { original } }) => (
 					<Image
 						mah={50}
 						fit="contain"
 						loading="lazy"
-						src={renderedCellValue}
+						src={original.thumbnail}
 						alt={original.course_name}
 					/>
 				),

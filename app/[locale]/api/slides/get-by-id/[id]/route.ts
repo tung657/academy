@@ -1,21 +1,24 @@
-import { getSlideByIdRepo } from '@/helpers/repositories/slide.repository';
-import { NextRequest, NextResponse as res } from 'next/server';
+import { getSlideById } from '@/helpers/repositories/slide.repository';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(
 	_: NextRequest,
 	{ params }: { params: { id: string } },
-): Promise<res> {
+): Promise<NextResponse> {
 	try {
 		const id = params.id;
-		const slide = await getSlideByIdRepo(id);
-		if (slide) {
-			return res.json(slide);
+		const data = await getSlideById(+id);
+		if (data) {
+			return NextResponse.json(data);
 		} else {
-			return res.json({ message: 'Bản ghi không tồn tại', success: false });
+			return NextResponse.json({
+				message: 'Bản ghi không tồn tại',
+				success: false,
+			});
 		}
 	} catch (error: any) {
-		return res.json({ message: error.message, success: false });
+		return NextResponse.json({ message: error.message, success: false });
 	}
 }

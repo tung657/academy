@@ -4,7 +4,7 @@ import { MemberHome } from '@/components/home/MemberHome';
 import { MissionValue } from '@/components/home/MissionValue';
 import { Partner } from '@/components/home/Partner';
 import { apiClient } from '@/helpers';
-import { IBaseResponse } from '@/types';
+import { IBaseResponse, ISlide } from '@/types';
 import { IInstructor } from '@/types/instructor';
 import {
 	AppConfig,
@@ -57,7 +57,7 @@ export default async function HomePage() {
 				baseURL: `${ORIGIN_URL}${BASE_URL}`,
 			},
 		)
-	).data as IBaseResponse<IInstructor[]>;
+	).data;
 
 	// DB sometimes returns error
 	while (instructors.message === ERROR_TIMEOUT && !instructors.success) {
@@ -69,12 +69,35 @@ export default async function HomePage() {
 					baseURL: `${ORIGIN_URL}${BASE_URL}`,
 				},
 			)
-		).data as IBaseResponse<IInstructor[]>;
+		).data;
+	}
+
+	let slides: IBaseResponse<ISlide[]> = (
+		await apiClient.post(
+			`/slides/search`,
+			{},
+			{
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			},
+		)
+	).data;
+
+	// DB sometimes returns error
+	while (slides.message === ERROR_TIMEOUT && !slides.success) {
+		slides = (
+			await apiClient.post(
+				`/slides/search`,
+				{},
+				{
+					baseURL: `${ORIGIN_URL}${BASE_URL}`,
+				},
+			)
+		).data;
 	}
 
 	return (
 		<>
-			<CarouselHome />
+			<CarouselHome data={slides} />
 			<Container size="xl">
 				<AboutHome />
 			</Container>
