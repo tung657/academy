@@ -13,7 +13,6 @@ import {
 	Grid,
 	LoadingOverlay,
 	TextInput,
-	Textarea,
 	Tooltip,
 } from '@mantine/core';
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
@@ -138,7 +137,7 @@ export const BranchModal = ({ id }: Props): JSX.Element => {
 			<ModalRender
 				opened={opened}
 				onClose={handleCancel}
-				size={'700'}
+				size={'800'}
 				title={!id ? t('branches.title_create') : t('branches.title_update')}
 				footer={{
 					onOk: form.onSubmit(handleSubmit),
@@ -157,24 +156,26 @@ export const BranchModal = ({ id }: Props): JSX.Element => {
 								{...form.getInputProps('branch_name')}
 							/>
 						</Grid.Col>
-						<Grid.Col span={12}>
-							<Textarea
+
+						<Grid.Col span={6}>
+							<TextInput
 								size="sm"
 								label={t('branches.fields.phone')}
 								placeholder={t('branches.fields.phone')}
 								{...form.getInputProps('phone')}
 							/>
 						</Grid.Col>
-						<Grid.Col span={12}>
-							<Textarea
+						<Grid.Col span={6}>
+							<TextInput
 								size="sm"
 								label={t('branches.fields.address')}
 								placeholder={t('branches.fields.address')}
 								{...form.getInputProps('address')}
 							/>
 						</Grid.Col>
+
 						<Grid.Col span={12}>
-							<Textarea
+							<TextInput
 								size="sm"
 								label={t('branches.fields.email')}
 								placeholder={t('branches.fields.email')}
