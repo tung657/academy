@@ -122,6 +122,8 @@ export default async function Course({ searchParams }: Props) {
 
 	if (courses.message && !courses.success) return notFound();
 
+	await new Promise((resolve) => setTimeout(resolve, 1000));
+
 	return (
 		<>
 			<Breadcrumb />

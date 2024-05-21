@@ -30,7 +30,7 @@ import { InputSearch } from '../mantines/inputs/InputSearch';
 import { useTranslations } from 'next-intl';
 import { Empty } from '../errors/empty';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
-
+import { useTransition } from 'react';
 interface Props {
 	data: IBaseResponse<ICourse[]>;
 }
@@ -38,6 +38,7 @@ interface Props {
 export const CourseList = ({ data }: Props): JSX.Element => {
 	const t = useTranslations();
 	const searchParams = useSearchParams();
+	const [isPending, startTransition] = useTransition();
 	const router = useRouter();
 	const pathname = usePathname();
 	const theme = useMantineTheme();
@@ -51,7 +52,7 @@ export const CourseList = ({ data }: Props): JSX.Element => {
 		pageSizeNew && current.set(SEARCH_SIZE, pageSizeNew.toString());
 
 		router.push(`${pathname}?${current}`);
-		router.refresh();
+		startTransition(() => router.refresh());
 	};
 
 	return (
@@ -62,67 +63,77 @@ export const CourseList = ({ data }: Props): JSX.Element => {
 						<ScrollMotion isX once>
 							<TitleRender order={3}>{t('courses.title_sub')}</TitleRender>
 						</ScrollMotion>
-						<InputSearch size="md" />
+						<InputSearch startTransition={startTransition} size="md" />
 					</Flex>
-					<Grid gutter={24}>
-						{data.data?.length === 0 ? (
-							<Empty />
-						) : (
-							data?.data?.map((item) => (
-								<Grid.Col
-									key={item.course_id}
-									span={{ base: 12, sm: 6, md: 4 }}
-								>
-									<ScrollMotion isY={50}>
-										<Card shadow="sm" padding="md" radius="md">
-											<Card.Section>
-												<Image
-													src={item.thumbnail}
-													height={250}
-													alt="Norway"
-													width={140}
-													loading="lazy"
-												/>
-											</Card.Section>
+					{isPending ? (
+						<p>Loading...</p>
+					) : (
+						<Grid gutter={24}>
+							{data.data?.length === 0 ? (
+								<Empty />
+							) : (
+								data?.data?.map((item) => (
+									<Grid.Col
+										key={item.course_id}
+										span={{ base: 12, sm: 6, md: 4 }}
+									>
+										<ScrollMotion isY={50}>
+											<Card shadow="sm" padding="md" radius="md">
+												<Card.Section>
+													<Image
+														src={item.thumbnail}
+														height={250}
+														alt="Norway"
+														width={140}
+														loading="lazy"
+													/>
+												</Card.Section>
 
-											<Group justify="space-between" my="md">
-												<Anchor
-													component={Link}
-													className={classes.title}
-													href={getUrlDetail(COURSE_DETAIL_URL, item.course_id)}
-												>
-													<TitleRender order={3} fz={{ base: 'lg', md: 'h3' }}>
-														{item.course_name}
-													</TitleRender>
-												</Anchor>
-											</Group>
+												<Group justify="space-between" my="md">
+													<Anchor
+														component={Link}
+														className={classes.title}
+														href={getUrlDetail(
+															COURSE_DETAIL_URL,
+															item.course_id,
+														)}
+													>
+														<TitleRender
+															order={3}
+															fz={{ base: 'lg', md: 'h3' }}
+														>
+															{item.course_name}
+														</TitleRender>
+													</Anchor>
+												</Group>
 
-											<Text lineClamp={4}>{item.description}</Text>
+												<Text lineClamp={4}>{item.description}</Text>
 
-											<Group align="center" gap={4} mt={'md'}>
-												<IconCalendar color={theme.colors.primary[4]} />{' '}
-												<Text c={theme.colors.gray[7]} tt={'lowercase'}>
-													{item.duration} {t('global.week')}
-												</Text>
-											</Group>
-										</Card>
-									</ScrollMotion>
-								</Grid.Col>
-							))
-						)}
+												<Group align="center" gap={4} mt={'md'}>
+													<IconCalendar color={theme.colors.primary[4]} />{' '}
+													<Text c={theme.colors.gray[7]} tt={'lowercase'}>
+														{item.duration} {t('global.week')}
+													</Text>
+												</Group>
+											</Card>
+										</ScrollMotion>
+									</Grid.Col>
+								))
+							)}
 
-						<Grid.Col span={12}>
-							<Flex justify={'center'}>
-								<Pagination
-									total={calcTotalPages(pageSize, data?.totalItems)}
-									value={+page}
-									onChange={handleChangePagination}
-									size={'lg'}
-									mt="sm"
-								/>
-							</Flex>
-						</Grid.Col>
-					</Grid>
+							<Grid.Col span={12}>
+								<Flex justify={'center'}>
+									<Pagination
+										total={calcTotalPages(pageSize, data?.totalItems)}
+										value={+page}
+										onChange={handleChangePagination}
+										size={'lg'}
+										mt="sm"
+									/>
+								</Flex>
+							</Grid.Col>
+						</Grid>
+					)}
 				</Box>
 			</Container>
 		</section>
