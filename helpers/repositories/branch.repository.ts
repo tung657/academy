@@ -1,4 +1,4 @@
-import { IBranch, ISearchBranches } from '@/types/branch';
+import { IBranch, ISearchBranch } from '@/types/branch';
 import { query } from '../db';
 
 export async function createBranch(branchModel: IBranch): Promise<any> {
@@ -18,17 +18,17 @@ export async function createBranch(branchModel: IBranch): Promise<any> {
 	}
 }
 
-export async function updateBranch(func: IBranch): Promise<any> {
+export async function updateBranch(branchModel: IBranch): Promise<any> {
 	try {
 		const sql = 'CALL UpdateBranch(?, ?, ?, ?, ?, ?, ?, @err_code, @err_msg)';
 		await query(sql, [
-			func.branch_id,
-			func.branch_name,
-			func.phone,
-			func.address,
-			func.email,
-			func.embed_map,
-			func.lu_user_id,
+			branchModel.branch_id,
+			branchModel.branch_name,
+			branchModel.phone,
+			branchModel.address,
+			branchModel.email,
+			branchModel.embed_map,
+			branchModel.lu_user_id,
 		]);
 		return true;
 	} catch (error: any) {
@@ -62,7 +62,7 @@ export async function getBranchById(id: number): Promise<any> {
 	}
 }
 
-export async function searchBranch(search: ISearchBranches): Promise<any[]> {
+export async function searchBranch(search: ISearchBranch): Promise<any[]> {
 	try {
 		const sql = 'CALL SearchBranch(?, ?, ?, @err_code, @err_msg)';
 

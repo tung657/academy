@@ -13,7 +13,10 @@
 		"create": "Thêm mới",
 		"edit": "Chỉnh sửa",
 		"detail": "Chi tiết",
+		"download": "Download",
+		"register": "Đăng ký",
 		"week": "Tuần",
+		"minutes": "phút đọc",
 		"share_with_fb": "Chia sẻ lên Facebook",
 		"share_with_x": "Chia sẻ lên Twitter",
 		"share_with_email": "Chia sẻ tới Email",
@@ -52,7 +55,8 @@
 			"name": "Họ và tên",
 			"email": "Email",
 			"phone": "Số điện thoại",
-			"message": "Lời nhắn"
+			"message": "Lời nhắn",
+			"note": "Lời nhắn"
 		},
 		"required": "Trường này là bắt buộc",
 		"phone": "Số điện thoại không đúng định dạng",
@@ -164,6 +168,54 @@
 		}
 	},
 
+	"cvs": {
+		"meta_title": "Tuyển dụng",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"note_form": "Lưu ý: Nén nhiều file thành một file zip trước khi upload.",
+		"heading": "Quản lý CV",
+		"title_create": "Thêm mới CV",
+		"title_update": "Chi tiết CV",
+		"title_delete": "Xoá CV",
+		"fields": {
+			"candidate_name": "Tên của bạn",
+			"email": "Email",
+			"phone_number": "Số điện thoại",
+			"fb_link": "Địa chỉ Facebook",
+			"position": "Vị trí ứng tuyển",
+			"cv": "CV đính kèm",
+			"salary_zero": "Thoản thuận",
+			"salary_text": "VNĐ (có thể thương lượng)",
+
+			"serial": "STT",
+			"job_name": "Tên tin tuyển dụng",
+			"icon": "Icon",
+			"type_time": "Loại thời gian",
+			"address": "Làm việc tại",
+			"salary": "Lương (VNĐ)",
+			"job_description": "Mô tả",
+			"status": "Trạng thái",
+			"action": "Thao tác"
+		}
+	},
+	"course-registers": {
+		"meta_title": "Đăng ký đào tạo",
+		"meta_description": "Viện trí tuệ nhân tạo Việt Nam",
+		"heading": "Danh sách đăng ký đào tạo",
+		"title_create": "Thêm mới đào tạo",
+		"title_update": "Chi tiết đào tạo",
+		"title_delete": "Xoá đào tạo",
+		"fields": {
+			"serial": "STT",
+			"full_name": "Người đăng ký",
+			"course_name": "Khóa đào tạo",
+			"phone_number": "SĐT",
+			"email": "Email",
+			"note": "Lời nhắn",
+			"accept": "Trạng thái",
+			"action": "Thao tác"
+		}
+	},
+
 	"products": {
 		"meta_title": "Sản phẩm",
 		"meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam",
@@ -210,6 +262,7 @@
 		"meta_title": "Đào tạo",
 		"meta_description": "Đào tạo viện trí tuệ nhân tạo Việt Nam",
 		"heading": "Quản lý đào tạo",
+		"title_register": "Đăng ký khóa học",
 		"title_create": "Thêm mới đào tạo",
 		"title_update": "Chi tiết đào tạo",
 		"title_delete": "Xoá đào tạo",
@@ -277,12 +330,14 @@
 		"title_update": "Chi tiết tuyển dụng",
 		"title_delete": "Xoá tuyển dụng",
 		"fields": {
-			"full_name": "Tên của bạn",
+			"candidate_name": "Tên của bạn",
 			"email": "Email",
-			"phone": "Số điện thoại",
-			"facebook": "Địa chỉ Facebook",
+			"phone_number": "Số điện thoại",
+			"fb_link": "Địa chỉ Facebook",
 			"position": "Vị trí ứng tuyển",
-			"file": "CV đính kèm",
+			"cv": "CV đính kèm",
+			"salary_zero": "Thoản thuận",
+			"salary_text": "VNĐ (có thể thương lượng)",
 
 			"serial": "STT",
 			"job_name": "Tên tin tuyển dụng",

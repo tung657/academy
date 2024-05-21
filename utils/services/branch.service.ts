@@ -1,6 +1,6 @@
 import { apiClient } from '@/helpers';
 import { IBaseDelete, IBaseResponse } from '@/types';
-import { IBranch, ISearchBranches } from '@/types/branch';
+import { IBranch, ISearchBranch } from '@/types/branch';
 import { OptionsData } from '@mantine/core';
 
 const prefix = '/branches';
@@ -11,8 +11,8 @@ export const getBranchDropdown = async (): Promise<OptionsData> => {
 	return res.data;
 };
 
-export const searchBranches = async (
-	params: ISearchBranches,
+export const searchBranch = async (
+	params: ISearchBranch,
 ): Promise<IBaseResponse<IBranch[]>> => {
 	const res = await apiClient?.post(`${prefix}/search`, params);
 

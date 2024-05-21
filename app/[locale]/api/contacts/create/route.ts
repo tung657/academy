@@ -10,12 +10,12 @@ export async function POST(request: NextRequest) {
 		let dbResults = await createContact(body);
 		if (dbResults) {
 			return NextResponse.json({
-				message: 'Thêm mới thành công',
+				message: 'Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.',
 				success: true,
 			});
 		} else {
 			return NextResponse.json({
-				message: 'Thêm mới thất bại',
+				message: 'Vui lòng thử lại sau!',
 				success: false,
 			});
 		}

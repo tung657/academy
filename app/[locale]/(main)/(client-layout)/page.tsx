@@ -3,7 +3,16 @@ import { CarouselHome } from '@/components/home/Carousel';
 import { MemberHome } from '@/components/home/MemberHome';
 import { MissionValue } from '@/components/home/MissionValue';
 import { Partner } from '@/components/home/Partner';
-import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { apiClient } from '@/helpers';
+import { IBaseResponse } from '@/types';
+import { IInstructor } from '@/types/instructor';
+import {
+	AppConfig,
+	BASE_URL,
+	ERROR_TIMEOUT,
+	ORIGIN_URL,
+	metaKeywords,
+} from '@/utils/config';
 import { Container } from '@mantine/core';
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -39,7 +48,30 @@ export async function generateMetadata(props: {
 	};
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+	let instructors: IBaseResponse<IInstructor[]> = (
+		await apiClient.post(
+			`/instructors/search`,
+			{},
+			{
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			},
+		)
+	).data as IBaseResponse<IInstructor[]>;
+
+	// DB sometimes returns error
+	while (instructors.message === ERROR_TIMEOUT && !instructors.success) {
+		instructors = (
+			await apiClient.post(
+				`/instructors/search`,
+				{},
+				{
+					baseURL: `${ORIGIN_URL}${BASE_URL}`,
+				},
+			)
+		).data as IBaseResponse<IInstructor[]>;
+	}
+
 	return (
 		<>
 			<CarouselHome />
@@ -49,7 +81,7 @@ export default function HomePage() {
 
 			<MissionValue />
 
-			<MemberHome />
+			<MemberHome data={instructors} />
 
 			<Partner />
 		</>

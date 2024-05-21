@@ -2,6 +2,7 @@
 
 import {
 	Affix,
+	Anchor,
 	Avatar,
 	Box,
 	Container,
@@ -23,15 +24,17 @@ import {
 	formatTimeSince,
 	getReadingTime,
 } from '@/utils/format-string';
-import { useRouter } from '@/libs/i18n-navigation';
+import { Link, useRouter } from '@/libs/i18n-navigation';
 import classes from './scss/product-detail.module.scss';
 import dayjs from 'dayjs';
+import { ORIGIN_URL } from '@/utils/config';
 
 interface Props {
 	dataDetail?: IProduct;
+	locale: string;
 }
 
-export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
+export const ProductDetail = ({ dataDetail, locale }: Props): JSX.Element => {
 	const t = useTranslations();
 	const router = useRouter();
 
@@ -39,9 +42,13 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 		<section>
 			<Container size="xl">
 				<Box pt={{ base: 24, lg: 24 }} pb={{ base: 50, lg: 60 }}>
-					<Flex gap={64}>
+					<Flex gap={64} justify={'space-between'}>
 						<Box>
-							<TitleRender order={2}>{dataDetail?.product_name}</TitleRender>
+							<TitleRender order={2}>
+								{locale === 'vi'
+									? dataDetail?.product_name
+									: dataDetail?.en_product_name}
+							</TitleRender>
 							<Flex justify={'space-between'} align={'center'} py={24}>
 								<Group gap={8}>
 									<Avatar
@@ -58,11 +65,17 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 												{formatTimeSince(
 													dataDetail?.created_date_time ||
 														dayjs().format(formatDatePost),
+													locale,
 												)}
 											</Text>
 											<Text mb={8}>.</Text>
 											<Text fz="sm">
-												{getReadingTime(dataDetail?.content + '')} phút đọc
+												{getReadingTime(
+													(locale === 'vi'
+														? dataDetail?.content
+														: dataDetail?.en_content) || '',
+												)}{' '}
+												{t('global.minutes')}
 											</Text>
 										</Group>
 									</div>
@@ -70,7 +83,9 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 								<ShareSocial />
 							</Flex>
 							<Group align="center">
-								<Text c={'gray.8'}>{dataDetail?.slogan}</Text>
+								<Text c={'gray.8'}>
+									{locale === 'vi' ? dataDetail?.slogan : dataDetail?.en_slogan}
+								</Text>
 								<ButtonBubble
 									variant="filled"
 									size="xs"
@@ -87,7 +102,10 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 							<TypographyStylesProvider mt={16}>
 								<div
 									dangerouslySetInnerHTML={{
-										__html: dataDetail?.content || '',
+										__html:
+											(locale === 'vi'
+												? dataDetail?.content
+												: dataDetail?.en_content) || '',
 									}}
 								/>
 							</TypographyStylesProvider>
@@ -115,12 +133,22 @@ export const ProductDetail = ({ dataDetail }: Props): JSX.Element => {
 							h={200}
 						>
 							<Box w={300}>
-								<Group gap={4} c={'gray.7'} className={classes.btnBack}>
-									<IconChevronLeft stroke={1.8} size={20} />
-									<UnstyledButton fw={700} onClick={() => router.back()}>
-										{t('global.btn_cancel')}
-									</UnstyledButton>
-								</Group>
+								<Anchor
+									component={Link}
+									className={classes.btnBack}
+									href={ORIGIN_URL}
+									onClick={(event) => {
+										event.preventDefault();
+										router.back();
+									}}
+								>
+									<Group align="center" gap={4}>
+										<IconChevronLeft stroke={1.8} size={18} />
+										<UnstyledButton fw={500}>
+											{t('global.btn_cancel')}
+										</UnstyledButton>
+									</Group>
+								</Anchor>
 								<Divider my={16} />
 								<Text fz={'md'} fw={700}>
 									{dataDetail?.created_user}

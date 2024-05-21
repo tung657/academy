@@ -1,12 +1,12 @@
 import { searchBranch } from '@/helpers/repositories/branch.repository';
-import { ISearchBranches } from '@/types/branch';
+import { ISearchBranch } from '@/types/branch';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
 	try {
-		const body = (await request.json()) as ISearchBranches;
+		const body = (await request.json()) as ISearchBranch;
 
 		let dbResults = await searchBranch(body);
 

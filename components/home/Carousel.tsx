@@ -25,6 +25,7 @@ import { TitleRender } from '../mantines/typographies/TitleRender';
 import { imgHome } from '@/assets/images/home';
 import { JOB_URL } from '@/libs/urls';
 import { Link } from '@/libs/i18n-navigation';
+import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 const data = [
 	{
@@ -98,44 +99,47 @@ function Card({ image, title, category, description }: Props) {
 				<Container size="xl" flex={1}>
 					<Grid align="center">
 						<Grid.Col span={{ base: 12, md: 8 }}>
-							<Text className={classes.category} size="xs">
-								{category}
-							</Text>
-							<TitleRender my="sm" c="white" order={1}>
-								{title}
-							</TitleRender>
-							<Text c="white">{description}</Text>
-
-							<Group mt="sm" gap={16}>
-								<Anchor component={Link} href={JOB_URL}>
-									<ButtonBubble
-										variant="filled"
-										size="md"
-										leftSection={<IconArrowRight />}
-									>
-										Gia nhập chúng tôi
-									</ButtonBubble>
-								</Anchor>
-							</Group>
+							<ScrollMotion isX>
+								<Text className={classes.category} size="xs">
+									{category}
+								</Text>
+								<TitleRender my="sm" c="white" order={1}>
+									{title}
+								</TitleRender>
+								<Text c="white">{description}</Text>
+								<Group mt="sm" gap={16}>
+									<Anchor component={Link} href={JOB_URL}>
+										<ButtonBubble
+											variant="filled"
+											size="md"
+											leftSection={<IconArrowRight />}
+										>
+											Gia nhập chúng tôi
+										</ButtonBubble>
+									</Anchor>
+								</Group>
+							</ScrollMotion>
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 4 }}>
-							<div className={classes.video} onClick={open}>
-								<AspectRatio ratio={16 / 9} mx="auto">
-									<Image
-										width={319}
-										height={184}
-										radius={'md'}
-										loading="lazy"
-										w={'100%'}
-										h={'100%'}
-										src={
-											'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
-										}
-										alt="about"
-									/>
-									<Overlay radius={'md'} opacity={0.35} />
-								</AspectRatio>
-							</div>
+							<ScrollMotion isX={50}>
+								<div className={classes.video} onClick={open}>
+									<AspectRatio ratio={16 / 9} mx="auto">
+										<Image
+											width={319}
+											height={184}
+											radius={'md'}
+											loading="lazy"
+											w={'100%'}
+											h={'100%'}
+											src={
+												'https://cdn.shopify.com/s/files/1/0458/5167/2729/t/2/assets/pf-c7e24593--videothumbnail_319x.jpg?v=1629451681'
+											}
+											alt="about"
+										/>
+										<Overlay radius={'md'} opacity={0.35} />
+									</AspectRatio>
+								</div>
+							</ScrollMotion>
 						</Grid.Col>
 					</Grid>
 				</Container>

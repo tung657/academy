@@ -5,9 +5,13 @@ import { SEARCH_CONTENT, SEARCH_PAGE } from '@/utils/config';
 import { TextInput, TextInputProps, ActionIcon, rem } from '@mantine/core';
 import { IconSearch, IconArrowRight } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+import { TransitionStartFunction, useRef } from 'react';
 
-export function InputSearch(props: TextInputProps) {
+interface Props extends TextInputProps {
+	startTransition?: TransitionStartFunction;
+}
+
+export function InputSearch(props: Props) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const pathname = usePathname();
@@ -22,7 +26,9 @@ export function InputSearch(props: TextInputProps) {
 		current.set(SEARCH_CONTENT, value);
 
 		router.push(`${pathname}?${current}`);
-		router.refresh();
+		props.startTransition
+			? props.startTransition(() => router.refresh())
+			: router.refresh();
 	};
 
 	return (

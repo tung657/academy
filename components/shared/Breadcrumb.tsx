@@ -20,6 +20,7 @@ import { HOME_URL } from '@/libs/urls';
 import { IconChevronRight } from '@tabler/icons-react';
 import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
 import { imgOthers } from '@/assets/images/others';
+import { ScrollMotion } from './motion/ScrollMotion';
 
 interface Props {
 	lastLabel?: string;
@@ -64,56 +65,68 @@ export const Breadcrumb = ({ lastLabel }: Props): JSX.Element => {
 					pt={{ base: rem(60), md: rem(70), lg: rem(100) }}
 					pb={{ base: rem(60), md: rem(70), lg: rem(100) }}
 				>
-					<TitleRender
-						order={1}
-						pb={16}
-						fz={{
-							base: '30px !important',
-							md: '32px !important',
-							lg: '35px !important',
-							xl: '44px !important',
-						}}
-					>
-						{breadcrumbs?.[breadcrumbs.length - 1]?.title}
-					</TitleRender>
+					<ScrollMotion once isX>
+						<TitleRender
+							order={1}
+							pb={16}
+							fz={{
+								base: '30px !important',
+								md: '32px !important',
+								lg: '35px !important',
+								xl: '44px !important',
+							}}
+						>
+							{breadcrumbs?.[breadcrumbs.length - 1]?.title}
+						</TitleRender>
+					</ScrollMotion>
 					<Breadcrumbs
 						className={classes.breadcrumb}
 						style={{ flexWrap: 'wrap' }}
 						separatorMargin={0}
 						separator={
-							<IconChevronRight
-								color="var(--mantine-color-primary-filled)"
-								stroke={1}
-							/>
+							<ScrollMotion
+								once
+								isX
+								delay={Math.floor(breadcrumbs.length / 2) * 0.1 + 0.1}
+							>
+								<IconChevronRight
+									color="var(--mantine-color-primary-filled)"
+									stroke={1}
+								/>
+							</ScrollMotion>
 						}
 					>
-						<Anchor
-							href={HOME_URL}
-							component={Link}
-							className={classes.link}
-							fw={500}
-						>
-							{t('home')}
-						</Anchor>
-						{breadcrumbs?.map((item, index) =>
-							item.href ? (
-								<Anchor
-									component={Link}
-									className={classes.link}
-									key={index}
-									href={item?.href || ''}
-									fw={500}
-								>
-									<Text fz={rem(16)} fw={600} p={4}>
+						<ScrollMotion once isX>
+							<Anchor
+								href={HOME_URL}
+								component={Link}
+								className={classes.link}
+								fw={500}
+							>
+								{t('home')}
+							</Anchor>
+						</ScrollMotion>
+						{breadcrumbs?.map((item, index) => (
+							<ScrollMotion once key={index} isX delay={0.2 * (index + 1)}>
+								{item.href ? (
+									<Anchor
+										component={Link}
+										className={classes.link}
+										key={index}
+										href={item?.href || ''}
+										fw={500}
+									>
+										<Text fz={rem(16)} fw={600} p={4}>
+											{item.title}
+										</Text>
+									</Anchor>
+								) : (
+									<Text fz={rem(16)} key={index} fw={400} c={'dimmed'} p={4}>
 										{item.title}
 									</Text>
-								</Anchor>
-							) : (
-								<Text fz={rem(16)} key={index} fw={400} c={'dimmed'} p={4}>
-									{item.title}
-								</Text>
-							),
-						)}
+								)}
+							</ScrollMotion>
+						))}
 					</Breadcrumbs>
 				</Flex>
 			</Container>

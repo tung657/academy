@@ -1,3 +1,5 @@
+'use client';
+
 import { usePathname } from '@/libs/i18n-navigation';
 import { ORIGIN_URL } from '@/utils/config';
 import { Anchor, Group, Menu, Text } from '@mantine/core';

@@ -30,6 +30,39 @@ export async function generateMetadata(props: Props) {
 		namespace: 'courses',
 	});
 
+	let courses: IBaseResponse<ICourse[]> = (
+		await apiClient.post(
+			`/courses/search`,
+			{
+				page_index: 1,
+				page_size: 1,
+			},
+			{
+				baseURL: `${ORIGIN_URL}${BASE_URL}`,
+			},
+		)
+	).data as IBaseResponse<ICourse[]>;
+
+	// DB sometimes returns error
+	while (courses.message === ERROR_TIMEOUT && !courses.success) {
+		courses = (
+			await apiClient.post(
+				`/courses/search`,
+				{
+					page_index: 1,
+					page_size: 1,
+				},
+				{
+					baseURL: `${ORIGIN_URL}${BASE_URL}`,
+				},
+			)
+		).data as IBaseResponse<ICourse[]>;
+	}
+
+	if (courses.message && !courses.success) return notFound();
+
+	const data = courses?.data?.[0];
+
 	return {
 		title: `${t('meta_title')} | ${AppConfig.name}`,
 		description: `${t('meta_description')}`,
@@ -41,7 +74,7 @@ export async function generateMetadata(props: Props) {
 			siteName: AppConfig.name,
 			images: [
 				{
-					url: '/assets/images/product/product.png',
+					url: data?.thumbnail,
 					width: 1800,
 					height: 1600,
 					alt: `${t('meta_title')} | ${AppConfig.name}`,
@@ -85,7 +118,11 @@ export default async function Course({ searchParams }: Props) {
 		).data as IBaseResponse<ICourse[]>;
 	}
 
+	console.log(courses.message);
+
 	if (courses.message && !courses.success) return notFound();
+
+	await new Promise((resolve) => setTimeout(resolve, 1000));
 
 	return (
 		<>

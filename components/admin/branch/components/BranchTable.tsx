@@ -10,8 +10,10 @@ import { useMemo } from 'react';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 
 import { RenderTableParams } from '@/libs/table';
-import { useSearchBranches } from '@/utils/query-loader/branch.loader';
+
+import { useSearchBranch } from '@/utils/query-loader/branch.loader';
 import { BranchModal } from './BranchModal';
+
 import { BranchDelete } from './BranchDelete';
 import { IBranch } from '@/types/branch';
 import { IconLink } from '@tabler/icons-react';
@@ -23,7 +25,7 @@ export const BranchTable = (): JSX.Element => {
 	const pageSize = searchParams.get(SEARCH_SIZE) || 10;
 	const searchContent = searchParams.get(SEARCH_CONTENT) || '';
 
-	const { data: dataBranchs, isFetching } = useSearchBranches({
+	const { data: dataBranchs, isFetching } = useSearchBranch({
 		params: {
 			page_index: +page,
 			page_size: +pageSize,
