@@ -1,19 +1,16 @@
 'use client';
 
 import { Flex, Text, Tooltip } from '@mantine/core';
-
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { useSearchContact } from '@/utils/query-loader/contact.loader';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-
 import { RenderTableParams } from '@/libs/table';
 import { IContact } from '@/types/contact';
 import { ContactDelete } from './ContactDelete';
-
-import { ContactModal } from './ContactModel';
+import { ContactModal } from './ContactModal';
 
 export const ContactTable = (): JSX.Element => {
 	const t = useTranslations();

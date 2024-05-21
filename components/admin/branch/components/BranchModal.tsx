@@ -138,7 +138,7 @@ export const BranchModal = ({ id }: Props): JSX.Element => {
 			<ModalRender
 				opened={opened}
 				onClose={handleCancel}
-				size={'500'}
+				size={'700'}
 				title={!id ? t('branches.title_create') : t('branches.title_update')}
 				footer={{
 					onOk: form.onSubmit(handleSubmit),
