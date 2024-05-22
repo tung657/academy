@@ -318,7 +318,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 						<Grid.Col span={12}>
 							<TagsInput
 								withAsterisk
-								maxTags={3}
+								maxTags={10}
 								label={t('instructors.fields.major')}
 								placeholder={t('instructors.fields.major')}
 								{...form.getInputProps('major')}
