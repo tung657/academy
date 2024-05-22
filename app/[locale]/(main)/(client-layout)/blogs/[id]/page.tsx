@@ -1,7 +1,7 @@
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { BlogDetail } from '@/components/blogs/detail/BlogDetail';
 import { IBlog } from '@/types/blog';
-import { fetchGetData } from '@/utils/services/base.service';
+import { fetchGetData, fetchSearchData } from '@/utils/services/base.service';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -55,6 +55,10 @@ export default async function BlogDetailPage({ params }: Props) {
 	let data: IBlog = await fetchGetData(`/blogs/get-by-id/${params.id}`);
 
 	if (data.message && !data.success) return notFound();
+
+	fetchSearchData('/blogs/update-view', {
+		blog_id: data?.blog_id,
+	});
 
 	return (
 		<>

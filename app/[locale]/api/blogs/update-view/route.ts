@@ -1,4 +1,4 @@
-import { updateBlog } from '@/helpers/repositories/blog.repository';
+import { updateViewBlog } from '@/helpers/repositories/blog.repository';
 import { IBlog } from '@/types/blog';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
 	try {
 		const body = (await request.json()) as IBlog;
-		let dbResults = await updateBlog(body);
+		let dbResults = await updateViewBlog(body);
 		if (dbResults) {
 			return NextResponse.json({
 				message: 'Cập nhật thành công',
