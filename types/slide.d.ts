@@ -1,10 +1,15 @@
-import { IBaseData } from './global';
+import { IBaseData, IBaseSearch } from './global';
 
 export interface ISlide extends IBaseData {
-	slide_id: string;
-	slide_caption: string;
-	image_big: string;
-	image_small: string;
+	slide_id: number;
+	caption: string;
+	btn_label?: string;
+	btn_to?: string;
+	big_image: string;
+	small_image?: string;
+	preview_thumbnail?: string;
+	preview_link?: string;
 	order: number;
-	link_to: string;
 }
+
+export interface ISearchSlide extends IBaseSearch {}

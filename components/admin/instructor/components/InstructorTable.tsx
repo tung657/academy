@@ -53,12 +53,12 @@ export const InstructorTable = (): JSX.Element => {
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},
-				Cell: ({ renderedCellValue, row: { original } }) => (
+				Cell: ({ row: { original } }) => (
 					<Image
 						mah={50}
 						fit="contain"
 						loading="lazy"
-						src={renderedCellValue}
+						src={original.avatar}
 						alt={original.instructor_name}
 					/>
 				),

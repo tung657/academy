@@ -14,30 +14,26 @@ export const AboutHome = (): JSX.Element => {
 					<Grid.Col span={{ base: 12, md: 6 }}>
 						<ScrollMotion isY>
 							<TitleRender order={2} pb={16}>
-								Chúng tôi là AIA
+								Chúng tôi là Viện trí tuệ nhân tạo Việt Nam
 							</TitleRender>
 						</ScrollMotion>
 						<ScrollMotion isX>
-							<Text pb={16}>
-								Được thành lập vào năm 2008, AIA là một trong số ít những doanh
-								nghiệp Việt Nam đầu tiên thành công trong việc phát triển những
-								phần mềm mã nguồn mở, phục vụ hàng trăm ngàn khách hàng trên
-								khắp thế giới. Chúng tôi tự hào có được một đội ngũ trẻ, chuyên
-								nghiệp và chuyên sâu về lĩnh vực lập trình, thiết kế và
-								marketing.
-							</Text>
-							<Text pb={16}>
-								Ai trong chúng tôi cũng có một niềm đam mê lớn với công nghệ, nỗ
-								lực không ngừng để chăm sóc khách hàng và đạt được mơ ước xây
-								dựng và mang đến những sản phẩm tiên tiến nhất cho thế giới.
-							</Text>
-							<Text fz={22} fw={700} c={'primary'}>
-								“Brave to be remarkable!”
+							<Text pb={16} ta={'justify'}>
+								Viện trí tuệ nhân tạo Việt Nam là tập thể những con người với
+								lòng nhiệt huyết và khát vọng mang đến thị trường sự sáng tạo và
+								đổi mới. Chúng tôi là đội ngũ lớn mạnh tự tin với năng lực công
+								nghệ, sản phẩm và chất lượng dịch vụ. Trải qua hơn 5 năm hình
+								thành và phát triển, Viện Trí tuệ nhân tạo Việt Nam vẫn luôn
+								khẳng định vai trò tiên phong trong lĩnh vực AI và chuyển đổi số
+								tại Việt Nam, đồng hành cùng với đó là đội ngũ chuyên gia hàng
+								đầu trong lĩnh vực. Chúng tôi không ngừng cố gắng, không ngừng
+								nỗ lực để đáp ứng mọi nhu cầu của khách hàng, mang đến khách
+								hàng những trải nghiệm sản phẩm và dịch vụ tốt nhất.
 							</Text>
 						</ScrollMotion>
 					</Grid.Col>
 					<Grid.Col span={{ base: 12, md: 6 }}>
-						<ScrollMotion isX={50}>
+						<ScrollMotion isX={16}>
 							<Image
 								src={imgHome.aboutMember}
 								width={2000}

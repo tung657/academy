@@ -184,7 +184,7 @@ function ColorRender({
 	return (
 		<>
 			<AppShell.Section
-				mt={-42}
+				mt={-10}
 				style={{ zIndex: 1 }}
 				bg={colorScheme === 'light' ? 'white' : 'dark'}
 			>

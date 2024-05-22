@@ -83,9 +83,18 @@ export function getReadingTime(html: string): number {
 export const handleGetKeyYB = (yb?: string): string => {
 	if (!yb) return '';
 
-	const list = yb.split('/');
+	let result = '';
+	const [value] = yb.split('/').reverse();
+	switch (true) {
+		case value.includes('v='):
+			result = value.split('=').reverse()[0];
+			break;
+		case value.includes('?si='):
+			result = value.split('?si=')[0];
+			break;
+	}
 
-	return list[list.length - 1];
+	return result || value;
 };
 
 export const removeVietnameseTones = (str: string) => {

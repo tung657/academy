@@ -4,7 +4,7 @@ import {
 	createSlide,
 	deleteSlide,
 	getSlideById,
-	searchSlides,
+	searchSlide,
 	updateSlide,
 } from '../services/slide.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
@@ -14,7 +14,7 @@ import {
 	QueryConfig,
 } from './react-query';
 
-const CACHE_SLIDES = {
+const CACHE_SLIDE = {
 	SEARCH: 'SLIDES',
 	DETAIL: 'SLIDE_DETAIL',
 };
@@ -29,23 +29,23 @@ const useGetSlideById = ({
 }) => {
 	return useQuery<ExtractFnReturnType<typeof getSlideById>>({
 		...config,
-		queryKey: [CACHE_SLIDES.DETAIL, id],
+		queryKey: [CACHE_SLIDE.DETAIL, id],
 		queryFn: () => getSlideById(id),
 	});
 };
 
 // Search list
-const useSearchSlides = ({
+const useSearchSlide = ({
 	params,
 	config,
 }: {
 	params: AxiosRequestConfig['params'];
-	config?: QueryConfig<typeof searchSlides>;
+	config?: QueryConfig<typeof searchSlide>;
 }) => {
-	return useQuery<ExtractFnReturnType<typeof searchSlides>>({
+	return useQuery<ExtractFnReturnType<typeof searchSlide>>({
 		...config,
-		queryKey: [CACHE_SLIDES.SEARCH, params],
-		queryFn: () => searchSlides(params),
+		queryKey: [CACHE_SLIDE.SEARCH, params],
+		queryFn: () => searchSlide(params),
 	});
 };
 
@@ -95,10 +95,10 @@ const useDeleteSlide = ({
 };
 
 export {
-	CACHE_SLIDES,
+	CACHE_SLIDE,
 	useCreateSlide,
 	useDeleteSlide,
 	useGetSlideById,
-	useSearchSlides,
+	useSearchSlide,
 	useUpdateSlide,
 };

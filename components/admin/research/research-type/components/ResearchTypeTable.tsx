@@ -46,14 +46,14 @@ export const ResearchTypeTable = (): JSX.Element => {
 					align: 'center',
 				},
 				enableSorting: false,
-				Cell: ({ renderedCellValue, row: { original } }) => (
+				Cell: ({ row: { original } }) => (
 					<Center>
 						<Image
 							w={80}
 							mah={70}
 							fit="contain"
 							loading="lazy"
-							src={renderedCellValue}
+							src={original.thumbnail}
 							alt={original.research_type_name}
 						/>
 					</Center>

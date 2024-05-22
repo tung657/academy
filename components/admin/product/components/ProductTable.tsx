@@ -48,13 +48,13 @@ export const ProductTable = (): JSX.Element => {
 					align: 'center',
 				},
 				enableSorting: false,
-				Cell: ({ renderedCellValue, row: { original } }) => (
+				Cell: ({ row: { original } }) => (
 					<Image
 						w={70}
 						mah={50}
 						fit="contain"
 						loading="lazy"
-						src={renderedCellValue}
+						src={original.thumbnail}
 						alt={original.product_name}
 					/>
 				),

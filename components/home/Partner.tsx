@@ -3,26 +3,53 @@
 import { useRef } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
-import { Box, Card, Text, Flex, Container, Stack, Avatar } from '@mantine/core';
+import { Box, Card, Container, Image } from '@mantine/core';
 
 import classes from './scss/partner.module.scss';
 import { imgHome } from '@/assets/images/home';
 import { TitleCombo } from '../mantines/typographies/TitleCombo';
-import { IconQuote } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
+import { VALUE_MOBILE } from '@/utils/config';
 
 export const Partner = (): JSX.Element => {
 	const autoplay = useRef(Autoplay({ delay: 5000 }));
-	const isMobile = useMediaQuery('(max-width: 62em)');
+	const isMobile = useMediaQuery(VALUE_MOBILE);
 
 	return (
 		<section className={classes.section}>
 			<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 				<Container size="xl">
-					<TitleCombo
-						titleSub="TESTIMONIALS"
+					<TitleCombo titleSub="Đối tác" titleChildren="Đối tác của AIA" />
+					<Carousel
+						mt={'md'}
+						plugins={[autoplay.current]}
+						onMouseEnter={autoplay.current.stop}
+						onMouseLeave={autoplay.current.reset}
+						slidesToScroll={isMobile ? 2 : 5}
+						slideSize={{ base: '50%', md: '20%' }}
+						slideGap="sm"
+						loop
+					>
+						{[...Array(6)].map((_, index) => (
+							<Carousel.Slide key={index}>
+								<Card px={0} pb={0} className={classes.card}>
+									<Image src={imgHome.aboutMember} alt="partner" />
+								</Card>
+							</Carousel.Slide>
+						))}
+
+						{/* ...other slides */}
+					</Carousel>
+				</Container>
+			</Box>
+		</section>
+	);
+};
+
+/*
+ <TitleCombo
+						titleSub="Đối tác"
 						titleChildren="Chia sẻ của khách hàng về AIA"
-						description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 					/>
 					<Carousel
 						mt={'md'}
@@ -82,10 +109,5 @@ export const Partner = (): JSX.Element => {
 							</Carousel.Slide>
 						))}
 
-						{/* ...other slides */}
-					</Carousel>
-				</Container>
-			</Box>
-		</section>
-	);
-};
+						</Carousel> 
+*/

@@ -44,7 +44,6 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 						<TitleCombo
 							titleSub="TEAM MEMBERS"
 							titleChildren={'Đội ngũ chuyên gia của chúng tôi'}
-							description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 						/>
 
 						<Grid mt={24} gutter={32}>
@@ -56,7 +55,9 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 								>
 									<Box className={classes.imgBox}>
 										<Image
+<<<<<<< components/home/MemberHome.tsx
 											height={300}
+>>>>>>> components/home/MemberHome.tsx
 											maw={'100%'}
 											src={item.avatar}
 											width={550}
@@ -69,6 +70,8 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 												<Anchor
 													href={item.fb_link}
 													aria-label={item.instructor_name}
+													target="_blank"
+													rel="noopener"
 												>
 													<ThemeIcon
 														className={classes.socialItem}

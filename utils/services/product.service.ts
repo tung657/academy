@@ -1,11 +1,10 @@
 import { apiClient } from '@/helpers';
-import { IBaseDelete, IBaseResponse } from '@/types';
+import { IBaseDelete, IBaseDropdown, IBaseResponse } from '@/types';
 import { IProduct, ISearchProduct } from '@/types/product';
-import { OptionsData } from '@mantine/core';
 
 const prefix = '/products';
 
-export const getProductDropdown = async (): Promise<OptionsData> => {
+export const getProductDropdown = async (): Promise<IBaseDropdown> => {
 	const res = await apiClient?.get(`${prefix}/dropdown`);
 
 	return res.data;

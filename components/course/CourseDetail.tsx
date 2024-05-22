@@ -51,6 +51,7 @@ import { ICourse } from '@/types/course';
 import { handleGetKeyYB } from '@/utils/format-string';
 import { useTranslations } from 'next-intl';
 import { CourseRegisterForm } from './CourseRegisterForm';
+import { VALUE_MOBILE } from '@/utils/config';
 
 interface Props {
 	data?: ICourse;
@@ -59,7 +60,7 @@ interface Props {
 
 export const CourseDetail = ({ data }: Props): JSX.Element => {
 	const t = useTranslations();
-	const isMobile = useMediaQuery('(max-width: 62em)');
+	const isMobile = useMediaQuery(VALUE_MOBILE);
 	const [showInfo, setShowInfo] = useState<string[]>([]);
 	const [scroll] = useWindowScroll();
 	const { scrollIntoView: scrollOverview, targetRef: overviewRef } =

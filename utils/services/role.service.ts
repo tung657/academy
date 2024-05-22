@@ -1,10 +1,15 @@
 import { apiClient } from '@/helpers';
-import { IBaseDelete, IBaseResponse, IRole, ISearchRoles } from '@/types';
-import { OptionsData } from '@mantine/core';
+import {
+	IBaseDelete,
+	IBaseDropdown,
+	IBaseResponse,
+	IRole,
+	ISearchRoles,
+} from '@/types';
 
 const prefix = '/roles';
 
-export const getRoleDropdown = async (): Promise<OptionsData> => {
+export const getRoleDropdown = async (): Promise<IBaseDropdown> => {
 	const res = await apiClient?.get(`${prefix}/dropdown`);
 
 	return res.data;

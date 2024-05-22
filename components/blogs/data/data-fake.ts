@@ -1,6 +1,6 @@
 export const dataTypesBlogs = [
 	{
-		id: 10,
+		value: '10',
 		label: 'Others',
 	},
 ];
@@ -8,7 +8,7 @@ export const dataTypesBlogs = [
 export const dataBlogs = [
 	{
 		id: 1,
-		type: 1,
+		type: '1',
 		title: 'Bốn nguyên tắc khi học code',
 		author: 'Le Minh',
 		avatar: '',
@@ -67,7 +67,7 @@ export const dataBlogs = [
 	},
 	{
 		id: 2,
-		type: 2,
+		type: '2',
 		title: 'Bốn nguyên tắc khi học code',
 		author: 'Le Minh',
 		avatar: '',
