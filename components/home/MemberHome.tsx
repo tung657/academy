@@ -79,7 +79,7 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 												loading="lazy"
 												alt={item.instructor_name}
 											/>
-											<Flex className={classes.socials}>
+											<Flex className={`${classes.socials} ${classes.mobile}`}>
 												{item.fb_link && (
 													<Anchor
 														href={item.fb_link}

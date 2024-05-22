@@ -27,7 +27,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,
-			url: `${ORIGIN_URL}/course`,
+			url: `${ORIGIN_URL}/research`,
 			siteName: AppConfig.name,
 			images: [
 				{

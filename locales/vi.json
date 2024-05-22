@@ -232,6 +232,26 @@
 		}
 	},
 
+	"blog-management": {
+		"heading": "Quản lý tin tức",
+		"title_create": "Thêm mới tin tức",
+		"title_update": "Chi tiết tin tức",
+		"title_delete": "Xoá tin tức",
+		"fields": {
+			"serial": "STT",
+			"title": "Tiêu đề",
+			"thumbnail": "Ảnh đại diện",
+			"meta_content": "Tóm tắt",
+			"read_time": "Phút đọc",
+			"research_type_name": "Tag",
+			"viewed": "Lượt xem",
+			"created_user": "Tác giả",
+			"created_date_time": "Ngày đăng",
+			"content": "Nội dung chính",
+			"action": "Thao tác"
+		}
+	},
+
 	"products": {
 		"meta_title": "Sản phẩm",
 		"meta_description": "Sản phẩm viện trí tuệ nhân tạo Việt Nam",

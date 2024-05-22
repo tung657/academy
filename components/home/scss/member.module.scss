@@ -21,12 +21,18 @@
 				transition: 0.3s;
 				&:hover {
 					background-color: var(--mantine-color-white);
-					
+
 					svg {
 						transition: 0.3s;
 						fill: var(--mantine-color-primary-filled);
 					}
 				}
+			}
+
+			&.mobile {
+				z-index: 0 !important;
+				opacity: 1 !important;
+				transform: translateY(0) !important;
 			}
 		}
 
