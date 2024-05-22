@@ -12,7 +12,6 @@ import {
 	Overlay,
 	Paper,
 	TypographyStylesProvider,
-	useMantineTheme,
 } from '@mantine/core';
 import Autoplay from 'embla-carousel-autoplay';
 import classes from './scss/carousel.module.scss';
@@ -25,6 +24,7 @@ import { Link } from '@/libs/i18n-navigation';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 import { IBaseResponse, ISlide } from '@/types';
 import { handleGetKeyYB } from '@/utils/format-string';
+import { VALUE_MOBILE } from '@/utils/config';
 
 interface Props {
 	data: IBaseResponse<ISlide[]>;
@@ -35,8 +35,8 @@ interface PropsCard extends ISlide {
 }
 
 export const CarouselHome = ({ data }: Props): JSX.Element => {
-	const theme = useMantineTheme();
-	const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
+	console.log(data);
+	const mobile = useMediaQuery(VALUE_MOBILE);
 	const autoplay = useRef(Autoplay({ delay: 5000 }));
 	const slides = data?.data?.map((item, index) => (
 		<Carousel.Slide key={index}>
@@ -88,19 +88,21 @@ function Card({ mobile, ...props }: PropsCard) {
 									dangerouslySetInnerHTML={{ __html: props.caption }}
 								></TypographyStylesProvider>
 							</ScrollMotion>
-							<ScrollMotion isX delay={0.2}>
-								<Group mt="sm" gap={16}>
-									<Anchor component={Link} href={props.btn_to}>
-										<ButtonBubble
-											variant="filled"
-											size="md"
-											leftSection={<IconArrowRight />}
-										>
-											{props.btn_label}
-										</ButtonBubble>
-									</Anchor>
-								</Group>
-							</ScrollMotion>
+							{props.btn_label && (
+								<ScrollMotion isX delay={0.2}>
+									<Group mt="sm" gap={16}>
+										<Anchor component={Link} href={props.btn_to || ''}>
+											<ButtonBubble
+												variant="filled"
+												size="md"
+												leftSection={<IconArrowRight />}
+											>
+												{props.btn_label}
+											</ButtonBubble>
+										</Anchor>
+									</Group>
+								</ScrollMotion>
+							)}
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 3 }}></Grid.Col>
 						{props.preview_thumbnail && (

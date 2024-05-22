@@ -130,12 +130,12 @@ export const SlideTable = (): JSX.Element => {
 					<Flex justify={'center'} gap={8}>
 						<SlideModal id={original.slide_id} />
 						<SlideDelete
-							label={original.slide_id + original.btn_label}
+							label={original.slide_id + ''}
 							id={original.slide_id}
 							path={[
 								original.big_image,
-								original.small_image,
-								original.preview_thumbnail,
+								original?.small_image + '',
+								original?.preview_thumbnail + '',
 							]}
 						/>
 					</Flex>

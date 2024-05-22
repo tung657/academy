@@ -107,8 +107,6 @@ export const SlideModal = ({ id }: Props): JSX.Element => {
 		},
 	});
 
-	console.log(files.map((file) => file?.name));
-
 	const handleSubmit = async (values: any) => {
 		if (!dataEditor || !(files[0] || values.big_image)) {
 			getNotifications('warning', t, t('validation.warning'));
@@ -133,14 +131,14 @@ export const SlideModal = ({ id }: Props): JSX.Element => {
 			if (files[1]) {
 				const formData = new FormData();
 				formData.append('file', files[1], removeVietnameseTones(files[1].name));
-				paths.push(dataPost.small_image);
+				dataPost.small_image && paths.push(dataPost.small_image);
 				const dataUpload = await uploadFile(formData);
 				if (dataUpload?.url) dataPost.small_image = dataUpload.url;
 			}
 			if (files[2]) {
 				const formData = new FormData();
 				formData.append('file', files[2], removeVietnameseTones(files[2].name));
-				paths.push(dataPost.preview_thumbnail);
+				dataPost.preview_thumbnail && paths.push(dataPost.preview_thumbnail);
 				const dataUpload = await uploadFile(formData);
 				if (dataUpload?.url) dataPost.preview_thumbnail = dataUpload.url;
 			}
