@@ -58,8 +58,9 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 								plugins={[autoplay.current]}
 								onMouseEnter={autoplay.current.stop}
 								onMouseLeave={autoplay.current.reset}
-								slidesToScroll={isMobile ? 'auto' : 1}
+								slidesToScroll={'auto'}
 								slideSize={{ base: '50%', sm: '33.33%', md: '25%', lg: '20%' }}
+								dragFree
 								slideGap="sm"
 								loop
 							>
