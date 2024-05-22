@@ -106,7 +106,7 @@ function Card({ mobile, ...props }: PropsCard) {
 							)}
 						</Grid.Col>
 						<Grid.Col span={{ base: 12, md: 3 }}></Grid.Col>
-						{props.preview_thumbnail && (
+						{props.preview_link && (
 							<Grid.Col span={{ base: 12, md: 4 }}>
 								<ScrollMotion isX={16}>
 									<div className={classes.video} onClick={open}>
