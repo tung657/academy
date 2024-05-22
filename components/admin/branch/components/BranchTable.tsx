@@ -10,8 +10,10 @@ import { useMemo } from 'react';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 
 import { RenderTableParams } from '@/libs/table';
+
 import { useSearchBranch } from '@/utils/query-loader/branch.loader';
-import { BranchModal } from './BranchModel';
+import { BranchModal } from './BranchModal';
+
 import { BranchDelete } from './BranchDelete';
 import { IBranch } from '@/types/branch';
 import { IconLink } from '@tabler/icons-react';
