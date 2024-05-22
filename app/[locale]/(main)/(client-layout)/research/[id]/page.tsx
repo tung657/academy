@@ -1,16 +1,10 @@
 import { ResearchDetail } from '@/components/research/ResearchDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { apiClient } from '@/helpers';
 import { IBaseResponse } from '@/types';
 import { IResearch } from '@/types/research';
-import {
-	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
-	ORIGIN_URL,
-	metaKeywords,
-} from '@/utils/config';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { transformHtmlToString } from '@/utils/format-string';
+import { fetchGetData } from '@/utils/services/base.service';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -24,20 +18,10 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
-	let data = (
-		await apiClient.get(`/researches/get-by-parent/${params.id}`, {
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		})
-	).data as IBaseResponse<IResearch[]>;
+	let data: IBaseResponse<IResearch[]> = await fetchGetData(
+		`/researches/get-by-parent/${params.id}`,
+	);
 
-	// DB sometimes returns error
-	while (data.message === ERROR_TIMEOUT && !data.success) {
-		data = (
-			await apiClient.get(`/researches/get-by-parent/${params.id}`, {
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			})
-		).data as IBaseResponse<IResearch[]>;
-	}
 	if (data.message && !data.success) return notFound();
 
 	// if (!data || data.message) return notFound();
@@ -74,20 +58,10 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ResearchDetailPage({ params }: Props) {
-	let data = (
-		await apiClient.get(`/researches/get-by-parent/${params.id}`, {
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		})
-	).data as IBaseResponse<IResearch[]>;
+	let data: IBaseResponse<IResearch[]> = await fetchGetData(
+		`/researches/get-by-parent/${params.id}`,
+	);
 
-	// DB sometimes returns error
-	while (data.message === ERROR_TIMEOUT && !data.success) {
-		data = (
-			await apiClient.get(`/researches/get-by-parent/${params.id}`, {
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			})
-		).data;
-	}
 	if (data.message && !data.success) return notFound();
 
 	return (

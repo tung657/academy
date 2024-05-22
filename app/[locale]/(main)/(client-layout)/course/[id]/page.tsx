@@ -1,14 +1,8 @@
 import { CourseDetail } from '@/components/course/CourseDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { apiClient } from '@/helpers';
 import { ICourse } from '@/types/course';
-import {
-	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
-	ORIGIN_URL,
-	metaKeywords,
-} from '@/utils/config';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { fetchGetData } from '@/utils/services/base.service';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -20,20 +14,8 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
-	let data = (
-		await apiClient.get(`/courses/get-by-id/${params.id}`, {
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		})
-	).data as ICourse;
+	let data: ICourse = await fetchGetData(`/courses/get-by-id/${params.id}`);
 
-	// DB sometimes returns error
-	while (data.message === ERROR_TIMEOUT && !data.success) {
-		data = (
-			await apiClient.get(`/courses/get-by-id/${params.id}`, {
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			})
-		).data as ICourse;
-	}
 	if (data.message && !data.success) return notFound();
 
 	// if (!data || data.message) return notFound();
@@ -69,20 +51,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function CourseDetailPage({ params }: Props) {
-	let data = (
-		await apiClient.get(`/courses/get-by-id/${params.id}`, {
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		})
-	).data as ICourse;
+	let data: ICourse = await fetchGetData(`/courses/get-by-id/${params.id}`);
 
-	// DB sometimes returns error
-	while (data.message === ERROR_TIMEOUT && !data.success) {
-		data = (
-			await apiClient.get(`/courses/get-by-id/${params.id}`, {
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			})
-		).data as ICourse;
-	}
 	if (data.message && !data.success) return notFound();
 
 	return (

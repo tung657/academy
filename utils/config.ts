@@ -25,6 +25,7 @@ export const ORIGIN_URL = process.env.NEXT_PUBLIC_ORIGIN || '';
 export const ERROR_TIMEOUT = 'read ECONNRESET';
 export const ERROR_MANY = 'Too many connections';
 
+export const VALUE_SM = '(max-width: 48em)';
 export const VALUE_MOBILE = '(max-width: 62em)';
 
 export const LOCAL_TOKEN = storagePrefix + 'TOKEN';

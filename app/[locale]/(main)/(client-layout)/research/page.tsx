@@ -1,15 +1,9 @@
 import { ResearchList } from '@/components/research/ResearchList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { apiClient } from '@/helpers';
 import { IBaseResponse } from '@/types';
 import { IResearchType } from '@/types/research-type';
-import {
-	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
-	ORIGIN_URL,
-	metaKeywords,
-} from '@/utils/config';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { fetchSearchData } from '@/utils/services/base.service';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
@@ -19,28 +13,11 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 		namespace: 'researches',
 	});
 
-	let researches: IBaseResponse<IResearchType[]> = (
-		await apiClient.post(
-			`/research-types/search`,
-			{ page_index: 1, page_size: 1 },
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<IResearchType[]>;
+	let researches: IBaseResponse<IResearchType[]> = await fetchSearchData(
+		'/researches/search',
+		{ page_index: 1, page_size: 1 },
+	);
 
-	// DB sometimes returns error
-	while (researches.message === ERROR_TIMEOUT && !researches.success) {
-		researches = (
-			await apiClient.post(
-				`/research-types/search`,
-				{ page_index: 1, page_size: 1 },
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<IResearchType[]>;
-	}
 	if (researches.message && !researches.success) return notFound();
 
 	return {
@@ -67,28 +44,9 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 export default async function ResearchPage() {
-	let researches: IBaseResponse<IResearchType[]> = (
-		await apiClient.post(
-			`/research-types/search`,
-			{},
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<IResearchType[]>;
+	let researches: IBaseResponse<IResearchType[]> =
+		await fetchSearchData('/researches/search');
 
-	// DB sometimes returns error
-	while (researches.message === ERROR_TIMEOUT && !researches.success) {
-		researches = (
-			await apiClient.post(
-				`/research-types/search`,
-				{},
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<IResearchType[]>;
-	}
 	if (researches.message && !researches.success) return notFound();
 
 	return (

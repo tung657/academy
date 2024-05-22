@@ -86,6 +86,7 @@ function Card({ mobile, ...props }: PropsCard) {
 							<ScrollMotion isX>
 								<TypographyStylesProvider
 									dangerouslySetInnerHTML={{ __html: props.caption }}
+									c="white"
 								></TypographyStylesProvider>
 							</ScrollMotion>
 							{props.btn_label && (

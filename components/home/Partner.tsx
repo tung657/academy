@@ -6,12 +6,17 @@ import { Carousel } from '@mantine/carousel';
 import { Box, Card, Container, Image } from '@mantine/core';
 
 import classes from './scss/partner.module.scss';
-import { imgHome } from '@/assets/images/home';
 import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import { useMediaQuery } from '@mantine/hooks';
 import { VALUE_MOBILE } from '@/utils/config';
+import { IBaseResponse } from '@/types';
+import { IPartner } from '@/types/partner';
 
-export const Partner = (): JSX.Element => {
+interface Props {
+	data: IBaseResponse<IPartner[]>;
+}
+
+export const Partner = ({ data }: Props): JSX.Element => {
 	const autoplay = useRef(Autoplay({ delay: 5000 }));
 	const isMobile = useMediaQuery(VALUE_MOBILE);
 
@@ -30,15 +35,18 @@ export const Partner = (): JSX.Element => {
 						slideGap="sm"
 						loop
 					>
-						{[...Array(6)].map((_, index) => (
-							<Carousel.Slide key={index}>
-								<Card px={0} pb={0} className={classes.card}>
-									<Image src={imgHome.aboutMember} alt="partner" />
+						{data?.data?.map((item) => (
+							<Carousel.Slide key={item.partner_id}>
+								<Card
+									px={0}
+									pb={0}
+									className={classes.card}
+									title={item.partner_name}
+								>
+									<Image src={item.thumbnail} alt="partner" loading="lazy" />
 								</Card>
 							</Carousel.Slide>
 						))}
-
-						{/* ...other slides */}
 					</Carousel>
 				</Container>
 			</Box>

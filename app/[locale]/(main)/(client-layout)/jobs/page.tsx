@@ -1,16 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import {
-	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
-	ORIGIN_URL,
-	metaKeywords,
-} from '@/utils/config';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { JobList } from '@/components/job/JobList';
 import { IBaseResponse } from '@/types';
 import { IJob } from '@/types/job';
-import { apiClient } from '@/helpers';
 import { notFound } from 'next/navigation';
+import { fetchSearchData } from '@/utils/services/base.service';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({
@@ -18,28 +12,12 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 		namespace: 'jobs',
 	});
 
-	let jobs: IBaseResponse<IJob[]> = (
-		await apiClient.post(
-			`/jobs/search`,
-			{ active_flag: 1 },
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<IJob[]>;
+	let jobs: IBaseResponse<IJob[]> = await fetchSearchData('/jobs/search', {
+		active_flag: 1,
+		page_index: 1,
+		page_size: 1,
+	});
 
-	// DB sometimes returns error
-	while (jobs.message === ERROR_TIMEOUT && !jobs.success) {
-		jobs = (
-			await apiClient.post(
-				`/jobs/search`,
-				{ active_flag: 1 },
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<IJob[]>;
-	}
 	if (jobs.message && !jobs.success) return notFound();
 
 	return {
@@ -66,28 +44,10 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 export default async function Job() {
-	let jobs: IBaseResponse<IJob[]> = (
-		await apiClient.post(
-			`/jobs/search`,
-			{ active_flag: 1 },
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<IJob[]>;
+	let jobs: IBaseResponse<IJob[]> = await fetchSearchData('/jobs/search', {
+		active_flag: 1,
+	});
 
-	// DB sometimes returns error
-	while (jobs.message === ERROR_TIMEOUT && !jobs.success) {
-		jobs = (
-			await apiClient.post(
-				`/jobs/search`,
-				{ active_flag: 1 },
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<IJob[]>;
-	}
 	if (jobs.message && !jobs.success) return notFound();
 
 	return (

@@ -381,6 +381,18 @@
 			"action": "Thao tác"
 		}
 	},
+	"partners": {
+		"heading": "Quản lý đối tác",
+		"title_create": "Thêm mới đối tác",
+		"title_update": "Chi tiết đối tác",
+		"title_delete": "Xoá đối tác",
+		"fields": {
+			"serial": "STT",
+			"partner_name": "Tên đối tác",
+			"thumbnail": "Ảnh đại diện",
+			"action": "Thao tác"
+		}
+	},
 	"slides": {
 		"heading": "Quản lý slide",
 		"title_create": "Thêm mới slide",
