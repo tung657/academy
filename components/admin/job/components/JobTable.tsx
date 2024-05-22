@@ -32,6 +32,7 @@ export const JobTable = (): JSX.Element => {
 			search_content: searchContent,
 		},
 	});
+	console.log(dataJobs?.data);
 
 	const handleToggleActive = (checked: boolean, job_id: number) => {
 		toggleActiveJob({
@@ -52,7 +53,7 @@ export const JobTable = (): JSX.Element => {
 			{
 				accessorKey: 'serial', //access nested data with dot notation
 				header: t('jobs.fields.serial'),
-				size: 50,
+				size: 60,
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},
@@ -67,13 +68,13 @@ export const JobTable = (): JSX.Element => {
 					align: 'center',
 				},
 				enableSorting: false,
-				Cell: ({ renderedCellValue, row: { original } }) => (
+				Cell: ({ row: { original } }) => (
 					<Image
 						w={70}
 						mah={50}
 						fit="contain"
 						loading="lazy"
-						src={renderedCellValue}
+						src={original.icon}
 						alt={original.job_name}
 					/>
 				),
@@ -81,11 +82,12 @@ export const JobTable = (): JSX.Element => {
 			{
 				accessorKey: 'job_name', //access nested data with dot notation
 				header: t('jobs.fields.job_name'),
+				size: 130,
 			},
 			{
 				accessorKey: 'type_time', //access nested data with dot notation
 				header: t('jobs.fields.type_time'),
-				size: 50,
+				size: 100,
 			},
 			{
 				accessorKey: 'branch_name', //access nested data with dot notation
@@ -95,7 +97,7 @@ export const JobTable = (): JSX.Element => {
 			{
 				accessorKey: 'salary', //access nested data with dot notation
 				header: t('jobs.fields.salary'),
-				size: 70,
+				size: 100,
 				mantineTableBodyCellProps: {
 					align: 'right',
 				},
@@ -105,7 +107,7 @@ export const JobTable = (): JSX.Element => {
 			{
 				header: t('jobs.fields.status'),
 				accessorKey: 'active_flag',
-				size: 70,
+				size: 85,
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},
@@ -130,7 +132,7 @@ export const JobTable = (): JSX.Element => {
 			},
 			{
 				header: t('jobs.fields.action'),
-				size: 50,
+				size: 60,
 				mantineTableBodyCellProps: {
 					align: 'center',
 				},

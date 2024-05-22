@@ -44,16 +44,17 @@ export const CVTable = (): JSX.Element => {
 			{
 				accessorKey: 'candidate_name', //access nested data with dot notation
 				header: t('cvs.fields.candidate_name'),
+				size: 100,
 			},
 			{
 				accessorKey: 'job_name', //access nested data with dot notation
 				header: t('cvs.fields.position'),
-				size: 100,
+				size: 85,
 			},
 			{
 				accessorKey: 'email', //access nested data with dot notation
 				header: t('cvs.fields.email'),
-				size: 70,
+				size: 80,
 				Cell: ({ renderedCellValue }) => (
 					<Anchor
 						href={`mailto:${renderedCellValue?.toString()}`}
@@ -67,7 +68,7 @@ export const CVTable = (): JSX.Element => {
 			{
 				accessorKey: 'phone_number', //access nested data with dot notation
 				header: t('cvs.fields.phone_number'),
-				size: 70,
+				size: 85,
 				Cell: ({ renderedCellValue }) => (
 					<Anchor
 						href={`tel:${renderedCellValue?.toString()}`}
@@ -81,7 +82,7 @@ export const CVTable = (): JSX.Element => {
 			{
 				accessorKey: 'fb_link', //access nested data with dot notation
 				header: t('cvs.fields.fb_link'),
-				size: 70,
+				size: 110,
 				Cell: ({ renderedCellValue }) => (
 					<Anchor
 						href={renderedCellValue?.toString()}

@@ -56,11 +56,10 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 								>
 									<Box className={classes.imgBox}>
 										<Image
-											h={'auto'}
+											height={300}
 											maw={'100%'}
 											src={item.avatar}
 											width={550}
-											height={550}
 											radius={'sm'}
 											loading="lazy"
 											alt={item.instructor_name}

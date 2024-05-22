@@ -76,7 +76,7 @@ export const JobDelete = ({ label, id, path }: Props): JSX.Element => {
 			<ModalRender
 				opened={opened}
 				onClose={handleCloseModal}
-				title={t('products.title_delete')}
+				title={t('jobs.title_delete')}
 				footer={{
 					onOk: () => handleSubmit(),
 					isConfirming: deleteQuery.isLoading,
