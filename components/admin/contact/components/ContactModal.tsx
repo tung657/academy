@@ -12,7 +12,6 @@ import {
 	Grid,
 	LoadingOverlay,
 	TextInput,
-	Textarea,
 	Tooltip,
 } from '@mantine/core';
 
@@ -78,7 +77,7 @@ export const ContactModal = ({ id }: Props): JSX.Element => {
 			<ModalRender
 				opened={opened}
 				onClose={close}
-				size={'70%'}
+				size={'60%'}
 				title={t('contacts.getdetail')}
 				footer={{ hasContent: false }}
 			>
@@ -95,7 +94,7 @@ export const ContactModal = ({ id }: Props): JSX.Element => {
 							/>
 						</Grid.Col>
 						<Grid.Col span={12}>
-							<Textarea
+							<TextInput
 								size="sm"
 								label={t('contacts.fields.phone_number')}
 								placeholder={t('contacts.fields.phone_number')}
@@ -103,7 +102,7 @@ export const ContactModal = ({ id }: Props): JSX.Element => {
 							/>
 						</Grid.Col>
 						<Grid.Col span={12}>
-							<Textarea
+							<TextInput
 								size="sm"
 								label={t('contacts.fields.email')}
 								placeholder={t('contacts.fields.email')}
@@ -111,7 +110,7 @@ export const ContactModal = ({ id }: Props): JSX.Element => {
 							/>
 						</Grid.Col>
 						<Grid.Col span={12}>
-							<Textarea
+							<TextInput
 								size="sm"
 								label={t('contacts.fields.message')}
 								placeholder={t('contacts.fields.message')}
