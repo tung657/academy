@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchInstructor } from '@/helpers/repositories/instructor.repository';
 import { ISearchInstructor } from '@/types/instructor';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

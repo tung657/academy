@@ -1,5 +1,3 @@
-import { LOGIN_URL } from '@/libs/urls';
-import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
 import {
 	Avatar,
 	Box,
@@ -14,6 +12,9 @@ import {
 	UnstyledButton,
 	rem,
 } from '@mantine/core';
+import { DateInput } from '@mantine/dates';
+import { FileWithPath } from '@mantine/dropzone';
+import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import {
 	IconChevronRight,
 	IconKey,
@@ -22,22 +23,17 @@ import {
 	IconUserEdit,
 } from '@tabler/icons-react';
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
-import { getNotifications } from '../mantines/notification/getNotifications';
+import dayjs from 'dayjs';
 import { useTranslations } from 'next-intl';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { userState } from '@/store/user/atom';
-import { ModalRender } from '../mantines/modal/ModalRender';
 import { useEffect, useState } from 'react';
-import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
-import { FileWithPath } from '@mantine/dropzone';
-import logo from '@/assets/images/logos/logo.jpg';
-import {
-	useChangePasswordEmployee,
-	useUpdateEmployee,
-} from '@/utils/query-loader/user.loader';
-import { SelectRender } from '../mantines/inputs/SelectRender';
+import { useRecoilState, useRecoilValue } from 'recoil';
+
+import logo from '@/assets/images/logos/logo.png';
 import { genderOptions } from '@/libs/dropdown';
-import { DateInput } from '@mantine/dates';
+import { LOGIN_URL } from '@/libs/urls';
+import { userState } from '@/store/user/atom';
+import { IUserStorage } from '@/types';
+import { LOCAL_TOKEN, LOCAL_USER } from '@/utils/config';
 import {
 	dateParser,
 	formatDatePost,
@@ -45,10 +41,16 @@ import {
 	patterns,
 	removeVietnameseTones,
 } from '@/utils/format-string';
-import dayjs from 'dayjs';
-import { IUserStorage } from '@/types';
+import {
+	useChangePasswordEmployee,
+	useUpdateEmployee,
+} from '@/utils/query-loader/user.loader';
 import { deleteFile, uploadFile } from '@/utils/services/file.service';
 import { getRuleForms } from '@/utils/validation';
+
+import { SelectRender } from '../mantines/inputs/SelectRender';
+import { ModalRender } from '../mantines/modal/ModalRender';
+import { getNotifications } from '../mantines/notification/getNotifications';
 import { DropzoneRender } from '../shared/dropzone/DropzoneRender';
 
 export const AvatarDropdown = (): JSX.Element => {

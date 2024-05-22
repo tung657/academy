@@ -1,4 +1,4 @@
-import { createTheme, MantineColorsTuple } from '@mantine/core';
+import { MantineColorsTuple, createTheme } from '@mantine/core';
 
 const myColor: MantineColorsTuple = [
 	'#fff0e4',

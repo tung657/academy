@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { createContact } from '@/helpers/repositories/contact.repository';
 import { IContact } from '@/types/contact';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

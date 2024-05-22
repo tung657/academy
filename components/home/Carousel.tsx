@@ -1,5 +1,6 @@
 'use client';
 
+import { Carousel } from '@mantine/carousel';
 import {
 	Anchor,
 	AspectRatio,
@@ -13,18 +14,19 @@ import {
 	Paper,
 	TypographyStylesProvider,
 } from '@mantine/core';
-import Autoplay from 'embla-carousel-autoplay';
-import classes from './scss/carousel.module.scss';
-import { Carousel } from '@mantine/carousel';
-import { IconArrowRight } from '@tabler/icons-react';
-import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { useRef } from 'react';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import { IconArrowRight } from '@tabler/icons-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { useRef } from 'react';
+
 import { Link } from '@/libs/i18n-navigation';
-import { ScrollMotion } from '../shared/motion/ScrollMotion';
 import { IBaseResponse, ISlide } from '@/types';
-import { handleGetKeyYB } from '@/utils/format-string';
 import { VALUE_MOBILE } from '@/utils/config';
+import { handleGetKeyYB } from '@/utils/format-string';
+
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
+import { ScrollMotion } from '../shared/motion/ScrollMotion';
+import classes from './scss/carousel.module.scss';
 
 interface Props {
 	data: IBaseResponse<ISlide[]>;
@@ -35,7 +37,6 @@ interface PropsCard extends ISlide {
 }
 
 export const CarouselHome = ({ data }: Props): JSX.Element => {
-	console.log(data);
 	const mobile = useMediaQuery(VALUE_MOBILE);
 	const autoplay = useRef(Autoplay({ delay: 5000 }));
 	const slides = data?.data?.map((item, index) => (

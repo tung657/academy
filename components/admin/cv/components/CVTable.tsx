@@ -1,17 +1,19 @@
 'use client';
 
 import { ActionIcon, Anchor, Flex, Tooltip } from '@mantine/core';
+import { IconDownload } from '@tabler/icons-react';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo, useState } from 'react';
-import { useSearchCV } from '@/utils/query-loader/cv.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { CVDelete } from './CVDelete';
-import { ICV } from '@/types/cv';
+
 import { RenderTableParams } from '@/libs/table';
-import { IconDownload } from '@tabler/icons-react';
+import { ICV } from '@/types/cv';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchCV } from '@/utils/query-loader/cv.loader';
 import { downloadFile } from '@/utils/services/file.service';
+
+import { CVDelete } from './CVDelete';
 
 export const CVTable = (): JSX.Element => {
 	const t = useTranslations();

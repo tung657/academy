@@ -1,6 +1,5 @@
 'use client';
 
-import { usePathname, useRouter } from '@/libs/i18n-navigation';
 import {
 	MRT_PaginationState,
 	MRT_TableOptions,
@@ -15,6 +14,8 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+
+import { usePathname, useRouter } from '@/libs/i18n-navigation';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { calcTotalPages } from '@/utils/format-number';
 

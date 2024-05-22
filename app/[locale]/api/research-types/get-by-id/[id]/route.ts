@@ -1,5 +1,6 @@
-import { getResearchTypeById } from '@/helpers/repositories/research-type.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getResearchTypeById } from '@/helpers/repositories/research-type.repository';
 
 export const dynamic = 'force-dynamic';
 

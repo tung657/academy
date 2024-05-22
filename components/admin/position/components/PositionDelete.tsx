@@ -1,19 +1,20 @@
 'use client';
 
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { IBaseDelete } from '@/types';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_POSITION,
-	useDeletePosition,
-} from '@/utils/query-loader/position.loader';
 import { ActionIcon, Box, Center, Text, Tooltip } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconTrash } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { userState } from '@/store/user/atom';
+import { IBaseDelete } from '@/types';
+import {
+	CACHE_POSITION,
+	useDeletePosition,
+} from '@/utils/query-loader/position.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
 
 interface Props {
 	label: string;

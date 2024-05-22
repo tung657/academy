@@ -1,4 +1,5 @@
 import { IJob, ISearchJob } from '@/types/job';
+
 import { query } from '../db';
 
 export async function createJob(jobModel: IJob): Promise<any> {

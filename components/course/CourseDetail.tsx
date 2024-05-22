@@ -25,7 +25,12 @@ import {
 	ThemeIcon,
 	TypographyStylesProvider,
 } from '@mantine/core';
-import { TitleRender } from '../mantines/typographies/TitleRender';
+import {
+	useDisclosure,
+	useMediaQuery,
+	useScrollIntoView,
+	useWindowScroll,
+} from '@mantine/hooks';
 import {
 	IconBook,
 	IconBooks,
@@ -38,20 +43,17 @@ import {
 	IconPlaystationTriangle,
 	IconUserStar,
 } from '@tabler/icons-react';
-import { imgCourses } from '@/assets/images/course';
-import {
-	useDisclosure,
-	useMediaQuery,
-	useScrollIntoView,
-	useWindowScroll,
-} from '@mantine/hooks';
-import React, { useEffect, useState } from 'react';
-import classes from './scss/course-detail.module.scss';
-import { ICourse } from '@/types/course';
-import { handleGetKeyYB } from '@/utils/format-string';
 import { useTranslations } from 'next-intl';
-import { CourseRegisterForm } from './CourseRegisterForm';
+import React, { useEffect, useState } from 'react';
+
+import { imgCourses } from '@/assets/images/course';
+import { ICourse } from '@/types/course';
 import { VALUE_MOBILE } from '@/utils/config';
+import { handleGetKeyYB } from '@/utils/format-string';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import { CourseRegisterForm } from './CourseRegisterForm';
+import classes from './scss/course-detail.module.scss';
 
 interface Props {
 	data?: ICourse;

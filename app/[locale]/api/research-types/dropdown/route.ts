@@ -1,5 +1,6 @@
-import { getResearchTypeDropdown } from '@/helpers/repositories/research-type.repository';
 import { NextResponse } from 'next/server';
+
+import { getResearchTypeDropdown } from '@/helpers/repositories/research-type.repository';
 
 export const dynamic = 'force-dynamic';
 

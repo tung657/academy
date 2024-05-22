@@ -1,22 +1,19 @@
 'use client';
 
 import { Anchor, Flex } from '@mantine/core';
-
+import { IconLink } from '@tabler/icons-react';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-
 import { RenderTableParams } from '@/libs/table';
-
+import { IBranch } from '@/types/branch';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { useSearchBranch } from '@/utils/query-loader/branch.loader';
-import { BranchModal } from './BranchModal';
 
 import { BranchDelete } from './BranchDelete';
-import { IBranch } from '@/types/branch';
-import { IconLink } from '@tabler/icons-react';
+import { BranchModal } from './BranchModal';
 
 export const BranchTable = (): JSX.Element => {
 	const t = useTranslations();

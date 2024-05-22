@@ -1,15 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString, getUpdatedArray } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_COURSE,
-	useCreateCourse,
-	useGetCourseById,
-	useUpdateCourse,
-} from '@/utils/query-loader/course.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Anchor,
@@ -28,25 +16,39 @@ import {
 	Textarea,
 	Tooltip,
 } from '@mantine/core';
+import { FileWithPath } from '@mantine/dropzone';
 import { isNotEmpty, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconLink, IconPlus } from '@tabler/icons-react';
+import _ from 'lodash';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
-import { FileWithPath } from '@mantine/dropzone';
 import { Dispatch, SetStateAction, useState } from 'react';
-import { ICourse, ICourseDetail } from '@/types/course';
-import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { useRecoilValue } from 'recoil';
+
 import {
 	ButtonEdit,
 	ButtonTrash,
 } from '@/components/mantines/buttons/ButtonGroup';
-import _ from 'lodash';
-import { RichEditor } from '../../editor/Editor';
 import { SelectRender } from '@/components/mantines/inputs/SelectRender';
-import { useGetInstructorDropdown } from '@/utils/query-loader/instructor.loader';
-import { removeVietnameseTones } from '@/utils/format-string';
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
+import { userState } from '@/store/user/atom';
+import { ICourse, ICourseDetail } from '@/types/course';
+import { convertToString, getUpdatedArray } from '@/utils/array';
+import { removeVietnameseTones } from '@/utils/format-string';
+import {
+	CACHE_COURSE,
+	useCreateCourse,
+	useGetCourseById,
+	useUpdateCourse,
+} from '@/utils/query-loader/course.loader';
+import { useGetInstructorDropdown } from '@/utils/query-loader/instructor.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
+
+import { RichEditor } from '../../editor/Editor';
 
 interface Props {
 	id?: number;

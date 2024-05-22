@@ -2,6 +2,7 @@ import {
 	ICourseRegister,
 	ISearchCourseRegister,
 } from '@/types/course-register';
+
 import { query } from '../db';
 
 export async function createCourseRegister(

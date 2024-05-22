@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { createJob } from '@/helpers/repositories/job.repository';
 import { IJob } from '@/types/job';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

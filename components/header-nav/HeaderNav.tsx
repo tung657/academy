@@ -13,6 +13,7 @@ import {
 	IconMoonStars,
 	IconSunHigh,
 } from '@tabler/icons-react';
+
 import { AvatarDropdown } from './AvatarDropdown';
 
 const ICON_SIZE = 20;

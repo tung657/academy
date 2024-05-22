@@ -1,4 +1,7 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
+
+import { ISearchEmployees } from '@/types';
+
 import {
 	changePasswordEmployee,
 	createEmployee,
@@ -14,7 +17,6 @@ import {
 	MutationConfig,
 	QueryConfig,
 } from './react-query';
-import { ISearchEmployees } from '@/types';
 
 const CACHE_EMPLOYEES = {
 	SEARCH: 'EMPLOYEES',

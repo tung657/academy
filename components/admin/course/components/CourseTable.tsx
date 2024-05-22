@@ -5,14 +5,16 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { CourseModal } from './CourseModal';
-import { useSearchCourses } from '@/utils/query-loader/course.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { CourseDelete } from './CourseDelete';
-import { ICourse } from '@/types/course';
+
+import { Link } from '@/libs/i18n-navigation';
 import { RenderTableParams } from '@/libs/table';
 import { ADMIN_INSTRUCTOR_URL } from '@/libs/urls';
-import { Link } from '@/libs/i18n-navigation';
+import { ICourse } from '@/types/course';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchCourses } from '@/utils/query-loader/course.loader';
+
+import { CourseDelete } from './CourseDelete';
+import { CourseModal } from './CourseModal';
 
 export const CourseTable = (): JSX.Element => {
 	const t = useTranslations();

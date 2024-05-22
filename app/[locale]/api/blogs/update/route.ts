@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { updateBlog } from '@/helpers/repositories/blog.repository';
 import { IBlog } from '@/types/blog';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

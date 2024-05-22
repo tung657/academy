@@ -1,3 +1,6 @@
+import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+
 import { ResearchDetail } from '@/components/research/ResearchDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IBaseResponse } from '@/types';
@@ -5,8 +8,6 @@ import { IResearch } from '@/types/research';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { transformHtmlToString } from '@/utils/format-string';
 import { fetchGetData } from '@/utils/services/base.service';
-import { notFound } from 'next/navigation';
-import { Suspense } from 'react';
 
 interface Props {
 	params: {

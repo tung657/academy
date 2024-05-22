@@ -1,12 +1,13 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
-	getContactDropdown,
 	createContact,
 	deleteContact,
 	getContactById,
+	getContactDropdown,
 	searchContact,
 } from '../services/contact.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

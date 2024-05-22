@@ -1,21 +1,23 @@
 'use client';
 
-import { ButtonCustomProps } from '@/types';
 import { Box, Button, FileInput, Grid, Text, TextInput } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { useTranslations } from 'next-intl';
-import { ModalRender } from '../mantines/modal/ModalRender';
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
-import { getRuleForms } from '@/utils/validation';
-import { SelectRender } from '../mantines/inputs/SelectRender';
+import { useDisclosure } from '@mantine/hooks';
 import { IconFileCv } from '@tabler/icons-react';
-import { patterns, removeVietnameseTones } from '@/utils/format-string';
+import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { useCreateCV } from '@/utils/query-loader/cv.loader';
-import { getNotifications } from '../mantines/notification/getNotifications';
+
+import { ButtonCustomProps } from '@/types';
 import { ICV } from '@/types/cv';
-import { uploadFile } from '@/utils/services/file.service';
+import { patterns, removeVietnameseTones } from '@/utils/format-string';
+import { useCreateCV } from '@/utils/query-loader/cv.loader';
 import { useGetJobDropdown } from '@/utils/query-loader/job.loader';
+import { uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
+
+import { SelectRender } from '../mantines/inputs/SelectRender';
+import { ModalRender } from '../mantines/modal/ModalRender';
+import { getNotifications } from '../mantines/notification/getNotifications';
 
 interface Props extends ButtonCustomProps {
 	positionId?: number;

@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { updateFeatureRepository } from '@/helpers/repositories/feature.repository';
 import { IFeature } from '@/types';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

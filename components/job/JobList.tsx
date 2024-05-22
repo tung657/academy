@@ -14,19 +14,20 @@ import {
 	Text,
 	rem,
 } from '@mantine/core';
-
-import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
-import classes from './scss/job-list.module.scss';
-import { imgOthers } from '@/assets/images/others';
-import { TitleRender } from '../mantines/typographies/TitleRender';
-import { intlUSD } from '@/utils/format-number';
 import { useTranslations } from 'next-intl';
-import { JOB_DETAIL_URL } from '@/libs/urls';
-import { getUrlDetail } from '@/utils/format-string';
+
+import { imgOthers } from '@/assets/images/others';
+import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
 import { Link } from '@/libs/i18n-navigation';
-import { IJob } from '@/types/job';
+import { JOB_DETAIL_URL } from '@/libs/urls';
 import { IBaseResponse } from '@/types';
+import { IJob } from '@/types/job';
+import { intlUSD } from '@/utils/format-number';
+import { getUrlDetail } from '@/utils/format-string';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
+import classes from './scss/job-list.module.scss';
 
 interface Props {
 	data: IBaseResponse<IJob[]>;

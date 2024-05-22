@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchPartner } from '@/helpers/repositories/partner.repository';
 import { ISearchPartner } from '@/types/partner';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

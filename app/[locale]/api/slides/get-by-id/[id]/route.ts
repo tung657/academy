@@ -1,5 +1,6 @@
-import { getSlideById } from '@/helpers/repositories/slide.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getSlideById } from '@/helpers/repositories/slide.repository';
 
 export const dynamic = 'force-dynamic';
 

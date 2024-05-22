@@ -1,14 +1,15 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
-	getJobDropdown,
 	createJob,
 	deleteJob,
 	getJobById,
+	getJobDropdown,
 	searchJob,
-	updateJob,
 	toggleActiveJob,
+	updateJob,
 } from '../services/job.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

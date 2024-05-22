@@ -1,4 +1,5 @@
 import { IAction, ISearchAction } from '@/types';
+
 import { query } from '../db';
 
 export async function createActionRepository(action: IAction): Promise<any> {

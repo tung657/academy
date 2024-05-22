@@ -1,5 +1,6 @@
-import { IUserStorage } from '@/types';
 import { atom } from 'recoil';
+
+import { IUserStorage } from '@/types';
 
 export const userState = atom<IUserStorage>({
 	key: 'userState',

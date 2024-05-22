@@ -1,4 +1,5 @@
 import { ICreateRoleFeature } from '@/types';
+
 import { query } from '../db';
 
 export async function createRoleFeature(

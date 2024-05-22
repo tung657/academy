@@ -1,10 +1,11 @@
+import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
 import { ProductList } from '@/components/product/ProductList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IBaseResponse, IProduct } from '@/types';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchSearchData } from '@/utils/services/base.service';
-import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {

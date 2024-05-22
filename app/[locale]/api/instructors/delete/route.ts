@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { deleteInstructor } from '@/helpers/repositories/instructor.repository';
 import { IBaseDelete } from '@/types';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchEmployee } from '@/helpers/repositories/user.repository';
 import { ISearchUser } from '@/types';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

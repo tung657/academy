@@ -13,25 +13,26 @@ import {
 	Text,
 	useMantineTheme,
 } from '@mantine/core';
-
-import classes from './scss/course-list.module.scss';
-
-import { COURSE_DETAIL_URL } from '@/libs/urls';
-import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconCalendar } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
+
 import { Link, usePathname, useRouter } from '@/libs/i18n-navigation';
-import { SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { getUrlDetail } from '@/utils/format-string';
+import { COURSE_DETAIL_URL } from '@/libs/urls';
 import { IBaseResponse } from '@/types';
 import { ICourse } from '@/types/course';
+import { SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { calcTotalPages } from '@/utils/format-number';
-import { InputSearch } from '../mantines/inputs/InputSearch';
-import { useTranslations } from 'next-intl';
+import { getUrlDetail } from '@/utils/format-string';
+
 import { Empty } from '../errors/empty';
+import { InputSearch } from '../mantines/inputs/InputSearch';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
-import { useTransition } from 'react';
 import { CourseLoading } from './CourseLoading';
+import classes from './scss/course-list.module.scss';
+
 interface Props {
 	data: IBaseResponse<ICourse[]>;
 }

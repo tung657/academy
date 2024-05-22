@@ -1,4 +1,5 @@
 import { ISearchUser, IUser } from '@/types';
+
 import { query, queryList } from '../db';
 
 export async function authenticateRepository(

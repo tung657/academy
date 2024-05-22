@@ -1,7 +1,8 @@
-import { createRolePermission } from '@/helpers/repositories/role-permission.repository';
-import { IPermissionCreate } from '@/types/permission';
 import { randomUUID } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { createRolePermission } from '@/helpers/repositories/role-permission.repository';
+import { IPermissionCreate } from '@/types/permission';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,6 +1,7 @@
 import { Box, Button, Flex, FocusTrap, Modal, ModalProps } from '@mantine/core';
-import { TitleRender } from '../typographies/TitleRender';
 import { useTranslations } from 'next-intl';
+
+import { TitleRender } from '../typographies/TitleRender';
 
 interface Props extends ModalProps {
 	footer?: {

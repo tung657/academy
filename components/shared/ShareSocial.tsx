@@ -1,7 +1,5 @@
 'use client';
 
-import { usePathname } from '@/libs/i18n-navigation';
-import { ORIGIN_URL } from '@/utils/config';
 import { Anchor, Group, Menu, Text } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
 import {
@@ -14,6 +12,10 @@ import {
 import { useTranslations } from 'next-intl';
 import { useEffect } from 'react';
 import { EmailShare, FacebookShare, TwitterShare } from 'react-share-lite';
+
+import { usePathname } from '@/libs/i18n-navigation';
+import { ORIGIN_URL } from '@/utils/config';
+
 import { getNotifications } from '../mantines/notification/getNotifications';
 
 export const ShareSocial = () => {

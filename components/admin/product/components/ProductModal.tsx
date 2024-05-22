@@ -1,15 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_PRODUCT,
-	useCreateProduct,
-	useGetProductById,
-	useUpdateProduct,
-} from '@/utils/query-loader/product.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Anchor,
@@ -23,18 +11,32 @@ import {
 	Textarea,
 	Tooltip,
 } from '@mantine/core';
+import { FileWithPath } from '@mantine/dropzone';
 import { isNotEmpty, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconLink, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
-import { FileWithPath } from '@mantine/dropzone';
 import { useState } from 'react';
-import { RichEditor } from '../../editor/Editor';
-import { IProduct } from '@/types';
-import { deleteFile, uploadFile } from '@/utils/services/file.service';
-import { removeVietnameseTones } from '@/utils/format-string';
+import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
+import { userState } from '@/store/user/atom';
+import { IProduct } from '@/types';
+import { convertToString } from '@/utils/array';
+import { removeVietnameseTones } from '@/utils/format-string';
+import {
+	CACHE_PRODUCT,
+	useCreateProduct,
+	useGetProductById,
+	useUpdateProduct,
+} from '@/utils/query-loader/product.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
+
+import { RichEditor } from '../../editor/Editor';
 
 interface Props {
 	id?: number;

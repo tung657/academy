@@ -1,6 +1,8 @@
-import { LOCAL_USER } from '@/utils/config';
 import { JWTPayload, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
+
+import { LOCAL_USER } from '@/utils/config';
+
 // import authConfig from '@/config/authConfig';
 
 // import { I_UserPublic } from '@/models/User.types';

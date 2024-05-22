@@ -1,32 +1,32 @@
 'use client';
 
 import { Anchor, Flex, SegmentedControl, Text, Tooltip } from '@mantine/core';
-
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import {
-	CACHE_COURSE_REGISTER,
-	useSearchCourseRegister,
-	useUpdateCourseRegister,
-} from '@/utils/query-loader/course-register.loader';
+import { useRecoilValue } from 'recoil';
+
+import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { usePathname, useRouter } from '@/libs/i18n-navigation';
+import { RenderTableParams } from '@/libs/table';
+import { userState } from '@/store/user/atom';
+import { ICourseRegister } from '@/types/course-register';
 import {
 	SEARCH_BRANCH,
 	SEARCH_CONTENT,
 	SEARCH_PAGE,
 	SEARCH_SIZE,
 } from '@/utils/config';
-
-import { RenderTableParams } from '@/libs/table';
-import { ICourseRegister } from '@/types/course-register';
-import { CourseRegisterDelete } from './CourseRegisterDelete';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import {
+	CACHE_COURSE_REGISTER,
+	useSearchCourseRegister,
+	useUpdateCourseRegister,
+} from '@/utils/query-loader/course-register.loader';
 import { queryClient } from '@/utils/query-loader/react-query';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@/store/user/atom';
-import { SelectRender } from '@/components/mantines/inputs/SelectRender';
-import { usePathname, useRouter } from '@/libs/i18n-navigation';
+
+import { CourseRegisterDelete } from './CourseRegisterDelete';
 
 const acceptDropdown = [
 	{

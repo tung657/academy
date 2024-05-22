@@ -1,5 +1,10 @@
-import { CourseList } from '@/components/course/CourseList';
 import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
+import { CourseList } from '@/components/course/CourseList';
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { IBaseResponse } from '@/types';
+import { ICourse } from '@/types/course';
 import {
 	AppConfig,
 	ORIGIN_URL,
@@ -8,10 +13,6 @@ import {
 	SEARCH_SIZE,
 	metaKeywords,
 } from '@/utils/config';
-import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { IBaseResponse } from '@/types';
-import { ICourse } from '@/types/course';
-import { notFound } from 'next/navigation';
 import { fetchSearchData } from '@/utils/services/base.service';
 
 interface Props {

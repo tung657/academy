@@ -1,8 +1,8 @@
-import { NextResponse, NextRequest } from 'next/server';
+import { MD5 } from 'crypto-js';
 import { SignJWT } from 'jose';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { getJwtSecretKey, setUserDataCookie } from '@/helpers/auth';
-import { MD5 } from 'crypto-js';
 import { authenticateRepository } from '@/helpers/repositories/user.repository';
 import { LOCAL_TOKEN } from '@/utils/config';
 

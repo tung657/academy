@@ -1,10 +1,12 @@
 'use client';
 
 import { Box, Grid, Image, Text } from '@mantine/core';
-import classes from './scss/solution.module.scss';
-import { TitleRender } from '../mantines/typographies/TitleRender';
+
 import { imgHome } from '@/assets/images/home';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
+import classes from './scss/solution.module.scss';
 
 export const AboutHome = (): JSX.Element => {
 	return (

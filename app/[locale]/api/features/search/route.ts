@@ -1,8 +1,9 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchFeatureRepository } from '@/helpers/repositories/feature.repository';
 import { ISearchFeatures } from '@/types';
 import { getFeatureTree } from '@/utils/array';
 import { searchFeatureTree } from '@/utils/services/feature.service';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

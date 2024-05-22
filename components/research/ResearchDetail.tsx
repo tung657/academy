@@ -9,9 +9,10 @@ import {
 	TypographyStylesProvider,
 } from '@mantine/core';
 
-import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IBaseResponse } from '@/types';
 import { IResearch } from '@/types/research';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 interface Props {

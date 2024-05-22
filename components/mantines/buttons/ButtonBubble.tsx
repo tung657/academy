@@ -1,7 +1,9 @@
 import { Button } from '@mantine/core';
-import classes from './scss/button-bubble.module.scss';
 import React from 'react';
+
 import { ButtonCustomProps } from '@/types';
+
+import classes from './scss/button-bubble.module.scss';
 
 interface Props extends ButtonCustomProps {
 	colorHover?: string;

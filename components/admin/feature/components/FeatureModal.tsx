@@ -1,6 +1,24 @@
 'use client';
 
 import {
+	Box,
+	Card,
+	Grid,
+	InputLabel,
+	LoadingOverlay,
+	Menu,
+	NumberInput,
+	TextInput,
+	Textarea,
+} from '@mantine/core';
+import { isNotEmpty, useForm } from '@mantine/form';
+import { useDisclosure } from '@mantine/hooks';
+import { useTranslations } from 'next-intl';
+import Tree from 'rc-tree';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+
+import {
 	ButtonEdit,
 	ButtonPlus,
 } from '@/components/mantines/buttons/ButtonGroup';
@@ -18,23 +36,6 @@ import {
 } from '@/utils/query-loader/feature.loader';
 import { queryClient } from '@/utils/query-loader/react-query';
 import { getRuleForms } from '@/utils/validation';
-import {
-	Box,
-	Card,
-	Grid,
-	InputLabel,
-	LoadingOverlay,
-	Menu,
-	NumberInput,
-	TextInput,
-	Textarea,
-} from '@mantine/core';
-import { isNotEmpty, useForm } from '@mantine/form';
-import { useDisclosure } from '@mantine/hooks';
-import { useTranslations } from 'next-intl';
-import Tree from 'rc-tree';
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
 
 interface Props {
 	isCreate?: boolean;

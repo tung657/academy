@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
-import { MutationConfig } from './react-query';
+
 import { sendResetPassword } from '../services/email.service';
+import { MutationConfig } from './react-query';
 
 const CACHE_EMAILS = {
 	SEARCH: 'EMAILS',

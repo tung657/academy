@@ -4,11 +4,13 @@ import { Center, Flex, Image, Text, Tooltip } from '@mantine/core';
 import { MRT_ColumnDef, MRT_PaginationState } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
-import { ResearchTypeModal } from './ResearchTypeModal';
-import { useSearchResearchType } from '@/utils/query-loader/research-type.loader';
-import { ResearchTypeDelete } from './ResearchTypeDelete';
-import { IResearchType } from '@/types/research-type';
+
 import { RenderTableBasic } from '@/libs/table';
+import { IResearchType } from '@/types/research-type';
+import { useSearchResearchType } from '@/utils/query-loader/research-type.loader';
+
+import { ResearchTypeDelete } from './ResearchTypeDelete';
+import { ResearchTypeModal } from './ResearchTypeModal';
 
 export const ResearchTypeTable = (): JSX.Element => {
 	const t = useTranslations();

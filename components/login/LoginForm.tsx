@@ -1,8 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import { TitleRender } from '../mantines/typographies/TitleRender';
-import classes from './scss/login.module.scss';
 import {
 	Anchor,
 	Box,
@@ -12,15 +9,20 @@ import {
 	TextInput,
 } from '@mantine/core';
 import { isEmail, isNotEmpty, useForm } from '@mantine/form';
-import { getRuleForms } from '@/utils/validation';
-import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { Dispatch, SetStateAction, useState } from 'react';
-import { getNotifications } from '../mantines/notification/getNotifications';
-import { useLogin } from '@/utils/query-loader/user.loader';
+import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
+import { Dispatch, SetStateAction, useState } from 'react';
+
 import { DASHBOARD_URL } from '@/libs/urls';
-import { useSendResetPassword } from '@/utils/query-loader/email.loader';
 import { ERROR_TIMEOUT, ORIGIN_URL } from '@/utils/config';
+import { useSendResetPassword } from '@/utils/query-loader/email.loader';
+import { useLogin } from '@/utils/query-loader/user.loader';
+import { getRuleForms } from '@/utils/validation';
+
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
+import { getNotifications } from '../mantines/notification/getNotifications';
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import classes from './scss/login.module.scss';
 
 type loginType = 'login' | 'forget';
 

@@ -1,5 +1,6 @@
-import { Branch } from '@/components/admin/branch/Branch';
 import { Metadata } from 'next';
+
+import { Branch } from '@/components/admin/branch/Branch';
 
 export const metadata: Metadata = {
 	title: 'Quản lý chi nhánh',

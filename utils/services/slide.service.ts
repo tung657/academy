@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from 'axios';
 
 import { apiClient } from '@/helpers';
-import { ISlide } from '@/types/slide';
 import { IBaseDelete, IBaseResponse } from '@/types';
+import { ISlide } from '@/types/slide';
 
 const prefix = '/slides';
 

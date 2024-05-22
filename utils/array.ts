@@ -1,5 +1,6 @@
-import { IFeatureDataNode } from '@/types';
 import _ from 'lodash';
+
+import { IFeatureDataNode } from '@/types';
 
 // START FOR TREE
 export function getFeatureTree(

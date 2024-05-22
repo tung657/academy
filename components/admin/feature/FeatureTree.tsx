@@ -1,6 +1,5 @@
 'use client';
 
-import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import {
 	Button,
 	Card,
@@ -9,18 +8,21 @@ import {
 	LoadingOverlay,
 	ScrollArea,
 } from '@mantine/core';
+import { useSearchParams } from 'next/navigation';
 import Tree from 'rc-tree';
-import classes from './scss/feature-tree.module.scss';
-import { FeatureModal } from './components/FeatureModal';
 import { Key, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { featureSelectedState } from '@/store/feature/atom';
-import { FeatureDelete } from './components/FeatureDelete';
-import { InputSearch } from '../../mantines/inputs/InputSearch';
-import { useSearchParams } from 'next/navigation';
-import { ActionTable } from './components/action/ActionTable';
-import { SEARCH_CONTENT } from '@/utils/config';
+
 import { TitleRender } from '@/components/mantines/typographies/TitleRender';
+import { featureSelectedState } from '@/store/feature/atom';
+import { SEARCH_CONTENT } from '@/utils/config';
+import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
+
+import { InputSearch } from '../../mantines/inputs/InputSearch';
+import { FeatureDelete } from './components/FeatureDelete';
+import { FeatureModal } from './components/FeatureModal';
+import { ActionTable } from './components/action/ActionTable';
+import classes from './scss/feature-tree.module.scss';
 
 export const FeatureTree = (): JSX.Element => {
 	const searchParams = useSearchParams();

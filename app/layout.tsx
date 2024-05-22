@@ -1,21 +1,22 @@
-import { Nunito } from 'next/font/google';
+import '@mantine/carousel/styles.css';
+import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
-import '@mantine/carousel/styles.css';
-import '@mantine/notifications/styles.css';
 import '@mantine/dates/styles.css';
+import '@mantine/notifications/styles.css';
 import 'mantine-react-table/styles.css';
-import '@/assets/scss/index.scss';
-
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
-import { theme } from '@/theme/theme';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
-import GlobalError from './global-error';
-import { AppConfig, ORIGIN_URL } from '@/utils/config';
-import { Suspense } from 'react';
-import Loading from './loading';
 import { getTranslations } from 'next-intl/server';
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+import { Nunito } from 'next/font/google';
+import { Suspense } from 'react';
+
+import '@/assets/scss/index.scss';
+import { theme } from '@/theme/theme';
+import { AppConfig, ORIGIN_URL } from '@/utils/config';
+
+import GlobalError from './global-error';
+import Loading from './loading';
 
 const inter = Nunito({ subsets: ['latin'] });
 

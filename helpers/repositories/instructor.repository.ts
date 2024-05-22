@@ -1,4 +1,5 @@
 import { IInstructor, ISearchInstructor } from '@/types/instructor';
+
 import { query } from '../db';
 
 export async function createInstructor(

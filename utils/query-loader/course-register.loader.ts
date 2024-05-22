@@ -1,11 +1,12 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
 	createCourseRegister,
 	deleteCourseRegister,
-	updateCourseRegister,
 	searchCourseRegister,
+	updateCourseRegister,
 } from '../services/course-register.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

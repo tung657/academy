@@ -1,5 +1,6 @@
-import { getPartnerById } from '@/helpers/repositories/partner.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getPartnerById } from '@/helpers/repositories/partner.repository';
 
 export const dynamic = 'force-dynamic';
 

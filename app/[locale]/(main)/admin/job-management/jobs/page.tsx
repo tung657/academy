@@ -1,5 +1,6 @@
-import { Job } from '@/components/admin/job/Job';
 import { Metadata } from 'next';
+
+import { Job } from '@/components/admin/job/Job';
 
 export const metadata: Metadata = {
 	title: 'Quản lý tuyển dụng',

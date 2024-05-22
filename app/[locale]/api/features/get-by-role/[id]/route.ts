@@ -1,5 +1,6 @@
-import { getFeaturesByRoleIdRepository } from '@/helpers/repositories/feature.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getFeaturesByRoleIdRepository } from '@/helpers/repositories/feature.repository';
 
 export const dynamic = 'force-dynamic';
 

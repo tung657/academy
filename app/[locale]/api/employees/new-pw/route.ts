@@ -1,6 +1,7 @@
-import { resetPassword } from '@/helpers/repositories/user.repository';
 import { MD5 } from 'crypto-js';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { resetPassword } from '@/helpers/repositories/user.repository';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,20 +1,22 @@
 'use client';
 
-import { getRuleForms } from '@/utils/validation';
 import { Box, Card, Container, Grid, Image, Stack } from '@mantine/core';
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
+import { IconCheck } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import { useRecoilValue } from 'recoil';
+
+import { imgContacts } from '@/assets/images/contact';
+import { userState } from '@/store/user/atom';
+import { patterns } from '@/utils/format-string';
+import { useCreateContact } from '@/utils/query-loader/contact.loader';
+import { getRuleForms } from '@/utils/validation';
+
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { InputFloat } from '../mantines/inputs/InputFloat';
 import { TextAreaFloat } from '../mantines/inputs/TextAreaFloat';
-import { imgContacts } from '@/assets/images/contact';
-import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { IconCheck } from '@tabler/icons-react';
-import { patterns } from '@/utils/format-string';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@/store/user/atom';
-import { useCreateContact } from '@/utils/query-loader/contact.loader';
 import { getNotifications } from '../mantines/notification/getNotifications';
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
 
 export const ContactForm = (): JSX.Element => {
 	const t = useTranslations();

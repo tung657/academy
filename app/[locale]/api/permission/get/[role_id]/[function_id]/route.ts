@@ -1,5 +1,6 @@
-import { getRolePermission } from '@/helpers/repositories/role-permission.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getRolePermission } from '@/helpers/repositories/role-permission.repository';
 
 export const dynamic = 'force-dynamic';
 

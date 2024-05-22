@@ -1,5 +1,6 @@
-import { getPositionDropdown } from '@/helpers/repositories/position.repository';
 import { NextResponse } from 'next/server';
+
+import { getPositionDropdown } from '@/helpers/repositories/position.repository';
 
 export const dynamic = 'force-dynamic';
 

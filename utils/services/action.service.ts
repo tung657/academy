@@ -1,6 +1,7 @@
+import { AxiosRequestConfig } from 'axios';
+
 import { apiClient } from '@/helpers';
 import { IAction, IBaseDelete, IBaseResponse } from '@/types';
-import { AxiosRequestConfig } from 'axios';
 
 const prefix = `/actions`;
 

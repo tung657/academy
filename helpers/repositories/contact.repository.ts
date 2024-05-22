@@ -1,4 +1,5 @@
 import { IContact, ISearchContact } from '@/types/contact';
+
 import { query } from '../db';
 
 export async function createContact(contactModel: IContact): Promise<any> {

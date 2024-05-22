@@ -1,8 +1,9 @@
-import { Dispatch, SetStateAction, useMemo, useRef } from 'react';
-import ReactQuill, { Quill } from 'react-quill';
+import BlotFormatter from 'quill-blot-formatter';
 // #1 import quill-image-uploader
 import ImageUploader from 'quill-image-uploader';
-import BlotFormatter from 'quill-blot-formatter';
+import { Dispatch, SetStateAction, useMemo, useRef } from 'react';
+import ReactQuill, { Quill } from 'react-quill';
+
 import { uploadFile } from '@/utils/services/file.service';
 
 // #2 register module

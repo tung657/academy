@@ -1,7 +1,8 @@
+import { getTranslations } from 'next-intl/server';
+
 import { ClientLayout } from '@/components';
 import { NotFoundTitle } from '@/components/errors/404';
 import { AppConfig } from '@/utils/config';
-import { getTranslations } from 'next-intl/server';
 
 export const dynamic = 'force-dynamic';
 

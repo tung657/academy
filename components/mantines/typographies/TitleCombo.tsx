@@ -1,9 +1,11 @@
 import { Box, Text, TitleProps } from '@mantine/core';
-import { TitleSub } from './TitleSub';
 import React from 'react';
-import { TitleRender } from './TitleRender';
-import classes from './scss/title.module.scss';
+
 import { ScrollMotion } from '@/components/shared/motion/ScrollMotion';
+
+import { TitleRender } from './TitleRender';
+import { TitleSub } from './TitleSub';
+import classes from './scss/title.module.scss';
 
 interface Props extends TitleProps {
 	needWrapper?: boolean;

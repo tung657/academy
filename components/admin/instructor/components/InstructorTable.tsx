@@ -1,22 +1,24 @@
 'use client';
 
 import { Anchor, Flex, Group, Image, ThemeIcon } from '@mantine/core';
-import { MRT_ColumnDef } from 'mantine-react-table';
-import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
-import { useMemo } from 'react';
-import { InstructorModal } from './InstructorModal';
-import { useSearchInstructors } from '@/utils/query-loader/instructor.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { InstructorDelete } from './InstructorDelete';
-import { IInstructor } from '@/types/instructor';
-import { RenderTableParams } from '@/libs/table';
 import {
 	IconBrandFacebookFilled,
 	IconBrandInstagram,
 	IconBrandLinkedin,
 	IconBrandX,
 } from '@tabler/icons-react';
+import { MRT_ColumnDef } from 'mantine-react-table';
+import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
+
+import { RenderTableParams } from '@/libs/table';
+import { IInstructor } from '@/types/instructor';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchInstructors } from '@/utils/query-loader/instructor.loader';
+
+import { InstructorDelete } from './InstructorDelete';
+import { InstructorModal } from './InstructorModal';
 
 export const InstructorTable = (): JSX.Element => {
 	const t = useTranslations();

@@ -9,16 +9,17 @@ import {
 	Text,
 	TypographyStylesProvider,
 } from '@mantine/core';
-
-import { RESEARCH_DETAIL_URL } from '@/libs/urls';
-import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconArrowRight } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/libs/i18n-navigation';
+import { RESEARCH_DETAIL_URL } from '@/libs/urls';
+import { IBaseResponse } from '@/types';
+import { IResearchType } from '@/types/research-type';
+import { getUrlDetail } from '@/utils/format-string';
 
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { getUrlDetail } from '@/utils/format-string';
-import { Link } from '@/libs/i18n-navigation';
-import { IResearchType } from '@/types/research-type';
-import { IBaseResponse } from '@/types';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 interface Props {
@@ -26,6 +27,8 @@ interface Props {
 }
 
 export const ResearchList = ({ data }: Props): JSX.Element => {
+	const t = useTranslations();
+
 	return (
 		<>
 			{data?.data?.map((research, index) => (
@@ -73,7 +76,7 @@ export const ResearchList = ({ data }: Props): JSX.Element => {
 												size="md"
 												leftSection={<IconArrowRight />}
 											>
-												Xem chi tiết
+												{t('global.see_details')}
 											</ButtonBubble>
 										</Anchor>
 									</ScrollMotion>

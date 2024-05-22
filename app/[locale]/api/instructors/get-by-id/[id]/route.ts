@@ -1,5 +1,6 @@
-import { getInstructorById } from '@/helpers/repositories/instructor.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getInstructorById } from '@/helpers/repositories/instructor.repository';
 
 export const dynamic = 'force-dynamic';
 

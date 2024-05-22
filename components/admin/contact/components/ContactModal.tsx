@@ -1,11 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-
-import { convertToString } from '@/utils/array';
-import { patterns } from '@/utils/format-string';
-import { useGetContactById } from '@/utils/query-loader/contact.loader';
-
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -14,12 +6,17 @@ import {
 	TextInput,
 	Tooltip,
 } from '@mantine/core';
-
 import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEye } from '@tabler/icons-react';
-
 import { useTranslations } from 'next-intl';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { convertToString } from '@/utils/array';
+import { patterns } from '@/utils/format-string';
+import { useGetContactById } from '@/utils/query-loader/contact.loader';
+import { getRuleForms } from '@/utils/validation';
 
 interface Props {
 	id?: string;

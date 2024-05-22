@@ -1,4 +1,5 @@
 import { LocalePrefix } from '@/types/global';
+
 // as-needed help hide locale default
 const localePrefix: LocalePrefix = 'as-needed';
 const storagePrefix = 'AIA_';

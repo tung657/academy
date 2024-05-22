@@ -1,4 +1,3 @@
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import {
 	Box,
 	Flex,
@@ -11,6 +10,8 @@ import {
 import { Dropzone, FileWithPath, IMAGE_MIME_TYPE } from '@mantine/dropzone';
 import { IconPhoto } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
 
 interface Props {
 	isInput?: boolean;

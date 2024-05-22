@@ -1,4 +1,5 @@
 import { IPartner, ISearchPartner } from '@/types/partner';
+
 import { query } from '../db';
 
 export async function createPartner(partnerModel: IPartner): Promise<any> {

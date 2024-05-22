@@ -1,11 +1,12 @@
 'use client';
 
-import { usePathname, useRouter } from '@/libs/i18n-navigation';
-import { SEARCH_CONTENT, SEARCH_PAGE } from '@/utils/config';
-import { TextInput, TextInputProps, ActionIcon, rem } from '@mantine/core';
-import { IconSearch, IconArrowRight } from '@tabler/icons-react';
+import { ActionIcon, TextInput, TextInputProps, rem } from '@mantine/core';
+import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 import { useSearchParams } from 'next/navigation';
 import { TransitionStartFunction, useRef } from 'react';
+
+import { usePathname, useRouter } from '@/libs/i18n-navigation';
+import { SEARCH_CONTENT, SEARCH_PAGE } from '@/utils/config';
 
 interface Props extends TextInputProps {
 	startTransition?: TransitionStartFunction;

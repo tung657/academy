@@ -1,5 +1,11 @@
 'use client';
 
+import { ActionIcon, Box, Center, Text, Tooltip } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { IconTrash } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+import { useRecoilValue } from 'recoil';
+
 import { ModalRender } from '@/components/mantines/modal/ModalRender';
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { userState } from '@/store/user/atom';
@@ -9,11 +15,6 @@ import {
 	CACHE_EMPLOYEES,
 	useDeleteEmployee,
 } from '@/utils/query-loader/user.loader';
-import { ActionIcon, Box, Center, Text, Tooltip } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { IconTrash } from '@tabler/icons-react';
-import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
 
 interface Props {
 	label: string;

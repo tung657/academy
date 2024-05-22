@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Variants, motion } from 'framer-motion';
 import { useMediaQuery } from '@mantine/hooks';
+import { Variants, motion } from 'framer-motion';
+import React from 'react';
+
 import { VALUE_MOBILE } from '@/utils/config';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {

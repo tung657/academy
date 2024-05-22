@@ -1,7 +1,8 @@
+import { AxiosRequestConfig } from 'axios';
+
 import { apiClient } from '@/helpers';
 import { getFeatureByIdRepository } from '@/helpers/repositories/feature.repository';
 import { IBaseDelete, IBaseResponse, IFeature } from '@/types';
-import { AxiosRequestConfig } from 'axios';
 
 const prefix = '/features';
 

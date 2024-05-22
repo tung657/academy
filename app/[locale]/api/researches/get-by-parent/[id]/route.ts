@@ -1,5 +1,6 @@
-import { getResearchByParent } from '@/helpers/repositories/research.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getResearchByParent } from '@/helpers/repositories/research.repository';
 
 export const dynamic = 'force-dynamic';
 

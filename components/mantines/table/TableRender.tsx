@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
 import {
-	Table,
-	ScrollArea,
-	UnstyledButton,
-	Group,
-	Text,
 	Center,
-	rem,
+	Group,
+	ScrollArea,
 	Stack,
+	Table,
+	Text,
+	UnstyledButton,
+	rem,
 } from '@mantine/core';
-import { IconSelector, IconPackage } from '@tabler/icons-react';
-import classes from './scss/table-render.module.scss';
+import { IconPackage, IconSelector } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+import React, { useState } from 'react';
+
+import classes from './scss/table-render.module.scss';
 
 interface ThProps {
 	children: React.ReactNode;

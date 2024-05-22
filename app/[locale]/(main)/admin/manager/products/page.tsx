@@ -1,5 +1,6 @@
-import { Product } from '@/components/admin/product/Product';
 import { Metadata } from 'next';
+
+import { Product } from '@/components/admin/product/Product';
 
 export const metadata: Metadata = {
 	title: 'Quản lý sản phẩm',

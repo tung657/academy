@@ -1,5 +1,6 @@
 import { Textarea, TextareaProps } from '@mantine/core';
 import React, { useRef, useState } from 'react';
+
 import classes from './scss/input-float.module.scss';
 
 export const TextAreaFloat = (props: TextareaProps): JSX.Element => {

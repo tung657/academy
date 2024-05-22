@@ -1,20 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-
-import {
-	useCreatePosition,
-	useUpdatePosition,
-} from '@/utils/query-loader/position.loader';
-import { queryClient } from '@/utils/query-loader/react-query';
-
-import {
-	CACHE_POSITION,
-	useGetPositionById,
-} from '@/utils/query-loader/position.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -25,12 +8,26 @@ import {
 	Textarea,
 	Tooltip,
 } from '@mantine/core';
-
 import { isNotEmpty, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { userState } from '@/store/user/atom';
+import { convertToString } from '@/utils/array';
+import {
+	useCreatePosition,
+	useUpdatePosition,
+} from '@/utils/query-loader/position.loader';
+import {
+	CACHE_POSITION,
+	useGetPositionById,
+} from '@/utils/query-loader/position.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { getRuleForms } from '@/utils/validation';
 
 interface Props {
 	id?: number;

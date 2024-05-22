@@ -1,5 +1,6 @@
-import { getBlogById } from '@/helpers/repositories/blog.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getBlogById } from '@/helpers/repositories/blog.repository';
 
 export const dynamic = 'force-dynamic';
 

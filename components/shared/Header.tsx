@@ -1,30 +1,33 @@
 'use client';
+
 import {
-	Menu,
-	Group,
-	Center,
+	Anchor,
+	Box,
 	Burger,
+	Center,
+	Collapse,
 	Container,
-	Drawer,
-	ScrollArea,
 	Divider,
+	Drawer,
+	Flex,
+	Group,
+	Menu,
+	ScrollArea,
 	rem,
 	useMantineTheme,
-	Collapse,
-	Flex,
-	Box,
-	Anchor,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconChevronDown } from '@tabler/icons-react';
-import classes from './scss/header.module.scss';
-import { useTranslations } from 'use-intl';
 import Image from 'next/image';
-import logo from '@/assets/images/logos/logo.jpg';
+import React, { useState } from 'react';
+import { useTranslations } from 'use-intl';
+
+import logo from '@/assets/images/logos/logo.png';
+import { Link, usePathname } from '@/libs/i18n-navigation';
 import { HOME_URL, generateTreeUrls } from '@/libs/urls';
 import { NavTree } from '@/types/global';
-import React, { useState } from 'react';
-import { Link, usePathname } from '@/libs/i18n-navigation';
+
+import classes from './scss/header.module.scss';
 
 export default function Header(): JSX.Element {
 	const t = useTranslations();

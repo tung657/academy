@@ -6,13 +6,15 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { EmployeeModal } from './EmployeeModal';
-import { useSearchEmployees } from '@/utils/query-loader/user.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { EmployeeDelete } from './EmployeeDelete';
-import { EmployeeResetPw } from './EmployeeResetPw';
-import { IEmployee } from '@/types';
+
 import { RenderTableParams } from '@/libs/table';
+import { IEmployee } from '@/types';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchEmployees } from '@/utils/query-loader/user.loader';
+
+import { EmployeeDelete } from './EmployeeDelete';
+import { EmployeeModal } from './EmployeeModal';
+import { EmployeeResetPw } from './EmployeeResetPw';
 
 export const EmployeeTable = (): JSX.Element => {
 	const t = useTranslations();

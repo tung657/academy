@@ -1,5 +1,6 @@
 'use client';
 
+import { Carousel } from '@mantine/carousel';
 import {
 	Anchor,
 	BackgroundImage,
@@ -11,21 +12,22 @@ import {
 	ThemeIcon,
 	rem,
 } from '@mantine/core';
-import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import { useMediaQuery } from '@mantine/hooks';
 import {
 	IconBrandFacebookFilled,
 	IconBrandInstagram,
 	IconBrandLinkedin,
 	IconBrandXFilled,
 } from '@tabler/icons-react';
-import classes from './scss/member.module.scss';
+import Autoplay from 'embla-carousel-autoplay';
+import { useRef } from 'react';
+
 import { IBaseResponse } from '@/types';
 import { IInstructor } from '@/types/instructor';
-import { useMediaQuery } from '@mantine/hooks';
 import { VALUE_MOBILE } from '@/utils/config';
-import { Carousel } from '@mantine/carousel';
-import { useRef } from 'react';
-import Autoplay from 'embla-carousel-autoplay';
+
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import classes from './scss/member.module.scss';
 
 interface Props {
 	data: IBaseResponse<IInstructor[]>;

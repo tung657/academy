@@ -1,4 +1,5 @@
 import { Card, Grid, Skeleton } from '@mantine/core';
+
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 export const CourseLoading = (): JSX.Element => {

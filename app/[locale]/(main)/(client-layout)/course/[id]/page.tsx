@@ -1,9 +1,10 @@
+import { notFound } from 'next/navigation';
+
 import { CourseDetail } from '@/components/course/CourseDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { ICourse } from '@/types/course';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchGetData } from '@/utils/services/base.service';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {

@@ -1,13 +1,14 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
-	getInstructorDropdown,
 	createInstructor,
 	deleteInstructor,
 	getInstructorById,
+	getInstructorDropdown,
 	searchInstructors,
 	updateInstructor,
 } from '../services/instructor.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

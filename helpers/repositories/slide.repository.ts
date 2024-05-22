@@ -1,4 +1,5 @@
-import { ISlide, ISearchSlide } from '@/types/slide';
+import { ISearchSlide, ISlide } from '@/types/slide';
+
 import { query } from '../db';
 
 export async function createSlide(slideModel: ISlide): Promise<any> {

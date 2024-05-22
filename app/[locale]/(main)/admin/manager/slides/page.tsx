@@ -1,5 +1,6 @@
-import { Slide } from '@/components/admin/slide/Slide';
 import { Metadata } from 'next';
+
+import { Slide } from '@/components/admin/slide/Slide';
 
 export const metadata: Metadata = {
 	title: 'Quản lý slides',

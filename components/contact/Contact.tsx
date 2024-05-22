@@ -11,9 +11,10 @@ import {
 	ThemeIcon,
 } from '@mantine/core';
 import { IconClock, IconMapPin, IconPhoneCall } from '@tabler/icons-react';
-import classes from './scss/contact.module.scss';
-import { TitleRender } from '../mantines/typographies/TitleRender';
 import { useTranslations } from 'next-intl';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import classes from './scss/contact.module.scss';
 
 export const Contact = (): JSX.Element => {
 	const t = useTranslations();

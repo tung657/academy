@@ -1,5 +1,10 @@
-import { BlogList } from '@/components/blogs/list/BlogList';
 import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
+import { BlogList } from '@/components/blogs/list/BlogList';
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
+import { IBaseDropdown, IBaseResponse } from '@/types';
+import { IBlog } from '@/types/blog';
 import {
 	AppConfig,
 	ORIGIN_URL,
@@ -9,11 +14,7 @@ import {
 	SEARCH_SIZE,
 	metaKeywords,
 } from '@/utils/config';
-import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { IBaseDropdown, IBaseResponse } from '@/types';
 import { fetchGetData, fetchSearchData } from '@/utils/services/base.service';
-import { IBlog } from '@/types/blog';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {

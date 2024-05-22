@@ -1,4 +1,6 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
 	createFeature,
 	deleteFeature,
@@ -8,7 +10,6 @@ import {
 	searchFeatures,
 	updateFeature,
 } from '../services/feature.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,
