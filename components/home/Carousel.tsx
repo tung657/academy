@@ -105,7 +105,7 @@ function Card({ mobile, ...props }: PropsCard) {
 						<Grid.Col span={{ base: 12, md: 3 }}></Grid.Col>
 						{props.preview_thumbnail && (
 							<Grid.Col span={{ base: 12, md: 4 }}>
-								<ScrollMotion isX={50}>
+								<ScrollMotion isX={16}>
 									<div className={classes.video} onClick={open}>
 										<AspectRatio ratio={16 / 9} mx="auto">
 											<Image

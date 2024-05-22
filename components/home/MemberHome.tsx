@@ -44,7 +44,6 @@ export const MemberHome = ({ data }: Props): JSX.Element => {
 						<TitleCombo
 							titleSub="TEAM MEMBERS"
 							titleChildren={'Đội ngũ chuyên gia của chúng tôi'}
-							description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
 						/>
 
 						<Grid mt={24} gutter={32}>

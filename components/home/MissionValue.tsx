@@ -102,7 +102,7 @@ export const MissionValue = (): JSX.Element => {
 											</TitleRender>
 										</Flex>
 									</ScrollMotion>
-									<ScrollMotion isX={50}>{item.content}</ScrollMotion>
+									<ScrollMotion isX={16}>{item.content}</ScrollMotion>
 								</Flex>
 							))}
 						</Stack>

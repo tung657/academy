@@ -33,7 +33,7 @@ export const AboutHome = (): JSX.Element => {
 						</ScrollMotion>
 					</Grid.Col>
 					<Grid.Col span={{ base: 12, md: 6 }}>
-						<ScrollMotion isX={50}>
+						<ScrollMotion isX={16}>
 							<Image
 								src={imgHome.aboutMember}
 								width={2000}
