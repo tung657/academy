@@ -74,7 +74,7 @@ export const MissionValue = (): JSX.Element => {
 					<Box pt={{ base: 50, lg: 60 }} pb={{ base: 50, lg: 60 }}>
 						<TitleCombo needWrapper={false} titleChildren={'Giá trị cốt lõi'} />
 						<ScrollMotion>
-							<Text>
+							<Text ta={'justify'}>
 								Kỷ luật và đồng tâm được xem là một phần không thể thiếu kiến
 								tạo nên bộ GEN của Viện trí tuệ nhân tạo Việt Nam. Đó là Tinh
 								thần của chúng tôi, là sức mạnh thúc đẩy lãnh đạo, CBNV của Viện
@@ -103,7 +103,9 @@ export const MissionValue = (): JSX.Element => {
 											</TitleRender>
 										</Flex>
 									</ScrollMotion>
-									<ScrollMotion isX={16}>{item.content}</ScrollMotion>
+									<ScrollMotion isX={16}>
+										<Text ta={'justify'}>{item.content}</Text>
+									</ScrollMotion>
 								</Flex>
 							))}
 						</Stack>

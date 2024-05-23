@@ -194,7 +194,7 @@ export default function Header(): JSX.Element {
 			<Drawer
 				opened={drawerOpened}
 				onClose={closeDrawer}
-				size="79%"
+				size="100%"
 				padding="md"
 				title={
 					<Anchor component={Link} href={HOME_URL}>
@@ -211,7 +211,7 @@ export default function Header(): JSX.Element {
 				hiddenFrom="sm"
 				zIndex={1000000}
 			>
-				<ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
+				<ScrollArea h={`calc(100vh - ${rem(150)})`} mx="-md">
 					<Divider my="sm" />
 
 					{/* <Anchor href={HOME_URL} className={classes.link}>

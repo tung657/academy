@@ -30,11 +30,12 @@ import logo from '@/assets/images/logos/logo.png';
 import { Link, usePathname } from '@/libs/i18n-navigation';
 import { DASHBOARD_URL } from '@/libs/urls';
 import { userState } from '@/store/user/atom';
+import { VALUE_MOBILE } from '@/utils/config';
 
 import classes from './scss/sidebar.module.scss';
 
 export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
-	const tablet_match = useMediaQuery('(max-width: 768px)');
+	const tablet_match = useMediaQuery(VALUE_MOBILE);
 	const pathname = usePathname();
 	const userRecoil = useRecoilValue(userState);
 

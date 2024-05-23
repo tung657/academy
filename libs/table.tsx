@@ -14,8 +14,10 @@ import {
 	useEffect,
 	useState,
 } from 'react';
+import { useRecoilValue } from 'recoil';
 
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
+import { colorSchemeState } from '@/store/theme/atom';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
 import { calcTotalPages } from '@/utils/format-number';
 
@@ -59,6 +61,7 @@ export const RenderTableParams = ({
 	const searchContent = searchParams.get(SEARCH_CONTENT) || '';
 	const router = useRouter();
 	const pathname = usePathname();
+	const colorScheme = useRecoilValue(colorSchemeState);
 	const [pagination, setPagination] = useState<MRT_PaginationState>({
 		pageIndex: +page - 1,
 		pageSize: +pageSize,
@@ -124,7 +127,7 @@ export const RenderTableParams = ({
 		},
 		mantineTableHeadCellProps: {
 			align: 'center',
-			bg: '#DFE2E2',
+			bg: colorScheme === 'light' ? '#DFE2E2' : 'dark',
 			p: 8,
 			style: {
 				borderInlineEnd: '1px solid #f0f0f0',
@@ -165,6 +168,8 @@ export const RenderTableBasic = ({
 	setSearchContent,
 	...props
 }: ITableBasic): JSX.Element => {
+	const colorScheme = useRecoilValue(colorSchemeState);
+
 	const handleFilter = (value: string) => {
 		setPagination((prev) => ({
 			...prev,
@@ -210,7 +215,7 @@ export const RenderTableBasic = ({
 		},
 		mantineTableHeadCellProps: {
 			align: 'center',
-			bg: '#DFE2E2',
+			bg: colorScheme === 'light' ? '#DFE2E2' : 'dark',
 			p: 8,
 			style: {
 				borderInlineEnd: '1px solid #f0f0f0',

@@ -2,6 +2,7 @@ import {
 	ActionIcon,
 	Burger,
 	Group,
+	MantineColorScheme,
 	Menu,
 	Tooltip,
 	useMantineColorScheme,
@@ -13,6 +14,10 @@ import {
 	IconMoonStars,
 	IconSunHigh,
 } from '@tabler/icons-react';
+import { useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
+
+import { colorSchemeState } from '@/store/theme/atom';
 
 import { AvatarDropdown } from './AvatarDropdown';
 
@@ -23,11 +28,22 @@ type HeaderNavProps = {
 	toggleMobile?: () => void;
 	desktopOpened?: boolean;
 	toggleDesktop?: () => void;
+	colorScheme?: MantineColorScheme;
 };
 
-const HeaderNav = (props: HeaderNavProps) => {
-	const { desktopOpened, toggleDesktop, toggleMobile, mobileOpened } = props;
-	const { setColorScheme, colorScheme } = useMantineColorScheme();
+const HeaderNav = ({
+	desktopOpened,
+	toggleDesktop,
+	toggleMobile,
+	mobileOpened,
+}: HeaderNavProps) => {
+	const { colorScheme, setColorScheme } = useMantineColorScheme();
+	const setColorSchemeRecoil = useSetRecoilState(colorSchemeState);
+
+	useEffect(() => {
+		setColorSchemeRecoil(colorScheme);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<Group justify="space-between">
@@ -72,19 +88,25 @@ const HeaderNav = (props: HeaderNavProps) => {
 					</Menu.Target>
 					<Menu.Dropdown>
 						<Menu.Label tt="uppercase" ta="center" fw={600}>
-							Select color modes
+							Chọn chủ đề
 						</Menu.Label>
 						<Menu.Item
 							leftSection={<IconSunHigh size={16} />}
-							onClick={() => setColorScheme('light')}
+							onClick={() => {
+								setColorScheme?.('light');
+								setColorSchemeRecoil('light');
+							}}
 						>
-							Light
+							Sáng
 						</Menu.Item>
 						<Menu.Item
 							leftSection={<IconMoonStars size={16} />}
-							onClick={() => setColorScheme('dark')}
+							onClick={() => {
+								setColorScheme?.('dark');
+								setColorSchemeRecoil('dark');
+							}}
 						>
-							Dark
+							Tối
 						</Menu.Item>
 					</Menu.Dropdown>
 				</Menu>

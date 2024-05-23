@@ -6,11 +6,9 @@ import {
 	Box,
 	Container,
 	Flex,
-	MantineColorScheme,
 	MantineProvider,
 	colorsTuple,
 	rem,
-	useMantineColorScheme,
 	useMantineTheme,
 } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
@@ -19,12 +17,13 @@ import { getCookie, setCookie } from 'cookies-next';
 import { useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { useRecoilState, useResetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil';
 
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
+import { colorSchemeState } from '@/store/theme/atom';
 import { userState } from '@/store/user/atom';
 import { getFeatureTree } from '@/utils/array';
-import { LOCAL_COLOR, LOCAL_USER } from '@/utils/config';
+import { LOCAL_COLOR, LOCAL_USER, VALUE_MOBILE } from '@/utils/config';
 import { useGetFeaturesByUser } from '@/utils/query-loader/feature.loader';
 
 import HeaderNav from '../header-nav/HeaderNav';
@@ -47,13 +46,13 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 	const [, setUserRecoil] = useRecoilState(userState);
 	const resetUserRecoil = useResetRecoilState(userState);
 	const theme = useMantineTheme();
-	const tablet_match = useMediaQuery('(max-width: 768px)');
+	const tablet_match = useMediaQuery(VALUE_MOBILE);
 	const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
 	const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 	const [primaryColor, setPrimaryColor] = useState(
 		getCookie(LOCAL_COLOR) || dataColors[0],
 	);
-	const { colorScheme } = useMantineColorScheme();
+	const colorScheme = useRecoilValue(colorSchemeState);
 
 	const path = pathname?.split('/')?.[pathname?.split('/')?.length - 1];
 
@@ -155,15 +154,14 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 						/>
 					</Container>
 				</AppShell.Header>
-				<AppShell.Navbar>
+				<AppShell.Navbar bg={colorScheme === 'light' ? 'white' : 'dark.7'}>
 					<Sidebar isLoading={isLoading} onClose={toggleMobile} />
 					<ColorRender
 						primaryColor={primaryColor}
 						setPrimaryColor={setPrimaryColor}
-						colorScheme={colorScheme}
 					/>
 				</AppShell.Navbar>
-				<AppShell.Main bg={colorScheme === 'light' ? 'gray.1' : 'dark'}>
+				<AppShell.Main bg={colorScheme === 'light' ? 'gray.1' : 'dark.7'}>
 					<TitleRender order={2} pb={16}>
 						{t(`${path}.heading`)}
 					</TitleRender>
@@ -177,12 +175,12 @@ export default function AdminLayout({ children, params }: Props): JSX.Element {
 function ColorRender({
 	primaryColor,
 	setPrimaryColor,
-	colorScheme,
 }: {
 	primaryColor: string;
 	setPrimaryColor: React.Dispatch<React.SetStateAction<string>>;
-	colorScheme: MantineColorScheme;
 }): JSX.Element {
+	const colorScheme = useRecoilValue(colorSchemeState);
+
 	return (
 		<>
 			<AppShell.Section

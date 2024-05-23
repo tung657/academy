@@ -131,6 +131,10 @@
 			"confirm_password": "Xác nhận mật khẩu"
 		}
 	},
+
+	"dashboard": {
+		"heading": "Dashboard"
+	},
 	"features": {
 		"heading": "Quản lý tính năng",
 		"title_create": "Thêm mới tính năng",
