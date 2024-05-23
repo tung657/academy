@@ -42,6 +42,7 @@ export const ContactForm = (): JSX.Element => {
 					return;
 				}
 				getNotifications('success', t, data.message);
+				form.reset();
 			},
 		},
 	});
@@ -59,9 +60,9 @@ export const ContactForm = (): JSX.Element => {
 		<section>
 			<Container size="xl">
 				<TitleCombo
-					titleSub="GET IN TOUCH"
-					titleChildren="Ready to Get Started?"
-					description="Your email address will not be published. Required fields are marked *"
+					titleSub="LIÊN HỆ"
+					titleChildren="Sẵn sàng để bắt đầu?"
+					description="Địa chỉ email của bạn sẽ được bảo mật"
 				/>
 				<Grid gutter={16} my={32}>
 					<Grid.Col span={{ base: 12, md: 6 }}>
