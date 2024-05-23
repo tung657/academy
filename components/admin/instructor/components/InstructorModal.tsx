@@ -24,7 +24,7 @@ import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
 import { userState } from '@/store/user/atom';
 import { IInstructor } from '@/types/instructor';
 import { convertToString } from '@/utils/array';
-import { patterns, removeVietnameseTones } from '@/utils/format-string';
+import { removeVietnameseTones } from '@/utils/format-string';
 import {
 	CACHE_INSTRUCTOR,
 	useCreateInstructor,
@@ -59,7 +59,7 @@ export const InstructorModal = ({ id }: Props): JSX.Element => {
 			sort_order: 1,
 		},
 		validate: {
-			instructor_name: (value) => patterns.name(value, t),
+			instructor_name: isNotEmpty(t('validation.required')),
 			major: isNotEmpty(t('validation.required')),
 			sort_order: isNotEmpty(t('validation.required')),
 		},

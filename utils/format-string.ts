@@ -26,7 +26,7 @@ export const getUrlDetail = (url?: string, id?: string | number) => {
 export const patterns = {
 	name: (value: string | unknown, t: any) =>
 		value
-			? /^[A-Za-z ]+$/.test(value + '')
+			? /^[\p{L}\p{N}\s]+$/.test(value + '')
 				? null
 				: t('validation.name')
 			: t('validation.required'),
