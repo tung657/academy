@@ -1,5 +1,6 @@
-import { getRoleById } from '@/helpers/repositories/role.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getRoleById } from '@/helpers/repositories/role.repository';
 
 export const dynamic = 'force-dynamic';
 

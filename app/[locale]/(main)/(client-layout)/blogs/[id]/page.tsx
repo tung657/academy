@@ -1,8 +1,9 @@
-import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { notFound } from 'next/navigation';
+
 import { BlogDetail } from '@/components/blogs/detail/BlogDetail';
 import { IBlog } from '@/types/blog';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchGetData, fetchSearchData } from '@/utils/services/base.service';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {

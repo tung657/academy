@@ -5,12 +5,14 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { PartnerModal } from './PartnerModal';
-import { useSearchPartner } from '@/utils/query-loader/partner.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { PartnerDelete } from './PartnerDelete';
-import { IPartner } from '@/types/partner';
+
 import { RenderTableParams } from '@/libs/table';
+import { IPartner } from '@/types/partner';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchPartner } from '@/utils/query-loader/partner.loader';
+
+import { PartnerDelete } from './PartnerDelete';
+import { PartnerModal } from './PartnerModal';
 
 export const PartnerTable = (): JSX.Element => {
 	const t = useTranslations();

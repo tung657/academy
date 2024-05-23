@@ -1,15 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_PARTNER,
-	useCreatePartner,
-	useGetPartnerById,
-	useUpdatePartner,
-} from '@/utils/query-loader/partner.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -20,17 +8,30 @@ import {
 	TextInput,
 	Tooltip,
 } from '@mantine/core';
+import { FileWithPath } from '@mantine/dropzone';
 import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
-import { FileWithPath } from '@mantine/dropzone';
 import { useState } from 'react';
-import { IPartner } from '@/types/partner';
-import { deleteFile, uploadFile } from '@/utils/services/file.service';
-import { removeVietnameseTones } from '@/utils/format-string';
+import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
+import { userState } from '@/store/user/atom';
+import { IPartner } from '@/types/partner';
+import { convertToString } from '@/utils/array';
+import { removeVietnameseTones } from '@/utils/format-string';
+import {
+	CACHE_PARTNER,
+	useCreatePartner,
+	useGetPartnerById,
+	useUpdatePartner,
+} from '@/utils/query-loader/partner.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
 
 interface Props {
 	id?: number;

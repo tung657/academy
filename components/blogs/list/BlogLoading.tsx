@@ -1,5 +1,6 @@
-import { ScrollMotion } from '@/components/shared/motion/ScrollMotion';
 import { Box, Card, Flex, Group, Skeleton, Stack } from '@mantine/core';
+
+import { ScrollMotion } from '@/components/shared/motion/ScrollMotion';
 
 export const BlogLoading = (): JSX.Element => {
 	return (

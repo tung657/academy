@@ -1,11 +1,12 @@
+import { Box, Card, Center, Container, PinInput, Stack } from '@mantine/core';
+import { decodeJwt } from 'jose';
+import { notFound } from 'next/navigation';
+
 import { VerifyPwd } from '@/components/admin/verify/VerifyPwd';
 import { TitleRender } from '@/components/mantines/typographies/TitleRender';
 import { verifyJwtToken } from '@/helpers/auth';
 import { AppConfig } from '@/utils/config';
 import { getNewPw } from '@/utils/services/user.service';
-import { Box, Card, Center, Container, PinInput, Stack } from '@mantine/core';
-import { decodeJwt } from 'jose';
-import { notFound } from 'next/navigation';
 
 export async function generateMetadata() {
 	return {

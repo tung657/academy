@@ -1,5 +1,6 @@
-import { getBranchDropdown } from '@/helpers/repositories/branch.repository';
 import { NextResponse } from 'next/server';
+
+import { getBranchDropdown } from '@/helpers/repositories/branch.repository';
 
 export const dynamic = 'force-dynamic';
 

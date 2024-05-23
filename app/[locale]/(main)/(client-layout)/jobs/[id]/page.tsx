@@ -1,9 +1,10 @@
+import { notFound } from 'next/navigation';
+
 import { JobDetail } from '@/components/job/JobDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IJob } from '@/types/job';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchGetData } from '@/utils/services/base.service';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {

@@ -1,5 +1,6 @@
-import { getInstructorDropdown } from '@/helpers/repositories/instructor.repository';
 import { NextResponse } from 'next/server';
+
+import { getInstructorDropdown } from '@/helpers/repositories/instructor.repository';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,16 +1,17 @@
 'use client';
 
-import { useRef } from 'react';
-import Autoplay from 'embla-carousel-autoplay';
 import { Carousel } from '@mantine/carousel';
 import { Box, Card, Container, Image } from '@mantine/core';
-
-import classes from './scss/partner.module.scss';
-import { TitleCombo } from '../mantines/typographies/TitleCombo';
 import { useMediaQuery } from '@mantine/hooks';
-import { VALUE_MOBILE } from '@/utils/config';
+import Autoplay from 'embla-carousel-autoplay';
+import { useRef } from 'react';
+
 import { IBaseResponse } from '@/types';
 import { IPartner } from '@/types/partner';
+import { VALUE_MOBILE } from '@/utils/config';
+
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import classes from './scss/partner.module.scss';
 
 interface Props {
 	data: IBaseResponse<IPartner[]>;

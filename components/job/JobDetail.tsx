@@ -14,10 +14,6 @@ import {
 	TypographyStylesProvider,
 	UnstyledButton,
 } from '@mantine/core';
-import { TitleRender } from '../mantines/typographies/TitleRender';
-import { intlUSD } from '@/utils/format-number';
-import { ApplyForm } from './ApplyForm';
-import { IJob } from '@/types/job';
 import {
 	IconCash,
 	IconChevronLeft,
@@ -26,8 +22,14 @@ import {
 	IconUserCircle,
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+
 import { Link, useRouter } from '@/libs/i18n-navigation';
+import { IJob } from '@/types/job';
 import { ORIGIN_URL } from '@/utils/config';
+import { intlUSD } from '@/utils/format-number';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import { ApplyForm } from './ApplyForm';
 
 interface Props {
 	data: IJob;

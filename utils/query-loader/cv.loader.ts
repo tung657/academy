@@ -1,6 +1,7 @@
-import { AxiosRequestConfig } from 'axios';
-import { createCV, deleteCV, searchCV } from '../services/cv.service';
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { AxiosRequestConfig } from 'axios';
+
+import { createCV, deleteCV, searchCV } from '../services/cv.service';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

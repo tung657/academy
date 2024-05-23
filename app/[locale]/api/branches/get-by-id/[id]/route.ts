@@ -1,5 +1,6 @@
-import { getBranchById } from '@/helpers/repositories/branch.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getBranchById } from '@/helpers/repositories/branch.repository';
 
 export const dynamic = 'force-dynamic';
 

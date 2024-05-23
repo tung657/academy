@@ -1,13 +1,14 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
-	getResearchTypeDropdown,
 	createResearchType,
 	deleteResearchType,
 	getResearchTypeById,
+	getResearchTypeDropdown,
 	searchResearchType,
 	updateResearchType,
 } from '../services/research-type.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

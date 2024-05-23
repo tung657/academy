@@ -1,4 +1,6 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
 	createBlog,
 	deleteBlog,
@@ -7,7 +9,6 @@ import {
 	updateBlog,
 	updateViewBlog,
 } from '../services/blog.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

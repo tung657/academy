@@ -1,6 +1,7 @@
-import { NotificationData, notifications } from '@mantine/notifications';
-import { TitleRender } from '../typographies/TitleRender';
 import { Text } from '@mantine/core';
+import { NotificationData, notifications } from '@mantine/notifications';
+
+import { TitleRender } from '../typographies/TitleRender';
 
 type notificationType = 'success' | 'warning' | 'info' | 'error' | 'default';
 

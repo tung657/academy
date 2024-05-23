@@ -1,16 +1,18 @@
 'use client';
 
-import { featureSelectedState } from '@/store/feature/atom';
-import { useSearchActions } from '@/utils/query-loader/action.loader';
+import { Flex } from '@mantine/core';
+import { type MRT_ColumnDef, MRT_PaginationState } from 'mantine-react-table';
+import { useTranslations } from 'next-intl';
 import { useMemo, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { MRT_PaginationState, type MRT_ColumnDef } from 'mantine-react-table';
-import { IAction } from '@/types';
-import { useTranslations } from 'next-intl';
+
 import { RenderTableBasic } from '@/libs/table';
-import { ActionModal } from './ActionModal';
-import { Flex } from '@mantine/core';
+import { featureSelectedState } from '@/store/feature/atom';
+import { IAction } from '@/types';
+import { useSearchActions } from '@/utils/query-loader/action.loader';
+
 import { ActionDelete } from './ActionDelete';
+import { ActionModal } from './ActionModal';
 
 export const ActionTable = (): JSX.Element => {
 	const featureSelected = useRecoilValue(featureSelectedState);

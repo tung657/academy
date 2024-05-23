@@ -110,7 +110,7 @@
 }
 
 .pill {
-  transition: .3s;
+	transition: 0.3s;
 	&:hover {
 		color: var(--mantine-color-primary-filled) !important;
 	}

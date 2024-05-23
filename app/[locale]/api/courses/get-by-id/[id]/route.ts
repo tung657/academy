@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { getCourseById } from '@/helpers/repositories/course.repository';
 import { ICourse, ICourseDetail } from '@/types/course';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

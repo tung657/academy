@@ -1,4 +1,5 @@
 import { ICV, ISearchCV } from '@/types/cv';
+
 import { query } from '../db';
 
 export async function createCV(cvModel: ICV): Promise<any> {

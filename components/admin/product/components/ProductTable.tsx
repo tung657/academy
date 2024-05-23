@@ -1,17 +1,19 @@
 'use client';
 
 import { Anchor, Flex, Image, Text, Tooltip } from '@mantine/core';
+import { IconLink } from '@tabler/icons-react';
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { ProductModal } from './ProductModal';
-import { useSearchProduct } from '@/utils/query-loader/product.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { ProductDelete } from './ProductDelete';
-import { IProduct } from '@/types';
+
 import { RenderTableParams } from '@/libs/table';
-import { IconLink } from '@tabler/icons-react';
+import { IProduct } from '@/types';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchProduct } from '@/utils/query-loader/product.loader';
+
+import { ProductDelete } from './ProductDelete';
+import { ProductModal } from './ProductModal';
 
 export const ProductTable = (): JSX.Element => {
 	const t = useTranslations();

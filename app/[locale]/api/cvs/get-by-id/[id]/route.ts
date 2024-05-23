@@ -1,5 +1,6 @@
-import { getCVById } from '@/helpers/repositories/cv.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getCVById } from '@/helpers/repositories/cv.repository';
 
 export const dynamic = 'force-dynamic';
 

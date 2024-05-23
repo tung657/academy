@@ -1,5 +1,6 @@
-import { getProductById } from '@/helpers/repositories/product.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getProductById } from '@/helpers/repositories/product.repository';
 
 export const dynamic = 'force-dynamic';
 

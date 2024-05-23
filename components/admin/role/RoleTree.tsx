@@ -1,34 +1,36 @@
 'use client';
 
-import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import { Card, Flex, Grid, LoadingOverlay, ScrollArea } from '@mantine/core';
+import { setCookie } from 'cookies-next';
+import _ from 'lodash';
+import { useTranslations } from 'next-intl';
 import Tree from 'rc-tree';
-import classes from './scss/feature-tree.module.scss';
 import { Key, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
+
+import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { TitleRender } from '@/components/mantines/typographies/TitleRender';
 import { featureSelectedState, roleState } from '@/store/feature/atom';
-import { ActionTable } from './components/action/ActionTable';
-import { ERROR_TIMEOUT, LOCAL_USER } from '@/utils/config';
-import { useSearchRoles } from '@/utils/query-loader/role.loader';
 import { userState } from '@/store/user/atom';
-import {
-	getFeatureByRole,
-	getFeaturesByUser,
-} from '@/utils/services/feature.service';
 import {
 	checkIfNotEnoughLeafs,
 	filterNot,
 	flattenTree,
 	getFeatureTree,
 } from '@/utils/array';
-import _ from 'lodash';
+import { ERROR_TIMEOUT, LOCAL_USER } from '@/utils/config';
+import { useSearchFeatures } from '@/utils/query-loader/feature.loader';
 import { useCreatePerFeaForRole } from '@/utils/query-loader/role-feature.loader';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { useTranslations } from 'next-intl';
-import { setCookie } from 'cookies-next';
-import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { useSearchRoles } from '@/utils/query-loader/role.loader';
+import {
+	getFeatureByRole,
+	getFeaturesByUser,
+} from '@/utils/services/feature.service';
+
 import { RoleTable } from './components/RoleTable';
-import { TitleRender } from '@/components/mantines/typographies/TitleRender';
+import { ActionTable } from './components/action/ActionTable';
+import classes from './scss/feature-tree.module.scss';
 
 export const RoleTree = (): JSX.Element => {
 	const [userRecoil] = useRecoilState(userState);

@@ -1,9 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -19,12 +13,19 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { userState } from '@/store/user/atom';
+import { convertToString } from '@/utils/array';
+import { queryClient } from '@/utils/query-loader/react-query';
 import {
 	CACHE_ROLE,
 	useCreateRole,
 	useGetRoleById,
 	useUpdateRole,
 } from '@/utils/query-loader/role.loader';
+import { getRuleForms } from '@/utils/validation';
 
 interface Props {
 	id?: string;

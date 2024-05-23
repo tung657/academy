@@ -1,5 +1,6 @@
-import { getContactById } from '@/helpers/repositories/contact.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getContactById } from '@/helpers/repositories/contact.repository';
 
 export const dynamic = 'force-dynamic';
 

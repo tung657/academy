@@ -1,4 +1,5 @@
 import { IProduct, ISearchProduct } from '@/types/product';
+
 import { query } from '../db';
 
 export async function createProduct(productModel: IProduct): Promise<any> {

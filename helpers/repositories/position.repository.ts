@@ -1,4 +1,5 @@
 import { IPosition, ISearchPosition } from '@/types';
+
 import { query } from '../db';
 
 export async function createPosition(positionModel: IPosition): Promise<any> {

@@ -1,6 +1,7 @@
 import { apiClient } from '@/helpers';
-import { BASE_URL, ERROR_TIMEOUT, ORIGIN_URL } from '../config';
 import { IBaseResponse } from '@/types';
+
+import { BASE_URL, ERROR_TIMEOUT, ORIGIN_URL } from '../config';
 
 export async function fetchSearchData(
 	url: string,

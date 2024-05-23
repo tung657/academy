@@ -1,5 +1,6 @@
-import { ClientLayout } from '@/components';
 import { Notifications } from '@mantine/notifications';
+
+import { ClientLayout } from '@/components';
 
 interface Props {
 	children: React.ReactNode;

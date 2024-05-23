@@ -5,13 +5,15 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { ResearchModal } from './ResearchModal';
-import { useSearchResearch } from '@/utils/query-loader/research.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { ResearchDelete } from './ResearchDelete';
-import { IResearch } from '@/types/research';
+
 import { RenderTableParams } from '@/libs/table';
+import { IResearch } from '@/types/research';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchResearch } from '@/utils/query-loader/research.loader';
+
 import { ResearchType } from '../../research-type/ResearchType';
+import { ResearchDelete } from './ResearchDelete';
+import { ResearchModal } from './ResearchModal';
 
 export const ResearchTable = (): JSX.Element => {
 	const t = useTranslations();

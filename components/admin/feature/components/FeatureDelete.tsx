@@ -1,5 +1,10 @@
 'use client';
 
+import { Box, Center, Text } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useTranslations } from 'next-intl';
+import { useRecoilState, useRecoilValue } from 'recoil';
+
 import { ButtonTrash } from '@/components/mantines/buttons/ButtonGroup';
 import { ModalRender } from '@/components/mantines/modal/ModalRender';
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
@@ -11,10 +16,6 @@ import {
 	useDeleteFeature,
 } from '@/utils/query-loader/feature.loader';
 import { queryClient } from '@/utils/query-loader/react-query';
-import { Box, Center, Text } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { useTranslations } from 'next-intl';
-import { useRecoilState, useRecoilValue } from 'recoil';
 
 export const FeatureDelete = (): JSX.Element => {
 	const [opened, { open, close }] = useDisclosure();

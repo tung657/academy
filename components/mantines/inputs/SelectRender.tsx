@@ -1,4 +1,5 @@
 import { Loader, Select, SelectProps } from '@mantine/core';
+
 import classes from './scss/select.module.scss';
 
 interface Props extends SelectProps {

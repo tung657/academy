@@ -5,12 +5,14 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { SlideModal } from './SlideModal';
-import { useSearchSlide } from '@/utils/query-loader/slide.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { SlideDelete } from './SlideDelete';
-import { ISlide } from '@/types';
+
 import { RenderTableParams } from '@/libs/table';
+import { ISlide } from '@/types';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchSlide } from '@/utils/query-loader/slide.loader';
+
+import { SlideDelete } from './SlideDelete';
+import { SlideModal } from './SlideModal';
 
 export const SlideTable = (): JSX.Element => {
 	const t = useTranslations();

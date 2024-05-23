@@ -1,13 +1,14 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
-	getPositionDropdown,
 	createPosition,
 	deletePosition,
 	getPositionById,
+	getPositionDropdown,
 	searchPosition,
 	updatePosition,
 } from '../services/position.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

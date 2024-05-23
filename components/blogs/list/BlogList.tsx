@@ -1,7 +1,5 @@
 'use client';
 
-import { dataTypesBlogs } from '../data/data-fake';
-import classes from './scss/blog.module.scss';
 import {
 	Anchor,
 	Avatar,
@@ -18,21 +16,25 @@ import {
 	Text,
 	Title,
 } from '@mantine/core';
-import { useTranslations } from 'next-intl';
 import dayjs from 'dayjs';
-import { formatDateShow, getUrlDetail } from '@/utils/format-string';
-import { BLOG_DETAIL_URL } from '@/libs/urls';
+import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
+import { useTransition } from 'react';
+
+import { Empty } from '@/components/errors/empty';
 import { ShareSocial } from '@/components/shared/ShareSocial';
 import { ScrollMotion } from '@/components/shared/motion/ScrollMotion';
-import { useSearchParams } from 'next/navigation';
-import { SEARCH_DEPARTMENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { useTransition } from 'react';
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
-import { calcTotalPages } from '@/utils/format-number';
-import { BlogLoading } from './BlogLoading';
+import { BLOG_DETAIL_URL } from '@/libs/urls';
 import { IBaseDropdown, IBaseResponse } from '@/types';
 import { IBlog } from '@/types/blog';
-import { Empty } from '@/components/errors/empty';
+import { SEARCH_DEPARTMENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { calcTotalPages } from '@/utils/format-number';
+import { formatDateShow, getUrlDetail } from '@/utils/format-string';
+
+import { dataTypesBlogs } from '../data/data-fake';
+import { BlogLoading } from './BlogLoading';
+import classes from './scss/blog.module.scss';
 
 interface Props {
 	options: IBaseDropdown;

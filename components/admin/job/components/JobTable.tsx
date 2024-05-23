@@ -5,17 +5,19 @@ import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { JobModal } from './JobModal';
-import { useSearchJob } from '@/utils/query-loader/job.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { JobDelete } from './JobDelete';
-import { IJob } from '@/types/job';
-import { RenderTableParams } from '@/libs/table';
-import { intlUSD } from '@/utils/format-number';
-import { toggleActiveJob } from '@/utils/services/job.service';
 import { useRecoilValue } from 'recoil';
-import { userState } from '@/store/user/atom';
+
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { RenderTableParams } from '@/libs/table';
+import { userState } from '@/store/user/atom';
+import { IJob } from '@/types/job';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { intlUSD } from '@/utils/format-number';
+import { useSearchJob } from '@/utils/query-loader/job.loader';
+import { toggleActiveJob } from '@/utils/services/job.service';
+
+import { JobDelete } from './JobDelete';
+import { JobModal } from './JobModal';
 
 export const JobTable = (): JSX.Element => {
 	const t = useTranslations();

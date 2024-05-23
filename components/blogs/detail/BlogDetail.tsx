@@ -1,4 +1,5 @@
 'use client';
+
 import {
 	Affix,
 	Anchor,
@@ -13,16 +14,18 @@ import {
 	TypographyStylesProvider,
 	UnstyledButton,
 } from '@mantine/core';
-import { TitleRender } from '@/components/mantines/typographies/TitleRender';
-import { useTranslations } from 'next-intl';
-import { Link, useRouter } from '@/libs/i18n-navigation';
-import { IBlog } from '@/types/blog';
-import { formatDatePost, formatTimeSince } from '@/utils/format-string';
-import dayjs from 'dayjs';
-import { ShareSocial } from '@/components/shared/ShareSocial';
-import { ORIGIN_URL, SEARCH_DEPARTMENT } from '@/utils/config';
 import { IconChevronLeft } from '@tabler/icons-react';
+import dayjs from 'dayjs';
+import { useTranslations } from 'next-intl';
+
+import { TitleRender } from '@/components/mantines/typographies/TitleRender';
+import { ShareSocial } from '@/components/shared/ShareSocial';
+import { Link, useRouter } from '@/libs/i18n-navigation';
 import { BLOG_URL } from '@/libs/urls';
+import { IBlog } from '@/types/blog';
+import { ORIGIN_URL, SEARCH_DEPARTMENT } from '@/utils/config';
+import { formatDatePost, formatTimeSince } from '@/utils/format-string';
+
 import classes from './scss/blog-detail.module.scss';
 
 interface Props {

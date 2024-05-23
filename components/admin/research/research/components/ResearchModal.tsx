@@ -1,15 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_RESEARCH,
-	useCreateResearch,
-	useGetResearchById,
-	useUpdateResearch,
-} from '@/utils/query-loader/research.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -20,20 +8,34 @@ import {
 	TextInput,
 	Tooltip,
 } from '@mantine/core';
+import { FileWithPath } from '@mantine/dropzone';
 import { isNotEmpty, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
-import { FileWithPath } from '@mantine/dropzone';
 import { useState } from 'react';
-import { RichEditorBasic } from '../../../editor/Editor';
-import { IResearch } from '@/types/research';
-import { deleteFile, uploadFile } from '@/utils/services/file.service';
-import { removeVietnameseTones } from '@/utils/format-string';
-import { useGetResearchTypeDropdown } from '@/utils/query-loader/research-type.loader';
+import { useRecoilValue } from 'recoil';
+
 import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
+import { userState } from '@/store/user/atom';
+import { IResearch } from '@/types/research';
+import { convertToString } from '@/utils/array';
+import { removeVietnameseTones } from '@/utils/format-string';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { useGetResearchTypeDropdown } from '@/utils/query-loader/research-type.loader';
+import {
+	CACHE_RESEARCH,
+	useCreateResearch,
+	useGetResearchById,
+	useUpdateResearch,
+} from '@/utils/query-loader/research.loader';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
+
+import { RichEditorBasic } from '../../../editor/Editor';
 
 interface Props {
 	id?: number;

@@ -1,5 +1,6 @@
-import { ORIGIN_URL } from '@/utils/config';
 import { MetadataRoute } from 'next';
+
+import { ORIGIN_URL } from '@/utils/config';
 
 export default function robots(): MetadataRoute.Robots {
 	return {

@@ -1,4 +1,5 @@
 'use client';
+
 import {
 	Button,
 	ColorSchemeScript,
@@ -10,6 +11,7 @@ import {
 	Title,
 } from '@mantine/core';
 import '@mantine/core/styles.css';
+
 import { theme } from '@/theme/theme';
 
 export default function Error({

@@ -1,10 +1,11 @@
 'use client';
 
 import { Box, Container, Flex, Stack, Text } from '@mantine/core';
-import { TitleCombo } from '../mantines/typographies/TitleCombo';
-import React from 'react';
-import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconBrain, IconDiamond } from '@tabler/icons-react';
+import React from 'react';
+
+import { TitleCombo } from '../mantines/typographies/TitleCombo';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 const dataCores = [

@@ -1,7 +1,8 @@
-import { createRoleFeature } from '@/helpers/repositories/role-feature.repository';
-import { ICreateRoleFeature } from '@/types';
 import { randomUUID } from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { createRoleFeature } from '@/helpers/repositories/role-feature.repository';
+import { ICreateRoleFeature } from '@/types';
 
 export const dynamic = 'force-dynamic';
 

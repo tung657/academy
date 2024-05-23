@@ -1,5 +1,6 @@
-import { Position } from '@/components/admin/position/Position';
 import { Metadata } from 'next';
+
+import { Position } from '@/components/admin/position/Position';
 
 export const metadata: Metadata = {
 	title: 'Quản lý chức vụ',

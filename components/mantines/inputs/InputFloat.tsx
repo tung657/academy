@@ -1,5 +1,6 @@
 import { TextInput, TextInputProps } from '@mantine/core';
 import React, { useRef, useState } from 'react';
+
 import classes from './scss/input-float.module.scss';
 
 export const InputFloat = (props: TextInputProps): JSX.Element => {

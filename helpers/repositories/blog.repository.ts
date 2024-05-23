@@ -1,4 +1,5 @@
 import { IBlog, ISearchBlog } from '@/types/blog';
+
 import { query } from '../db';
 
 export async function createBlog(partnerModel: IBlog): Promise<any> {

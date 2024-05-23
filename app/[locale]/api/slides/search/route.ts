@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchSlide } from '@/helpers/repositories/slide.repository';
 import { ISearchSlide } from '@/types/slide';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

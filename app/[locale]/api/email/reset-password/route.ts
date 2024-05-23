@@ -1,11 +1,12 @@
+import { SignJWT } from 'jose';
+import { NextRequest, NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
 import { getJwtSecretKey } from '@/helpers/auth';
 import { system_email } from '@/helpers/email-config';
 import { checkEmployeeEmail } from '@/helpers/repositories/user.repository';
 import { resetPasswordTemplate } from '@/libs/email-templates/resetPasswordTemplate';
 import { VERIFY_RESET_PASSWORD_URL } from '@/libs/urls';
-import { SignJWT } from 'jose';
-import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
 
 export async function POST(req: NextRequest) {
 	try {

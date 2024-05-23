@@ -1,9 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { notFound } from 'next/navigation';
+
 import { JobList } from '@/components/job/JobList';
 import { IBaseResponse } from '@/types';
 import { IJob } from '@/types/job';
-import { notFound } from 'next/navigation';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchSearchData } from '@/utils/services/base.service';
 
 export async function generateMetadata(props: { params: { locale: string } }) {

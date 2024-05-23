@@ -1,4 +1,5 @@
 import { IResearch, ISearchResearch } from '@/types/research';
+
 import { query } from '../db';
 
 export async function createResearch(researchModel: IResearch): Promise<any> {

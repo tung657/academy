@@ -1,15 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_ACTION,
-	useCreateAction,
-	useGetActionDetail,
-	useUpdateAction,
-} from '@/utils/query-loader/action.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -25,7 +13,20 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { featureSelectedState } from '@/store/feature/atom';
+import { userState } from '@/store/user/atom';
+import { convertToString } from '@/utils/array';
+import {
+	CACHE_ACTION,
+	useCreateAction,
+	useGetActionDetail,
+	useUpdateAction,
+} from '@/utils/query-loader/action.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { getRuleForms } from '@/utils/validation';
 
 interface Props {
 	id?: string;

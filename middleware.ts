@@ -1,5 +1,6 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
+
 import { verifyJwtToken } from './helpers/auth';
 import { ADMIN_URL, DASHBOARD_URL, LOGIN_URL } from './libs/urls';
 import { AppConfig, LOCAL_TOKEN, ORIGIN_URL } from './utils/config';

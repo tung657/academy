@@ -1,10 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Anchor,
@@ -20,13 +13,20 @@ import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconLink, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { userState } from '@/store/user/atom';
+import { convertToString } from '@/utils/array';
+import { patterns } from '@/utils/format-string';
 import {
 	CACHE_BRANCH,
 	useCreateBranch,
 	useGetBranchById,
 	useUpdateBranch,
 } from '@/utils/query-loader/branch.loader';
-import { patterns } from '@/utils/format-string';
+import { queryClient } from '@/utils/query-loader/react-query';
+import { getRuleForms } from '@/utils/validation';
 
 interface Props {
 	id?: string;

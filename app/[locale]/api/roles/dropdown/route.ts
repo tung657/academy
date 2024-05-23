@@ -1,5 +1,6 @@
-import { getRoleDropdown } from '@/helpers/repositories/role.repository';
 import { NextResponse } from 'next/server';
+
+import { getRoleDropdown } from '@/helpers/repositories/role.repository';
 
 export const dynamic = 'force-dynamic';
 

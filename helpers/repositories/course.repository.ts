@@ -1,4 +1,5 @@
 import { ICourse, ISearchCourse } from '@/types/course';
+
 import { query } from '../db';
 
 export async function createCourse(courseModel: ICourse): Promise<any> {

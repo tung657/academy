@@ -1,5 +1,6 @@
-import { getEmployeeById } from '@/helpers/repositories/user.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getEmployeeById } from '@/helpers/repositories/user.repository';
 
 export const dynamic = 'force-dynamic';
 

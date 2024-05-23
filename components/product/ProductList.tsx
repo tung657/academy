@@ -1,16 +1,16 @@
 'use client';
 
 import { Anchor, Box, Container, Grid, Image, Text } from '@mantine/core';
-
-import { PRODUCT_DETAIL_URL } from '@/libs/urls';
-import { TitleRender } from '../mantines/typographies/TitleRender';
 import { IconArrowRight } from '@tabler/icons-react';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/libs/i18n-navigation';
+import { PRODUCT_DETAIL_URL } from '@/libs/urls';
+import { IProduct } from '@/types';
+import { getUrlDetail } from '@/utils/format-string';
 
 import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { getUrlDetail } from '@/utils/format-string';
-import { useTranslations } from 'next-intl';
-import { IProduct } from '@/types';
-import { Link } from '@/libs/i18n-navigation';
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 interface Props {

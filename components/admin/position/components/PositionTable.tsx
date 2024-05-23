@@ -1,17 +1,18 @@
 'use client';
 
 import { Flex } from '@mantine/core';
-
 import { MRT_ColumnDef } from 'mantine-react-table';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { PositionModal } from './PositionModal';
-import { useSearchPosition } from '@/utils/query-loader/position.loader';
-import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
-import { PositionDelete } from './PositionDelete';
-import { IPosition } from '@/types';
+
 import { RenderTableParams } from '@/libs/table';
+import { IPosition } from '@/types';
+import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { useSearchPosition } from '@/utils/query-loader/position.loader';
+
+import { PositionDelete } from './PositionDelete';
+import { PositionModal } from './PositionModal';
 
 export const PositionTable = (): JSX.Element => {
 	const t = useTranslations();

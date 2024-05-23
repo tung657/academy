@@ -13,7 +13,7 @@ import {
 	Skeleton,
 	Stack,
 } from '@mantine/core';
-import classes from './scss/sidebar.module.scss';
+import { useMediaQuery } from '@mantine/hooks';
 import {
 	IconBuildingFactory2,
 	IconCircleKey,
@@ -24,12 +24,14 @@ import {
 	IconWallpaper,
 	IconX,
 } from '@tabler/icons-react';
-import { useMediaQuery } from '@mantine/hooks';
-import { Link, usePathname } from '@/libs/i18n-navigation';
 import { useRecoilValue } from 'recoil';
-import { userState } from '@/store/user/atom';
-import logo from '@/assets/images/logos/logo.jpg';
+
+import logo from '@/assets/images/logos/logo.png';
+import { Link, usePathname } from '@/libs/i18n-navigation';
 import { DASHBOARD_URL } from '@/libs/urls';
+import { userState } from '@/store/user/atom';
+
+import classes from './scss/sidebar.module.scss';
 
 export const Sidebar = ({ onClose, isLoading }: any): JSX.Element => {
 	const tablet_match = useMediaQuery('(max-width: 768px)');

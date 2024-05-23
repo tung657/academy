@@ -1,5 +1,7 @@
-import { imgOthers } from '@/assets/images/others';
 import Image from 'next/image';
+
+import { imgOthers } from '@/assets/images/others';
+
 import classes from './scss/title-sub.module.scss';
 
 interface Props {

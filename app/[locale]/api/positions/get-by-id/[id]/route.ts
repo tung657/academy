@@ -1,5 +1,6 @@
-import { getPositionById } from '@/helpers/repositories/position.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getPositionById } from '@/helpers/repositories/position.repository';
 
 export const dynamic = 'force-dynamic';
 

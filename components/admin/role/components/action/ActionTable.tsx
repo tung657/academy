@@ -1,24 +1,25 @@
 'use client';
 
-import { featureSelectedState, roleState } from '@/store/feature/atom';
-import { useSearchActions } from '@/utils/query-loader/action.loader';
-import { useMemo, useState } from 'react';
-import { useRecoilValue } from 'recoil';
+import { Button } from '@mantine/core';
 import {
+	type MRT_ColumnDef,
 	MRT_PaginationState,
 	MRT_RowSelectionState,
-	type MRT_ColumnDef,
 } from 'mantine-react-table';
-import { IAction } from '@/types';
 import { useTranslations } from 'next-intl';
-import { RenderTableBasic } from '@/libs/table';
-import { ERROR_TIMEOUT } from '@/utils/config';
-import { getPermissionsByFunction } from '@/utils/services/permission.service';
-import { useCreatePermissionForFunction } from '@/utils/query-loader/permission.loader';
+import { useMemo, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { filterNot } from '@/utils/array';
+import { RenderTableBasic } from '@/libs/table';
+import { featureSelectedState, roleState } from '@/store/feature/atom';
 import { userState } from '@/store/user/atom';
-import { Button } from '@mantine/core';
+import { IAction } from '@/types';
+import { filterNot } from '@/utils/array';
+import { ERROR_TIMEOUT } from '@/utils/config';
+import { useSearchActions } from '@/utils/query-loader/action.loader';
+import { useCreatePermissionForFunction } from '@/utils/query-loader/permission.loader';
+import { getPermissionsByFunction } from '@/utils/services/permission.service';
 
 export const ActionTable = (): JSX.Element => {
 	const t = useTranslations();

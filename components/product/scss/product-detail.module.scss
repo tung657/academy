@@ -1,11 +1,11 @@
 .btn-back {
-  svg {
-    transition: .3s;
-  }
+	svg {
+		transition: 0.3s;
+	}
 
-  &:hover {
-    svg {
-      transform: translateX(-3px);
-    }
-  }
+	&:hover {
+		svg {
+			transform: translateX(-3px);
+		}
+	}
 }

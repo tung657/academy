@@ -1,4 +1,6 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
 	createPartner,
 	deletePartner,
@@ -6,7 +8,6 @@ import {
 	searchPartner,
 	updatePartner,
 } from '../services/partner.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

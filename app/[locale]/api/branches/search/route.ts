@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchBranch } from '@/helpers/repositories/branch.repository';
 import { ISearchBranch } from '@/types/branch';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,13 +1,14 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { AxiosRequestConfig } from 'axios';
+
 import {
-	getBranchDropdown,
 	createBranch,
 	deleteBranch,
 	getBranchById,
+	getBranchDropdown,
 	searchBranch,
 	updateBranch,
 } from '../services/branch.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,

@@ -1,4 +1,5 @@
 import { IFeature, ISearchFeatures } from '@/types/feature';
+
 import { query } from '../db';
 
 export async function createFeatureRepository(

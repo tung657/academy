@@ -1,7 +1,8 @@
-import { ButtonCustomProps } from '@/types';
 import { Button, Tooltip } from '@mantine/core';
 import { IconEdit, IconPlus, IconTrash } from '@tabler/icons-react';
 import React from 'react';
+
+import { ButtonCustomProps } from '@/types';
 
 interface Props extends ButtonCustomProps {
 	tooltip?: boolean;

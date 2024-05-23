@@ -1,15 +1,3 @@
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { userState } from '@/store/user/atom';
-import { convertToString } from '@/utils/array';
-import { queryClient } from '@/utils/query-loader/react-query';
-import {
-	CACHE_BLOG,
-	useCreateBlog,
-	useGetBlogById,
-	useUpdateBlog,
-} from '@/utils/query-loader/blog.loader';
-import { getRuleForms } from '@/utils/validation';
 import {
 	ActionIcon,
 	Box,
@@ -20,25 +8,39 @@ import {
 	TextInput,
 	Tooltip,
 } from '@mantine/core';
+import { FileWithPath } from '@mantine/dropzone';
 import { isNotEmpty, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
-import { FileWithPath } from '@mantine/dropzone';
 import { useState } from 'react';
-import { RichEditor } from '../../editor/Editor';
+import { useRecoilValue } from 'recoil';
+
+import { dataTypesBlogs } from '@/components/blogs/data/data-fake';
+import { SelectRender } from '@/components/mantines/inputs/SelectRender';
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
+import { userState } from '@/store/user/atom';
 import { IBlog } from '@/types/blog';
-import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { convertToString } from '@/utils/array';
 import {
 	getReadingTime,
 	removeVietnameseTones,
 	truncateHtml,
 } from '@/utils/format-string';
-import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
+import {
+	CACHE_BLOG,
+	useCreateBlog,
+	useGetBlogById,
+	useUpdateBlog,
+} from '@/utils/query-loader/blog.loader';
+import { queryClient } from '@/utils/query-loader/react-query';
 import { useGetResearchTypeDropdown } from '@/utils/query-loader/research-type.loader';
-import { SelectRender } from '@/components/mantines/inputs/SelectRender';
-import { dataTypesBlogs } from '@/components/blogs/data/data-fake';
+import { deleteFile, uploadFile } from '@/utils/services/file.service';
+import { getRuleForms } from '@/utils/validation';
+
+import { RichEditor } from '../../editor/Editor';
 
 interface Props {
 	id?: number;

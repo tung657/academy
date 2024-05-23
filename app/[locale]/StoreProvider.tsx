@@ -1,10 +1,11 @@
 'use client';
 
-import { queryClient } from '@/utils/query-loader/react-query';
 import { DatesProvider } from '@mantine/dates';
 import { QueryClientProvider } from '@tanstack/react-query';
 import 'dayjs/locale/vi';
 import { RecoilRoot } from 'recoil';
+
+import { queryClient } from '@/utils/query-loader/react-query';
 
 interface Props {
 	children: React.ReactNode;

@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { updateResearchType } from '@/helpers/repositories/research-type.repository';
 import { IResearchType } from '@/types/research-type';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

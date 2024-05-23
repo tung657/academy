@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
+
 import { searchCourseRegister } from '@/helpers/repositories/course-register.repository';
 import { ISearchCourseRegister } from '@/types/course-register';
-import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 

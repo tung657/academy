@@ -1,8 +1,9 @@
-import { ContactForm } from '@/components/contact/ContactForm';
+import { getTranslations } from 'next-intl/server';
+
 import { Contact } from '@/components/contact/Contact';
+import { ContactForm } from '@/components/contact/ContactForm';
 import { Map } from '@/components/contact/Map';
 import { AppConfig } from '@/utils/config';
-import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({

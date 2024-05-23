@@ -1,12 +1,13 @@
 'use client';
 
-import { ModalRender } from '@/components/mantines/modal/ModalRender';
-import { getNotifications } from '@/components/mantines/notification/getNotifications';
-import { useRestorePw } from '@/utils/query-loader/user.loader';
 import { ActionIcon, Box, Center, Text, Tooltip } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconRestore } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
+
+import { ModalRender } from '@/components/mantines/modal/ModalRender';
+import { getNotifications } from '@/components/mantines/notification/getNotifications';
+import { useRestorePw } from '@/utils/query-loader/user.loader';
 
 interface Props {
 	label: string;

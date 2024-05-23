@@ -1,8 +1,9 @@
+import { notFound } from 'next/navigation';
+
 import { ProductDetail } from '@/components/product/ProductDetail';
 import { IProduct } from '@/types';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchGetData } from '@/utils/services/base.service';
-import { notFound } from 'next/navigation';
 
 interface Props {
 	params: {

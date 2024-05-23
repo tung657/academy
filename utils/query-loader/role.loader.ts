@@ -1,18 +1,20 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
+
+import { ISearchRoles } from '@/types';
+
 import {
-	getRoleDropdown,
 	createRole,
 	deleteRole,
 	getRoleById,
+	getRoleDropdown,
 	searchRoles,
 	updateRole,
 } from '../services/role.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
 import {
 	ExtractFnReturnType,
 	MutationConfig,
 	QueryConfig,
 } from './react-query';
-import { ISearchRoles } from '@/types';
 
 export const CACHE_ROLE = {
 	SEARCH: 'ROLES',

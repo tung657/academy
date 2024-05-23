@@ -1,8 +1,7 @@
-import {
-	ExtractFnReturnType,
-	MutationConfig,
-	QueryConfig,
-} from './react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+
+import { ISearchAction } from '@/types';
+
 import {
 	createAction,
 	deleteAction,
@@ -10,8 +9,11 @@ import {
 	searchActions,
 	updateAction,
 } from '../services/action.service';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { ISearchAction } from '@/types';
+import {
+	ExtractFnReturnType,
+	MutationConfig,
+	QueryConfig,
+} from './react-query';
 
 export const CACHE_ACTION = {
 	SEARCH: 'ACTIONS',

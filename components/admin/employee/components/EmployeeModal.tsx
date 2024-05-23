@@ -1,3 +1,21 @@
+import {
+	ActionIcon,
+	Box,
+	Button,
+	Grid,
+	LoadingOverlay,
+	TextInput,
+	Textarea,
+	Tooltip,
+} from '@mantine/core';
+import { DateInput } from '@mantine/dates';
+import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
+import { useDisclosure } from '@mantine/hooks';
+import { IconEdit, IconPlus } from '@tabler/icons-react';
+import dayjs from 'dayjs';
+import { useTranslations } from 'next-intl';
+import { useRecoilValue } from 'recoil';
+
 import { SelectRender } from '@/components/mantines/inputs/SelectRender';
 import { ModalRender } from '@/components/mantines/modal/ModalRender';
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
@@ -21,23 +39,6 @@ import {
 	useUpdateEmployee,
 } from '@/utils/query-loader/user.loader';
 import { getRuleForms } from '@/utils/validation';
-import {
-	ActionIcon,
-	Box,
-	Button,
-	Grid,
-	LoadingOverlay,
-	TextInput,
-	Textarea,
-	Tooltip,
-} from '@mantine/core';
-import { DateInput } from '@mantine/dates';
-import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
-import { useDisclosure } from '@mantine/hooks';
-import { IconEdit, IconPlus } from '@tabler/icons-react';
-import dayjs from 'dayjs';
-import { useTranslations } from 'next-intl';
-import { useRecoilValue } from 'recoil';
 
 interface Props {
 	id?: string;

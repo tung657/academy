@@ -1,11 +1,13 @@
 'use client';
 
 import { Flex, FlexProps } from '@mantine/core';
+import Image from 'next/image';
 import { useTransition } from 'react';
 import { useLocale } from 'use-intl';
+
 import { usePathname, useRouter } from '@/libs/i18n-navigation';
+
 import langs from './images';
-import Image from 'next/image';
 
 const localeOptions = [
 	{

@@ -1,5 +1,6 @@
-import { Partner } from '@/components/admin/partner/Partner';
 import { Metadata } from 'next';
+
+import { Partner } from '@/components/admin/partner/Partner';
 
 export const metadata: Metadata = {
 	title: 'Quản lý đối tác',

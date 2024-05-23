@@ -1,11 +1,12 @@
+import { getTranslations } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+
 import { ResearchList } from '@/components/research/ResearchList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IBaseResponse } from '@/types';
 import { IResearchType } from '@/types/research-type';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchSearchData } from '@/utils/services/base.service';
-import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
 	const t = await getTranslations({

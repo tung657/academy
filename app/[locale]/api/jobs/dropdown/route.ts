@@ -1,5 +1,6 @@
-import { getJobDropdown } from '@/helpers/repositories/job.repository';
 import { NextResponse } from 'next/server';
+
+import { getJobDropdown } from '@/helpers/repositories/job.repository';
 
 export const dynamic = 'force-dynamic';
 

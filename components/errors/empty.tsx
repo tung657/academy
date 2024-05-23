@@ -1,6 +1,8 @@
 import { Box, Center, Image, Stack, Text } from '@mantine/core';
 import { useTranslations } from 'use-intl';
+
 import emptyIcon from '@/assets/svgs/empty.svg';
+
 import { ScrollMotion } from '../shared/motion/ScrollMotion';
 
 export const Empty = (): JSX.Element => {

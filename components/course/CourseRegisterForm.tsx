@@ -1,17 +1,19 @@
-import { useTranslations } from 'next-intl';
-import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
-import { ICourse } from '@/types/course';
-import { useDisclosure } from '@mantine/hooks';
-import { ModalRender } from '../mantines/modal/ModalRender';
-import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
-import { getRuleForms } from '@/utils/validation';
-import { patterns } from '@/utils/format-string';
 import { Box, Grid, TextInput, Textarea } from '@mantine/core';
-import { useCreateCourseRegister } from '@/utils/query-loader/course-register.loader';
-import { getNotifications } from '../mantines/notification/getNotifications';
-import { ICourseRegister } from '@/types/course-register';
+import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
+import { useDisclosure } from '@mantine/hooks';
+import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
+
 import { userState } from '@/store/user/atom';
+import { ICourse } from '@/types/course';
+import { ICourseRegister } from '@/types/course-register';
+import { patterns } from '@/utils/format-string';
+import { useCreateCourseRegister } from '@/utils/query-loader/course-register.loader';
+import { getRuleForms } from '@/utils/validation';
+
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
+import { ModalRender } from '../mantines/modal/ModalRender';
+import { getNotifications } from '../mantines/notification/getNotifications';
 
 interface Props {
 	data?: ICourse;

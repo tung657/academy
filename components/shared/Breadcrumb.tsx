@@ -1,6 +1,5 @@
 'use client';
 
-import { Link, usePathname } from '@/libs/i18n-navigation';
 import {
 	Anchor,
 	Breadcrumbs,
@@ -10,17 +9,19 @@ import {
 	Text,
 	rem,
 } from '@mantine/core';
+import { IconChevronRight } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import classes from './scss/breadcrumb.module.scss';
-import { TitleRender } from '../mantines/typographies/TitleRender';
-import { HOME_URL } from '@/libs/urls';
-import { IconChevronRight } from '@tabler/icons-react';
-import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
 import { imgOthers } from '@/assets/images/others';
+import backgroundImg from '@/assets/images/others/breadcrumb-bg.jpg';
+import { Link, usePathname } from '@/libs/i18n-navigation';
+import { HOME_URL } from '@/libs/urls';
+
+import { TitleRender } from '../mantines/typographies/TitleRender';
 import { ScrollMotion } from './motion/ScrollMotion';
+import classes from './scss/breadcrumb.module.scss';
 
 interface Props {
 	lastLabel?: string;

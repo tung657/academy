@@ -13,21 +13,23 @@ import {
 	useMantineColorScheme,
 	useMantineTheme,
 } from '@mantine/core';
-import { getCookie, setCookie } from 'cookies-next';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { TitleRender } from '../mantines/typographies/TitleRender';
-import { Sidebar } from '../shared/Sidebar';
+import { IconCheck } from '@tabler/icons-react';
+import { getCookie, setCookie } from 'cookies-next';
 import { useTranslations } from 'next-intl';
-import { usePathname, useRouter } from '@/libs/i18n-navigation';
-import { LOCAL_COLOR, LOCAL_USER } from '@/utils/config';
+import { notFound } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useRecoilState, useResetRecoilState } from 'recoil';
+
+import { usePathname, useRouter } from '@/libs/i18n-navigation';
 import { userState } from '@/store/user/atom';
-import HeaderNav from '../header-nav/HeaderNav';
-import { useGetFeaturesByUser } from '@/utils/query-loader/feature.loader';
-import { IconCheck } from '@tabler/icons-react';
 import { getFeatureTree } from '@/utils/array';
-import { notFound } from 'next/navigation';
+import { LOCAL_COLOR, LOCAL_USER } from '@/utils/config';
+import { useGetFeaturesByUser } from '@/utils/query-loader/feature.loader';
+
+import HeaderNav from '../header-nav/HeaderNav';
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import { Sidebar } from '../shared/Sidebar';
 
 const dataColors = ['#0CA678', '#1098AD', '#C92A2A'];
 

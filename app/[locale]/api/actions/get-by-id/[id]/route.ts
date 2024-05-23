@@ -1,5 +1,6 @@
-import { getActionByIdRepository } from '@/helpers/repositories/action.repository';
 import { NextRequest, NextResponse } from 'next/server';
+
+import { getActionByIdRepository } from '@/helpers/repositories/action.repository';
 
 export const dynamic = 'force-dynamic';
 

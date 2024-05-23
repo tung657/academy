@@ -1,3 +1,7 @@
+import { Container } from '@mantine/core';
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
+
 import { AboutHome } from '@/components/home/AboutHome';
 import { CarouselHome } from '@/components/home/Carousel';
 import { MemberHome } from '@/components/home/MemberHome';
@@ -8,9 +12,6 @@ import { IInstructor } from '@/types/instructor';
 import { IPartner } from '@/types/partner';
 import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
 import { fetchSearchData } from '@/utils/services/base.service';
-import { Container } from '@mantine/core';
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata(props: {
 	params: { locale: string };

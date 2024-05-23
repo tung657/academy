@@ -1,4 +1,5 @@
 import { IResearchType, ISearchResearchType } from '@/types/research-type';
+
 import { query } from '../db';
 
 export async function createResearchType(

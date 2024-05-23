@@ -1,4 +1,5 @@
 import { IRole, ISearchRoles } from '@/types';
+
 import { query } from '../db';
 
 export async function createRole(roleModel: IRole): Promise<any> {

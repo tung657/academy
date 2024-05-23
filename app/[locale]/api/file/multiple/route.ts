@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { existsSync } from 'fs';
 import fs from 'fs/promises';
+import { NextRequest, NextResponse } from 'next/server';
 import path from 'path';
+
 import { ORIGIN_URL } from '@/utils/config';
 
 export async function POST(req: NextRequest) {

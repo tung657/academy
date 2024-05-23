@@ -13,21 +13,23 @@ import {
 	TypographyStylesProvider,
 	UnstyledButton,
 } from '@mantine/core';
-import { TitleRender } from '../mantines/typographies/TitleRender';
-import { IProduct } from '@/types';
-import { useTranslations } from 'next-intl';
-import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
 import { IconArrowRight, IconChevronLeft } from '@tabler/icons-react';
-import { ShareSocial } from '../shared/ShareSocial';
+import dayjs from 'dayjs';
+import { useTranslations } from 'next-intl';
+
+import { Link, useRouter } from '@/libs/i18n-navigation';
+import { IProduct } from '@/types';
+import { ORIGIN_URL } from '@/utils/config';
 import {
 	formatDatePost,
 	formatTimeSince,
 	getReadingTime,
 } from '@/utils/format-string';
-import { Link, useRouter } from '@/libs/i18n-navigation';
+
+import { ButtonBubble } from '../mantines/buttons/ButtonBubble';
+import { TitleRender } from '../mantines/typographies/TitleRender';
+import { ShareSocial } from '../shared/ShareSocial';
 import classes from './scss/product-detail.module.scss';
-import dayjs from 'dayjs';
-import { ORIGIN_URL } from '@/utils/config';
 
 interface Props {
 	dataDetail?: IProduct;
