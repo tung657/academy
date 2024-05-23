@@ -1,4 +1,4 @@
-import aboutMember from './about-member.webp';
+import aboutMember from './about-member.jpg';
 
 export const imgHome = {
 	aboutMember: aboutMember.src,

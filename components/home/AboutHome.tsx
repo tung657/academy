@@ -37,6 +37,7 @@ export const AboutHome = (): JSX.Element => {
 					<Grid.Col span={{ base: 12, md: 6 }}>
 						<ScrollMotion isX={16}>
 							<Image
+								radius={'sm'}
 								src={imgHome.aboutMember}
 								width={2000}
 								height={1600}

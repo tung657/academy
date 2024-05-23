@@ -31,6 +31,7 @@ export interface IBaseData {
 	lu_user_id?: string;
 	message?: string;
 	success?: boolean;
+	RowNumber?: number;
 }
 
 export interface IBaseResponse<T = any> {
