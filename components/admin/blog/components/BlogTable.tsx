@@ -107,9 +107,9 @@ export const BlogTable = (): JSX.Element => {
 				},
 				size: 75,
 				enableSorting: false,
-				Cell: ({ renderedCellValue }) => (
+				Cell: ({ row: { original } }) => (
 					<Text>
-						{dayjs(renderedCellValue?.toString()).format(formatDateShow)}
+						{dayjs(original.created_date_time).format(formatDateShow)}
 					</Text>
 				),
 			},

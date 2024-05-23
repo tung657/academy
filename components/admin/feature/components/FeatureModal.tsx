@@ -4,7 +4,7 @@ import {
 	Box,
 	Card,
 	Grid,
-	InputLabel,
+	Input,
 	LoadingOverlay,
 	Menu,
 	NumberInput,
@@ -53,13 +53,14 @@ export const FeatureModal = ({
 		...getRuleForms(),
 		initialValues: {
 			function_name: '',
-			sort_order: 0,
+			sort_order: 1,
 			url: '',
 			description: '',
 		},
 		validate: {
 			function_name: (value) => patterns.name(value, t),
 			url: isNotEmpty(t('validation.required')),
+			sort_order: isNotEmpty(t('validation.required')),
 		},
 	});
 
@@ -186,8 +187,10 @@ export const FeatureModal = ({
 								zIndex={1100}
 							>
 								<Menu.Target>
-									<div>
-										<InputLabel>{t('features.fields.parent')}</InputLabel>
+									<Input.Wrapper
+										label={t('features.fields.parent')}
+										withAsterisk
+									>
 										<TextInput
 											onChange={() => {}}
 											value={
@@ -195,7 +198,7 @@ export const FeatureModal = ({
 												'Nhóm lớn nhất (mặc định)'
 											}
 										/>
-									</div>
+									</Input.Wrapper>
 								</Menu.Target>
 
 								<Menu.Dropdown w={500}>

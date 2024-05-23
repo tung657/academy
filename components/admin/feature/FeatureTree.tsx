@@ -13,6 +13,7 @@ import Tree from 'rc-tree';
 import { Key, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
+import { Empty } from '@/components/errors/empty';
 import { TitleRender } from '@/components/mantines/typographies/TitleRender';
 import { featureSelectedState } from '@/store/feature/atom';
 import { SEARCH_CONTENT } from '@/utils/config';
@@ -60,6 +61,8 @@ export const FeatureTree = (): JSX.Element => {
 					<Card mih={200} shadow="sm">
 						<LoadingOverlay visible={isLoading} />
 					</Card>
+				) : featuresTree.length === 0 ? (
+					<Empty />
 				) : (
 					<Card shadow="sm">
 						<ScrollArea h={600} type="hover">

@@ -10,6 +10,7 @@ import { useMemo } from 'react';
 import { RenderTableParams } from '@/libs/table';
 import { IEmployee } from '@/types';
 import { SEARCH_CONTENT, SEARCH_PAGE, SEARCH_SIZE } from '@/utils/config';
+import { formatDateShow } from '@/utils/format-string';
 import { useSearchEmployees } from '@/utils/query-loader/user.loader';
 
 import { EmployeeDelete } from './EmployeeDelete';
@@ -74,9 +75,9 @@ export const EmployeeTable = (): JSX.Element => {
 			{
 				accessorKey: 'date_of_birth', //access nested data with dot notation
 				header: t('employees.fields.birth'),
-				size: 70,
-				Cell: ({ renderedCellValue }) =>
-					dayjs(renderedCellValue?.toString()).format('DD/MM/YYYY'),
+				size: 75,
+				Cell: ({ row: { original } }) =>
+					dayjs(original.date_of_birth).format(formatDateShow),
 			},
 			{
 				accessorKey: 'email', //access nested data with dot notation
