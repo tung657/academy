@@ -20,8 +20,11 @@ export const searchProduct = async (
 
 export const getProductById = async (
 	id: string | number,
+	isClient: boolean = false,
 ): Promise<IProduct> => {
-	const res = await apiClient?.get(`${prefix}/get-by-id/${id}`);
+	const res = await apiClient?.get(`${prefix}/get-by-id/${id}`, {
+		params: { isClient },
+	});
 
 	return res.data;
 };

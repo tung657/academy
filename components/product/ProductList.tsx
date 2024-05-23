@@ -49,19 +49,37 @@ export const ProductList = ({ data }: Props): JSX.Element => {
 										</Text>
 									</ScrollMotion>
 									<ScrollMotion isX once delay={0.6}>
-										<Anchor
-											component={Link}
-											href={getUrlDetail(PRODUCT_DETAIL_URL, item.product_id)}
-										>
-											<ButtonBubble
-												ml={16}
-												variant="filled"
-												size="md"
-												leftSection={<IconArrowRight />}
+										{!item.content && item.link ? (
+											<Anchor
+												component={Link}
+												href={item.link}
+												target="_blank"
+												rel="noopener"
 											>
-												{t('global.see_details')}
-											</ButtonBubble>
-										</Anchor>
+												<ButtonBubble
+													ml={16}
+													variant="filled"
+													size="md"
+													leftSection={<IconArrowRight />}
+												>
+													{t('global.see_details')}
+												</ButtonBubble>
+											</Anchor>
+										) : (
+											<Anchor
+												component={Link}
+												href={getUrlDetail(PRODUCT_DETAIL_URL, item.product_id)}
+											>
+												<ButtonBubble
+													ml={16}
+													variant="filled"
+													size="md"
+													leftSection={<IconArrowRight />}
+												>
+													{t('global.see_details')}
+												</ButtonBubble>
+											</Anchor>
+										)}
 									</ScrollMotion>
 								</Grid.Col>
 								<Grid.Col span={{ base: 12, md: 6 }} order={(index + 1) % 2}>

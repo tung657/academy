@@ -5,12 +5,13 @@ import { getProductById } from '@/helpers/repositories/product.repository';
 export const dynamic = 'force-dynamic';
 
 export async function GET(
-	_: NextRequest,
+	req: NextRequest,
 	{ params }: { params: { id: string } },
 ): Promise<NextResponse> {
 	try {
 		const id = params.id;
-		const product = await getProductById(+id);
+		const isClient = req.nextUrl.searchParams.get('isClient') || false;
+		const product = await getProductById(+id, Boolean(isClient));
 		if (product) {
 			return NextResponse.json(product);
 		} else {

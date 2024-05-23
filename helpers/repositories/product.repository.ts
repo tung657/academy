@@ -64,10 +64,13 @@ export async function deleteProduct(
 	}
 }
 
-export async function getProductById(id: number): Promise<any> {
+export async function getProductById(
+	id: number,
+	isClient: boolean,
+): Promise<any> {
 	try {
-		const sql = 'CALL GetProductById(?, @err_code, @err_msg)';
-		const [results] = await query(sql, [id]);
+		const sql = 'CALL GetProductById(?, ?, @err_code, @err_msg)';
+		const [results] = await query(sql, [id, isClient]);
 		if (Array.isArray(results) && results.length > 0) {
 			return results[0];
 		}

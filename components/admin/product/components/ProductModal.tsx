@@ -25,7 +25,10 @@ import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
 import { userState } from '@/store/user/atom';
 import { IProduct } from '@/types';
 import { convertToString } from '@/utils/array';
-import { removeVietnameseTones } from '@/utils/format-string';
+import {
+	extractTextFromHtml,
+	removeVietnameseTones,
+} from '@/utils/format-string';
 import {
 	CACHE_PRODUCT,
 	useCreateProduct,
@@ -124,8 +127,8 @@ export const ProductModal = ({ id }: Props): JSX.Element => {
 		setLoading(true);
 		const dataPost: IProduct = {
 			...values,
-			content: dataEditor,
-			en_content: dataEnEditor,
+			content: extractTextFromHtml(dataEditor) ? dataEditor : '',
+			en_content: extractTextFromHtml(dataEnEditor) ? dataEnEditor : '',
 		};
 
 		if (files) {

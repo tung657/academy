@@ -15,7 +15,9 @@ interface Props {
 export async function generateMetadata({ params }: Props) {
 	// Cannot fetch api from localhost with production
 	// Cannot resolve
-	let data: IProduct = await fetchGetData(`/products/get-by-id/${params.id}`);
+	let data: IProduct = await fetchGetData(`/products/get-by-id/${params.id}`, {
+		isClient: true,
+	});
 
 	if (data.message && !data.success) return notFound();
 
@@ -52,7 +54,9 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function ProductDetailPage({ params }: Props) {
-	let data: IProduct = await fetchGetData(`/products/get-by-id/${params.id}`);
+	let data: IProduct = await fetchGetData(`/products/get-by-id/${params.id}`, {
+		isClient: true,
+	});
 
 	if (data.message && !data.success) return notFound();
 

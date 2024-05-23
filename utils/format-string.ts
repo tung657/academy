@@ -86,6 +86,27 @@ export function getReadingTime(html: string): number {
 	return Math.ceil(html.split(' ').length / avgTime);
 }
 
+export const extractTextFromHtml = (html: string): string => {
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(html, 'text/html');
+	const pTags = doc.querySelectorAll('p');
+	let extractedText = '';
+
+	pTags.forEach((p) => {
+		extractedText += p.textContent + ' ';
+	});
+
+	return extractedText.trim();
+};
+
+export const truncateHtml = (html: string, maxLength: number): string => {
+	let text = extractTextFromHtml(html);
+	if (text.length <= maxLength) {
+		return text;
+	}
+	return text.slice(0, maxLength) + '...';
+};
+
 export const handleGetKeyYB = (yb?: string): string => {
 	if (!yb) return '';
 
@@ -135,25 +156,4 @@ export const removeVietnameseTones = (str: string) => {
 	str = str.trim();
 
 	return str;
-};
-
-const extractTextFromHtml = (html: string): string => {
-	const parser = new DOMParser();
-	const doc = parser.parseFromString(html, 'text/html');
-	const pTags = doc.querySelectorAll('p');
-	let extractedText = '';
-
-	pTags.forEach((p) => {
-		extractedText += p.textContent + ' ';
-	});
-
-	return extractedText.trim();
-};
-
-export const truncateHtml = (html: string, maxLength: number): string => {
-	let text = extractTextFromHtml(html);
-	if (text.length <= maxLength) {
-		return text;
-	}
-	return text.slice(0, maxLength) + '...';
 };
