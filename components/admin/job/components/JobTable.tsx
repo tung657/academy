@@ -34,7 +34,6 @@ export const JobTable = (): JSX.Element => {
 			search_content: searchContent,
 		},
 	});
-	console.log(dataJobs?.data);
 
 	const handleToggleActive = (checked: boolean, job_id: number) => {
 		toggleActiveJob({

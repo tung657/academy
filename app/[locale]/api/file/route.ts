@@ -10,7 +10,6 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: NextRequest) {
 	try {
 		const formData = await req.formData();
-		// console.log(formData);
 
 		const f = formData.get('file');
 
@@ -22,8 +21,6 @@ export async function POST(req: NextRequest) {
 		}
 
 		const file = f as File;
-		// console.log(`File name: ${file.name}`);
-		// console.log(`Content-Length: ${file.size}`);
 
 		const date = new Date();
 		const year = date.getFullYear().toString();
@@ -37,7 +34,6 @@ export async function POST(req: NextRequest) {
 			process.env.STORE_PATH!,
 			uploadDir,
 		);
-		// console.log('destinationDirPath: ', destinationDirPath);
 
 		const fileArrayBuffer = await file.arrayBuffer();
 

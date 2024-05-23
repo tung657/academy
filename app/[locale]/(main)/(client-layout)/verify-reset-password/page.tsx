@@ -20,7 +20,6 @@ export default async function ResearchPage({ searchParams }: any) {
 
 	if (!(await verifyJwtToken(searchParams.token))) notFound();
 
-	// console.log(await decodeJwt(searchParams.token));
 	const newPwd = await getNewPw(decodeJwt(searchParams.token)?.id + '');
 
 	return (

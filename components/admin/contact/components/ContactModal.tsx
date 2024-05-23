@@ -44,7 +44,6 @@ export const ContactModal = ({ id }: Props): JSX.Element => {
 		},
 	});
 
-	console.log(id);
 	const getDetail = useGetContactById({
 		id: id!,
 		config: {

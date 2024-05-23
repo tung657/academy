@@ -53,7 +53,6 @@ export const ContactForm = (): JSX.Element => {
 		const dataPost: any = {
 			...values,
 		};
-		console.log(values);
 		dataPost.created_by_user_id = userRecoil.user_id;
 		createContact.mutate(dataPost);
 	};
