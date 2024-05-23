@@ -2,8 +2,6 @@ import { CourseList } from '@/components/course/CourseList';
 import { getTranslations } from 'next-intl/server';
 import {
 	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
 	ORIGIN_URL,
 	SEARCH_CONTENT,
 	SEARCH_PAGE,
@@ -13,8 +11,8 @@ import {
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { IBaseResponse } from '@/types';
 import { ICourse } from '@/types/course';
-import { apiClient } from '@/helpers';
 import { notFound } from 'next/navigation';
+import { fetchSearchData } from '@/utils/services/base.service';
 
 interface Props {
 	params: {
@@ -30,34 +28,13 @@ export async function generateMetadata(props: Props) {
 		namespace: 'courses',
 	});
 
-	let courses: IBaseResponse<ICourse[]> = (
-		await apiClient.post(
-			`/courses/search`,
-			{
-				page_index: 1,
-				page_size: 1,
-			},
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<ICourse[]>;
-
-	// DB sometimes returns error
-	while (courses.message === ERROR_TIMEOUT && !courses.success) {
-		courses = (
-			await apiClient.post(
-				`/courses/search`,
-				{
-					page_index: 1,
-					page_size: 1,
-				},
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<ICourse[]>;
-	}
+	let courses: IBaseResponse<ICourse[]> = await fetchSearchData(
+		'/courses/search',
+		{
+			page_index: 1,
+			page_size: 1,
+		},
+	);
 
 	if (courses.message && !courses.success) return notFound();
 
@@ -70,7 +47,7 @@ export async function generateMetadata(props: Props) {
 		openGraph: {
 			title: `${t('meta_title')} | ${AppConfig.name}`,
 			description: `${t('meta_description')}`,
-			url: `${ORIGIN_URL}/product`,
+			url: `${ORIGIN_URL}/course`,
 			siteName: AppConfig.name,
 			images: [
 				{
@@ -87,36 +64,14 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function Course({ searchParams }: Props) {
-	let courses: IBaseResponse<ICourse[]> = (
-		await apiClient.post(
-			`/courses/search`,
-			{
-				page_index: searchParams[SEARCH_PAGE] || 1,
-				page_size: searchParams[SEARCH_SIZE] || 6,
-				search_content: searchParams[SEARCH_CONTENT],
-			},
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<ICourse[]>;
-
-	// DB sometimes returns error
-	while (courses.message === ERROR_TIMEOUT && !courses.success) {
-		courses = (
-			await apiClient.post(
-				`/courses/search`,
-				{
-					page_index: searchParams[SEARCH_PAGE] || 1,
-					page_size: searchParams[SEARCH_SIZE] || 6,
-					search_content: searchParams[SEARCH_CONTENT],
-				},
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<ICourse[]>;
-	}
+	let courses: IBaseResponse<ICourse[]> = await fetchSearchData(
+		'/courses/search',
+		{
+			page_index: searchParams[SEARCH_PAGE] || 1,
+			page_size: searchParams[SEARCH_SIZE] || 6,
+			search_content: searchParams[SEARCH_CONTENT],
+		},
+	);
 
 	console.log(courses.message);
 

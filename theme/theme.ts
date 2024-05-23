@@ -50,5 +50,10 @@ export const theme = createTheme({
 				td: 'none',
 			},
 		},
+		Grid: {
+			defaultProps: {
+				overflow: 'hidden',
+			},
+		},
 	},
 });

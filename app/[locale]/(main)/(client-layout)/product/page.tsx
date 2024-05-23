@@ -1,14 +1,8 @@
 import { ProductList } from '@/components/product/ProductList';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { apiClient } from '@/helpers';
 import { IBaseResponse, IProduct } from '@/types';
-import {
-	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
-	ORIGIN_URL,
-	metaKeywords,
-} from '@/utils/config';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { fetchSearchData } from '@/utils/services/base.service';
 import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
@@ -25,28 +19,11 @@ export async function generateMetadata(props: Props) {
 		namespace: 'products',
 	});
 
-	let products: IBaseResponse<IProduct[]> = (
-		await apiClient.post(
-			`/products/search`,
-			{ page_index: 1, page_size: 1 },
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<IProduct[]>;
+	let products: IBaseResponse<IProduct[]> = await fetchSearchData(
+		'/products/search',
+		{ page_size: 1, page_index: 1 },
+	);
 
-	// DB sometimes returns error
-	while (products.message === ERROR_TIMEOUT && !products.success) {
-		products = (
-			await apiClient.post(
-				`/products/search`,
-				{ page_index: 1, page_size: 1 },
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<IProduct[]>;
-	}
 	if (products.message && !products.success) return notFound();
 
 	const data = products?.data?.[0];
@@ -75,28 +52,9 @@ export async function generateMetadata(props: Props) {
 }
 
 export default async function ProductPage() {
-	let products: IBaseResponse<IProduct[]> = (
-		await apiClient.post(
-			`/products/search`,
-			{},
-			{
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			},
-		)
-	).data as IBaseResponse<IProduct[]>;
+	let products: IBaseResponse<IProduct[]> =
+		await fetchSearchData('/products/search');
 
-	// DB sometimes returns error
-	while (products.message === ERROR_TIMEOUT && !products.success) {
-		products = (
-			await apiClient.post(
-				`/products/search`,
-				{},
-				{
-					baseURL: `${ORIGIN_URL}${BASE_URL}`,
-				},
-			)
-		).data as IBaseResponse<IProduct[]>;
-	}
 	if (products.message && !products.success) return notFound();
 
 	return (

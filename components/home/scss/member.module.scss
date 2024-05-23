@@ -29,6 +29,12 @@
 					}
 				}
 			}
+
+			&.mobile {
+				z-index: 0 !important;
+				opacity: 1 !important;
+				transform: translateY(0) !important;
+			}
 		}
 
 		&:hover {

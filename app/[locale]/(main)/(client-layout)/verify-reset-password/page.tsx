@@ -5,26 +5,12 @@ import { AppConfig } from '@/utils/config';
 import { getNewPw } from '@/utils/services/user.service';
 import { Box, Card, Center, Container, PinInput, Stack } from '@mantine/core';
 import { decodeJwt } from 'jose';
-import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
-interface Props {
-	params: {
-		locale: string;
-		id: string;
-	};
-	searchParams: [];
-}
-
-export async function generateMetadata(props: Props) {
-	const t = await getTranslations({
-		locale: props.params.locale,
-		namespace: 'research',
-	});
-
+export async function generateMetadata() {
 	return {
-		title: `${t('meta_title')} | ${AppConfig.name}`,
-		description: `${t('meta_description')}`,
+		title: `Xác nhận mật khẩu | ${AppConfig.name}`,
+		description: `Viện trí tuệ nhân tạo việt nam`,
 	};
 }
 

@@ -1,14 +1,8 @@
 import { JobDetail } from '@/components/job/JobDetail';
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
-import { apiClient } from '@/helpers';
 import { IJob } from '@/types/job';
-import {
-	AppConfig,
-	BASE_URL,
-	ERROR_TIMEOUT,
-	ORIGIN_URL,
-	metaKeywords,
-} from '@/utils/config';
+import { AppConfig, ORIGIN_URL, metaKeywords } from '@/utils/config';
+import { fetchGetData } from '@/utils/services/base.service';
 import { notFound } from 'next/navigation';
 
 interface Props {
@@ -19,20 +13,8 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props) {
-	let data = (
-		await apiClient.get(`/jobs/get-by-id/${params.id}`, {
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		})
-	).data as IJob;
+	let data: IJob = await fetchGetData(`/jobs/get-by-id/${params.id}`);
 
-	// DB sometimes returns error
-	while (data.message === ERROR_TIMEOUT && !data.success) {
-		data = (
-			await apiClient.get(`/jobs/get-by-id/${params.id}`, {
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			})
-		).data as IJob;
-	}
 	if (data.message && !data.success) return notFound();
 
 	// Cannot fetch api from localhost with production
@@ -45,7 +27,7 @@ export async function generateMetadata({ params }: Props) {
 		openGraph: {
 			title: `${title} | ${AppConfig.name}`,
 			description: data.job_name,
-			url: `${ORIGIN_URL}/product/` + +params.id,
+			url: `${ORIGIN_URL}/jobs/` + +params.id,
 			siteName: AppConfig.name,
 			images: [
 				{
@@ -68,20 +50,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function CourseDetailPage({ params }: Props) {
-	let data = (
-		await apiClient.get(`/jobs/get-by-id/${params.id}`, {
-			baseURL: `${ORIGIN_URL}${BASE_URL}`,
-		})
-	).data as IJob;
+	let data: IJob = await fetchGetData(`/jobs/get-by-id/${params.id}`);
 
-	// DB sometimes returns error
-	while (data.message === ERROR_TIMEOUT && !data.success) {
-		data = (
-			await apiClient.get(`/jobs/get-by-id/${params.id}`, {
-				baseURL: `${ORIGIN_URL}${BASE_URL}`,
-			})
-		).data as IJob;
-	}
 	if (data.message && !data.success) return notFound();
 
 	return (
