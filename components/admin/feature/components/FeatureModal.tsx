@@ -28,6 +28,7 @@ import { featureSelectedState } from '@/store/feature/atom';
 import { userState } from '@/store/user/atom';
 import { IFeature, IFeatureDataNode } from '@/types';
 import { getNodeTree, removeEmptyObject } from '@/utils/array';
+import { patterns } from '@/utils/format-string';
 import {
 	CACHE_FEATURE,
 	useCreateFeature,
@@ -57,7 +58,7 @@ export const FeatureModal = ({
 			description: '',
 		},
 		validate: {
-			function_name: isNotEmpty(t('validation.required')),
+			function_name: (value) => patterns.name(value, t),
 			url: isNotEmpty(t('validation.required')),
 		},
 	});

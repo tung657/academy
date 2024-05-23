@@ -64,7 +64,7 @@ export const EmployeeModal = ({ id }: Props): JSX.Element => {
 		},
 		validate: {
 			employee_id: matches(patterns.username, t('validation.username')),
-			full_name: isNotEmpty(t('validation.required')),
+			full_name: (value) => patterns.name(value, t),
 			phone_number: matches(patterns.phone, t('validation.phone')),
 			gender: isNotEmpty(t('validation.required')),
 			date_of_birth: isNotEmpty(t('validation.required')),

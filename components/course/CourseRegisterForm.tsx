@@ -1,5 +1,5 @@
 import { Box, Grid, TextInput, Textarea } from '@mantine/core';
-import { isEmail, isNotEmpty, matches, useForm } from '@mantine/form';
+import { isEmail, matches, useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { useTranslations } from 'next-intl';
 import { useRecoilValue } from 'recoil';
@@ -35,7 +35,7 @@ export const CourseRegisterForm = ({ data }: Props): JSX.Element => {
 			course_name: data?.course_name,
 		},
 		validate: {
-			full_name: isNotEmpty(t('validation.required')),
+			full_name: (value) => patterns.name(value, t),
 			phone_number: matches(patterns.phone, t('validation.required')),
 			email: isEmail(t('validation.required')),
 		},

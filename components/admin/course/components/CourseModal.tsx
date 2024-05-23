@@ -36,7 +36,7 @@ import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
 import { userState } from '@/store/user/atom';
 import { ICourse, ICourseDetail } from '@/types/course';
 import { convertToString, getUpdatedArray } from '@/utils/array';
-import { removeVietnameseTones } from '@/utils/format-string';
+import { patterns, removeVietnameseTones } from '@/utils/format-string';
 import {
 	CACHE_COURSE,
 	useCreateCourse,
@@ -74,7 +74,7 @@ export const CourseModal = ({ id }: Props): JSX.Element => {
 			instructor_id: '',
 		},
 		validate: {
-			course_name: isNotEmpty(t('validation.required')),
+			course_name: (value) => patterns.name(value, t),
 			instructor_id: isNotEmpty(t('validation.required')),
 		},
 	});

@@ -38,7 +38,7 @@ export const ApplyForm = ({ positionId, ...props }: Props): JSX.Element => {
 			position_id: positionId?.toString() || '',
 		},
 		validate: {
-			candidate_name: isNotEmpty(t('validation.required')),
+			candidate_name: (value) => patterns.name(value, t),
 			email: isEmail(t('validation.email')),
 			phone_number: matches(patterns.phone, t('validation.phone')),
 			position_id: isNotEmpty(t('validation.required')),

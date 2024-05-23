@@ -46,7 +46,7 @@ export const BranchModal = ({ id }: Props): JSX.Element => {
 			embed_map: '',
 		},
 		validate: {
-			branch_name: isNotEmpty(t('validation.required')),
+			branch_name: (value) => patterns.name(value, t),
 			address: isNotEmpty(t('validation.required')),
 			phone: matches(patterns.phone, t('validation.phone')),
 			email: isEmail(t('validation.email')),

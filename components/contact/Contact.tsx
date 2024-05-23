@@ -14,6 +14,7 @@ import { IconClock, IconMapPin, IconPhoneCall } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 
 import { TitleRender } from '../mantines/typographies/TitleRender';
+import { infos } from '../shared/data/info';
 import classes from './scss/contact.module.scss';
 
 export const Contact = (): JSX.Element => {
@@ -37,7 +38,7 @@ export const Contact = (): JSX.Element => {
 										{t('global.address.title')}
 									</TitleRender>
 									<Text c={'dimmed'} ta={'justify'}>
-										{t('global.address.content')}
+										{infos.address}
 									</Text>
 								</Box>
 							</Flex>
@@ -53,14 +54,12 @@ export const Contact = (): JSX.Element => {
 									</TitleRender>
 									<Group gap={8}>
 										<Text c={'dimmed'}>{t('global.contact.phone.title')}:</Text>
-										<Anchor href={'tel:' + t('global.contact.phone.value')}>
-											{t('global.contact.phone.label')}
-										</Anchor>
+										<Anchor href={'tel:' + infos.phone}>{infos.phone}</Anchor>
 									</Group>
 									<Group gap={8}>
 										<Text c={'dimmed'}>{t('global.contact.email.title')}:</Text>
-										<Anchor href={'mailto:' + t('global.contact.email.value')}>
-											{t('global.contact.email.value')}
+										<Anchor href={'mailto:' + infos.email}>
+											{infos.email}
 										</Anchor>
 									</Group>
 								</Box>
@@ -76,7 +75,7 @@ export const Contact = (): JSX.Element => {
 										{t('global.open_time.title')}
 									</TitleRender>
 									<Text c={'dimmed'} ta={'justify'}>
-										{t('global.open_time.content')}
+										{infos.openClose}
 									</Text>
 								</Box>
 							</Flex>

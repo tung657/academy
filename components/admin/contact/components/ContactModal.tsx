@@ -29,15 +29,13 @@ export const ContactModal = ({ id }: Props): JSX.Element => {
 	const form = useForm({
 		...getRuleForms(),
 		initialValues: {
-			contact_id: '',
 			customer_name: '',
 			email: '',
 			phone_number: '',
 			message: '',
 		},
 		validate: {
-			contact_id: matches(patterns.username, t('validation.username')),
-			customer_name: isNotEmpty(t('validation.required')),
+			customer_name: (value) => patterns.name(value, t),
 			phone_number: matches(patterns.phone, t('validation.phone')),
 			email: isEmail(t('validation.email')),
 			message: isNotEmpty(t('validation.required')),

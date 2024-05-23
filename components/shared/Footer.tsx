@@ -21,6 +21,7 @@ import { HOME_URL } from '@/libs/urls';
 import { VALUE_MOBILE } from '@/utils/config';
 
 import { LanguagePicker } from '../langs/LanguagePicker';
+import { infos } from './data/info';
 import classes from './scss/footer.module.scss';
 
 const socials = [
@@ -89,27 +90,27 @@ export default function FooterLinks() {
 								VIỆN TRÍ TUỆ NHÂN TẠO VIỆT NAM
 							</Text>
 							<Text size="sm" pb={8}>
-								Trụ sở chính: tầng 2, CT1, Tràng An Complex, Hanoi, Vietnam
+								{infos.address}
 							</Text>
 							<Text size="sm" pb={8}>
 								SĐT:{' '}
-								<Anchor size="sm" href="tel:024 6662 7166">
-									024 6662 7166
+								<Anchor size="sm" href={`tel:${infos.phone}`}>
+									{infos.phone}
 								</Anchor>
 							</Text>
 							<Text size="sm" pb={8}>
 								Mail:{' '}
-								<Anchor size="sm" href="mailto:cskh@aiacademy.edu.vn">
-									cskh@aiacademy.edu.vn
+								<Anchor size="sm" href={`mailto:${infos.email}`}>
+									{infos.email}
 								</Anchor>
 							</Text>
 							<Text size="sm" pb={8}>
 								Website:{' '}
-								<Anchor size="sm" href="https://aiacademy.edu.vn/">
-									https://aiacademy.edu.vn
+								<Anchor size="sm" href={infos.website}>
+									{infos.website}
 								</Anchor>
 							</Text>
-							<Text size="sm">Thời gian mở cửa: 8:00 - 17:30</Text>
+							<Text size="sm">{infos.openClose}</Text>
 
 							<Group
 								gap={0}

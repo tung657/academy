@@ -65,6 +65,7 @@
 		"password": "Mật khẩu ít nhất có 6 ký tự",
 		"password_confirm": "Mật khẩu không khớp",
 		"username": "Tài khoản từ 8 - 20 ký tự, không được chứa ký tự đặc biệt",
+		"name": "Không thể chứa ký tự đặc biệt",
 		"pattern": "Dữ liệu không hợp lệ"
 	},
 	"messages": {

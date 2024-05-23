@@ -24,7 +24,7 @@ import { DropzoneRender } from '@/components/shared/dropzone/DropzoneRender';
 import { userState } from '@/store/user/atom';
 import { IJob } from '@/types/job';
 import { convertToString } from '@/utils/array';
-import { removeVietnameseTones } from '@/utils/format-string';
+import { patterns, removeVietnameseTones } from '@/utils/format-string';
 import { useGetBranchDropdown } from '@/utils/query-loader/branch.loader';
 import {
 	CACHE_JOB,
@@ -61,7 +61,7 @@ export const JobModal = ({ id }: Props): JSX.Element => {
 			job_description: '',
 		},
 		validate: {
-			job_name: isNotEmpty(t('validation.required')),
+			job_name: (value) => patterns.name(value, t),
 			type_time: isNotEmpty(t('validation.required')),
 			address: isNotEmpty(t('validation.required')),
 			salary: isNotEmpty(t('validation.required')),

@@ -30,7 +30,7 @@ export const ContactForm = (): JSX.Element => {
 			message: '',
 		},
 		validate: {
-			customer_name: isNotEmpty(t('validation.required')),
+			customer_name: (value) => patterns.name(value, t),
 			email: isEmail(t('validation.email')),
 			phone_number: matches(patterns.phone, t('validation.phone')),
 			message: isNotEmpty(t('validation.required')),
@@ -60,11 +60,7 @@ export const ContactForm = (): JSX.Element => {
 	return (
 		<section>
 			<Container size="xl">
-				<TitleCombo
-					titleSub="LIÊN HỆ"
-					titleChildren="Sẵn sàng để bắt đầu?"
-					description="Địa chỉ email của bạn sẽ được bảo mật"
-				/>
+				<TitleCombo titleSub="LIÊN HỆ" titleChildren="Sẵn sàng để bắt đầu?" />
 				<Grid gutter={16} my={32}>
 					<Grid.Col span={{ base: 12, md: 6 }}>
 						<Image

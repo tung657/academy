@@ -149,7 +149,7 @@ function ProfileModal({ opened, setOpened }: any): JSX.Element {
 			address: userRecoil.address,
 		},
 		validate: {
-			full_name: isNotEmpty(t('validation.required')),
+			full_name: (value) => patterns.name(value, t),
 			phone_number: matches(patterns.phone, t('validation.phone')),
 			gender: isNotEmpty(t('validation.required')),
 			email: isEmail(t('validation.email')),

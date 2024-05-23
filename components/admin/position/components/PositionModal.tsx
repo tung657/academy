@@ -8,7 +8,7 @@ import {
 	Textarea,
 	Tooltip,
 } from '@mantine/core';
-import { isNotEmpty, useForm } from '@mantine/form';
+import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { IconEdit, IconPlus } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
@@ -18,6 +18,7 @@ import { ModalRender } from '@/components/mantines/modal/ModalRender';
 import { getNotifications } from '@/components/mantines/notification/getNotifications';
 import { userState } from '@/store/user/atom';
 import { convertToString } from '@/utils/array';
+import { patterns } from '@/utils/format-string';
 import {
 	useCreatePosition,
 	useUpdatePosition,
@@ -44,7 +45,7 @@ export const PositionModal = ({ id }: Props): JSX.Element => {
 			description: '',
 		},
 		validate: {
-			position_name: isNotEmpty(t('validation.required')),
+			position_name: (value) => patterns.name(value, t),
 		},
 	});
 	const getDetail = useGetPositionById({
